@@ -5,7 +5,7 @@ class Landing extends Component {
 
     render() {
         return (
-            <Nav />
+            <Nav>Landing</Nav>
         );
     }
 }
