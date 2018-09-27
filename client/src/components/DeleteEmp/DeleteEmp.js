@@ -8,7 +8,7 @@ const DeleteEmp = ({ row, CustomFunction }) => {
 
         
         API.deleteEmployee(row._id)
-        .then(CustomFunction());
+        // .then(CustomFunction());
     }
 
     return(
