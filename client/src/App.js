@@ -1,13 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Articles from "./pages/Articles";
 import Home from "./pages/Home";
 import Employee from "./pages/Employee"
 import Availability from "./pages/Availability";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import NoMatch from "./pages/NoMatch";
-import Jumbotron from "../src/components/Jumbotron";
 
 
 const App = () => (

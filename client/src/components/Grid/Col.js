@@ -1,7 +1,8 @@
 import React from "react";
+import Grid from '@material-ui/core/Grid';
 
 export const Col = ({ size, children }) => (
-  <div className={size.split(" ").map(size => "col-" + size).join(" ")}>
+  <Grid item xs={parseInt(size, 10)}>
     {children}
-  </div>
+  </Grid>
 );

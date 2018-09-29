@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Col, Row, Container } from "../../components/Grid";
+import { Col, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 import Nav from "../../components/Nav";
 import DeleteEmp from "../../components/DeleteEmp";
 // import EmpAvail from "../../components/EmpAvail";
 import { Input, FormBtn } from "../../components/Form";
-import ReactCollapsingTable from 'react-collapsing-table';
+// import ReactCollapsingTable from 'react-collapsing-table';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class Employee extends Component {
+
     state = {
         employeeList: [],
         availabilityList: [],
@@ -100,82 +101,89 @@ class Employee extends Component {
         
     render(){
 
-    let callback = [
-        {"_id:0": this.loadEmployees},
-        {"_id": this.loadEmployees},
-        {"_id:1": this.loadAvailability}
-    ]
+    // let callback = [
+    //     {"_id:0": this.loadEmployees},
+    //     {"_id": this.loadEmployees},
+    //     {"_id:1": this.loadAvailability}
+    // ]
 
     return(
+        <React.Fragment>
+        <Nav />
         <Container>
-            <Nav />
-            <Row>
-                <Col size="md-4 s-12">
-                    <form>
-                        <Input
-                            value={this.state.firstName}
-                            onChange={this.handleInputChange}
-                            name="firstName"
-                            placeholder="First Name"
-                            />
-                        <Input
-                            value={this.state.lastName}
-                            onChange={this.handleInputChange}
-                            name="lastName"
-                            placeholder="Last Name"
-                            />
-                        <Input
-                            value={this.state.email}
-                            onChange={this.handleInputChange}
-                            name="email"
-                            placeholder="Email"
-                            />
-                        <Input
-                            value={this.state.phone}
-                            onChange={this.handleInputChange}
-                            name="phone"
-                            placeholder="Phone"
-                            />
-                        <Input
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                            name="password"
-                            placeholder="Password"
-                            />
+            <Col size="4">
+                <form>
+                    <Input
+                        value={this.state.firstName}
+                        onChange={this.handleInputChange}
+                        name="firstName"
+                        placeholder="First Name"
+                        />
+                    <Input
+                        value={this.state.lastName}
+                        onChange={this.handleInputChange}
+                        name="lastName"
+                        placeholder="Last Name"
+                        />
+                    <Input
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                        name="email"
+                        placeholder="Email"
+                        />
+                    <Input
+                        value={this.state.phone}
+                        onChange={this.handleInputChange}
+                        name="phone"
+                        placeholder="Phone"
+                        />
+                    <Input
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                        name="password"
+                        placeholder="Password"
+                        />
 
-                        <UncontrolledDropdown>
-                            <DropdownToggle caret>
-                                {this.state.isAdmin}
-                            </DropdownToggle>
+                    <UncontrolledDropdown>
+                        <DropdownToggle caret>
+                            {this.state.isAdmin}
+                        </DropdownToggle>
 
-                            <DropdownMenu>
-                                <DropdownItem onClick={this.select}>Admin</DropdownItem>
-                                <DropdownItem onClick={this.select}>Manager</DropdownItem>
-                            </DropdownMenu>
+                        <DropdownMenu>
+                            <DropdownItem onClick={this.select}>Admin</DropdownItem>
+                            <DropdownItem onClick={this.select}>Manager</DropdownItem>
+                        </DropdownMenu>
 
-                        </UncontrolledDropdown>
+                    </UncontrolledDropdown>
 
 
-                        <FormBtn
-                                disabled={!(this.state.firstName &&
-                                    this.state.lastName &&
-                                    this.state.email&&
-                                    this.state.password)}
-                                    onClick={this.handleFormSubmit}>
-                            Submit Employee
-                    </FormBtn>
-                    </form>
-                </Col>
+                    <FormBtn
+                            disabled={!(this.state.firstName &&
+                                this.state.lastName &&
+                                this.state.email&&
+                                this.state.password)}
+                                onClick={this.handleFormSubmit}>
+                        Submit Employee
+                </FormBtn>
+                </form>
+            </Col>
 
-                <Col size="md-8 s-12">
-                <div>
-                    <ReactCollapsingTable
-                        rows={this.state.employeeList}
-                        columns={this.state.columns}
-                        callbacks={callback} /></div>
-                </Col>  
-            </Row>
+            <Col size="8">
+            {/* <div>
+                <ReactCollapsingTable
+                    rows={this.state.employeeList}
+                    columns={this.state.columns}
+                    callbacks={callback} />
+            </div> */}
+            </Col>  
+
+        <Col size="3">3</Col>
+        <Col size="3">3</Col>
+        <Col size="3">3</Col>
+        <Col size="3">3</Col>
+        <Col size="3">3</Col>
         </Container>
+        </React.Fragment>
         )
     }
 }
