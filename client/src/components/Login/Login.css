@@ -1,0 +1,30 @@
+.Login-container-121 {
+    width: auto;
+    height: 500px;
+    margin: auto;
+    position: relative;
+}
+
+.MuiFormControl-marginNormal-126 {
+    position: absolute;
+    top: 50%;
+    clear: both !important;
+}
+
+
+.MuiList-root-125 {
+    margin: auto !important;
+}
+
+.MuiListItem-root-129 {
+    width: 100%;
+    display: block !important;
+    position: relative;
+    box-sizing: border-box;
+    text-align: center !important;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    justify-content: flex-start;
+    text-decoration: none;
+}
