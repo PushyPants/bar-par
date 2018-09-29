@@ -2,13 +2,20 @@
   "name": "bar-par",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "@material-ui/core": "^3.1.1",
     "@material-ui/icons": "^3.0.1",
+<<<<<<< HEAD
+=======
+    "axios": "^0.18.0",
+>>>>>>> a83f9336eabf70adc00f98b0c7f9e6f7d720dd07
     "react": "^16.5.2",
+    "react-collapsing-table": "^0.4.2",
     "react-dom": "^16.5.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "reactstrap": "^6.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

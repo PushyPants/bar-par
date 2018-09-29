@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./pages/Landing";
@@ -15,3 +16,31 @@ const App = () => (
 );
 
 export default App;
+=======
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import Employee from "./pages/Employee"
+import Availability from "./pages/Availability";
+import Landing from "./pages/Landing";
+import Dashboard from "./pages/Dashboard";
+import NoMatch from "./pages/NoMatch";
+
+
+const App = () => (
+  <Router>
+    <div>
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/addemp" component={Employee} />
+          <Route exact path="/addavail" component={Availability} />
+          <Route component={NoMatch} />
+        </Switch>
+    </div>
+  </Router>
+);
+
+export default App;
+>>>>>>> a83f9336eabf70adc00f98b0c7f9e6f7d720dd07
