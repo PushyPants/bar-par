@@ -11,20 +11,14 @@
     clear: both !important;
 }
 
-
-.MuiList-root-125 {
-    margin: auto !important;
+form {
+    width: 50%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 150px;
+    padding: 0px;
 }
 
-.MuiListItem-root-129 {
-    width: 100%;
-    display: block !important;
-    position: relative;
-    box-sizing: border-box;
-    text-align: center !important;
-    align-items: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    justify-content: flex-start;
-    text-decoration: none;
+ul {
+    margin: auto !important;
 }

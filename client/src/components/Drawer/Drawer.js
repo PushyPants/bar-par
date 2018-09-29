@@ -2,19 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import { mailFolderListItems, otherMailFolderListItems } from './tileData';
 
-const styles = {
+
+const styles = theme => ({
   list: {
     width: 250,
   },
   fullList: {
     width: 'auto',
   },
-};
+  root: {
+    flexGrow: 1,
+    height: 440,
+    zIndex: 1,
+    overflow: 'hidden',
+    position: 'relative',
+    display: 'flex',
+  },
+  drawerPaper: {
+    position: 'relative'
+  },
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing.unit * 3,
+    minWidth: 0, // So the Typography noWrap works
+  },
+  toolbar: theme.mixins.toolbar,
+});
 
 class SwipeableTemporaryDrawer extends React.Component {
   state = {
@@ -35,26 +54,23 @@ class SwipeableTemporaryDrawer extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List>{mailFolderListItems}</List>
+        <List>Item</List>
+        <List>Item</List>
+        <List>Item</List>
+        <List>Item</List>
         <Divider />
-        <List>{otherMailFolderListItems}</List>
-      </div>
-    );
-
-    const fullList = (
-      <div className={classes.fullList}>
-        <List>{mailFolderListItems}</List>
-        <Divider />
-        <List>{otherMailFolderListItems}</List>
+        <List>Item</List>
+        <List>Item</List>
+        <List>Item</List>
+        <List>Item</List>
       </div>
     );
 
     return (
       <div>
-        <Button onClick={this.toggleDrawer('left', true)}>Open Left</Button>
-        <Button onClick={this.toggleDrawer('right', true)}>Open Right</Button>
-        <Button onClick={this.toggleDrawer('top', true)}>Open Top</Button>
-        <Button onClick={this.toggleDrawer('bottom', true)}>Open Bottom</Button>
+        <IconButton className={classes.menuButton} onClick={this.toggleDrawer('left', true)} color="inherit" aria-label="Menu">
+            <MenuIcon />
+        </IconButton>
         <SwipeableDrawer
           open={this.state.left}
           onClose={this.toggleDrawer('left', false)}
@@ -65,51 +81,6 @@ class SwipeableTemporaryDrawer extends React.Component {
             role="button"
             onClick={this.toggleDrawer('left', false)}
             onKeyDown={this.toggleDrawer('left', false)}
-          >
-            {sideList}
-          </div>
-        </SwipeableDrawer>
-        <SwipeableDrawer
-          anchor="top"
-          open={this.state.top}
-          onClose={this.toggleDrawer('top', false)}
-          onOpen={this.toggleDrawer('top', true)}
-        >
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer('top', false)}
-            onKeyDown={this.toggleDrawer('top', false)}
-          >
-            {fullList}
-          </div>
-        </SwipeableDrawer>
-        <SwipeableDrawer
-          anchor="bottom"
-          open={this.state.bottom}
-          onClose={this.toggleDrawer('bottom', false)}
-          onOpen={this.toggleDrawer('bottom', true)}
-        >
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer('bottom', false)}
-            onKeyDown={this.toggleDrawer('bottom', false)}
-          >
-            {fullList}
-          </div>
-        </SwipeableDrawer>
-        <SwipeableDrawer
-          anchor="right"
-          open={this.state.right}
-          onClose={this.toggleDrawer('right', false)}
-          onOpen={this.toggleDrawer('right', true)}
-        >
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer('right', false)}
-            onKeyDown={this.toggleDrawer('right', false)}
           >
             {sideList}
           </div>
