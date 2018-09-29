@@ -6,10 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^3.1.1",
     "@material-ui/icons": "^3.0.1",
-<<<<<<< HEAD
-=======
     "axios": "^0.18.0",
->>>>>>> a83f9336eabf70adc00f98b0c7f9e6f7d720dd07
     "react": "^16.5.2",
     "react-collapsing-table": "^0.4.2",
     "react-dom": "^16.5.2",
