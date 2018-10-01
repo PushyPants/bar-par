@@ -87,7 +87,7 @@ class Availability extends Component {
     render() {
         return (
             <Container>
-                <Nav />
+                <Nav>Availability</Nav>
                 <List>
                     {this.state.availabilityList.map(emp => (
                         <ListItem key={emp._id}>
