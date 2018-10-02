@@ -7,7 +7,7 @@ const drinkRoutes = require('./Drink')
 
 
 //any route relating to Drinks
-router.use("/drink", drinkRoutes);
+// router.use("/drink", drinkRoutes);
 
 
 
