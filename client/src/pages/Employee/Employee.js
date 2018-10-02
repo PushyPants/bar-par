@@ -1,28 +1,21 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Col, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 import Nav from "../../components/Nav";
-import DeleteEmp from "../../components/DeleteEmp";
+// import DeleteEmp from "../../components/DeleteEmp";
 // import EmpAvail from "../../components/EmpAvail";
-import { Input, FormBtn } from "../../components/Form";
+// import { Input, FormBtn } from "../../components/Form";
 // import ReactCollapsingTable from 'react-collapsing-table';
-import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+// import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import Grid from '@material-ui/core/Grid';
+import EmpTable from "../../components/EmpTable";
+import AddEmp from "../../components/AddEmp";
 
 class Employee extends Component {
 
     state = {
         employeeList: [],
         availabilityList: [],
-        columns: [
-            { accessor: 'firstName', label: 'First Name', priorityLevel: 1, position: 1, minWidth: 150, },
-            { accessor: 'lastName', label: 'Last Name', priorityLevel: 2, position: 2, minWidth: 150, },
-            { accessor: 'email', label: 'Email', priorityLevel: 5, position: 3, minWidth: 2000, },
-            { accessor: 'phone', label: 'Phone', priorityLevel: 3, position: 4, minWidth: 150, },
-            { accessor: 'isAdmin', label: 'Position', priorityLevel: 4, position: 5, minWidth: 150, },
-            { accessor: `_id`, label: 'ID', priorityLevel: 5, position: 6, minWidth: 2000 , CustomComponent: DeleteEmp   },
-            { accessor: `_id:${0}`, label: '', priorityLevel: 5, position: 7, minWidth: 2000, CustomComponent: DeleteEmp  },
-        ],
         firstName: "",
         lastName: "",
         isAdmin: "",
@@ -33,7 +26,7 @@ class Employee extends Component {
     }
 
 
-    componentDidMount(){
+    componentWillMount(){
         this.loadEmployees()
         this.loadAvailability()
         this.setState({
@@ -100,89 +93,20 @@ class Employee extends Component {
         };
         
     render(){
-
-    // let callback = [
-    //     {"_id:0": this.loadEmployees},
-    //     {"_id": this.loadEmployees},
-    //     {"_id:1": this.loadAvailability}
-    // ]
-
+        
     return(
         <React.Fragment>
         <Nav />
-        <Container>
-            <Col size="4">
-                <form>
-                    <Input
-                        value={this.state.firstName}
-                        onChange={this.handleInputChange}
-                        name="firstName"
-                        placeholder="First Name"
-                        />
-                    <Input
-                        value={this.state.lastName}
-                        onChange={this.handleInputChange}
-                        name="lastName"
-                        placeholder="Last Name"
-                        />
-                    <Input
-                        value={this.state.email}
-                        onChange={this.handleInputChange}
-                        name="email"
-                        placeholder="Email"
-                        />
-                    <Input
-                        value={this.state.phone}
-                        onChange={this.handleInputChange}
-                        name="phone"
-                        placeholder="Phone"
-                        />
-                    <Input
-                        value={this.state.password}
-                        onChange={this.handleInputChange}
-                        name="password"
-                        placeholder="Password"
-                        />
 
-                    <UncontrolledDropdown>
-                        <DropdownToggle caret>
-                            {this.state.isAdmin}
-                        </DropdownToggle>
+        <Grid container spacing={8}>
+            <Grid item xs={4} md={4}>
+                <AddEmp />
+            </Grid>
 
-                        <DropdownMenu>
-                            <DropdownItem onClick={this.select}>Admin</DropdownItem>
-                            <DropdownItem onClick={this.select}>Manager</DropdownItem>
-                        </DropdownMenu>
-
-                    </UncontrolledDropdown>
-
-
-                    <FormBtn
-                            disabled={!(this.state.firstName &&
-                                this.state.lastName &&
-                                this.state.email&&
-                                this.state.password)}
-                                onClick={this.handleFormSubmit}>
-                        Submit Employee
-                </FormBtn>
-                </form>
-            </Col>
-
-            <Col size="8">
-            {/* <div>
-                <ReactCollapsingTable
-                    rows={this.state.employeeList}
-                    columns={this.state.columns}
-                    callbacks={callback} />
-            </div> */}
-            </Col>  
-
-        <Col size="3">3</Col>
-        <Col size="3">3</Col>
-        <Col size="3">3</Col>
-        <Col size="3">3</Col>
-        <Col size="3">3</Col>
-        </Container>
+            <Grid item xs={8} md={8}>
+                <EmpTable empArr={this.state.employeeList}/>
+            </Grid> 
+        </Grid>
         </React.Fragment>
         )
     }
