@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
+import Login from "../../components/Login";
+import "./Landing.css";
 
 class Landing extends Component {
 
     render() {
         return (
-            <Nav>Landing</Nav>
+        <div>
+            <Nav>Bar Par</Nav>
+            <Login />
+        </div>
         );
     }
 }

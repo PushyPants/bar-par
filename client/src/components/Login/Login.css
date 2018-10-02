@@ -1,0 +1,24 @@
+.Login-container-121 {
+    width: auto;
+    height: 500px;
+    margin: auto;
+    position: relative;
+}
+
+.MuiFormControl-marginNormal-126 {
+    position: absolute;
+    top: 50%;
+    clear: both !important;
+}
+
+form {
+    width: 50%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 150px;
+    padding: 0px;
+}
+
+ul {
+    margin: auto !important;
+}

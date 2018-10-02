@@ -16,6 +16,7 @@ router.use(function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
+<<<<<<< HEAD
 
 
 
@@ -38,3 +39,6 @@ router.use(function(req, res) {
 
 
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> 66a29db42d8244ad5279c57753b1a8ca48822478
