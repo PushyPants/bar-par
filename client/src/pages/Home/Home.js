@@ -8,6 +8,7 @@ import { Container } from "../../components/Grid";
 import Nav from "../../components/Nav"
 import ReactCollapsingTable from 'react-collapsing-table'
 
+
 class Home extends Component {
     state = {
         employeeList: [],
