@@ -10,9 +10,9 @@ class Landing extends Component {
       <div>
         <Nav>Bar Par</Nav>
         <Login />
-        <DatePickers>
+        {/* <DatePickers>
           
-        </DatePickers>
+        </DatePickers> */}
       </div>
     );
   }
