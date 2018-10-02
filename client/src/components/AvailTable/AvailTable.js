@@ -16,30 +16,43 @@ const styles = theme => ({
         textAlign: 'center'
     },
     table: {
-        minWidth: 200
+        minWidth: 250
     }
 });
 
 let id = 0;
-function createData(name, phone, email) {
+function createData(name, dayOfWeek, unavailStart, unavailEnd) {
     id += 1;
-    return { id, name, phone, email };
+    return { id, name, dayOfWeek, unavailStart, unavailEnd };
 }
 
 
-function EmpTable(props) {
+function AvailTable(props) {
     const { classes } = props;
     const rows = [];
+    let thisEmp = props.emp || "Loading";
     
-    props.empArr.map(emp => (
-        rows.push(createData(`${emp.firstName} ${emp.lastName}`, emp.phone, emp.email))
-    ))
+    props.empArr.forEach(e => {
+        if(thisEmp === "Loading"){
+            e.unavail.map(emp => (
+            rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek , emp.unavailStart, emp.unavailEnd))
+            ))
+        } else if (thisEmp === e._id){
+            e.unavail.map(emp => (
+                rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek, emp.unavailStart, emp.unavailEnd))
+            ))
+        }
+    })
+
+
 
     return (
         <Paper className={classes.root}>
             <Table className={classes.table}>
                 <TableHead>
                     <TableRow>
+                        {(thisEmp === "Loading") ?
+                        <TableCell className={classes.root} >Name</TableCell>:null}
                         <TableCell className={classes.root} >Name</TableCell>
                         <TableCell className={classes.root} >Phone</TableCell>
                         <TableCell className={classes.root} >Email</TableCell>
@@ -49,11 +62,13 @@ function EmpTable(props) {
                     {rows.map(row => {
                         return (
                             <TableRow key={row.id}>
+                                {(thisEmp === "Loading")?
+                                <TableCell className={classes.root} numeric>{row.name}</TableCell>:null}
                                 <TableCell className={classes.root} component="th" scope="row">
-                                    {row.name}
+                                    {row.dayOfWeek}
                                 </TableCell>
-                                <TableCell className={classes.root} numeric>{row.phone}</TableCell>
-                                <TableCell className={classes.root} numeric>{row.email}</TableCell>
+                                <TableCell className={classes.root} numeric>{row.unavailStart}</TableCell>
+                                <TableCell className={classes.root} numeric>{row.unavailEnd}</TableCell>
                             </TableRow>
                         );
                     })}
@@ -63,8 +78,8 @@ function EmpTable(props) {
     );
 }
 
-EmpTable.propTypes = {
+AvailTable.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EmpTable);
+export default withStyles(styles)(AvailTable);

@@ -1,31 +1,35 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 // import { Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
+// import { List, ListItem } from "../../components/List";
 // import ArticleTab from "../../components/ArticleTab"
 // import SavedTab from "../../components/SavedTab"
 // import Search from "../../components/Search";
 import Nav from "../../components/Nav"
-import EmployeeUnavailable from "../../components/EmployeeUnavailable"
-import { Input, FormBtn } from "../../components/Form";
+// import EmployeeUnavailable from "../../components/EmployeeUnavailable"
+// import { Input, FormBtn } from "../../components/Form";
 // import ReactCollapsingTable from 'react-collapsing-table';
-import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Form } from 'reactstrap';
+// import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Form } from 'reactstrap';
 import Grid from '@material-ui/core/Grid';
+import AddAvail from "../../components/AddAvail";
+import AvailTable from "../../components/AvailTable";
 
 class Availability extends Component {
     state = {
         employeeList: [],
         availabilityList: [],
+        Employee: "",
         dayOfWeek: "",
         unavailStart: "",
         unavailEnd: "",
-        Employee: "",
-        EmpName: ""
     };
 
-    componentDidMount() {
+    componentWillMount() {
         this.loadEmployees();
         this.loadAvailability();
+        this.setState({
+            Employee: this.state.employeeList[0]
+        })
     }
 
     loadEmployees = () => {
@@ -65,22 +69,21 @@ class Availability extends Component {
             this.state.unavailStart &&
             this.state.unavailEnd) {
 
-                console.log(this.state)
-
             API.addAvailability({
                 dayOfWeek: this.state.dayOfWeek,
                 unavailStart: this.state.unavailStart,
                 unavailEnd: this.state.unavailEnd,
                 Employee: this.state.Employee
             })
-                .then(res => this.loadAvailability())
+                .then(res=>
+                    API.updateEmployee(res.data.Employee, {avail: res.data._id}))
+                .then(res => this.loadEmployees())
                 .catch(err => console.log(err.response));
 
             this.setState({
                 dayOfWeek: "",
                 unavailStart: "",
-                unavailEnd: "",
-                Employee: ""
+                unavailEnd: ""
             })
         }
     };
@@ -89,69 +92,23 @@ class Availability extends Component {
         return (
             <React.Fragment>
                 <Nav />
+                <Grid container spacing={8}>
 
-                <Grid item xs={12} md={4}>
-                <List>
-                    {this.state.availabilityList.map(emp => (
-                        <ListItem key={emp._id}>
-                            <EmployeeUnavailable AvailId={emp} allEmp={this.state.employeeList}/>
-                        </ListItem>
-                    ))}
-                </List>
+                    <Grid item xs={12} md={4}>
+                        <AddAvail handleInputChange={this.handleInputChange}
+                            handleFormSubmit={this.handleFormSubmit}
+                            employeeList={this.state.employeeList}
+                            Employee={this.state.Employee}
+                            dayOfWeek={this.state.dayOfWeek}
+                            unavailStart={this.state.unavailStart}
+                            unavailEnd={this.state.unavailEnd}/>
+                    </Grid>
 
+                    <Grid item xs={12} md={8}>
+                        <AvailTable emp={this.state.Employee} empArr={this.state.employeeList}/>
+                    </Grid>
 
-                <Form inline>
-
-                    <UncontrolledDropdown>
-                        <DropdownToggle caret>
-                            {(this.state.EmpName)? this.state.EmpName : 'Employee'}
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            {this.state.employeeList.map(emp => (
-                                <DropdownItem key={emp._id} value={emp._id} onClick={this.select}>{emp.firstName}</DropdownItem>
-                            ))}
-
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
-
-                    <UncontrolledDropdown>
-                        <DropdownToggle caret>
-                            {(this.state.dayOfWeek) ? this.state.dayOfWeek : 'Week Day'}
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem name="dayOfWeek" value="Sunday" onClick={this.handleInputChange}>Sunday</DropdownItem>
-                            <DropdownItem name="dayOfWeek" value="Monday" onClick={this.handleInputChange}>Monday</DropdownItem>
-                            <DropdownItem name="dayOfWeek" value="Tuesday" onClick={this.handleInputChange}>Tuesday</DropdownItem>
-                            <DropdownItem name="dayOfWeek" value="Wednesday" onClick={this.handleInputChange}>Wednesday</DropdownItem>
-                            <DropdownItem name="dayOfWeek" value="Thursday" onClick={this.handleInputChange}>Thursday</DropdownItem>
-                            <DropdownItem name="dayOfWeek" value="Friday" onClick={this.handleInputChange}>Friday</DropdownItem>
-                            <DropdownItem name="dayOfWeek" value="Saturday" onClick={this.handleInputChange}>Saturday</DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
-
-                    <Input
-                        value={this.state.unavailStart}
-                        onChange={this.handleInputChange}
-                        name="unavailStart"
-                        placeholder="Unavailable From"
-                    />
-                    <Input
-                        value={this.state.unavailEnd}
-                        onChange={this.handleInputChange}
-                        name="unavailEnd"
-                        placeholder="Unavailable To"
-                    />
-
-                    <FormBtn
-                        disabled={!(this.state.Employee &&
-                            this.state.dayOfWeek &&
-                            this.state.unavailStart &&
-                            this.state.unavailEnd)}
-                            onClick={this.handleFormSubmit}>
-                        Submit Employee
-                    </FormBtn>
-                </Form>
-            </Grid>
+                </Grid>
             </React.Fragment>
         );
     }
