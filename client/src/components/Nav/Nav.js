@@ -33,7 +33,6 @@ const styles = {
             <Typography variant="title" color="inherit" className={classes.grow}>
                 { props.children }
             </Typography>
-            <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
       </div>
