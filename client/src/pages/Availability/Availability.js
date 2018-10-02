@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Container } from "../../components/Grid";
+// import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 // import ArticleTab from "../../components/ArticleTab"
 // import SavedTab from "../../components/SavedTab"
@@ -10,6 +10,7 @@ import EmployeeUnavailable from "../../components/EmployeeUnavailable"
 import { Input, FormBtn } from "../../components/Form";
 // import ReactCollapsingTable from 'react-collapsing-table';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Form } from 'reactstrap';
+import Grid from '@material-ui/core/Grid';
 
 class Availability extends Component {
     state = {
@@ -86,8 +87,10 @@ class Availability extends Component {
 
     render() {
         return (
-            <Container>
+            <React.Fragment>
                 <Nav />
+
+                <Grid item xs={12} md={4}>
                 <List>
                     {this.state.availabilityList.map(emp => (
                         <ListItem key={emp._id}>
@@ -148,8 +151,8 @@ class Availability extends Component {
                         Submit Employee
                     </FormBtn>
                 </Form>
-
-            </Container>
+            </Grid>
+            </React.Fragment>
         );
     }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Col, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 import Nav from "../../components/Nav";
 import DeleteEmp from "../../components/DeleteEmp";
@@ -8,6 +7,8 @@ import DeleteEmp from "../../components/DeleteEmp";
 import { Input, FormBtn } from "../../components/Form";
 // import ReactCollapsingTable from 'react-collapsing-table';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import Grid from '@material-ui/core/Grid';
+import EmpTable from "../../components/EmpTable";
 
 class Employee extends Component {
 
@@ -110,8 +111,9 @@ class Employee extends Component {
     return(
         <React.Fragment>
         <Nav />
-        <Container>
-            <Col size="4">
+
+        <Grid container spacing={8}>
+            <Grid item xs={12} md={4}>
                 <form>
                     <Input
                         value={this.state.firstName}
@@ -166,23 +168,14 @@ class Employee extends Component {
                         Submit Employee
                 </FormBtn>
                 </form>
-            </Col>
+            </Grid>
 
-            <Col size="8">
-            {/* <div>
-                <ReactCollapsingTable
-                    rows={this.state.employeeList}
-                    columns={this.state.columns}
-                    callbacks={callback} />
-            </div> */}
-            </Col>  
+            <Grid item xs={12} md={8}>
 
-        <Col size="3">3</Col>
-        <Col size="3">3</Col>
-        <Col size="3">3</Col>
-        <Col size="3">3</Col>
-        <Col size="3">3</Col>
-        </Container>
+                <EmpTable />
+
+            </Grid> 
+        </Grid>
         </React.Fragment>
         )
     }

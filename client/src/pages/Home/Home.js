@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Container } from "../../components/Grid";
+// import { Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 // import ArticleTab from "../../components/ArticleTab"
 // import SavedTab from "../../components/SavedTab"
 // import Search from "../../components/Search";
 import Nav from "../../components/Nav"
-import ReactCollapsingTable from 'react-collapsing-table'
+import ReactCollapsingTable from 'react-collapsing-table';
+import Grid from '@material-ui/core/Grid';
+import EmpTable from '../../components/EmpTable';
+
 
 class Home extends Component {
     state = {
@@ -34,10 +37,15 @@ class Home extends Component {
 
     render() {
         return (
-            <Container>
-                <Nav />
+        <React.Fragment>
+            <Nav />
+            <EmpTable />
+            <Grid container spacing={8}>
+
                 <ReactCollapsingTable rows={ this.state.employeeList } columns={ this.state.columns } />
-            </Container>
+
+            </Grid>
+        </React.Fragment>
         );
     }
 }
