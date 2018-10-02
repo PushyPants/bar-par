@@ -25,7 +25,11 @@ var EmployeeSchema = new Schema({
     password: {
         type: String,
         // required: true,
-    }
+    },
+    unavail: [{
+        type: Schema.Types.ObjectId,
+        ref: "Availability"
+    }]
 });
 
 var EmployeeTable = mongoose.model("EmployeeTable", EmployeeSchema);

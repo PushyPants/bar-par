@@ -5,6 +5,7 @@ module.exports = {
     find: function (req, res) {
         db.EmployeeTable
             .find()
+            .populate('unavail', null, null, { sort: { dayOfWeek: -1 } })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.json(err));
     },
@@ -21,9 +22,10 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
+        console.log(req.body.note)
         db.EmployeeTable.findOneAndUpdate(
-            req.params.id,
-            req.body,
+            {_id: req.params.id},
+            { $push: { unavail: req.body.avail } },
             { new: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.json(err))
