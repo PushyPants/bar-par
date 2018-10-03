@@ -21,7 +21,7 @@ const styles = {
       marginLeft: -12,
       marginRight: 20,
     },
-  };
+  }; 
   
   function Nav(props) {
     const { classes } = props;
