@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
 import Nav from "../../components/Nav";
 import Grid from '@material-ui/core/Grid';
 import EmpTable from '../../components/EmpTable';
-
-
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 
 class Home extends Component {
     state = {
-        employeeList: []
+        Employee: ''
     };
 
     componentWillMount() {
@@ -16,11 +15,7 @@ class Home extends Component {
     }
 
     loadEmployees = () => {
-        API.getEmployee().then(res =>
-            this.setState({
-                employeeList: res.data
-            })
-        )
+        this.props.getEmployeeList();
     }
 
     render() {
@@ -31,7 +26,7 @@ class Home extends Component {
             <Grid container spacing={8}>
 
                 <Grid item xs={12} md={12}>
-                    <EmpTable empArr={this.state.employeeList}/>
+                    <EmpTable empArr={this.props.employeeList}/>
                 </Grid>
 
             </Grid>
@@ -40,4 +35,16 @@ class Home extends Component {
     }
 }
 
-export default Home; 
+const mapStateToProps = (state) => {
+  return {
+    employeeList: state.reducer.employeeList
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getEmployeeList: () => dispatch(actions.getEmployeeList()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -56,6 +56,10 @@ class SwipeableTemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
+          <Link to="/">Landing</Link>
+        </List>
+
+        <List>
           <Link to="/home">Home</Link>
         </List>
 
