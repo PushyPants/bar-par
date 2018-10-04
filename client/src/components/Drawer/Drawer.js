@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import { Link } from 'react-router-dom'
 
 
 const styles = theme => ({
@@ -54,9 +55,18 @@ class SwipeableTemporaryDrawer extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List>Item</List>
-        <List>Item</List>
-        <List>Item</List>
+        <List>
+          <Link to="/home">Home</Link>
+        </List>
+
+        <List>
+          <Link to="/addemp">Add Employee</Link>
+        </List>
+
+        <List>
+          <Link to="/addavail">Add Availability</Link>
+        </List>
+        
         <List>Item</List>
         <Divider />
         <List>Item</List>
