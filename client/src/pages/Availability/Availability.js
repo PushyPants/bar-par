@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
 import Nav from "../../components/Nav";
 import Grid from '@material-ui/core/Grid';
 import AddAvail from "../../components/AddAvail";
 import AvailTable from "../../components/AvailTable";
-// import Slider from '@material-ui/lab/Slider';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
+
 
 class Availability extends Component {
     state = {
-        employeeList: [],
-        availabilityList: [],
         Employee: "",
         dayOfWeek: "",
         unavailStart: "",
@@ -18,38 +17,17 @@ class Availability extends Component {
 
     componentWillMount() {
         this.loadEmployees();
-        this.loadAvailability();
         this.setState({
-            Employee: this.state.employeeList[0]
+            Employee: "Admin"
         })
     }
 
     loadEmployees = () => {
-        API.getEmployee().then(res =>
-            this.setState({
-                employeeList: res.data
-            })
-        )
+        this.props.getEmployeeList();
     }
 
-    loadAvailability = () => {
-        API.getAvailability().then(res =>
-            this.setState({
-                    availabilityList: res.data
-                }))
-        }
-        
     deleteAvailability = (empId, postId) => {
-        API.updateEmployeeAvail(empId,
-            { avail: postId })
-            .then(res => this.loadEmployees())
-            .then(res => (
-              API.deleteAvailability(postId).then(res =>
-                this.setState({
-                    availabilityList: res.data
-                }))  
-            ))
-            .catch(err => console.log(err.response));
+        this.props.updateEmployee(empId, postId)
     }
 
     handleInputChange = event => {
@@ -74,16 +52,12 @@ class Availability extends Component {
             this.state.unavailStart &&
             this.state.unavailEnd) {
 
-            API.addAvailability({
+            this.props.addAvailability({
                 dayOfWeek: this.state.dayOfWeek,
                 unavailStart: this.state.unavailStart,
                 unavailEnd: this.state.unavailEnd,
                 Employee: this.state.Employee
             })
-                .then(res=>
-                    API.updateEmployee(res.data.Employee, {avail: res.data._id}))
-                .then(res => this.loadEmployees())
-                .catch(err => console.log(err.response));
 
             this.setState({
                 dayOfWeek: "",
@@ -102,7 +76,7 @@ class Availability extends Component {
                     <Grid item xs={12} md={4}>
                         <AddAvail handleInputChange={this.handleInputChange}
                             handleFormSubmit={this.handleFormSubmit}
-                            employeeList={this.state.employeeList}
+                            employeeList={this.props.employeeList}
                             Employee={this.state.Employee}
                             dayOfWeek={this.state.dayOfWeek}
                             unavailStart={this.state.unavailStart}
@@ -111,7 +85,7 @@ class Availability extends Component {
 
                     <Grid item xs={12} md={8}>
                         <AvailTable emp={this.state.Employee}
-                            empArr={this.state.employeeList}
+                            empArr={this.props.employeeList}
                             delAvail={this.deleteAvailability}/>
                     </Grid>
 
@@ -121,4 +95,18 @@ class Availability extends Component {
     }
 }
 
-export default Availability; 
+const mapStateToProps = (state) => {
+    return {
+        employeeList: state.reducer.employeeList
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getEmployeeList: () => dispatch(actions.getEmployeeList()),
+        addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),
+        updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Availability);

@@ -2,17 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
-// import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-// import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-// import Visibility from '@material-ui/icons/Visibility';
-// import VisibilityOff from '@material-ui/icons/VisibilityOff';
-// import API from "../../utils/API";
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
@@ -66,12 +60,11 @@ const days = [
 
 function AddAvail(props) {
     const { classes } = props;
-    let Employee = props.Employee || "Loading";
 
         return (
             <div className={classes.root}>
             
-            {(Employee !== undefined)?
+            {(props.Employee)?
 
             <React.Fragment>
                     <TextField
@@ -79,7 +72,7 @@ function AddAvail(props) {
                     // label="Position"
                         name="Employee"
                             className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
-                        value={Employee}
+                        value={props.Employee}
                         onChange={props.handleInputChange}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">Employee</InputAdornment>,
@@ -93,7 +86,6 @@ function AddAvail(props) {
                     <TextField
                         select
                         // label="Position"
-                        
                         name="dayOfWeek"
                             className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
                             value={props.dayOfWeek}
@@ -108,8 +100,8 @@ function AddAvail(props) {
 
                         <FormControl className={classNames(classes.margin, classes.textField, classes.withoutLabel)}>
                         <Input
-                                value={props.unavailStart}
-                                onChange={props.handleInputChange}
+                            value={props.unavailStart}
+                            onChange={props.handleInputChange}
                             name="unavailStart"
                             placeholder="From"
                         />
@@ -117,8 +109,8 @@ function AddAvail(props) {
 
                         <FormControl className={classNames(classes.margin, classes.textField, classes.withoutLabel)}>
                         <Input
-                                value={props.unavailEnd}
-                                onChange={props.handleInputChange}
+                            value={props.unavailEnd}
+                            onChange={props.handleInputChange}
                             name="unavailEnd"
                             placeholder="To"
                         />

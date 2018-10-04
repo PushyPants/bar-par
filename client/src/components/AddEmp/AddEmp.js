@@ -7,8 +7,9 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import API from "../../utils/API";
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 
 const styles = theme => ({
     root: {
@@ -45,8 +46,6 @@ const ranges = [
 
 class AddEmp extends React.Component {
     state = {
-        employeeList: [],
-        availabilityList: [],
         firstName: "",
         lastName: "",
         isAdmin: "",
@@ -56,27 +55,10 @@ class AddEmp extends React.Component {
         password: ""
     };
 
-    componentWillMount() {
-        this.loadEmployees()
-        this.loadAvailability()
+    componentWillMount() { 
         this.setState({
             isAdmin: "Employee"
         })
-    }
-
-    loadEmployees = () => {
-        API.getEmployee().then(res =>
-            this.setState({
-                employeeList: res.data
-            })
-        )
-    }
-
-    loadAvailability = () => {
-        API.getAvailability().then(res =>
-            this.setState({
-                availabilityList: res.data
-            }))
     }
 
     handleFormSubmit = event => {
@@ -86,7 +68,7 @@ class AddEmp extends React.Component {
             this.state.email &&
             this.state.password) {
 
-            API.addEmployee({
+            this.props.addEmployee({
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 email: this.state.email,
@@ -94,8 +76,6 @@ class AddEmp extends React.Component {
                 password: this.state.password,
                 isAdmin: this.state.isAdmin
             })
-                .then(res => this.loadEmployees())
-                .catch(err => console.log(err.response));
 
             this.setState({
                 firstName: "",
@@ -201,4 +181,10 @@ class AddEmp extends React.Component {
         classes: PropTypes.object.isRequired,
     };
 
-    export default withStyles(styles)(AddEmp);
+    const mapDispatchToProps = (dispatch) => {
+        return {
+            addEmployee: (EmpObject) => dispatch(actions.addEmployee(EmpObject))
+        }
+    }
+
+    export default connect(null, mapDispatchToProps)(withStyles(styles)(AddEmp));
