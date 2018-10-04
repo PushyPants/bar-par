@@ -4,6 +4,7 @@ import Nav from "../../components/Nav";
 import Grid from '@material-ui/core/Grid';
 import AddAvail from "../../components/AddAvail";
 import AvailTable from "../../components/AvailTable";
+// import Slider from '@material-ui/lab/Slider';
 
 class Availability extends Component {
     state = {
