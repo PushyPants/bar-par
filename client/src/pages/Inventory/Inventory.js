@@ -1,20 +1,45 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import "./Inventory.css";
-import { Button } from "@material-ui/core";
+import TextField from '@material-ui/core/TextField';
 
 class Inventory extends Component {
+
+    state = {
+        quantity: ""
+    }
+
+    handleChange = name => event => {
+        this.setState({
+          [name]: event.target.value,
+        });
+    };
 
     render() {
         return (
         <div>
             <Nav>
-                Bar Par
-                <Button color="inherit">Logout</Button>
+                Inventory
             </Nav>
-            <h1>slider goes here</h1>
-            <h4>Product name</h4>
-            <h4>qty input</h4>
+            <div id="bottle-slide">
+                <img src="/assets/imgs/bottle.png" id="bottle" />
+                <div id="slider-div">
+                    <Slider vertical min={-10} step={null} defaultValue={20} />
+                </div>
+            </div>
+            <TextField
+                id="standard-number"
+                label="Number"
+                value={this.state.quantity}
+                onChange={this.handleChange('quantity')}
+                type="number"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                margin="normal"
+            />
         </div>
         );
     }
