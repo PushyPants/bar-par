@@ -71,12 +71,6 @@ class Landing extends Component {
           
         </DatePickers> */}
         <div>
-<<<<<<< HEAD
-            <Nav>
-                Bar Par
-            </Nav>
-            <Login />
-=======
           <div style={wrapperStyle}>
             <p> Range with custom handle</p>
             
@@ -92,7 +86,6 @@ class Landing extends Component {
               <DatetimeSlider min={start} max={end} onChange={this.onChange} />
             </div> */}
           </div>
->>>>>>> 83ffc60ef675068754a08fdab617a40834d26b98
         </div>
       </div>
     );
