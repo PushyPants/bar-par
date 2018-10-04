@@ -22,10 +22,6 @@ var ShiftsSchema = new Schema({
     isAvail: {
         type: Boolean,
         default: true
-    },
-    Employee: {
-        type: Schema.Types.ObjectId,
-        ref: "EmployeeTable"
     }
 });
 

@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-// import { Container } from "../../components/Grid";
-// import { List, ListItem } from "../../components/List";
-// import ArticleTab from "../../components/ArticleTab"
-// import SavedTab from "../../components/SavedTab"
-// import Search from "../../components/Search";
-import Nav from "../../components/Nav"
-// import EmployeeUnavailable from "../../components/EmployeeUnavailable"
-// import { Input, FormBtn } from "../../components/Form";
-// import ReactCollapsingTable from 'react-collapsing-table';
-// import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Form } from 'reactstrap';
+import Nav from "../../components/Nav";
 import Grid from '@material-ui/core/Grid';
 import AddAvail from "../../components/AddAvail";
 import AvailTable from "../../components/AvailTable";
+// import Slider from '@material-ui/lab/Slider';
 
 class Availability extends Component {
     state = {
@@ -43,8 +35,21 @@ class Availability extends Component {
     loadAvailability = () => {
         API.getAvailability().then(res =>
             this.setState({
-                availabilityList: res.data
-            }))
+                    availabilityList: res.data
+                }))
+        }
+        
+    deleteAvailability = (empId, postId) => {
+        API.updateEmployeeAvail(empId,
+            { avail: postId })
+            .then(res => this.loadEmployees())
+            .then(res => (
+              API.deleteAvailability(postId).then(res =>
+                this.setState({
+                    availabilityList: res.data
+                }))  
+            ))
+            .catch(err => console.log(err.response));
     }
 
     handleInputChange = event => {
@@ -105,7 +110,9 @@ class Availability extends Component {
                     </Grid>
 
                     <Grid item xs={12} md={8}>
-                        <AvailTable emp={this.state.Employee} empArr={this.state.employeeList}/>
+                        <AvailTable emp={this.state.Employee}
+                            empArr={this.state.employeeList}
+                            delAvail={this.deleteAvailability}/>
                     </Grid>
 
                 </Grid>
