@@ -7,13 +7,14 @@ import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
 // import ReactDOM from "react-dom";
 // import Tooltip from "rc-tooltip";
-import Slider from "rc-slider";
+// import Slider from "rc-slider";
 // import moment from "moment";
+import MySlider from "../../components/Slider/Slider"
 // import DatetimeSlider from "react-datetime-slider";
-import "react-datetime-slider/css/ReactDatetimeSlider.css";
+// import "react-datetime-slider/css/ReactDatetimeSlider.css";
 
-const createSliderWithTooltip = Slider.createSliderWithTooltip;
-const Range = createSliderWithTooltip(Slider.Range);
+// const createSliderWithTooltip = Slider.createSliderWithTooltip;
+// const Range = createSliderWithTooltip(Slider.Range);
 // const Handle = Slider.Handle;
 
 // const handle = props => {
@@ -31,7 +32,10 @@ const Range = createSliderWithTooltip(Slider.Range);
 //   );
 // };
 
-const wrapperStyle = { width: 400, margin: 50 };
+// const wrapperStyle = { width: 400, margin: 50 };
+// let start = moment("08:00", "HH:mm").format("x");
+// let end = moment("20:00", "HH:mm").format("x");
+// console.log(start);
 
 class Landing extends Component {
   onChange() {}
@@ -66,7 +70,7 @@ class Landing extends Component {
         {/* <DatePickers/> */}
           
         <div>
-          <div style={wrapperStyle}>
+          {/* <div style={wrapperStyle}>
             <p> Range with custom handle</p>
             
                 <Range
@@ -77,7 +81,8 @@ class Landing extends Component {
                 tipFormatter={value => (value)? this.time_convert(value) :"Error"}
                 onAfterChange={this.onSliderChange}
                 />
-          </div>
+          </div> */}
+          <MySlider />
         </div>
       </div>
     );
