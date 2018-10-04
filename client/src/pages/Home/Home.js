@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-// import { Container } from "../../components/Grid";
-// import { List, ListItem } from "../../components/List";
-// import ArticleTab from "../../components/ArticleTab"
-// import SavedTab from "../../components/SavedTab"
-// import Search from "../../components/Search";
-import Nav from "../../components/Nav"
-// import ReactCollapsingTable from 'react-collapsing-table';
+import Nav from "../../components/Nav";
 import Grid from '@material-ui/core/Grid';
 import EmpTable from '../../components/EmpTable';
+
 
 
 class Home extends Component {

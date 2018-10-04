@@ -25,6 +25,9 @@ export default {
   updateEmployee: function (id, data) {
     return axios.put(`/api/employee/${id}`, data)
   },
+  updateEmployeeAvail: function (id, data) {
+    return axios.put(`/api/employee/del/${id}`, data)
+  },
   deleteEmployee: function (id) {
     return axios.delete(`/api/employee/${id}`)
   },

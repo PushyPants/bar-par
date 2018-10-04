@@ -22,7 +22,8 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 10
     },
     margin: {
-        margin: theme.spacing.unit,
+        marginLeft: theme.spacing.unit * 5,
+        marginRight: theme.spacing.unit * 5,
     },
     withoutLabel: {
         marginTop: theme.spacing.unit * 3,
@@ -34,31 +35,31 @@ const styles = theme => ({
 
 const days = [
     {
-        value: 'Sunday',
+        value: '1',
         label: 'Sunday',
     },
     {
-        value: 'Monday',
+        value: '2',
         label: 'Monday',
     },
     {
-        value: 'Tuesday',
+        value: '3',
         label: 'Tuesday',
     },
     {
-        value: 'Wednesday',
+        value: '4',
         label: 'Wednesday',
     }, 
     {
-        value: 'Thursday',
+        value: '5',
         label: 'Thursday',
     },
     {
-        value: 'Friday',
+        value: '6',
         label: 'Friday',
     },
     {
-        value: 'Saturday',
+        value: '7',
         label: 'Saturday',
     },
 ];
@@ -77,7 +78,7 @@ function AddAvail(props) {
                         select
                     // label="Position"
                         name="Employee"
-                        className={classNames(classes.margin, classes.textField)}
+                            className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
                         value={Employee}
                         onChange={props.handleInputChange}
                         InputProps={{
@@ -92,19 +93,20 @@ function AddAvail(props) {
                     <TextField
                         select
                         // label="Position"
+                        
                         name="dayOfWeek"
-                        className={classNames(classes.margin, classes.textField)}
+                            className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
                             value={props.dayOfWeek}
                             onChange={props.handleInputChange}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">Day</InputAdornment>,
                         }}>
                         {days.map(day => (
-                                <MenuItem key={day.value} value={day.value} onClick={props.select}>{day.value}</MenuItem>
+                                <MenuItem key={day.value} value={day.value} onClick={props.select}>{day.label}</MenuItem>
                             ))}
                     </TextField>
 
-                    <FormControl className={classNames(classes.margin, classes.textField)}>
+                        <FormControl className={classNames(classes.margin, classes.textField, classes.withoutLabel)}>
                         <Input
                                 value={props.unavailStart}
                                 onChange={props.handleInputChange}
@@ -113,7 +115,7 @@ function AddAvail(props) {
                         />
                     </FormControl>
 
-                    <FormControl className={classNames(classes.margin, classes.textField)}>
+                        <FormControl className={classNames(classes.margin, classes.textField, classes.withoutLabel)}>
                         <Input
                                 value={props.unavailEnd}
                                 onChange={props.handleInputChange}
@@ -122,7 +124,7 @@ function AddAvail(props) {
                         />
                     </FormControl>
 
-                    <Button variant="contained" color="secondary" className={classes.button} disabled={!(props.Employee && props.unavailStart &&
+                        <Button variant="contained" color="secondary" className={classNames(classes.margin, classes.Button, classes.withoutLabel)} disabled={!(props.Employee && props.unavailStart &&
                             props.unavailEnd)}
                             onClick={props.handleFormSubmit}>
                         Submit Availability

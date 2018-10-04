@@ -29,6 +29,10 @@ var EmployeeSchema = new Schema({
     unavail: [{
         type: Schema.Types.ObjectId,
         ref: "Availability"
+    }],
+    shifts: [{
+        type: Schema.Types.ObjectId,
+        ref: "Shifts"
     }]
 });
 

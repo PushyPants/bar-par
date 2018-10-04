@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-// import { List, ListItem } from "../../components/List";
 import Nav from "../../components/Nav";
-// import DeleteEmp from "../../components/DeleteEmp";
-// import EmpAvail from "../../components/EmpAvail";
-// import { Input, FormBtn } from "../../components/Form";
-// import ReactCollapsingTable from 'react-collapsing-table';
-// import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Grid from '@material-ui/core/Grid';
 import EmpTable from "../../components/EmpTable";
 import AddEmp from "../../components/AddEmp";
@@ -15,7 +9,6 @@ class Employee extends Component {
 
     state = {
         employeeList: [],
-        availabilityList: [],
         firstName: "",
         lastName: "",
         isAdmin: "",
@@ -28,7 +21,6 @@ class Employee extends Component {
 
     componentWillMount(){
         this.loadEmployees()
-        this.loadAvailability()
         this.setState({
             isAdmin: "Employee"
         })
@@ -40,13 +32,6 @@ class Employee extends Component {
                 employeeList: res.data
             })
         )
-    }
-
-    loadAvailability = () => {
-        API.getAvailability().then(res=>
-            this.setState({
-                availabilityList: res.data
-            }))
     }
     
     handleInputChange = event => {

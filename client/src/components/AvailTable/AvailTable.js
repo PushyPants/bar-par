@@ -7,6 +7,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import DeleteBtn from "../../components/DeleteBtn"
+// import moment from "moment";
 
 const styles = theme => ({
     root: {
@@ -20,10 +22,10 @@ const styles = theme => ({
     }
 });
 
-let id = 0;
-function createData(name, dayOfWeek, unavailStart, unavailEnd) {
-    id += 1;
-    return { id, name, dayOfWeek, unavailStart, unavailEnd };
+let key = 0;
+function createData(name, dayOfWeek, unavailStart, unavailEnd, postID, empID) {
+    key += 1;
+    return { key, name, dayOfWeek, unavailStart, unavailEnd, postID, empID };
 }
 
 
@@ -35,16 +37,14 @@ function AvailTable(props) {
     props.empArr.forEach(e => {
         if(thisEmp === "Loading"){
             e.unavail.map(emp => (
-            rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek , emp.unavailStart, emp.unavailEnd))
+            rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek , emp.unavailStart, emp.unavailEnd, emp._id, e._id))
             ))
         } else if (thisEmp === e._id){
             e.unavail.map(emp => (
-                rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek, emp.unavailStart, emp.unavailEnd))
+                rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek, emp.unavailStart, emp.unavailEnd, emp._id, e._id))
             ))
         }
     })
-
-
 
     return (
         <Paper className={classes.root}>
@@ -53,22 +53,33 @@ function AvailTable(props) {
                     <TableRow>
                         {(thisEmp === "Loading") ?
                         <TableCell className={classes.root} >Name</TableCell>:null}
-                        <TableCell className={classes.root} >Name</TableCell>
+                        <TableCell className={classes.root} >Day</TableCell>
                         <TableCell className={classes.root} >Phone</TableCell>
                         <TableCell className={classes.root} >Email</TableCell>
+                        <TableCell className={classes.root} >Remove</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map(row => {
                         return (
-                            <TableRow key={row.id}>
+                            <TableRow key={row.key}>
                                 {(thisEmp === "Loading")?
                                 <TableCell className={classes.root} numeric>{row.name}</TableCell>:null}
                                 <TableCell className={classes.root} component="th" scope="row">
                                     {row.dayOfWeek}
                                 </TableCell>
                                 <TableCell className={classes.root} numeric>{row.unavailStart}</TableCell>
-                                <TableCell className={classes.root} numeric>{row.unavailEnd}</TableCell>
+
+                                <TableCell className={classes.root} numeric>
+                                    {row.unavailEnd}
+                                </TableCell>
+                                <TableCell className={classes.root} numeric>
+                                    <DeleteBtn postID={row.postID}
+                                        empID={row.empID}
+                                        func={props.delAvail}>
+                                        Delete
+                                    </DeleteBtn>
+                                </TableCell>
                             </TableRow>
                         );
                     })}
