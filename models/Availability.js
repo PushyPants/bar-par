@@ -23,10 +23,10 @@ var AvailableSchema = new Schema({
         type: Boolean,
         default: false
     },
-    Employee: {
+    Employee: [{
         type: Schema.Types.ObjectId,
         ref: "EmployeeTable"
-    }
+    }]
 });
 
 var Availability = mongoose.model("Availability", AvailableSchema);

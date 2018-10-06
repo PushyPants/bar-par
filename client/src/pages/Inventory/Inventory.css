@@ -1,0 +1,25 @@
+#bottle {
+    padding: 0;
+    width: 130px;
+    margin-top: 100px;
+    float: left;
+    display: block;
+}
+
+#slider-div {
+    float: left;
+    display: block;
+    height: 450px;
+    margin-top: 140px;
+    margin-left: 80px;
+}
+
+#bottle-slide {
+    width: 350px;
+    height: 750px;
+    margin: auto;
+}
+
+#standard-number {
+
+}

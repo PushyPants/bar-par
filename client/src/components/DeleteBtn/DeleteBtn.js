@@ -1,12 +1,35 @@
-import React from "react";
-import "./DeleteBtn.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
-// The ...props means, spread all of the passed props onto this element
-// That way we don't have to define them all individually
-const DeleteBtn = props => (
-  <button className={`btn delete-btn btn-${props.color}`} {...props}>
-    Delete
-  </button>
-);
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    input: {
+        display: 'none',
+    },
+});
 
-export default DeleteBtn;
+function DeleteBtn(props) {
+    const { classes } = props;
+
+
+
+    return (
+        <div>
+            <Button variant="contained" color="primary" 
+                className={classes.button}
+                onClick={()=>props.func(props.empID, props.postID)}>
+                {props.children}
+            </Button>
+        </div>
+    )
+}
+
+DeleteBtn.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(DeleteBtn);
