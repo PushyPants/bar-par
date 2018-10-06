@@ -49,6 +49,25 @@ let convertDay = (val) => {
     }
 }
 
+const time_convert = num => {
+    let hours = Math.floor(num / 60);
+    let minutes = num % 60;
+
+    if (minutes === 0) {
+        minutes += "0";
+    }
+
+    if (hours > 24) {
+        hours -= 24;
+        return hours + ":" + minutes + "A";
+    } else if (hours > 12) {
+        hours -= 12;
+        return hours + ":" + minutes + "P";
+    }
+
+    return hours + ":" + minutes + "A";
+};
+
 
 function AvailTable(props) {
     const { classes } = props;
@@ -67,12 +86,13 @@ function AvailTable(props) {
     })
 
     return (
+        <React.Fragment>
+        {(props.emp !== "Admin") ?
+
         <Paper className={classes.root}>
             <Table className={classes.table}>
                 <TableHead>
                     <TableRow>
-                        {(props.emp === "Admin") ?
-                        <TableCell className={classes.root} >Name</TableCell>:null}
                         <TableCell className={classes.root} >Day</TableCell>
                         <TableCell className={classes.root} >N/A From</TableCell>
                         <TableCell className={classes.root} >N/A To</TableCell>
@@ -83,15 +103,14 @@ function AvailTable(props) {
                     {rows.map(row => {
                         return (
                             <TableRow key={row.key}>
-                                {(props.emp === "Admin")?
-                                <TableCell className={classes.root} numeric>{row.name}</TableCell>:null}
                                 <TableCell className={classes.root} component="th" scope="row">
                                     {convertDay(row.dayOfWeek)}
                                 </TableCell>
-                                <TableCell className={classes.root} numeric>{row.unavailStart}</TableCell>
+                                <TableCell className={classes.root} numeric>
+                                {time_convert(row.unavailStart)}</TableCell>
 
                                 <TableCell className={classes.root} numeric>
-                                    {row.unavailEnd}
+                                    {time_convert(row.unavailEnd)}
                                 </TableCell>
                                 <TableCell className={classes.root} numeric>
                                     <DeleteBtn postID={row.postID}
@@ -106,6 +125,9 @@ function AvailTable(props) {
                 </TableBody>
             </Table>
         </Paper>
+
+        :null}
+        </React.Fragment>
     );
 }
 

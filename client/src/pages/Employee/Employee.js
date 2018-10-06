@@ -33,14 +33,14 @@ class Employee extends Component {
         
     return(
         <React.Fragment>
-        <Nav />
+        <Nav> Employee </Nav>
 
         <Grid container spacing={8}>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} sm={4}>
                 <AddEmp />
             </Grid>
 
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12} sm={8}>
                 <EmpTable empArr={this.props.employeeList}/>
             </Grid> 
         </Grid>

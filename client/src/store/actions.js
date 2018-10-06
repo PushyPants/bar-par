@@ -1,13 +1,15 @@
-// Import our API variable
-// Define any actions
 import API from '../utils/API';
-// Remember standard action type naming convention is ALL_CAPS_WITH_UNDERSCORE
 export const ALL_EMPLOYEES = 'ALL_EMPLOYEES';
-export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
-// export const DELETE_BOOK = 'DELETE_BOOK'
+export const LOGIN_EMPLOYEE = 'LOGIN_EMPLOYEE';
 
+export const LogInEmployee = (id) => {
+    return (dispatch) => {
+        API.getOneEmployee(id).then(res =>{
+            dispatch(sendLoggedInEmployeeToStore(res.data[0]))}
+        ).catch(err => console.log(err.response))
+    }
+}
 
-// In this file we are able to create asynchronous actions (thanks to thunk) which means we can return methods with dispatch and getState as arguments to call other actions
 export const getEmployeeList = () => {
     return (dispatch) => {
         API.getEmployee().then(res =>
@@ -16,6 +18,12 @@ export const getEmployeeList = () => {
     }
 }
 
+const sendLoggedInEmployeeToStore = (Employee) => {
+    return {
+        type: LOGIN_EMPLOYEE,
+        payload: Employee
+    }
+}
 const sendAllEmployeesToStore = (employeeList) => {
     return {
         type: ALL_EMPLOYEES,
@@ -57,6 +65,18 @@ export const updateEmployee = (empId, postId) => {
             .then(res => (
                 API.deleteAvailability(postId)
             ))
+            .then(res => dispatch(getEmployeeList()))
+            .catch(err => console.log(err));
+    }
+}
+
+export const updateAvailability = (availId, dayOfWeek, unavailStart, unavailEnd) => {
+    return (dispatch) => {
+        API.updateAvailability(availId, {
+            dayOfWeek,
+            unavailStart,
+            unavailEnd
+        })
             .then(res => dispatch(getEmployeeList()))
             .catch(err => console.log(err));
     }

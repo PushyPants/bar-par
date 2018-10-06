@@ -18,13 +18,11 @@ function DeleteBtn(props) {
 
 
     return (
-        <div>
-            <Button variant="contained" color="primary" 
-                className={classes.button}
-                onClick={()=>props.func(props.empID, props.postID)}>
-                {props.children}
-            </Button>
-        </div>
+        <Button variant="contained" color="primary" 
+            className={classes.button}
+            onClick={()=>props.func(props.empID, props.postID)}>
+            {props.children}
+        </Button>
     )
 }
 

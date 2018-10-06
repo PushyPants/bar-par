@@ -15,7 +15,7 @@ const styles = theme => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
-        marginTop: theme.spacing.unit * 10
+        marginTop: theme.spacing.unit * 8
     },
     margin: {
         marginLeft: theme.spacing.unit * 5,

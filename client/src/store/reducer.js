@@ -3,7 +3,8 @@ import * as actions from './actions';
 
 // Establish an initial state object
 const initialState = {
-    employeeList: []
+    employeeList: [],
+    Employee: {firstName:"Admin"}
 }
 
 // Create a reducer function which will accept state and action as arguments.
@@ -16,11 +17,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 employeeList: [...action.payload]
             }
-        // case actions.ADD_EMPLOYEE:
-        //     return {
-        //         ...state,
-        //         books: state.books.filter(book => book._id !== action.payload)
-        //     }
+        case actions.LOGIN_EMPLOYEE:
+            return {
+                ...state,
+                Employee: action.payload
+            }
         default:
     }
     return state

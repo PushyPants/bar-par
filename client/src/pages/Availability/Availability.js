@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Grid from '@material-ui/core/Grid';
 import AddAvail from "../../components/AddAvail";
-import AvailTable from "../../components/AvailTable";
+import AvailTableExp from "../../components/AvailTableExp";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
+
 
 
 class Availability extends Component {
@@ -18,18 +19,29 @@ class Availability extends Component {
     componentWillMount() {
         this.loadEmployees();
         this.setState({
-            Employee: "Admin"
+            Employee: "Admin",
+            unavailStart: 480,
+            unavailEnd: 1560
         })
     }
-
+    
     loadEmployees = () => {
         this.props.getEmployeeList();
     }
-
+    
     deleteAvailability = (empId, postId) => {
         this.props.updateEmployee(empId, postId)
     }
+    
+    updateAvailability = (availId, dayOfWeek, unavailStart, unavailEnd) => {
+        this.props.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd)
+    }
 
+    LogInEmployee = (event) => {
+        console.log(this.props.Employee.firstName)
+        this.props.LogInEmployee(event.target.value);
+    }
+    
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -45,9 +57,24 @@ class Availability extends Component {
         });
     };
 
+    updateTime = val => {
+        this.setState({
+            unavailStart: val[0],
+            unavailEnd: val[1]
+        })
+    }
+
+    clearState = () => {
+        this.setState({
+            dayOfWeek: "",
+            unavailStart: 480,
+            unavailEnd: 1560
+        })
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.Employee &&
+        if (this.props.Employee.firstName &&
             this.state.dayOfWeek &&
             this.state.unavailStart &&
             this.state.unavailEnd) {
@@ -56,38 +83,56 @@ class Availability extends Component {
                 dayOfWeek: this.state.dayOfWeek,
                 unavailStart: this.state.unavailStart,
                 unavailEnd: this.state.unavailEnd,
-                Employee: this.state.Employee
+                Employee: this.props.Employee.firstName
             })
 
-            this.setState({
-                dayOfWeek: "",
-                unavailStart: "",
-                unavailEnd: ""
-            })
+            this.clearState()
         }
     };
 
     render() {
         return (
             <React.Fragment>
-                <Nav />
-                <Grid container spacing={8}>
+                <Nav>Availability</Nav>
 
-                    <Grid item xs={12} md={4}>
+                <Grid container spacing={8} justify="center">
+
+                    <Grid item xs={12} sm={8}>
+                        <AvailTableExp emp={this.props.Employee.firstName}
+                            empArr={this.props.employeeList}
+                            delAvail={this.deleteAvailability}
+                            upAvail={this.updateAvailability}
+                            updateTime={this.updateTime}/>
+                    </Grid>
+
+                    {(this.props.Employee.firstName !== "Admin") ? 
+                    <Grid item xs={12} sm={4}>
                         <AddAvail handleInputChange={this.handleInputChange}
                             handleFormSubmit={this.handleFormSubmit}
+                            LogInEmployee={this.LogInEmployee}
                             employeeList={this.props.employeeList}
-                            Employee={this.state.Employee}
+                            Employee={this.props.Employee.firstName}
                             dayOfWeek={this.state.dayOfWeek}
                             unavailStart={this.state.unavailStart}
-                            unavailEnd={this.state.unavailEnd}/>
+                            unavailEnd={this.state.unavailEnd}
+                            updateTime={this.updateTime}
+                            clearState={this.clearState}/>
+                    </Grid>:
+                    <Grid item xs={12} sm={6}>
+                        <AddAvail handleInputChange={this.handleInputChange}
+                            handleFormSubmit={this.handleFormSubmit}
+                            LogInEmployee={this.LogInEmployee}
+                            employeeList={this.props.employeeList}
+                            Employee={this.props.Employee.firstName}
+                            dayOfWeek={this.state.dayOfWeek}
+                            unavailStart={this.state.unavailStart}
+                            unavailEnd={this.state.unavailEnd}
+                            updateTime={this.updateTime}clearState={this.clearState}/>
                     </Grid>
 
-                    <Grid item xs={12} md={8}>
-                        <AvailTable emp={this.state.Employee}
-                            empArr={this.props.employeeList}
-                            delAvail={this.deleteAvailability}/>
-                    </Grid>
+                    }
+
+
 
                 </Grid>
             </React.Fragment>
@@ -97,15 +142,18 @@ class Availability extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        employeeList: state.reducer.employeeList
+        employeeList: state.reducer.employeeList,
+        Employee: state.reducer.Employee
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
         getEmployeeList: () => dispatch(actions.getEmployeeList()),
         addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),
-        updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId))
+        updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId)),
+        updateAvailability: (availId, dayOfWeek, unavailStart, unavailEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd))
     }
 }
 

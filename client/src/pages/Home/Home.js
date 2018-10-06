@@ -21,7 +21,7 @@ class Home extends Component {
     render() {
         return (
         <React.Fragment>
-            <Nav />
+            <Nav>Home</Nav>
 
             <Grid container spacing={8}>
 
