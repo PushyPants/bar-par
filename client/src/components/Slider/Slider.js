@@ -1,10 +1,7 @@
 // import 'rc-slider/assets/index.css';
 
 import React, { Component } from "react";
-<<<<<<< HEAD
-=======
-// import ReactDOM from "react-dom";
->>>>>>> c3780e814b7ecf20aac4997c7261a99a36e71b16
+
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 // import Tooltip from "rc-tooltip";
