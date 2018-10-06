@@ -9,7 +9,10 @@ import "rc-tooltip/assets/bootstrap.css";
 // import Tooltip from "rc-tooltip";
 // import Slider from "rc-slider";
 // import moment from "moment";
-import MySlider from "../../components/Slider/Slider"
+import MySlider from "../../components/Slider/Slider";
+import LoginDrop from "../../components/LoginDrop";
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 // import DatetimeSlider from "react-datetime-slider";
 // import "react-datetime-slider/css/ReactDatetimeSlider.css";
 
@@ -38,7 +41,24 @@ import MySlider from "../../components/Slider/Slider"
 // console.log(start);
 
 class Landing extends Component {
-  onChange() {}
+
+
+  componentWillMount() {
+    this.loadEmployees();
+    this.setState({
+      Employee: "Admin",
+      unavailStart: 480,
+      unavailEnd: 1560
+    })
+  }
+
+  loadEmployees = () => {
+    this.props.getEmployeeList();
+  }
+
+  LogInEmployee = (event) => {
+    this.props.LogInEmployee(event.target.value);
+  }
 
   onSliderChange = val => {
     console.log(`${this.time_convert(val[0])} ${this.time_convert(val[1])}`)
@@ -64,12 +84,19 @@ class Landing extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Nav>Bar Par </Nav>
         <Login />
+
+        <LoginDrop 
+          LogInEmployee={this.LogInEmployee}
+          employeeList={this.props.employeeList}
+          Employee={this.props.Employee._id}/>
+
+
+
+
         {/* <DatePickers/> */}
-          
-        <div>
           {/* <div style={wrapperStyle}>
             <p> Range with custom handle</p>
             
@@ -83,10 +110,26 @@ class Landing extends Component {
                 />
           </div> */}
           <MySlider />
-        </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
 
-export default Landing;
+const mapStateToProps = (state) => {
+  return {
+    employeeList: state.reducer.employeeList,
+    Employee: state.reducer.Employee
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
+    getEmployeeList: () => dispatch(actions.getEmployeeList()),
+    addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),
+    updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId)),
+    updateAvailability: (availId, dayOfWeek, unavailStart, unavailEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);

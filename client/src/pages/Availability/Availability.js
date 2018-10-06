@@ -5,12 +5,10 @@ import AddAvail from "../../components/AddAvail";
 import AvailTableExp from "../../components/AvailTableExp";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
-
-
+import { Redirect } from 'react-router'
 
 class Availability extends Component {
     state = {
-        Employee: "",
         dayOfWeek: "",
         unavailStart: "",
         unavailEnd: "",
@@ -38,8 +36,11 @@ class Availability extends Component {
     }
 
     LogInEmployee = (event) => {
-        console.log(this.props.Employee.firstName)
         this.props.LogInEmployee(event.target.value);
+    }
+
+    ChangeEmployee = (event) => {
+        this.props.ChangeEmployee(event.target.value);
     }
     
     handleInputChange = event => {
@@ -74,8 +75,8 @@ class Availability extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.props.Employee.firstName &&
-            this.state.dayOfWeek &&
+
+        if (this.state.dayOfWeek &&
             this.state.unavailStart &&
             this.state.unavailEnd) {
 
@@ -83,7 +84,7 @@ class Availability extends Component {
                 dayOfWeek: this.state.dayOfWeek,
                 unavailStart: this.state.unavailStart,
                 unavailEnd: this.state.unavailEnd,
-                Employee: this.props.Employee.firstName
+                Employee: this.props.Employee._id
             })
 
             this.clearState()
@@ -93,46 +94,36 @@ class Availability extends Component {
     render() {
         return (
             <React.Fragment>
+                {(this.props.Employee.firstName === 'Admin') ? <Redirect to="/" /> : null}
+                
                 <Nav>Availability</Nav>
 
                 <Grid container spacing={8} justify="center">
 
+
                     <Grid item xs={12} sm={8}>
-                        <AvailTableExp emp={this.props.Employee.firstName}
+                        <AvailTableExp emp={this.props.Employee._id}
                             empArr={this.props.employeeList}
                             delAvail={this.deleteAvailability}
                             upAvail={this.updateAvailability}
                             updateTime={this.updateTime}/>
                     </Grid>
 
-                    {(this.props.Employee.firstName !== "Admin") ? 
                     <Grid item xs={12} sm={4}>
                         <AddAvail handleInputChange={this.handleInputChange}
                             handleFormSubmit={this.handleFormSubmit}
-                            LogInEmployee={this.LogInEmployee}
+                            ChangeEmployee={this.ChangeEmployee}
                             employeeList={this.props.employeeList}
-                            Employee={this.props.Employee.firstName}
+                            Employee={this.props.LoggedInAs._id}
+                            EmployeeFirstName={this.props.LoggedInAs.firstName}
+                            EmployeeLastName={this.props.LoggedInAs.lastName}
                             dayOfWeek={this.state.dayOfWeek}
                             unavailStart={this.state.unavailStart}
                             unavailEnd={this.state.unavailEnd}
                             updateTime={this.updateTime}
-                            clearState={this.clearState}/>
-                    </Grid>:
-                    <Grid item xs={12} sm={6}>
-                        <AddAvail handleInputChange={this.handleInputChange}
-                            handleFormSubmit={this.handleFormSubmit}
-                            LogInEmployee={this.LogInEmployee}
-                            employeeList={this.props.employeeList}
-                            Employee={this.props.Employee.firstName}
-                            dayOfWeek={this.state.dayOfWeek}
-                            unavailStart={this.state.unavailStart}
-                            unavailEnd={this.state.unavailEnd}
-                            updateTime={this.updateTime}clearState={this.clearState}/>
+                            clearState={this.clearState}
+                            AdminLevel={this.props.Employee.isAdmin}/>
                     </Grid>
-
-                    }
-
-
 
                 </Grid>
             </React.Fragment>
@@ -143,13 +134,15 @@ class Availability extends Component {
 const mapStateToProps = (state) => {
     return {
         employeeList: state.reducer.employeeList,
-        Employee: state.reducer.Employee
+        Employee: state.reducer.Employee,
+        LoggedInAs: state.reducer.LoggedInAs
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
+        ChangeEmployee: (id) => dispatch(actions.ChangeEmployee(id)),
         getEmployeeList: () => dispatch(actions.getEmployeeList()),
         addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),
         updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId)),
