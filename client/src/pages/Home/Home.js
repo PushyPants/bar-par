@@ -13,6 +13,7 @@ class Home extends Component {
 
     componentWillMount() {
         this.loadEmployees()
+        this.getLocations()
     }
 
     loadEmployees = () => {
@@ -21,6 +22,11 @@ class Home extends Component {
                 employeeList: res.data
             })
         )
+    }
+
+    getLocations = () => {
+        API.getLocations().then(res =>
+            console.log(res.data))
     }
 
     render() {

@@ -42,5 +42,8 @@ export default {
   },
   deleteShift: function(id){
     return axios.delete(`/api/shift/${id}`)
+  },
+  getLocations: function(){
+    return axios.get('api/locations')
   }
 };
