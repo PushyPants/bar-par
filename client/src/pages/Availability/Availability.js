@@ -84,7 +84,7 @@ class Availability extends Component {
                 dayOfWeek: this.state.dayOfWeek,
                 unavailStart: this.state.unavailStart,
                 unavailEnd: this.state.unavailEnd,
-                Employee: this.props.Employee._id
+                Employee: this.props.LoggedInAs._id
             })
 
             this.clearState()
@@ -94,7 +94,7 @@ class Availability extends Component {
     render() {
         return (
             <React.Fragment>
-                {(this.props.Employee.firstName === 'Admin') ? <Redirect to="/" /> : null}
+                {(this.props.LoggedInAs.firstName === 'Admin') ? <Redirect to="/" /> : null}
                 
                 <Nav>Availability</Nav>
 
@@ -102,7 +102,7 @@ class Availability extends Component {
 
 
                     <Grid item xs={12} sm={8}>
-                        <AvailTableExp emp={this.props.Employee._id}
+                        <AvailTableExp emp={this.props.LoggedInAs._id}
                             empArr={this.props.employeeList}
                             delAvail={this.deleteAvailability}
                             upAvail={this.updateAvailability}
