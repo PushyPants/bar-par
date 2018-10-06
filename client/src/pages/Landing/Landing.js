@@ -5,7 +5,7 @@ import "./Landing.css";
 // import DatePickers from "../../components/DatePicker/DatePicker";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
-import MySlider from "../../components/Slider/Slider";
+// import MySlider from "../../components/Slider/Slider";
 
 class Landing extends Component {
   render() {
@@ -15,10 +15,10 @@ class Landing extends Component {
         <Login />
         {/* <DatePickers>
           
-        </DatePickers> */}
+        </DatePickers>
         <div>
           <MySlider />
-        </div>
+        </div> */}
       </div>
     );
   }
