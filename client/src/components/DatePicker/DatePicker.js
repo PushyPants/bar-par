@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import moment from "moment";
 
 const styles = theme => ({
   container: {
@@ -15,16 +16,19 @@ const styles = theme => ({
   },
 });
 
+let currentDate = moment().format('YYYY-MM-DD')
+console.log(currentDate)
+
 function DatePickers(props) {
   const { classes } = props;
-
+  
   return (
     <form className={classes.container} noValidate>
       <TextField
         id="date"
-        label="Birthday"
+        label=""
         type="date"
-        defaultValue="2017-05-24"
+        defaultValue={currentDate}
         className={classes.textField}
         InputLabelProps={{
           shrink: true,
