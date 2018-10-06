@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import EmpTable from '../../components/EmpTable';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
-import API from "../../utils/API"
+// import API from "../../utils/API"
 
 class Home extends Component {
     state = {
@@ -13,16 +13,10 @@ class Home extends Component {
 
     componentWillMount() {
         this.loadEmployees()
-        this.getLocations()
     }
 
     loadEmployees = () => {
         this.props.getEmployeeList();
-    }
-
-    getLocations = () => {
-        API.getLocations().then(res =>
-            console.log(res.data))
     }
 
     render() {
