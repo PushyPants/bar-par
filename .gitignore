@@ -2,11 +2,7 @@
 # dependencies
 /node_modules
 /client/node_modules
-<<<<<<< HEAD:.gitignore
 
-
-=======
->>>>>>> 66a29db42d8244ad5279c57753b1a8ca48822478:client/.gitignore
 # testing
 /coverage
 # production
