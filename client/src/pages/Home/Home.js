@@ -13,16 +13,10 @@ class Home extends Component {
 
     componentWillMount() {
         this.loadEmployees()
-        this.getLocations()
     }
 
     loadEmployees = () => {
         this.props.getEmployeeList();
-    }
-
-    getLocations = () => {
-        API.getLocations().then(res =>
-            console.log(res.data))
     }
 
     render() {
