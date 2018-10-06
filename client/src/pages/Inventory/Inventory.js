@@ -24,7 +24,7 @@ class Inventory extends Component {
                 Inventory
             </Nav>
             <div id="bottle-slide">
-                <img src="/assets/imgs/bottle.png" id="bottle" />
+                <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle"/>
                 <div id="slider-div">
                     <Slider vertical min={-10} step={null} defaultValue={20} />
                 </div>

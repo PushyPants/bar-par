@@ -1,32 +1,32 @@
 // import 'rc-slider/assets/index.css';
 
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import Tooltip from "rc-tooltip";
+// import Tooltip from "rc-tooltip";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
 // import moment from "moment";
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
-const Handle = Slider.Handle;
+// const Handle = Slider.Handle;
 
-const handle = props => {
-  const { value, dragging, index, ...restProps } = props;
-  return (
-    <Tooltip
-      prefixCls="rc-slider-tooltip"
-      overlay={value}
-      visible={dragging}
-      placement="top"
-      key={index}
-    >
-      <Handle value={value} {...restProps} />
-    </Tooltip>
-  );
-};
+// const handle = props => {
+//   const { value, dragging, index, ...restProps } = props;
+//   return (
+//     <Tooltip
+//       prefixCls="rc-slider-tooltip"
+//       overlay={value}
+//       visible={dragging}
+//       placement="top"
+//       key={index}
+//     >
+//       <Handle value={value} {...restProps} />
+//     </Tooltip>
+//   );
+// };
 const wrapperStyle = { width: 400, margin: 50 };
 
 class MySlider extends Component {

@@ -10,14 +10,17 @@ export default {
   addAvailability: function(data){
     return axios.post(`/api/avail`, data)
   },
-  updateAvailability: function(id){
-    return axios.put(`/api/avail/${id}`)
+  updateAvailability: function(id, data){
+    return axios.put(`/api/avail/${id}`, data)
   },
   deleteAvailability: function (id) {
     return axios.delete(`/api/avail/${id}`)
   },
   getEmployee: function () {
     return axios.get(`/api/employee`)
+  },
+  getOneEmployee: function (id) {
+    return axios.get(`/api/employee/${id}`)
   },
   addEmployee: function (data) {
     return axios.post(`/api/employee/`, data)

@@ -2,24 +2,19 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
-// import InputLabel from '@material-ui/core/InputLabel';
+// import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
-// import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-// import Visibility from '@material-ui/icons/Visibility';
-// import VisibilityOff from '@material-ui/icons/VisibilityOff';
-// import API from "../../utils/API";
 import Button from '@material-ui/core/Button';
+import AddAvailSlider from "../../components/AddAvailSilder";
 
 const styles = theme => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
-        marginTop: theme.spacing.unit * 10
+        marginTop: theme.spacing.unit * 5
     },
     margin: {
         marginLeft: theme.spacing.unit * 5,
@@ -30,6 +25,11 @@ const styles = theme => ({
     },
     textField: {
         flexBasis: "100%",
+    },
+    Button: {
+        marginTop: theme.spacing.unit * 3,
+        marginLeft: theme.spacing.unit * 4,
+        width: 100
     },
 });
 
@@ -66,21 +66,20 @@ const days = [
 
 function AddAvail(props) {
     const { classes } = props;
-    let Employee = props.Employee || "Loading";
 
         return (
             <div className={classes.root}>
             
-            {(Employee !== undefined)?
+            {/* {(props.Employee)? */}
 
             <React.Fragment>
                     <TextField
                         select
-                    // label="Position"
                         name="Employee"
-                            className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
-                        value={Employee}
-                        onChange={props.handleInputChange}
+                        className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
+                        value={props.Employee}
+                        // onChange={props.handleInputChange}
+                        onChange={props.LogInEmployee}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">Employee</InputAdornment>,
                         }}>
@@ -93,7 +92,6 @@ function AddAvail(props) {
                     <TextField
                         select
                         // label="Position"
-                        
                         name="dayOfWeek"
                             className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
                             value={props.dayOfWeek}
@@ -106,34 +104,29 @@ function AddAvail(props) {
                             ))}
                     </TextField>
 
-                        <FormControl className={classNames(classes.margin, classes.textField, classes.withoutLabel)}>
-                        <Input
-                                value={props.unavailStart}
-                                onChange={props.handleInputChange}
-                            name="unavailStart"
-                            placeholder="From"
-                        />
+                    <FormControl className={classNames(classes.margin, classes.textField,classes.withoutLabel)}>
+                        <AddAvailSlider start={props.unavailStart}
+                            end={props.unavailEnd}
+                            update={props.updateTime}/>
                     </FormControl>
 
-                        <FormControl className={classNames(classes.margin, classes.textField, classes.withoutLabel)}>
-                        <Input
-                                value={props.unavailEnd}
-                                onChange={props.handleInputChange}
-                            name="unavailEnd"
-                            placeholder="To"
-                        />
-                    </FormControl>
-
-                        <Button variant="contained" color="secondary" className={classNames(classes.margin, classes.Button, classes.withoutLabel)} disabled={!(props.Employee && props.unavailStart &&
-                            props.unavailEnd)}
+                        <Button variant="contained" color="primary" className={classNames(classes.Button)} 
+                        disabled={!(props.Employee&&
+                            props.unavailStart &&
+                            props.unavailEnd &&
+                            props.dayOfWeek)}
                             onClick={props.handleFormSubmit}>
-                        Submit Availability
+                        Submit
+                    </Button>
+
+                    <Button variant="contained" color="secondary" className={classNames(classes.Button)}
+                            onClick={props.clearState}>
+                        Clear
                     </Button>
 
                 </React.Fragment>
 
-                    : <div className={classes.root}>undefined</div>
-                }
+                
             </div>
         );
     }

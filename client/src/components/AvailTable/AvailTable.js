@@ -7,8 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import DeleteBtn from "../../components/DeleteBtn"
-// import moment from "moment";
+import DeleteBtn from "../../components/DeleteBtn";
 
 const styles = theme => ({
     root: {
@@ -18,28 +17,68 @@ const styles = theme => ({
         textAlign: 'center'
     },
     table: {
-        minWidth: 250
+        minWidth: 100
     }
 });
 
 let key = 0;
-function createData(name, dayOfWeek, unavailStart, unavailEnd, postID, empID) {
+
+let createData = (name, dayOfWeek, unavailStart, unavailEnd, postID, empID) =>{
     key += 1;
     return { key, name, dayOfWeek, unavailStart, unavailEnd, postID, empID };
 }
+ 
+let convertDay = (val) => {
+    switch (val) {
+        case "1":
+            return "Sunday";
+        case "2":
+            return "Monday";
+        case "3":
+            return "Tuesday";
+        case "4":
+            return "Wednesday";
+        case "5":
+            return "Thursday";
+        case "6":
+            return "Friday";
+        case "7":
+            return "Saturday";
+        default:
+            return val;
+    }
+}
+
+const time_convert = num => {
+    let hours = Math.floor(num / 60);
+    let minutes = num % 60;
+
+    if (minutes === 0) {
+        minutes += "0";
+    }
+
+    if (hours > 24) {
+        hours -= 24;
+        return hours + ":" + minutes + "A";
+    } else if (hours > 12) {
+        hours -= 12;
+        return hours + ":" + minutes + "P";
+    }
+
+    return hours + ":" + minutes + "A";
+};
 
 
 function AvailTable(props) {
     const { classes } = props;
     const rows = [];
-    let thisEmp = props.emp || "Loading";
     
     props.empArr.forEach(e => {
-        if(thisEmp === "Loading"){
+        if (props.emp === "Admin"){
             e.unavail.map(emp => (
             rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek , emp.unavailStart, emp.unavailEnd, emp._id, e._id))
             ))
-        } else if (thisEmp === e._id){
+        } else if (props.emp === e._id){
             e.unavail.map(emp => (
                 rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek, emp.unavailStart, emp.unavailEnd, emp._id, e._id))
             ))
@@ -47,15 +86,16 @@ function AvailTable(props) {
     })
 
     return (
+        <React.Fragment>
+        {(props.emp !== "Admin") ?
+
         <Paper className={classes.root}>
             <Table className={classes.table}>
                 <TableHead>
                     <TableRow>
-                        {(thisEmp === "Loading") ?
-                        <TableCell className={classes.root} >Name</TableCell>:null}
                         <TableCell className={classes.root} >Day</TableCell>
-                        <TableCell className={classes.root} >Phone</TableCell>
-                        <TableCell className={classes.root} >Email</TableCell>
+                        <TableCell className={classes.root} >N/A From</TableCell>
+                        <TableCell className={classes.root} >N/A To</TableCell>
                         <TableCell className={classes.root} >Remove</TableCell>
                     </TableRow>
                 </TableHead>
@@ -63,15 +103,14 @@ function AvailTable(props) {
                     {rows.map(row => {
                         return (
                             <TableRow key={row.key}>
-                                {(thisEmp === "Loading")?
-                                <TableCell className={classes.root} numeric>{row.name}</TableCell>:null}
                                 <TableCell className={classes.root} component="th" scope="row">
-                                    {row.dayOfWeek}
+                                    {convertDay(row.dayOfWeek)}
                                 </TableCell>
-                                <TableCell className={classes.root} numeric>{row.unavailStart}</TableCell>
+                                <TableCell className={classes.root} numeric>
+                                {time_convert(row.unavailStart)}</TableCell>
 
                                 <TableCell className={classes.root} numeric>
-                                    {row.unavailEnd}
+                                    {time_convert(row.unavailEnd)}
                                 </TableCell>
                                 <TableCell className={classes.root} numeric>
                                     <DeleteBtn postID={row.postID}
@@ -86,6 +125,9 @@ function AvailTable(props) {
                 </TableBody>
             </Table>
         </Paper>
+
+        :null}
+        </React.Fragment>
     );
 }
 

@@ -9,18 +9,18 @@ import Inventory from "./pages/Inventory";
 
 
 const App = () => (
-  <Router>
-    <div>
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/addemp" component={Employee} />
-          <Route exact path="/addavail" component={Availability} />
-          <Route exact path="/inventory" component={Inventory} />
-        </Switch>
-    </div>
-  </Router>
+    <Router>
+      <div>
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/addemp" component={Employee} />
+            <Route exact path="/addavail" component={Availability} />
+            <Route exact path="/inventory" component={Inventory} />
+          </Switch>
+      </div>
+    </Router>
 );
 
 export default App; 

@@ -6,8 +6,9 @@ router.route("/")
     .get(employeeController.find)
     .post(employeeController.create)
     
-// Matches with "/api/employee/:id",
-router.route("/:id")
+    // Matches with "/api/employee/:id",
+    router.route("/:id")
+    .get(employeeController.findOne)
     .put(employeeController.update)
     .delete(employeeController.delete);
 
