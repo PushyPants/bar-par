@@ -31,7 +31,7 @@ function AddAvailSlider(props) {
         return (
             <div>
                 <div style={wrapperStyle}>
-                    <p>Unavailable From: {time_convert(props.start)} to {time_convert(props.end)}</p>
+                    <p>N/A From: {time_convert(props.start)} to {time_convert(props.end)}</p>
                     <Range
                         step={15}
                         min={480}

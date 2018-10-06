@@ -73,22 +73,31 @@ function AddAvail(props) {
             {/* {(props.Employee)? */}
 
             <React.Fragment>
+                {(props.AdminLevel > 2)?
                     <TextField
-                        select
-                        name="Employee"
-                        className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
-                        value={props.Employee}
-                        // onChange={props.handleInputChange}
-                        onChange={props.LogInEmployee}
-                        InputProps={{
-                            startAdornment: <InputAdornment position="start">Employee</InputAdornment>,
-                        }}>
+                    select
+                    name="Employee"
+                    className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
+                    value={props.Employee}
+                    // onChange={props.handleInputChange}
+                    onChange={props.ChangeEmployee}
+                    InputProps={{
+                        startAdornment: <InputAdornment position="start">Employee</InputAdornment>,
+                    }}>
                             {props.employeeList.map(emp => (
                                 <MenuItem key={emp._id} name="Employee" value={emp._id}>
                             {emp.firstName}</MenuItem>
                         ))}
                     </TextField>
+
+                    :
+
+                        <span className={classNames(classes.margin, classes.textField, classes.withoutLabel)}>
+                            {props.EmployeeFirstName}
+                            {props.EmployeeLastName}
+                        </span>
                     
+                }
                     <TextField
                         select
                         // label="Position"
@@ -110,7 +119,7 @@ function AddAvail(props) {
                             update={props.updateTime}/>
                     </FormControl>
 
-                        <Button variant="contained" color="primary" className={classNames(classes.Button)} 
+                    <Button variant="contained" color="primary" className={classNames(classes.Button)} 
                         disabled={!(props.Employee&&
                             props.unavailStart &&
                             props.unavailEnd &&
