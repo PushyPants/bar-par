@@ -10,11 +10,13 @@
     "moment": "^2.22.2",
     "rc-slider": "^8.6.3",
     "react": "^16.5.2",
-    "react-collapsing-table": "^0.4.2",
     "react-datetime-slider": "0.0.8",
     "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

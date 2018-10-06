@@ -9,6 +9,15 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.json(err));
     },
+    findOne: function (req, res) {
+        db.EmployeeTable
+            .find({
+                _id: req.params.id
+            })
+            .populate('unavail', null, null, { sort: { dayOfWeek: 1 } })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.json(err));
+    },
     delete: function (req, res) {
         db.EmployeeTable.remove({
             _id: req.params.id
