@@ -17,11 +17,12 @@ const styles = theme => ({
 });
 
 let currentDate = moment().format('YYYY-MM-DD')
-console.log(currentDate)
 
 function DatePickers(props) {
   const { classes } = props;
   
+
+
   return (
     <form className={classes.container} noValidate>
       <TextField
@@ -33,6 +34,7 @@ function DatePickers(props) {
         InputLabelProps={{
           shrink: true,
         }}
+        onChange={props.onChange}
       />
     </form>
   );
