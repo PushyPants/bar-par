@@ -34,8 +34,7 @@ function DatePickers(props) {
         InputLabelProps={{
           shrink: true,
         }}
-        onChange={props.myChange}
-        value={props.value}
+        onChange={props.onChange}
       />
     </form>
   );

@@ -63,7 +63,6 @@ class MySlider extends Component {
     return (
       <div>
         <div style={wrapperStyle}>
-          <p> Range with custom handle</p>
 
           <Range
             

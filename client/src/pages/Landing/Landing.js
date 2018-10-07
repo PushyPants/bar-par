@@ -11,8 +11,8 @@ import "rc-tooltip/assets/bootstrap.css";
 // import moment from "moment";
 import MySlider from "../../components/Slider/Slider";
 import LoginDrop from "../../components/LoginDrop";
-import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
 // import DatetimeSlider from "react-datetime-slider";
 // import "react-datetime-slider/css/ReactDatetimeSlider.css";
 
@@ -41,7 +41,9 @@ import * as actions from '../../store/actions';
 // console.log(start);
 
 class Landing extends Component {
-
+  handleChange(event) {
+    console.log(event.target.value);
+  }
 
   componentWillMount() {
     this.loadEmployees();
@@ -49,38 +51,38 @@ class Landing extends Component {
       Employee: "Admin",
       unavailStart: 480,
       unavailEnd: 1560
-    })
+    });
   }
 
   loadEmployees = () => {
     this.props.getEmployeeList();
-  }
+  };
 
-  LogInEmployee = (event) => {
+  LogInEmployee = event => {
     this.props.LogInEmployee(event.target.value);
-  }
+  };
 
   onSliderChange = val => {
-    console.log(`${this.time_convert(val[0])} ${this.time_convert(val[1])}`)
-  }
+    console.log(`${this.time_convert(val[0])} ${this.time_convert(val[1])}`);
+  };
 
   time_convert = num => {
     let hours = Math.floor(num / 60);
     let minutes = num % 60;
 
-    if(minutes === 0){
+    if (minutes === 0) {
       minutes += "0";
     }
 
-    if(hours > 24){
+    if (hours > 24) {
       hours -= 24;
       return hours + ":" + minutes + " AM";
-    } else if (hours > 12){
+    } else if (hours > 12) {
       hours -= 12;
       return hours + ":" + minutes + " PM";
     }
     return hours + ":" + minutes + " AM";
-  }
+  };
 
   render() {
     return (
@@ -88,48 +90,41 @@ class Landing extends Component {
         <Nav>Bar Par </Nav>
         <Login />
 
-        <LoginDrop 
+        <LoginDrop
           LogInEmployee={this.LogInEmployee}
           employeeList={this.props.employeeList}
-          Employee={this.props.Employee._id}/>
+          Employee={this.props.Employee._id}
+        />
 
+        <DatePickers onChange={event => this.handleChange(event)} />
 
-
-
-        {/* <DatePickers/> */}
-          {/* <div style={wrapperStyle}>
-            <p> Range with custom handle</p>
-            
-                <Range
-                step={15}
-                min={480}
-                max={1560}
-                defaultValue={[0, 1000]}
-                tipFormatter={value => (value)? this.time_convert(value) :"Error"}
-                onAfterChange={this.onSliderChange}
-                />
-          </div> */}
-          <MySlider />
+        <MySlider />
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     employeeList: state.reducer.employeeList,
     Employee: state.reducer.Employee
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
+    LogInEmployee: id => dispatch(actions.LogInEmployee(id)),
     getEmployeeList: () => dispatch(actions.getEmployeeList()),
-    addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),
+    addAvailability: availObj => dispatch(actions.addAvailability(availObj)),
     updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId)),
-    updateAvailability: (availId, dayOfWeek, unavailStart, unavailEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd))
-  }
-}
+    updateAvailability: (availId, dayOfWeek, unavailStart, unavailEnd) =>
+      dispatch(
+        actions.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd)
+      )
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Landing);
