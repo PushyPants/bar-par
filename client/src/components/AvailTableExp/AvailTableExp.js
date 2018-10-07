@@ -80,11 +80,21 @@ function SimpleExpansionPanel(props) {
     props.empArr.forEach(e => {
         if (props.emp === "Admin") {
             e.unavail.map(emp => (
-                rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek, emp.unavailStart, emp.unavailEnd, emp._id, e._id))
+                rows.push(createData(`${e.firstName} ${e.lastName}`,
+                    emp.dayOfWeek,
+                    emp.unavailStart,
+                    emp.unavailEnd,
+                    emp._id, e._id
+                    ))
             ))
         } else if (props.emp === e._id) {
             e.unavail.map(emp => (
-                rows.push(createData(`${e.firstName} ${e.lastName}`, emp.dayOfWeek, emp.unavailStart, emp.unavailEnd, emp._id, e._id))
+                rows.push(createData(`${e.firstName} ${e.lastName}`,
+                    emp.dayOfWeek,
+                    emp.unavailStart,
+                    emp.unavailEnd,
+                    emp._id, e._id
+                    ))
             ))
         }
     })

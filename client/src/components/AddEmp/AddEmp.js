@@ -31,15 +31,15 @@ const styles = theme => ({
 
 const ranges = [
     {
-        value: 'Admin',
+        value: 3,
         label: 'Admin',
     },
     {
-        value: 'Manager',
+        value: 2,
         label: 'Manager',
     },
     {
-        value: 'Employee',
+        value: 1,
         label: 'Employee',
     },
 ];
@@ -54,12 +54,6 @@ class AddEmp extends React.Component {
         picture: "",
         password: ""
     };
-
-    componentWillMount() { 
-        this.setState({
-            isAdmin: "Employee"
-        })
-    }
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -80,7 +74,7 @@ class AddEmp extends React.Component {
             this.setState({
                 firstName: "",
                 lastName: "",
-                isAdmin: "Employee",
+                isAdmin: "",
                 email: "",
                 phone: "",
                 picture: "",
@@ -168,6 +162,7 @@ class AddEmp extends React.Component {
                 <Button variant="contained" color="secondary" className={classNames(classes.margin, classes.withoutLabel)} disabled={!(this.state.firstName &&
                     this.state.lastName &&
                     this.state.email &&
+                    this.state.isAdmin &&
                     this.state.password)}
                     onClick={this.handleFormSubmit}>
                     Add Employee
@@ -180,6 +175,8 @@ class AddEmp extends React.Component {
     AddEmp.propTypes = {
         classes: PropTypes.object.isRequired,
     };
+
+    
 
     const mapDispatchToProps = (dispatch) => {
         return {
