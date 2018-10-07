@@ -35,9 +35,9 @@ class Availability extends Component {
         this.props.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd)
     }
 
-    LogInEmployee = (event) => {
-        this.props.LogInEmployee(event.target.value);
-    }
+    // LogInEmployee = (event) => {
+    //     this.props.LogInEmployee(event.target.value);
+    // }
 
     ChangeEmployee = (event) => {
         this.props.ChangeEmployee(event.target.value);
@@ -94,7 +94,7 @@ class Availability extends Component {
     render() {
         return (
             <React.Fragment>
-                {(this.props.LoggedInAs.firstName === 'Admin') ? <Redirect to="/" /> : null}
+                {(this.props.Employee.isAdmin < 1) ? <Redirect to="/" /> : null}
                 
                 <Nav>Availability</Nav>
 
@@ -141,7 +141,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
+        // LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
         ChangeEmployee: (id) => dispatch(actions.ChangeEmployee(id)),
         getEmployeeList: () => dispatch(actions.getEmployeeList()),
         addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),

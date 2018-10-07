@@ -4,12 +4,16 @@ const initialState = {
     employeeList: [],
     Employee: {
         firstName:"Admin",
+        isAdmin: 3,
         _id:"Admin"
     },
     LoggedInAs: {
         firstName: "Admin",
         _id: "Admin"
-    }
+    },
+    startOfWeek: '',
+    todaysDate: '',
+    workingDate: ''
 }
 
 const reducer = (state = initialState, action) => {

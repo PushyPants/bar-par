@@ -5,6 +5,7 @@ import EmpTable from "../../components/EmpTable";
 import AddEmp from "../../components/AddEmp";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
+import { Redirect } from 'react-router'
 
 class Employee extends Component {
 
@@ -33,7 +34,8 @@ class Employee extends Component {
         
     return(
         <React.Fragment>
-        <Nav> Employee </Nav>
+        {(this.props.Employee.isAdmin < 2) ? <Redirect to="/" /> : null}
+        <Nav> Add Employee </Nav>
 
         <Grid container spacing={8}>
             <Grid item xs={12} sm={4}>
@@ -51,7 +53,9 @@ class Employee extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        employeeList: state.reducer.employeeList
+        employeeList: state.reducer.employeeList,
+        Employee: state.reducer.Employee,
+        LoggedInAs: state.reducer.LoggedInAs
     }
 }
 

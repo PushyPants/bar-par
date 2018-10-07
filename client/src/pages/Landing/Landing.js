@@ -10,7 +10,7 @@ import "rc-tooltip/assets/bootstrap.css";
 // import Slider from "rc-slider";
 // import moment from "moment";
 import MySlider from "../../components/Slider/Slider";
-import LoginDrop from "../../components/LoginDrop";
+import EmployeeDrop from "../../components/EmployeeDrop";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 // import DatetimeSlider from "react-datetime-slider";
@@ -88,7 +88,7 @@ class Landing extends Component {
         <Nav>Bar Par </Nav>
         <Login />
 
-        <LoginDrop 
+        <EmployeeDrop 
           LogInEmployee={this.LogInEmployee}
           employeeList={this.props.employeeList}
           Employee={this.props.Employee._id}/>

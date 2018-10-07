@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
@@ -93,8 +92,7 @@ function AddAvail(props) {
                     :
 
                         <span className={classNames(classes.margin, classes.textField, classes.withoutLabel)}>
-                            {props.EmployeeFirstName}
-                            {props.EmployeeLastName}
+                            {props.EmployeeFirstName} {props.EmployeeLastName}
                         </span>
                     
                 }
