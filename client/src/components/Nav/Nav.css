@@ -1,10 +1,10 @@
 nav {
     position: absolute !important;
-    z-index: 2 !important;
+    z-index: 1000 !important;
 }
 
 .nav-bar {
-    background: linear-gradient(45deg, #1d48d6 30%, #21cbf3 90%) !important;
+    background: #223D4B !important;
 }
 .nav-tabs {
     margin: 10px 0;
