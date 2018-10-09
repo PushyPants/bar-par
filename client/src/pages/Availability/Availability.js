@@ -35,10 +35,6 @@ class Availability extends Component {
         this.props.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd)
     }
 
-    // LogInEmployee = (event) => {
-    //     this.props.LogInEmployee(event.target.value);
-    // }
-
     ChangeEmployee = (event) => {
         this.props.ChangeEmployee(event.target.value);
     }
@@ -46,7 +42,7 @@ class Availability extends Component {
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
-            [name]: value
+            [name]: value,
         });
     };
 
@@ -54,7 +50,7 @@ class Availability extends Component {
         const { value, innerText } = event.target;
         this.setState({
             EmpName: innerText,
-            Employee: value
+            Employee: value,
         });
     };
 
@@ -68,6 +64,12 @@ class Availability extends Component {
     clearState = () => {
         this.setState({
             dayOfWeek: "default",
+            unavailStart: 480,
+            unavailEnd: 1560
+        })
+    }
+    resetTime = () => {
+        this.setState({
             unavailStart: 480,
             unavailEnd: 1560
         })
@@ -141,7 +143,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
         ChangeEmployee: (id) => dispatch(actions.ChangeEmployee(id)),
         getEmployeeList: () => dispatch(actions.getEmployeeList()),
         addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),

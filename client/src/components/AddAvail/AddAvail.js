@@ -95,7 +95,6 @@ function AddAvail(props) {
                     name="Employee"
                     className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
                     value={props.Employee}
-                    // onChange={props.handleInputChange}
                     onChange={props.ChangeEmployee}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">Employee</InputAdornment>,

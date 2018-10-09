@@ -5,6 +5,7 @@ export const CHANGE_EMPLOYEE = 'CHANGE_EMPLOYEE';
 export const SET_TODAY_DATE = "SET_TODAY_DATE";
 export const CHANGE_WORKING_DAY = "CHANGE_WORKING_DAY";
 export const SHIFT_LIST = "SHIFT_LIST";
+export const REMOVE_SHIFT = "REMOVE_SHIFT";
 
 export const setTodaysDate = date => {
     return (dispatch) => {
@@ -27,6 +28,21 @@ const changeWorkingDayInStore = (date) => {
     return {
         type: CHANGE_WORKING_DAY,
         payload: date
+    }
+}
+
+const removeShiftFromStore = (shift) => {
+    return {
+        type: REMOVE_SHIFT,
+        payload: shift
+    }
+}
+
+export const deleteShift = (id) => {
+    return (dispatch) => {
+        API.deleteShift(id).then(res => {
+            dispatchEvent(removeShiftFromStore(res.data[0]))
+        }).catch(err => console.log(err.response))
     }
 }
 
@@ -55,7 +71,9 @@ export const getShiftList = () => {
     return (dispatch) => {
         API.getShift().then(res =>
             dispatch(sendShiftsToStore(res.data))
-        ).catch(err => console.log(err.response))
+        )
+        .then(res => dispatch(getShiftList()))
+        .catch(err => console.log(err.response))
     }
 }
 

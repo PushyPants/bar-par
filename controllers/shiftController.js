@@ -9,7 +9,9 @@ module.exports = {
             .catch(err => res.json(err));
     },
     delete: function (req, res) {
-        db.Shifts.remove(req.params.id)
+        db.Shifts.remove(
+            {_id: req.params.id}
+            )
             .then(dbModel => res.json(dbModel))
             .catch(err => res.json(err))
     },
