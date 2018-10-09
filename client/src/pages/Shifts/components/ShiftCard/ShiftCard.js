@@ -17,15 +17,12 @@ class ShiftCard extends Component {
         shiftEnd: "",
         Employee: "",
         shiftId: "",
-        worksToday: [],
-        employeeList: [],
-        thisDay: []
+        worksToday: []
     })
 
     componentWillMount() {
         this.loadEmployees();
         this.setState({
-            employeeList: this.props.employeeList,
             dayOfWeek: this.props.dayOfWeek,
             date: this.props.date,
             shiftStart: this.props.shiftStart,
@@ -135,27 +132,25 @@ class ShiftCard extends Component {
 
     compareShift = () => {
         this.setState({
-            employeeList: this.props.employeeList,
-            worksToday: [],
-            thisDay: []
+            worksToday: []
         }, ()=> {
             
-            for(let i = 0; i < this.state.employeeList.length; i++){
+            for(let i = 0; i < this.props.employeeList.length; i++){
 
-                for(let j = 0; j < this.state.employeeList[i].avail.length; j++){
+                for(let j = 0; j < this.props.employeeList[i].avail.length; j++){
 
-                    if (this.props.dayOfWeek === this.state.employeeList[i].avail[j].dayOfWeek){
+                    if (this.props.dayOfWeek === this.props.employeeList[i].avail[j].dayOfWeek){
 
                         if ((this.state.shiftStart > this.endAvail(i, j)) ||
                             (this.state.shiftStart < this.startAvail(i, j)) ||
                             (this.state.shiftEnd > this.endAvail(i, j))
                         ); 
-                        
+
                         else {
                             let newArr = this.state.worksToday;
 
-                            if (!newArr.includes(this.state.employeeList[i])){
-                                newArr.push(this.state.employeeList[i])
+                            if (!newArr.includes(this.props.employeeList[i])){
+                                newArr.push(this.props.employeeList[i])
                                 this.setState({
                                     worksToday: newArr
                                 });
