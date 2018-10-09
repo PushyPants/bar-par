@@ -23,11 +23,11 @@ class Landing extends Component {
 
   loadEmployees = () => {
     this.props.getEmployeeList();
-  }
+  };
 
-  LogInEmployee = (event) => {
+  LogInEmployee = event => {
     this.props.LogInEmployee(event.target.value);
-  }
+  };
 
   setTodaysDate = () => {
     this.props.setTodaysDate(moment().format('YYYY-MM-DD'))
@@ -69,7 +69,7 @@ class Landing extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     employeeList: state.reducer.employeeList,
     Employee: state.reducer.Employee,
@@ -79,9 +79,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
+    LogInEmployee: id => dispatch(actions.LogInEmployee(id)),
     getEmployeeList: () => dispatch(actions.getEmployeeList()),
     setTodaysDate: (data) => dispatch(actions.setTodaysDate(data)),
     changeWorkingDate: (data) => dispatch(actions.changeWorkingDate(data)),
