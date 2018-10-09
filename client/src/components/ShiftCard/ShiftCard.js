@@ -10,6 +10,7 @@ import { Redirect } from 'react-router';
 import AddAvailSlider from "../AddAvailSilder";
 import DeleteBtn from "../../components/DeleteBtn";
 // import moment from "moment";
+import "morgan"
 
 class ShiftCard extends Component {
 
@@ -174,6 +175,7 @@ class ShiftCard extends Component {
 
                         if (!this.state.worksToday.includes(this.props.employeeList[i])){
                                 let joined = this.state.worksToday.concat(this.props.employeeList[i])
+                                console.log(joined)
                                 this.setState({
                                     worksToday: joined
                                 })
