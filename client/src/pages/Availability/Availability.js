@@ -17,9 +17,9 @@ class Availability extends Component {
     componentWillMount() {
         this.loadEmployees();
         this.setState({
-            Employee: "Admin",
             unavailStart: 480,
-            unavailEnd: 1560
+            unavailEnd: 1560,
+            dayOfWeek: "default"
         })
     }
     
@@ -67,7 +67,7 @@ class Availability extends Component {
 
     clearState = () => {
         this.setState({
-            dayOfWeek: "",
+            dayOfWeek: "default",
             unavailStart: 480,
             unavailEnd: 1560
         })
@@ -76,7 +76,7 @@ class Availability extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
 
-        if (this.state.dayOfWeek &&
+        if ((this.state.dayOfWeek !== "default") &&
             this.state.unavailStart &&
             this.state.unavailEnd) {
 

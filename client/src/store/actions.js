@@ -2,6 +2,33 @@ import API from '../utils/API';
 export const ALL_EMPLOYEES = 'ALL_EMPLOYEES';
 export const LOGIN_EMPLOYEE = 'LOGIN_EMPLOYEE';
 export const CHANGE_EMPLOYEE = 'CHANGE_EMPLOYEE';
+export const SET_TODAY_DATE = "SET_TODAY_DATE";
+export const CHANGE_WORKING_DAY = "CHANGE_WORKING_DAY";
+export const SHIFT_LIST = "SHIFT_LIST";
+
+export const setTodaysDate = date => {
+    return (dispatch) => {
+        dispatch(sendTodaysDateToStore(date))
+    }
+}
+export const changeWorkingDate = date => {
+    return (dispatch) => {
+        dispatch(changeWorkingDayInStore(date))
+    }
+}
+
+const sendTodaysDateToStore = (date) => {
+    return {
+        type: SET_TODAY_DATE,
+        payload: date
+    }
+}
+const changeWorkingDayInStore = (date) => {
+    return {
+        type: CHANGE_WORKING_DAY,
+        payload: date
+    }
+}
 
 export const LogInEmployee = (id) => {
     return (dispatch) => {
@@ -17,7 +44,6 @@ export const ChangeEmployee = (id) => {
         ).catch(err => console.log(err.response))
     }
 }
-
 export const getEmployeeList = () => {
     return (dispatch) => {
         API.getEmployee().then(res =>
@@ -25,7 +51,20 @@ export const getEmployeeList = () => {
         ).catch(err => console.log(err.response))
     }
 }
+export const getShiftList = () => {
+    return (dispatch) => {
+        API.getShift().then(res =>
+            dispatch(sendShiftsToStore(res.data))
+        ).catch(err => console.log(err.response))
+    }
+}
 
+const sendShiftsToStore = (shift) => {
+    return {
+        type: SHIFT_LIST,
+        payload: shift
+    }
+}
 const sendLoggedInEmployeeToStore = (Employee) => {
     return {
         type: LOGIN_EMPLOYEE,
@@ -44,6 +83,20 @@ const sendAllEmployeesToStore = (employeeList) => {
     return {
         type: ALL_EMPLOYEES,
         payload: employeeList
+    }
+}
+
+export const addShift = ({date, dayOfWeek, shiftStart, shiftEnd, Employee }) => {
+    return (dispatch) => {
+        API.createShift({
+            date,
+            dayOfWeek,
+            shiftStart,
+            shiftEnd,
+            Employee, 
+        })
+            .then(res => dispatch(getShiftList()))
+            .catch(err => console.log(err));
     }
 }
 
@@ -94,6 +147,20 @@ export const updateAvailability = (availId, dayOfWeek, unavailStart, unavailEnd)
             unavailEnd
         })
             .then(res => dispatch(getEmployeeList()))
+            .catch(err => console.log(err));
+    }
+}
+
+export const editShift = ({shiftId, date, dayOfWeek, shiftStart, shiftEnd, Employee}) => {
+    return (dispatch) => {
+        API.updateShift(shiftId, {
+            date,
+            dayOfWeek,
+            shiftStart,
+            shiftEnd,
+            Employee
+        })
+            .then(res => dispatch(getShiftList()))
             .catch(err => console.log(err));
     }
 }

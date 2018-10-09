@@ -129,9 +129,11 @@ function SimpleExpansionPanel(props) {
                         updateTime={props.updateTime}
                         timeCov={time_convert}/>
                     <Typography>
-                        <DeleteBtn postID={row.postID}
-                            empID={row.empID}
-                            func={props.delAvail}>
+                        <DeleteBtn 
+                            valOne={row.empID}
+                            valTwo={row.postID}
+                            func={props.delAvail}
+                            color={"primary"}>
                             Delete
                             </DeleteBtn>
                     </Typography>

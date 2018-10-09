@@ -34,42 +34,59 @@ const styles = theme => ({
 
 const days = [
     {
-        value: '1',
+        value: 0,
         label: 'Sunday',
     },
     {
-        value: '2',
+        value: 1,
         label: 'Monday',
     },
     {
-        value: '3',
+        value: 2,
         label: 'Tuesday',
     },
     {
-        value: '4',
+        value: 3,
         label: 'Wednesday',
     }, 
     {
-        value: '5',
+        value: 4,
         label: 'Thursday',
     },
     {
-        value: '6',
+        value: 5,
         label: 'Friday',
     },
     {
-        value: '7',
+        value: 6,
         label: 'Saturday',
     },
 ];
+
+const time_convert = num => {
+    let hours = Math.floor(num / 60);
+    let minutes = num % 60;
+
+    if (minutes === 0) {
+        minutes += "0";
+    }
+
+    if (hours > 24) {
+        hours -= 24;
+        return hours + ":" + minutes + " AM";
+    } else if (hours > 12) {
+        hours -= 12;
+        return hours + ":" + minutes + " PM";
+    }
+
+    return hours + ":" + minutes + " AM";
+};
 
 function AddAvail(props) {
     const { classes } = props;
 
         return (
             <div className={classes.root}>
-            
-            {/* {(props.Employee)? */}
 
             <React.Fragment>
                 {(props.AdminLevel > 2)?
@@ -112,16 +129,21 @@ function AddAvail(props) {
                     </TextField>
 
                     <FormControl className={classNames(classes.margin, classes.textField,classes.withoutLabel)}>
-                        <AddAvailSlider start={props.unavailStart}
+                        <p>N/A From: {time_convert(props.unavailStart)} to {time_convert(props.unavailEnd)}</p>
+                        <AddAvailSlider 
+                            start={props.unavailStart}
                             end={props.unavailEnd}
-                            update={props.updateTime}/>
+                            update={props.updateTime}
+                            isDisabled={false}/>
+                            
                     </FormControl>
 
                     <Button variant="contained" color="primary" className={classNames(classes.Button)} 
                         disabled={!(props.Employee&&
                             props.unavailStart &&
                             props.unavailEnd &&
-                            props.dayOfWeek)}
+                            (props.dayOfWeek !== "default")
+                            )}
                             onClick={props.handleFormSubmit}>
                         Submit
                     </Button>

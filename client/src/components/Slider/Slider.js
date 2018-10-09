@@ -30,9 +30,9 @@ const Range = createSliderWithTooltip(Slider.Range);
 const wrapperStyle = { width: 400, margin: 50 };
 
 class MySlider extends Component {
-  onSliderChange = max => {
-    console.log(max);
-  };
+  // onSliderChange = max => {
+  //   console.log(max);
+  // };
 
   time_convert = num => {
     let hours = Math.floor(num / 60);

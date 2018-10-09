@@ -8,7 +8,7 @@ var AvailableSchema = new Schema({
         default: null
     },
     dayOfWeek: {
-        type: String,
+        type: Number,
         default: null
     },
     unavailStart: {

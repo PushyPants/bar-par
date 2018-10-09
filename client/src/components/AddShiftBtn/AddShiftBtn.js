@@ -5,28 +5,29 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     button: {
-        margin: theme.spacing.unit / 2,
+        margin: 'none',
     },
     input: {
         display: 'none',
     },
 });
 
-function DeleteBtn(props) {
+function AddShiftBtn(props) {
     const { classes } = props;
-    
+
+
+
     return (
-        <Button variant="contained" 
-            color={props.color} 
+        <Button variant="contained" color="primary"
             className={classes.button}
-            onClick={()=>props.func(props.valOne, props.valTwo)}>
+            onClick={() => props.addShift(props.thisDay, props.dayOfWeek, props.Employee)}>
             {props.children}
         </Button>
     )
 }
 
-DeleteBtn.propTypes = {
+AddShiftBtn.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DeleteBtn);
+export default withStyles(styles)(AddShiftBtn);

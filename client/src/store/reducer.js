@@ -11,9 +11,9 @@ const initialState = {
         firstName: "Admin",
         _id: "Admin"
     },
-    startOfWeek: '',
     todaysDate: '',
-    workingDate: ''
+    workingDate: '',
+    shiftList: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -34,10 +34,25 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 LoggedInAs: action.payload
             }
+        case actions.SET_TODAY_DATE:
+            return {
+                ...state,
+                todaysDate: action.payload,
+                workingDate: action.payload
+            }
+        case actions.CHANGE_WORKING_DAY:
+            return {
+                ...state,
+                workingDate: action.payload
+            }
+        case actions.SHIFT_LIST:
+            return {
+                ...state,
+                shiftList: action.payload
+            }
         default:
     }
     return state
 }
 
-// Export this reducer
 export default reducer;

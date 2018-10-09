@@ -6,7 +6,10 @@ import "rc-tooltip/assets/bootstrap.css";
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
-const wrapperStyle = { width: "100%", margin: 0 };
+const wrapperStyle = {
+    width: "100%", 
+    marginTop: 15
+};
 
 function AddAvailSlider(props) {
 
@@ -31,12 +34,12 @@ function AddAvailSlider(props) {
         return (
             <div>
                 <div style={wrapperStyle}>
-                    <p>N/A From: {time_convert(props.start)} to {time_convert(props.end)}</p>
                     <Range
                         step={15}
                         min={480}
                         max={1560}
-                        defaultValue={[480, 1560]}
+                        disabled={props.isDisabled}
+                        defaultValue={[props.start, props.end]}
                         tipFormatter={value => (value ? time_convert(value) : "Error")}
                         onAfterChange={props.update}
                     />

@@ -37,11 +37,11 @@ export default {
   getShift: function(){
     return axios.get('/api/shift')
   },
-  createShift: function(){
-    return axios.post('/api/shift')
+  createShift: function(data){
+    return axios.post('/api/shift', data)
   },
-  updateShift: function(id){
-    return axios.put(`/api/shift/${id}`)
+  updateShift: function(id, data){
+    return axios.put(`/api/shift/${id}`, data)
   },
   deleteShift: function(id){
     return axios.delete(`/api/shift/${id}`)

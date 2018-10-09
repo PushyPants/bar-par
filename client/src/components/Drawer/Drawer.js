@@ -65,6 +65,9 @@ class SwipeableTemporaryDrawer extends React.Component {
         <List>
           <Link to="/home">Home</Link>
         </List>
+        <List>
+          <Link to="/shifts">Shifts</Link>
+        </List>
 
         {(this.props.Employee.isAdmin < 2) ? null : 
           <List>

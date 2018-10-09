@@ -20,9 +20,8 @@ module.exports = {
     },
     update: function (req, res) {
         db.Shifts.findOneAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true })
+            { _id: req.params.id },
+            req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.json(err))
     }
