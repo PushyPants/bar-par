@@ -59,13 +59,21 @@ const time_convert = num => {
 
     if (hours >= 24) {
         hours -= 24;
-        return hours + ":" + minutes + "A";
-    } else if (hours >= 12) {
+        if (hours === 0) {
+          return (`${hours + 12}:${minutes} AM`)
+        } else {
+          return (`${hours}:${minutes} AM`)
+        }
+      } else if (hours >= 12) {
         hours -= 12;
-        return hours + ":" + minutes + "P";
-    }
+        if (hours === 0) {
+          return (`${hours + 12}:${minutes} PM`)
+        } else {
+          return (`${hours}:${minutes} PM`)
+        }
+      }
 
-    return hours + ":" + minutes + "A";
+    return (`${hours}:${minutes} AM`)
 };
 
 
