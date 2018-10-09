@@ -11,7 +11,8 @@ router.route("/")
 //   .get(locationsController.findById)
 //   .put(locationsController.update)
 //   .delete(locationsController.delete);
-
+router.route('/updatelocation')
+  .put(locationsController.findOneUpdateInventory)
 
 
 module.exports = router;
