@@ -28,7 +28,7 @@ function UpdateAvailSlider({ availId, dayOfWeek, unavailStart, unavailEnd, upAva
                     step={30}
                     min={480}
                     max={1560}
-                    defaultValue={[unavailStart, unavailEnd]}
+                    defaultValue={[availStart, availEnd]}
                     tipFormatter={value => (value ? timeCov(value) : "Error")}
                     onAfterChange={onSliderChange}
                 />

@@ -5,6 +5,7 @@ export const CHANGE_EMPLOYEE = 'CHANGE_EMPLOYEE';
 export const SET_TODAY_DATE = "SET_TODAY_DATE";
 export const CHANGE_WORKING_DAY = "CHANGE_WORKING_DAY";
 export const SHIFT_LIST = "SHIFT_LIST";
+export const REMOVE_SHIFT = "REMOVE_SHIFT";
 
 export const setTodaysDate = date => {
     return (dispatch) => {
@@ -27,6 +28,21 @@ const changeWorkingDayInStore = (date) => {
     return {
         type: CHANGE_WORKING_DAY,
         payload: date
+    }
+}
+
+const removeShiftFromStore = (shift) => {
+    return {
+        type: REMOVE_SHIFT,
+        payload: shift
+    }
+}
+
+export const deleteShift = (id) => {
+    return (dispatch) => {
+        API.deleteShift(id).then(res => {
+            dispatch(removeShiftFromStore(res.data))
+        }).catch(err => console.log(err))
     }
 }
 
@@ -55,7 +71,9 @@ export const getShiftList = () => {
     return (dispatch) => {
         API.getShift().then(res =>
             dispatch(sendShiftsToStore(res.data))
-        ).catch(err => console.log(err.response))
+        )
+        .then(res => dispatch(getShiftList()))
+        .catch(err => console.log(err.response))
     }
 }
 
@@ -114,12 +132,12 @@ export const addEmployee = ({firstName, lastName, email, phone, password, isAdmi
             .catch(err => console.log(err));
     }
 }
-export const addAvailability = ({dayOfWeek, unavailStart, unavailEnd, Employee }) => {
+export const addAvailability = ({dayOfWeek, availStart, availEnd, Employee }) => {
     return (dispatch) => {
         API.addAvailability({
             dayOfWeek,
-            unavailStart,
-            unavailEnd,
+            availStart,
+            availEnd,
             Employee
         })
             .then(res =>
@@ -139,12 +157,12 @@ export const updateEmployee = (empId, postId) => {
     }
 }
 
-export const updateAvailability = (availId, dayOfWeek, unavailStart, unavailEnd) => {
+export const updateAvailability = (availId, dayOfWeek, availStart, availEnd) => {
     return (dispatch) => {
         API.updateAvailability(availId, {
             dayOfWeek,
-            unavailStart,
-            unavailEnd
+            availStart,
+            availEnd
         })
             .then(res => dispatch(getEmployeeList()))
             .catch(err => console.log(err));

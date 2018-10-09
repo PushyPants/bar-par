@@ -103,7 +103,6 @@ function AddAvail(props) {
                     name="Employee"
                     className={classNames(classes.margin, classes.textField, classes.withoutLabel)}
                     value={props.Employee}
-                    // onChange={props.handleInputChange}
                     onChange={props.ChangeEmployee}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">Employee</InputAdornment>,
@@ -137,10 +136,10 @@ function AddAvail(props) {
                     </TextField>
 
                     <FormControl className={classNames(classes.margin, classes.textField,classes.withoutLabel)}>
-                        <p>N/A From: {time_convert(props.unavailStart)} to {time_convert(props.unavailEnd)}</p>
+                        <p>Available From: {time_convert(props.availStart)} to {time_convert(props.availEnd)}</p>
                         <AddAvailSlider 
-                            start={props.unavailStart}
-                            end={props.unavailEnd}
+                            start={props.availStart}
+                            end={props.availEnd}
                             update={props.updateTime}
                             isDisabled={false}/>
                             
@@ -148,8 +147,8 @@ function AddAvail(props) {
 
                     <Button variant="contained" color="primary" className={classNames(classes.Button)} 
                         disabled={!(props.Employee&&
-                            props.unavailStart &&
-                            props.unavailEnd &&
+                            props.availStart &&
+                            props.availEnd &&
                             (props.dayOfWeek !== "default")
                             )}
                             onClick={props.handleFormSubmit}>

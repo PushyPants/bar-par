@@ -50,6 +50,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 shiftList: action.payload
             }
+        case actions.REMOVE_SHIFT:
+            return {
+                ...state,
+                shiftList: state.shiftList.filter(shift => shift._id !== action.payload)
+            }
         default:
     }
     return state

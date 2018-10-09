@@ -119,15 +119,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-    // LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
-    // ChangeEmployee: (id) => dispatch(actions.ChangeEmployee(id)),
-    // getEmployeeList: () => dispatch(actions.getEmployeeList()),
-    // addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),
-    // updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId)),
-    // updateAvailability: (availId, dayOfWeek, unavailStart, unavailEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd))
-//   }
-// }
-
 export default connect(mapStateToProps, null)(withStyles(styles)(SwipeableTemporaryDrawer));

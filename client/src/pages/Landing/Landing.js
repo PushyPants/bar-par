@@ -3,12 +3,18 @@ import Nav from "../../components/Nav";
 import "./Landing.css";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import EmployeeDrop from "../../components/EmployeeDrop";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
-import DatePickers from "../../components/DatePicker/DatePicker";
+// import DatePickers from "../../components/DatePicker/DatePicker";
+import Login from "../../components/Login";
 import moment from "moment";
+// import MySlider from "../../components/Slider/Slider";
+// import LoginDrop from "../../components/LoginDrop";
+// import { connect } from "react-redux";
+// import * as actions from "../../store/actions";
+import Footer from "../../components/Footer";
 
 class Landing extends Component {
 
@@ -41,28 +47,16 @@ class Landing extends Component {
     return (
       <React.Fragment>
 
-        <Nav>Bar Par</Nav>
-          
+        <Nav>Bar Par </Nav>
 
-        <Grid container spacing={8} justify="center">
+        <Login />
 
-          <Grid item xs={6} sm={6}>
-            {/* <Login /> */}
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-
-            <DatePickers
-              changeWorkingDate={this.changeWorkingDate}
-              workingDate={this.props.workingDate}/>
-
-            <EmployeeDrop 
-              changeEmp={this.LogInEmployee}
-              employeeList={this.props.employeeList}
-              Employee={this.props.Employee._id}/>
-          </Grid>
-
-        </Grid>
+          <EmployeeDrop 
+            changeEmp={this.LogInEmployee}
+            employeeList={this.props.employeeList}
+            Employee={this.props.Employee._id}/>
+            
+        <Footer />
 
       </React.Fragment>
     );

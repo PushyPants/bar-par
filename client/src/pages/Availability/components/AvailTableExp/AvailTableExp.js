@@ -77,9 +77,9 @@ const time_convert = num => {
 };
 
 let key = 0;
-let createData = (name, dayOfWeek, unavailStart, unavailEnd, postID, empID) => {
+let createData = (name, dayOfWeek, availStart, availEnd, postID, empID) => {
     key += 1;
-    return { key, name, dayOfWeek, unavailStart, unavailEnd, postID, empID };
+    return { key, name, dayOfWeek, availStart, availEnd, postID, empID };
 }
 
 function SimpleExpansionPanel(props) {
@@ -88,20 +88,20 @@ function SimpleExpansionPanel(props) {
 
     props.empArr.forEach(e => {
         if (props.emp === "Admin") {
-            e.unavail.map(emp => (
+            e.avail.map(emp => (
                 rows.push(createData(`${e.firstName} ${e.lastName}`,
                     emp.dayOfWeek,
-                    emp.unavailStart,
-                    emp.unavailEnd,
+                    emp.availStart,
+                    emp.availEnd,
                     emp._id, e._id
                     ))
             ))
         } else if (props.emp === e._id) {
-            e.unavail.map(emp => (
+            e.avail.map(emp => (
                 rows.push(createData(`${e.firstName} ${e.lastName}`,
                     emp.dayOfWeek,
-                    emp.unavailStart,
-                    emp.unavailEnd,
+                    emp.availStart,
+                    emp.availEnd,
                     emp._id, e._id
                     ))
             ))
@@ -120,10 +120,10 @@ function SimpleExpansionPanel(props) {
                         {convertDay(row.dayOfWeek)}   
                     </Typography>
                     <Typography className={classes.secondaryHeading}>
-                        From: {time_convert(row.unavailStart)}   
+                        From: {time_convert(row.availStart)}   
                     </Typography>
                     <Typography className={classes.secondaryHeading}>
-                        To: {time_convert(row.unavailEnd)}   
+                        To: {time_convert(row.availEnd)}   
                     </Typography>
                 </ExpansionPanelSummary>
 
@@ -132,8 +132,8 @@ function SimpleExpansionPanel(props) {
                         <UpdateAvailSlider
                         availId={row.postID}
                         dayOfWeek={row.dayOfWeek}
-                        unavailStart={parseInt(row.unavailStart, 10)}
-                        unavailEnd={parseInt(row.unavailEnd,10)}
+                        availStart={parseInt(row.availStart, 10)}
+                        availEnd={parseInt(row.availEnd,10)}
                         upAvail={props.upAvail}
                         updateTime={props.updateTime}
                         timeCov={time_convert}/>

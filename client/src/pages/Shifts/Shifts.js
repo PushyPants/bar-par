@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Grid from '@material-ui/core/Grid';
-import ShiftTableExp from "../../components/ShiftTableExp";
-// import EmployeeDrop from "../../components/EmployeeDrop";
+import ShiftTableExp from "./components/ShiftTableExp";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import { Redirect } from 'react-router';
-import DatePickers from "../../components/DatePicker/DatePicker";
+import DatePickers from "./components/DatePicker";
 import moment from "moment";
 // import Paper from '@material-ui/core/Paper';
 
@@ -98,7 +97,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // LogInEmployee: (id) => dispatch(actions.LogInEmployee(id)),
         ChangeEmployee: (id) => dispatch(actions.ChangeEmployee(id)),
         addShift: (data) => dispatch(actions.addShift(data)),
         setTodaysDate: (data) => dispatch(actions.setTodaysDate(data)),
@@ -107,7 +105,7 @@ const mapDispatchToProps = (dispatch) => {
         getShiftList: () => dispatch(actions.getShiftList()),
         addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),
         updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId)),
-        updateAvailability: (availId, dayOfWeek, unavailStart, unavailEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd))
+        updateAvailability: (availId, dayOfWeek, availStart, availEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, availStart, availEnd))
     }
 }
 
