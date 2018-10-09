@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";

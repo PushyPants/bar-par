@@ -6,6 +6,7 @@ import Employee from "./pages/Employee";
 import Availability from "./pages/Availability";
 import Dashboard from "./pages/Dashboard";
 import Locations from "./pages/Locations";
+import NoMatch from "./pages/NoMatch";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
         <Route exact path="/addemp" component={Employee} />
         <Route exact path="/addavail" component={Availability} />
         <Route exact path="/locations" component={Locations} />
+        <Route component={NoMatch} />
       </Switch>
     </div>
   </Router>
