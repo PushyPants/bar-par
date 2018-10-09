@@ -149,9 +149,8 @@ class ShiftCard extends Component {
                         if ((this.state.shiftStart > this.endAvail(i, j)) ||
                             (this.state.shiftStart < this.startAvail(i, j)) ||
                             (this.state.shiftEnd > this.endAvail(i, j))
-                        ){
-                            // console.log("2: " + this.state.employeeList[i].firstName)
-                        }
+                        ); 
+                        
                         else {
                             let newArr = this.state.worksToday;
 

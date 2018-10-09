@@ -31,7 +31,7 @@ function DatePickers(props) {
         InputLabelProps={{
           shrink: true,
         }}
-        onChange={props.onChange}
+        onChange={props.changeWorkingDate}
       />
     </form>
   );
