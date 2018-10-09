@@ -134,18 +134,21 @@ class ShiftCard extends Component {
 
     checkValidShift = (Employee) => {
         // console.log(Employee)
-        for (let i = 0; i < Employee.avail.length; i++) {
-            if (this.props.dayOfWeek === Employee.avail[i].dayOfWeek) {
+        if (Employee) {
 
-                if ((this.state.shiftStart > Employee.avail[i].availEnd) ||
+            for (let i = 0; i < Employee.avail.length; i++) {
+                if (this.props.dayOfWeek === Employee.avail[i].dayOfWeek) {
+                    
+                    if ((this.state.shiftStart > Employee.avail[i].availEnd) ||
                     (this.state.shiftStart < Employee.avail[i].availStart) ||
                     (this.state.shiftEnd > Employee.avail[i].availEnd)
-                ){
-                    return null
-                }
-
-                else {
-                    return Employee._id
+                    ){
+                        return null
+                    }
+                    
+                    else {
+                        return Employee._id
+                    }
                 }
             }
         }

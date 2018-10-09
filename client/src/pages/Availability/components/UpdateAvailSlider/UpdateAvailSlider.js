@@ -8,7 +8,7 @@ const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 const wrapperStyle = { width: 400, margin: 5 };
 
-function UpdateAvailSlider({ availId, dayOfWeek, unavailStart, unavailEnd, upAvail, timeCov}) {
+function UpdateAvailSlider({ availId, dayOfWeek, availStart, availEnd, upAvail, timeCov}) {
     const marks = {
         480: "8:00A",
         840: "2:00P",
