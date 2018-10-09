@@ -11,11 +11,11 @@ var AvailableSchema = new Schema({
         type: Number,
         default: null
     },
-    unavailStart: {
+    availStart: {
         type: String,
         default: null
     },
-    unavailEnd: {
+    availEnd: {
         type: String,
         default: null
     },

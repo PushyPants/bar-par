@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Grid from '@material-ui/core/Grid';
-import AddAvail from "../../components/AddAvail";
-import AvailTableExp from "../../components/AvailTableExp";
+import AddAvail from "./components/AddAvail";
+import AvailTableExp from "./components/AvailTableExp";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import { Redirect } from 'react-router'
@@ -10,15 +10,15 @@ import { Redirect } from 'react-router'
 class Availability extends Component {
     state = {
         dayOfWeek: "",
-        unavailStart: "",
-        unavailEnd: "",
+        availStart: "",
+        availEnd: "",
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.loadEmployees();
         this.setState({
-            unavailStart: 480,
-            unavailEnd: 1560,
+            availStart: 480,
+            availEnd: 1560,
             dayOfWeek: "default"
         })
     }
@@ -31,8 +31,8 @@ class Availability extends Component {
         this.props.updateEmployee(empId, postId)
     }
     
-    updateAvailability = (availId, dayOfWeek, unavailStart, unavailEnd) => {
-        this.props.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd)
+    updateAvailability = (availId, dayOfWeek, availStart, availEnd) => {
+        this.props.updateAvailability(availId, dayOfWeek, availStart, availEnd)
     }
 
     ChangeEmployee = (event) => {
@@ -56,22 +56,22 @@ class Availability extends Component {
 
     updateTime = val => {
         this.setState({
-            unavailStart: val[0],
-            unavailEnd: val[1]
+            availStart: val[0],
+            availEnd: val[1]
         })
     }
 
     clearState = () => {
         this.setState({
             dayOfWeek: "default",
-            unavailStart: 480,
-            unavailEnd: 1560
+            availStart: 480,
+            availEnd: 1560
         })
     }
     resetTime = () => {
         this.setState({
-            unavailStart: 480,
-            unavailEnd: 1560
+            availStart: 480,
+            availEnd: 1560
         })
     }
 
@@ -79,13 +79,13 @@ class Availability extends Component {
         event.preventDefault();
 
         if ((this.state.dayOfWeek !== "default") &&
-            this.state.unavailStart &&
-            this.state.unavailEnd) {
+            this.state.availStart &&
+            this.state.availEnd) {
 
             this.props.addAvailability({
                 dayOfWeek: this.state.dayOfWeek,
-                unavailStart: this.state.unavailStart,
-                unavailEnd: this.state.unavailEnd,
+                availStart: this.state.availStart,
+                availEnd: this.state.availEnd,
                 Employee: this.props.LoggedInAs._id
             })
 
@@ -120,8 +120,8 @@ class Availability extends Component {
                             EmployeeFirstName={this.props.LoggedInAs.firstName}
                             EmployeeLastName={this.props.LoggedInAs.lastName}
                             dayOfWeek={this.state.dayOfWeek}
-                            unavailStart={this.state.unavailStart}
-                            unavailEnd={this.state.unavailEnd}
+                            availStart={this.state.availStart}
+                            availEnd={this.state.availEnd}
                             updateTime={this.updateTime}
                             clearState={this.clearState}
                             AdminLevel={this.props.Employee.isAdmin}/>
@@ -147,7 +147,7 @@ const mapDispatchToProps = (dispatch) => {
         getEmployeeList: () => dispatch(actions.getEmployeeList()),
         addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),
         updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId)),
-        updateAvailability: (availId, dayOfWeek, unavailStart, unavailEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd))
+        updateAvailability: (availId, dayOfWeek, availStart, availEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, availStart, availEnd))
     }
 }
 

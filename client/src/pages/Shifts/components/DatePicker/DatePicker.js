@@ -8,11 +8,12 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     marginTop: theme.spacing.unit * 10,
+    width: "80%"
   },
   textField: {
-    marginLeft: theme.spacing.unit * 5,
-    marginRight: theme.spacing.unit * 5,
-    width: 200,
+    marginLeft: theme.spacing.unit * 1,
+    marginRight: theme.spacing.unit * 1,
+    width: 400,
   },
 });
 

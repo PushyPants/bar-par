@@ -6,8 +6,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import DeleteBtn from "../../components/DeleteBtn";
-import UpdateAvailSlider from "../../components/UpdateAvailSlider";
+import DeleteBtn from "../../../../components/DeleteBtn";
+import UpdateAvailSlider from "../UpdateAvailSlider";
 
 const styles = theme => ({
     root: {
@@ -29,20 +29,20 @@ const styles = theme => ({
 
 let convertDay = (val) => {
     switch (val) {
-        case "1":
-            return "Sun";
-        case "2":
-            return "Mon";
-        case "3":
-            return "Tues";
-        case "4":
-            return "Wed";
-        case "5":
-            return "Thur";
-        case "6":
-            return "Fri";
-        case "7":
-            return "Sat";
+        case 0:
+            return "Sunday";
+        case 1:
+            return "Monday";
+        case 2:
+            return "Tuesday";
+        case 3:
+            return "Wednesday";
+        case 4:
+            return "Thursday";
+        case 5:
+            return "Friday";
+        case 6:
+            return "Saturday";
         default:
             return val;
     }
@@ -68,9 +68,9 @@ const time_convert = num => {
 };
 
 let key = 0;
-let createData = (name, dayOfWeek, unavailStart, unavailEnd, postID, empID) => {
+let createData = (name, dayOfWeek, availStart, availEnd, postID, empID) => {
     key += 1;
-    return { key, name, dayOfWeek, unavailStart, unavailEnd, postID, empID };
+    return { key, name, dayOfWeek, availStart, availEnd, postID, empID };
 }
 
 function SimpleExpansionPanel(props) {
@@ -79,20 +79,20 @@ function SimpleExpansionPanel(props) {
 
     props.empArr.forEach(e => {
         if (props.emp === "Admin") {
-            e.unavail.map(emp => (
+            e.avail.map(emp => (
                 rows.push(createData(`${e.firstName} ${e.lastName}`,
                     emp.dayOfWeek,
-                    emp.unavailStart,
-                    emp.unavailEnd,
+                    emp.availStart,
+                    emp.availEnd,
                     emp._id, e._id
                     ))
             ))
         } else if (props.emp === e._id) {
-            e.unavail.map(emp => (
+            e.avail.map(emp => (
                 rows.push(createData(`${e.firstName} ${e.lastName}`,
                     emp.dayOfWeek,
-                    emp.unavailStart,
-                    emp.unavailEnd,
+                    emp.availStart,
+                    emp.availEnd,
                     emp._id, e._id
                     ))
             ))
@@ -112,10 +112,10 @@ function SimpleExpansionPanel(props) {
                         {convertDay(row.dayOfWeek)}   
                     </Typography>
                     <Typography className={classes.secondaryHeading}>
-                        From: {time_convert(row.unavailStart)}   
+                        From: {time_convert(row.availStart)}   
                     </Typography>
                     <Typography className={classes.secondaryHeading}>
-                        To: {time_convert(row.unavailEnd)}   
+                        To: {time_convert(row.availEnd)}   
                     </Typography>
                 </ExpansionPanelSummary>
 
@@ -123,8 +123,8 @@ function SimpleExpansionPanel(props) {
                     <UpdateAvailSlider
                         availId={row.postID}
                         dayOfWeek={row.dayOfWeek}
-                        unavailStart={parseInt(row.unavailStart, 10)}
-                        unavailEnd={parseInt(row.unavailEnd,10)}
+                        availStart={parseInt(row.availStart, 10)}
+                        availEnd={parseInt(row.availEnd,10)}
                         upAvail={props.upAvail}
                         updateTime={props.updateTime}
                         timeCov={time_convert}/>

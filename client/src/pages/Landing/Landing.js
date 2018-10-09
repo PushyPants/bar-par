@@ -8,6 +8,7 @@ import EmployeeDrop from "../../components/EmployeeDrop";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import DatePickers from "../../components/DatePicker/DatePicker";
+import Login from "../../components/Login";
 import moment from "moment";
 
 class Landing extends Component {
@@ -47,7 +48,7 @@ class Landing extends Component {
         <Grid container spacing={8} justify="center">
 
           <Grid item xs={6} sm={6}>
-            {/* <Login /> */}
+            <Login />
           </Grid>
 
           <Grid item xs={12} sm={6}>

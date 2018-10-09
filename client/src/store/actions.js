@@ -41,8 +41,8 @@ const removeShiftFromStore = (shift) => {
 export const deleteShift = (id) => {
     return (dispatch) => {
         API.deleteShift(id).then(res => {
-            dispatchEvent(removeShiftFromStore(res.data[0]))
-        }).catch(err => console.log(err.response))
+            dispatch(removeShiftFromStore(res.data))
+        }).catch(err => console.log(err))
     }
 }
 
@@ -132,12 +132,12 @@ export const addEmployee = ({firstName, lastName, email, phone, password, isAdmi
             .catch(err => console.log(err));
     }
 }
-export const addAvailability = ({dayOfWeek, unavailStart, unavailEnd, Employee }) => {
+export const addAvailability = ({dayOfWeek, availStart, availEnd, Employee }) => {
     return (dispatch) => {
         API.addAvailability({
             dayOfWeek,
-            unavailStart,
-            unavailEnd,
+            availStart,
+            availEnd,
             Employee
         })
             .then(res =>
@@ -157,12 +157,12 @@ export const updateEmployee = (empId, postId) => {
     }
 }
 
-export const updateAvailability = (availId, dayOfWeek, unavailStart, unavailEnd) => {
+export const updateAvailability = (availId, dayOfWeek, availStart, availEnd) => {
     return (dispatch) => {
         API.updateAvailability(availId, {
             dayOfWeek,
-            unavailStart,
-            unavailEnd
+            availStart,
+            availEnd
         })
             .then(res => dispatch(getEmployeeList()))
             .catch(err => console.log(err));

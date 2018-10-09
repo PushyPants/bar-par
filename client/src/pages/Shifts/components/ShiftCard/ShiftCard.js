@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
-import EmployeeDrop from "../EmployeeDrop";
+import EmployeeDrop from "../../../../components/EmployeeDrop";
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
+import * as actions from '../../../../store/actions';
 import { Redirect } from 'react-router';
-import AddAvailSlider from "../AddAvailSilder";
-import DeleteBtn from "../../components/DeleteBtn";
+import AddAvailSlider from "../../../../components/AddAvailSilder";
+import DeleteBtn from "../../../../components/DeleteBtn";
 // import API from "../../utils/API";
 
 class ShiftCard extends Component {
@@ -18,7 +18,8 @@ class ShiftCard extends Component {
         Employee: "",
         shiftId: "",
         worksToday: [],
-        employeeList: []
+        employeeList: [],
+        thisDay: []
     })
 
     componentWillMount() {
@@ -69,7 +70,7 @@ class ShiftCard extends Component {
         this.props.ChangeEmployee(event.target.value);
     }
 
-    deleteShift = (id, x) => {
+    deleteShift = (id) => {
         this.props.deleteShift(id)
     }
 
@@ -125,59 +126,46 @@ class ShiftCard extends Component {
         this.compareShift()
     }
 
-    unStart = (a, b) => {
-        return this.props.employeeList[a].unavail[b].unavailStart
+    startAvail = (a, b) => {
+        return this.props.employeeList[a].avail[b].availStart
     }
-    unEnd = (a, b) => {
-        return this.props.employeeList[a].unavail[b].unavailEnd
+    endAvail = (a, b) => {
+        return this.props.employeeList[a].avail[b].availEnd
     }
 
     compareShift = () => {
         this.setState({
             employeeList: this.props.employeeList,
-            worksToday: []
-        },  ()=>{
+            worksToday: [],
+            thisDay: []
+        }, ()=> {
             
-        for (let i = 0; i < this.props.employeeList.length; i++) {
+            for(let i = 0; i < this.state.employeeList.length; i++){
 
-            for (let j = 0; j < this.props.employeeList[i].unavail.length; j++) {
+                for(let j = 0; j < this.state.employeeList[i].avail.length; j++){
 
-                if( //  shift start before avail ends after unavail
-                    (this.props.dayOfWeek === this.props.employeeList[i].unavail[j].dayOfWeek) &&
-                    (this.state.Employee === this.props.employeeList[i]._id) &&
-                    ((this.state.shiftStart < this.unStart(i,j))&& (this.state.shiftEnd > this.unStart(i, j)))
-                    ){
-                        this.setState({
-                            employeeList: this.remove(this.state.employeeList, this.props.employeeList[i]._id),
-                            Employee: "default"
-                        })
-                } 
-                
-                else if (   //  Shift start during unavail period
-                    (this.props.dayOfWeek === this.props.employeeList[i].unavail[j].dayOfWeek) &&
-                    (this.state.Employee === this.props.employeeList[i]._id) &&
-                    ((this.state.shiftStart > this.unStart(i, j)) && (this.state.shiftStart < this.unEnd(i, j)))
-                    ){
-                        this.setState({
-                            employeeList: this.remove(this.state.employeeList, this.props.employeeList[i]._id),
-                            Employee: "default"
-                        })
-                } 
-                
-                else if (   //  Shift end during unavail period
-                    (this.props.dayOfWeek === this.props.employeeList[i].unavail[j].dayOfWeek) &&
-                    (this.state.Employee === this.props.employeeList[i]._id) &&
-                    ((this.state.shiftEnd > this.unStart(i, j)) && (this.state.shiftEnd < this.unEnd(i, j)))
-                    ){
-                        this.setState({
-                            employeeList: this.remove(this.state.employeeList, this.props.employeeList[i]._id),
-                            Employee: "default"
-                        })
+                    if (this.props.dayOfWeek === this.state.employeeList[i].avail[j].dayOfWeek){
+
+                        if ((this.state.shiftStart > this.endAvail(i, j)) ||
+                            (this.state.shiftStart < this.startAvail(i, j)) ||
+                            (this.state.shiftEnd > this.endAvail(i, j))
+                        ){
+                            console.log("2: " + this.state.employeeList[i].firstName)
+                        }
+                        else {
+                            let newArr = this.state.worksToday;
+
+                            if (!newArr.includes(this.state.employeeList[i])){
+                                newArr.push(this.state.employeeList[i])
+                                this.setState({
+                                    worksToday: newArr
+                                });
+                            }
+                        }
                     } 
-
+                }
             }
-        }
-    })
+        })
     }
 
     render() {
@@ -200,8 +188,10 @@ class ShiftCard extends Component {
                         <Grid item xs={8} sm={4}>
                             <EmployeeDrop
                                 changeEmp={this.handleInputChange}
-                                employeeList={this.state.employeeList}
-                                Employee={this.state.Employee} 
+                                employeeList={this.state.worksToday}
+                                Employee={(this.state.Employee)?
+                                    this.state.Employee:
+                                    "default"} 
                                 worksToday={this.props.worksToday}/>
                             
                         </Grid>
@@ -268,7 +258,7 @@ const mapDispatchToProps = (dispatch) => {
         getEmployeeList: () => dispatch(actions.getEmployeeList()),
         addAvailability: (availObj) => dispatch(actions.addAvailability(availObj)),
         updateEmployee: (id, pId) => dispatch(actions.updateEmployee(id, pId)),
-        updateAvailability: (availId, dayOfWeek, unavailStart, unavailEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, unavailStart, unavailEnd))
+        updateAvailability: (availId, dayOfWeek, availStart, availEnd) => dispatch(actions.updateAvailability(availId, dayOfWeek, availStart, availEnd))
     }
 }
 
