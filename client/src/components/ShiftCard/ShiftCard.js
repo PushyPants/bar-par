@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-// import Nav from "../../components/Nav";
 import Grid from '@material-ui/core/Grid';
-// import ShiftTableExp from "../ShiftTableExp";
 import EmployeeDrop from "../EmployeeDrop";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import { Redirect } from 'react-router';
-// import DatePickers from "../DatePicker/DatePicker";
 import AddAvailSlider from "../AddAvailSilder";
 import DeleteBtn from "../../components/DeleteBtn";
-// import moment from "moment";
 
 class ShiftCard extends Component {
 
@@ -99,14 +95,24 @@ class ShiftCard extends Component {
         }
 
     editShift = (shiftId, date, dayOfWeek, shiftStart, shiftEnd, Employee)=>{
-        this.props.editShift({
-            shiftId,
-            date,
-            dayOfWeek,
-            shiftStart,
-            shiftEnd,
-            Employee,
-        })
+        (Employee === 'default')?
+            this.props.editShift({
+                shiftId,
+                date,
+                dayOfWeek,
+                shiftStart,
+                shiftEnd,
+                Employee: null,
+            })
+            :
+            this.props.editShift({
+                shiftId,
+                date,
+                dayOfWeek,
+                shiftStart,
+                shiftEnd,
+                Employee,
+            });
         this.compareShift()
     }
 
@@ -123,7 +129,7 @@ class ShiftCard extends Component {
             worksToday: []
         },  ()=>{
             
-            for (let i = 0; i < this.props.employeeList.length; i++) {
+        for (let i = 0; i < this.props.employeeList.length; i++) {
 
             for (let j = 0; j < this.props.employeeList[i].unavail.length; j++) {
 
@@ -160,33 +166,8 @@ class ShiftCard extends Component {
                         })
                     } 
 
-                else if    //  Shift end during unavail period
-                    ((this.props.dayOfWeek === this.props.employeeList[i].unavail[j].dayOfWeek) &&
-                    (this.state.Employee === this.props.employeeList[i]._id)){
-
-                        if (!this.state.worksToday.includes(this.props.employeeList[i])){
-                                let joined = this.state.worksToday.concat(this.props.employeeList[i])
-                                this.setState({
-                                    worksToday: joined
-                                })
-                            }
-                        
-                        console.log("no")
-                        
-                    } 
-                    
-                    // else {
-                    //     if (!this.state.worksToday.includes(this.props.employeeList[i])){
-                    //             let joined = this.state.worksToday.concat(this.props.employeeList[i])
-                    //             this.setState({
-                    //                 worksToday: joined
-                    //             })
-                    //         }
-                    // }
             }
         }
-
-        console.log(this.state.worksToday)
     })
     }
 
