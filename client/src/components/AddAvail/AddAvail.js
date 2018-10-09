@@ -71,13 +71,21 @@ const time_convert = num => {
         minutes += "0";
     }
 
-    if (hours > 24) {
+    if (hours >= 24) {
         hours -= 24;
-        return hours + ":" + minutes + " AM";
-    } else if (hours > 12) {
+        if (hours === 0) {
+          return hours + 12 + ":" + minutes + " AM";
+        } else {
+          return hours + ":" + minutes + " AM";
+        }
+      } else if (hours >= 12) {
         hours -= 12;
-        return hours + ":" + minutes + " PM";
-    }
+        if (hours === 0) {
+          return hours + 12 + ":" + minutes + " PM";
+        } else {
+          return hours + ":" + minutes + " PM";
+        }
+      }
 
     return hours + ":" + minutes + " AM";
 };

@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import DeleteBtn from "../../components/DeleteBtn";
 import UpdateAvailSlider from "../../components/UpdateAvailSlider";
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
     root: {
@@ -29,19 +30,19 @@ const styles = theme => ({
 
 let convertDay = (val) => {
     switch (val) {
-        case "1":
+        case 0:
             return "Sun";
-        case "2":
+        case 1:
             return "Mon";
-        case "3":
+        case 2:
             return "Tues";
-        case "4":
+        case 3:
             return "Wed";
-        case "5":
+        case 4:
             return "Thur";
-        case "6":
+        case 5:
             return "Fri";
-        case "7":
+        case 6:
             return "Sat";
         default:
             return val;
@@ -56,15 +57,23 @@ const time_convert = num => {
         minutes += "0";
     }
 
-    if (hours > 24) {
+    if (hours >= 24) {
         hours -= 24;
-        return hours + ":" + minutes + "A";
-    } else if (hours > 12) {
+        if (hours === 0) {
+          return hours + 12 + ":" + minutes + " AM";
+        } else {
+          return hours + ":" + minutes + " AM";
+        }
+      } else if (hours >= 12) {
         hours -= 12;
-        return hours + ":" + minutes + "P";
-    }
+        if (hours === 0) {
+          return hours + 12 + ":" + minutes + " PM";
+        } else {
+          return hours + ":" + minutes + " PM";
+        }
+      }
 
-    return hours + ":" + minutes + "A";
+    return hours + ":" + minutes + " AM";
 };
 
 let key = 0;
@@ -106,7 +115,6 @@ function SimpleExpansionPanel(props) {
         {rows.map(row => {
             return(
             <ExpansionPanel key={row.key}>
-
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography className={classes.heading}>
                         {convertDay(row.dayOfWeek)}   
@@ -120,7 +128,8 @@ function SimpleExpansionPanel(props) {
                 </ExpansionPanelSummary>
 
                 <ExpansionPanelDetails>
-                    <UpdateAvailSlider
+                    <Grid item xs={9} sm={8}>
+                        <UpdateAvailSlider
                         availId={row.postID}
                         dayOfWeek={row.dayOfWeek}
                         unavailStart={parseInt(row.unavailStart, 10)}
@@ -128,17 +137,20 @@ function SimpleExpansionPanel(props) {
                         upAvail={props.upAvail}
                         updateTime={props.updateTime}
                         timeCov={time_convert}/>
-                    <Typography>
-                        <DeleteBtn 
+                    </Grid>
+
+                    <Grid item xs={3} sm={4}>
+                        <Typography>
+                            <DeleteBtn 
                             valOne={row.empID}
                             valTwo={row.postID}
                             func={props.delAvail}
                             color={"primary"}>
                             Delete
                             </DeleteBtn>
-                    </Typography>
+                        </Typography>
+                    </Grid>
                 </ExpansionPanelDetails>
-
             </ExpansionPanel>
             )
         })}

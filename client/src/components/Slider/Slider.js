@@ -49,10 +49,10 @@ class MySlider extends Component {
       minutes += "0";
     }
 
-    if (hours > 24) {
+    if (hours >= 24) {
       hours -= 24;
       return hours + ":" + minutes + " AM";
-    } else if (hours > 12) {
+    } else if (hours >= 12) {
       hours -= 12;
       return hours + ":" + minutes + " PM";
     }
