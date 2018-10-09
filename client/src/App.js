@@ -6,6 +6,7 @@ import Availability from "./pages/Availability";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Locations from "./pages/Locations";
+import Inventory from "./pages/Inventory";
 
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
             <Route exact path="/addemp" component={Employee} />
             <Route exact path="/addavail" component={Availability} />
             <Route exact path="/locations" component={Locations} />
+            <Route exact path="/inventory" component={Inventory} />
           </Switch>
       </div>
     </Router>

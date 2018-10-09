@@ -5,40 +5,11 @@ import "./Landing.css";
 import DatePickers from "../../components/DatePicker/DatePicker";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
-// import ReactDOM from "react-dom";
-// import Tooltip from "rc-tooltip";
-// import Slider from "rc-slider";
-// import moment from "moment";
 import MySlider from "../../components/Slider/Slider";
 import LoginDrop from "../../components/LoginDrop";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-// import DatetimeSlider from "react-datetime-slider";
-// import "react-datetime-slider/css/ReactDatetimeSlider.css";
-
-// const createSliderWithTooltip = Slider.createSliderWithTooltip;
-// const Range = createSliderWithTooltip(Slider.Range);
-// const Handle = Slider.Handle;
-
-// const handle = props => {
-//   const { value, dragging, index, ...restProps } = props;
-//   return (
-//     <Tooltip
-//       prefixCls="rc-slider-tooltip"
-//       overlay={value}
-//       visible={dragging}
-//       placement="top"
-//       key={index}
-//     >
-//       <Handle value={value} {...restProps} />
-//     </Tooltip>
-//   );
-// };
-
-// const wrapperStyle = { width: 400, margin: 50 };
-// let start = moment("08:00", "HH:mm").format("x");
-// let end = moment("20:00", "HH:mm").format("x");
-// console.log(start);
+import Footer from "../../components/Footer";
 
 class Landing extends Component {
   handleChange(event) {
@@ -89,16 +60,7 @@ class Landing extends Component {
       <React.Fragment>
         <Nav>Bar Par </Nav>
         <Login />
-
-        <LoginDrop
-          LogInEmployee={this.LogInEmployee}
-          employeeList={this.props.employeeList}
-          Employee={this.props.Employee._id}
-        />
-
-        <DatePickers onChange={event => this.handleChange(event)} />
-
-        <MySlider />
+        <Footer />
       </React.Fragment>
     );
   }
