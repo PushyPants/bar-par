@@ -102,24 +102,18 @@ class ShiftCard extends Component {
         }
 
     editShift = (shiftId, date, dayOfWeek, shiftStart, shiftEnd, Employee)=>{
-        (Employee === 'default')?
-            this.props.editShift({
-                shiftId,
-                date,
-                dayOfWeek,
-                shiftStart,
-                shiftEnd,
-                Employee: null,
-            })
-            :
-            this.props.editShift({
-                shiftId,
-                date,
-                dayOfWeek,
-                shiftStart,
-                shiftEnd,
-                Employee,
-            });
+
+        const result = this.props.employeeList.find(emp => emp._id === Employee);
+        
+        this.props.editShift({
+            shiftId,
+            date,
+            dayOfWeek,
+            shiftStart,
+            shiftEnd,
+            Employee: this.checkValidShift(result),
+        })
+
         this.compareShift()
     }
 
@@ -128,6 +122,26 @@ class ShiftCard extends Component {
     }
     endAvail = (a, b) => {
         return this.props.employeeList[a].avail[b].availEnd
+    }
+
+    checkValidShift = (Employee) => {
+        // console.log(Employee)
+        for (let i = 0; i < Employee.avail.length; i++) {
+            if (this.props.dayOfWeek === Employee.avail[i].dayOfWeek) {
+
+                if ((this.state.shiftStart > Employee.avail[i].availEnd) ||
+                    (this.state.shiftStart < Employee.avail[i].availStart) ||
+                    (this.state.shiftEnd > Employee.avail[i].availEnd)
+                ){
+                    return null
+                }
+
+                else {
+                    return Employee._id
+                }
+            }
+        }
+
     }
 
     compareShift = () => {
@@ -144,15 +158,14 @@ class ShiftCard extends Component {
                         if ((this.state.shiftStart > this.endAvail(i, j)) ||
                             (this.state.shiftStart < this.startAvail(i, j)) ||
                             (this.state.shiftEnd > this.endAvail(i, j))
-                        ); 
-
+                        );
+                        
                         else {
                             let newArr = this.state.worksToday;
-
                             if (!newArr.includes(this.props.employeeList[i])){
                                 newArr.push(this.props.employeeList[i])
                                 this.setState({
-                                    worksToday: newArr
+                                    worksToday: newArr,
                                 });
                             }
                         }
