@@ -4,7 +4,7 @@ import EmployeeDrop from "../../../../components/EmployeeDrop";
 import { connect } from 'react-redux';
 import * as actions from '../../../../store/actions';
 import { Redirect } from 'react-router';
-import AddAvailSlider from "../../../../components/AddAvailSilder";
+import AddAvailSlider from "../../../Availability/components/AddAvailSilder";
 import DeleteBtn from "../../../../components/DeleteBtn";
 // import API from "../../utils/API";
 
@@ -150,7 +150,7 @@ class ShiftCard extends Component {
                             (this.state.shiftStart < this.startAvail(i, j)) ||
                             (this.state.shiftEnd > this.endAvail(i, j))
                         ){
-                            console.log("2: " + this.state.employeeList[i].firstName)
+                            // console.log("2: " + this.state.employeeList[i].firstName)
                         }
                         else {
                             let newArr = this.state.worksToday;
