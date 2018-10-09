@@ -9,16 +9,15 @@ module.exports = {
       .catch(err => res.json(err));
   },
 
-  findOneUpdateInventory: function(req, res ) {
+  updateItemAtLocation: function(req, res ) {
     db.Locations.find({ location_id: req.body.location_id})
       .then(dbModel => {
         let updatedPositions = dbModel[0].positions.map((position, i) => {
           if(position.product_id === req.body.product_id){
-            console.log("I am updating a value")
             position.inventories.push({
               inv_date : req.body.inv_date,
               updated_by: req.body.updated_by,
-              quant: req.body.quant
+              quant: (req.body.quant * 1000) //take percentage (decimal pt) and turn to ML
             });
             return position
           }
@@ -28,6 +27,35 @@ module.exports = {
         db.Locations.findOneAndUpdate({ location_id : req.body.location_id}, {$set:  { positions: updatedPositions }}).then(updatedLocation => {
           res.json(updatedLocation);
         });
+      })
+      .catch(err => res.json(err));
+    },
+
+  //looks up a single item by it's product_id and the date of inventory (displays in liters)
+  lookupSingleItem: function(req, res ) {
+    const invArr = [];
+    db.Locations.find({})
+      .then(data => {
+        data.forEach(item => {
+          item.positions.map((position, i) => {
+            if(position.product_id === req.params.id) {
+             position.inventories.map(inv => {
+              if (inv.inv_date === req.body.inv_date) {
+                invArr.push(inv.quant)
+              }
+             })
+            }
+          })
+        })
+        console.log(invArr)
+        const itemTotal = invArr.reduce((x,y) => {
+          x = parseInt(x);
+          y = parseInt(y);
+
+          return x + y
+        }) / 1000; //divide by 1000 to show total in Liters
+        console.log (itemTotal)
+        res.json(itemTotal)
       })
       .catch(err => res.json(err));
     }

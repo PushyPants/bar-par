@@ -12,7 +12,11 @@ router.route("/")
 //   .put(locationsController.update)
 //   .delete(locationsController.delete);
 router.route('/updatelocation')
-  .put(locationsController.findOneUpdateInventory)
+  .put(locationsController.updateItemAtLocation)
 
+
+  //matches with api/itemlookup/<product_id>
+router.route('/itemlookup/:id')
+  .put(locationsController.lookupSingleItem)
 
 module.exports = router;
