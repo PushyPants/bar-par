@@ -1,7 +1,6 @@
 // import 'rc-slider/assets/index.css';
 
 import React, { Component } from "react";
-
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 // import Tooltip from "rc-tooltip";
@@ -28,7 +27,15 @@ const Range = createSliderWithTooltip(Slider.Range);
 //   );
 // };
 const wrapperStyle = { width: 400, margin: 50 };
-
+const marks = {
+  480: '8:00 AM',
+  660: '11:00 AM',
+  840: '2:00 PM',
+  1020: '5:00 PM',
+  1200: '8:00 PM',
+  1380: '11:00 PM',
+  1560: '2:00 AM',
+}
 class MySlider extends Component {
   onSliderChange = max => {
     console.log(max);
@@ -56,13 +63,14 @@ class MySlider extends Component {
     return (
       <div>
         <div style={wrapperStyle}>
-          <p> Range with custom handle</p>
 
           <Range
-            step={15}
+            
+            step={30}
             min={480}
             max={1560}
-            defaultValue={[0, 1000]}
+            marks={marks}
+            defaultValue={[660, 1380]}
             tipFormatter={value => (value ? this.time_convert(value) : "Error")}
             onAfterChange={this.onSliderChange}
           />

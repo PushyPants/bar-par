@@ -12,7 +12,7 @@ var EmployeeSchema = new Schema({
         // required: true,
     },
     isAdmin: {
-        type: String,
+        type: Number,
         // default: false
     },
     email: {

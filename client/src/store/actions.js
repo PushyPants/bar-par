@@ -1,11 +1,19 @@
 import API from '../utils/API';
 export const ALL_EMPLOYEES = 'ALL_EMPLOYEES';
 export const LOGIN_EMPLOYEE = 'LOGIN_EMPLOYEE';
+export const CHANGE_EMPLOYEE = 'CHANGE_EMPLOYEE';
 
 export const LogInEmployee = (id) => {
     return (dispatch) => {
         API.getOneEmployee(id).then(res =>{
             dispatch(sendLoggedInEmployeeToStore(res.data[0]))}
+        ).catch(err => console.log(err.response))
+    }
+}
+export const ChangeEmployee = (id) => {
+    return (dispatch) => {
+        API.getOneEmployee(id).then(res =>{
+            dispatch(changeEmployeeInStore(res.data[0]))}
         ).catch(err => console.log(err.response))
     }
 }
@@ -24,6 +32,14 @@ const sendLoggedInEmployeeToStore = (Employee) => {
         payload: Employee
     }
 }
+
+const changeEmployeeInStore = (LoggedInAs) => {
+    return {
+        type: CHANGE_EMPLOYEE,
+        payload: LoggedInAs
+    }
+}
+
 const sendAllEmployeesToStore = (employeeList) => {
     return {
         type: ALL_EMPLOYEES,
@@ -81,34 +97,4 @@ export const updateAvailability = (availId, dayOfWeek, unavailStart, unavailEnd)
             .catch(err => console.log(err));
     }
 }
-
-// export const deleteSingleBook = (id) => {
-//     return (dispatch) => {
-//         API.deleteBook(id)
-//             .then(res => {
-//                 dispatch(sendDeletedBooksToStore(id))
-//                 dispatch(getBooks())
-//             })
-//             .catch(err => console.log(err));
-//     }
-// }
-
-// const sendDeletedBooksToStore = (id) => {
-//     return {
-//         type: DELETE_BOOK,
-//         payload: id
-//     }
-// }
-
-// export const saveBook = ({ title, author, synopsis }) => {
-    //     return (dispatch) => {
-        //         API.saveBook({
-            //             title,
-            //             author,
-            //             synopsis
-            //         })
-            //             .then(res => dispatch(getBooks()))
-            //             .catch(err => console.log(err));
-            //     }
-            // }
             
