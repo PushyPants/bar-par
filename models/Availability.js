@@ -8,14 +8,14 @@ var AvailableSchema = new Schema({
         default: null
     },
     dayOfWeek: {
+        type: Number,
+        default: null
+    },
+    availStart: {
         type: String,
         default: null
     },
-    unavailStart: {
-        type: String,
-        default: null
-    },
-    unavailEnd: {
+    availEnd: {
         type: String,
         default: null
     },

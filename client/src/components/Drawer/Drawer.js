@@ -1,12 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import { Link } from 'react-router-dom';
+// import * as actions from '../../store/actions';
+// import { Redirect } from 'react-router';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
   list: {
@@ -61,21 +64,21 @@ class SwipeableTemporaryDrawer extends React.Component {
         <List>
           <Link to="/home">Home</Link>
         </List>
-
         <List>
-          <Link to="/addemp">Add Employee</Link>
+          <Link to="/shifts">Shifts</Link>
         </List>
+
+        {(this.props.Employee.isAdmin < 2) ? null : 
+          <List>
+            <Link to="/addemp">Add Employee</Link>
+          </List>
+        }
 
         <List>
           <Link to="/addavail">Add Availability</Link>
         </List>
 
-        <List>Item</List>
         <Divider />
-        <List>Item</List>
-        <List>Item</List>
-        <List>Item</List>
-        <List>Item</List>
       </div>
     );
 
@@ -112,4 +115,12 @@ SwipeableTemporaryDrawer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SwipeableTemporaryDrawer);
+const mapStateToProps = (state) => {
+  return {
+    employeeList: state.reducer.employeeList,
+    Employee: state.reducer.Employee,
+    LoggedInAs: state.reducer.LoggedInAs
+  }
+}
+
+export default connect(mapStateToProps, null)(withStyles(styles)(SwipeableTemporaryDrawer));

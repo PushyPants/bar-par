@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Locations from "./pages/Locations";
 import NoMatch from "./pages/NoMatch";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Shifts from "./pages/Shifts";
+import Inventory from "./pages/Inventory";
 
 const App = () => (
   <Router>
@@ -21,9 +23,11 @@ const App = () => (
         <Route exact path="/addavail" component={Availability} />
         <Route exact path="/locations" component={Locations} />
         <Route component={NoMatch} />
-      </Switch>
-    </div>
-  </Router>
+            <Route exact path="/shifts" component={Shifts} />
+            <Route exact path="/inventory" component={Inventory} />
+          </Switch>
+      </div>
+    </Router>
 );
 
 export default App;

@@ -4,12 +4,16 @@ const initialState = {
     employeeList: [],
     Employee: {
         firstName:"Admin",
+        isAdmin: 3,
         _id:"Admin"
     },
     LoggedInAs: {
         firstName: "Admin",
         _id: "Admin"
-    }
+    },
+    todaysDate: '',
+    workingDate: '',
+    shiftList: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -30,10 +34,30 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 LoggedInAs: action.payload
             }
+        case actions.SET_TODAY_DATE:
+            return {
+                ...state,
+                todaysDate: action.payload,
+                workingDate: action.payload
+            }
+        case actions.CHANGE_WORKING_DAY:
+            return {
+                ...state,
+                workingDate: action.payload
+            }
+        case actions.SHIFT_LIST:
+            return {
+                ...state,
+                shiftList: action.payload
+            }
+        case actions.REMOVE_SHIFT:
+            return {
+                ...state,
+                shiftList: state.shiftList.filter(shift => shift._id !== action.payload)
+            }
         default:
     }
     return state
 }
 
-// Export this reducer
 export default reducer;

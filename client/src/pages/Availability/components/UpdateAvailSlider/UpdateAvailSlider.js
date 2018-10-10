@@ -8,7 +8,13 @@ const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 const wrapperStyle = { width: 400, margin: 5 };
 
-function UpdateAvailSlider({ availId, dayOfWeek, unavailStart, unavailEnd, upAvail, timeCov}) {
+function UpdateAvailSlider({ availId, dayOfWeek, availStart, availEnd, upAvail, timeCov}) {
+    const marks = {
+        480: "8:00A",
+        840: "2:00P",
+        1200: "8:00P",
+        1560: "2:00A"
+      };
 
     const onSliderChange = val => {
         upAvail(availId, dayOfWeek, val[0], val[1])
@@ -18,10 +24,11 @@ function UpdateAvailSlider({ availId, dayOfWeek, unavailStart, unavailEnd, upAva
         <React.Fragment >
             <div style={wrapperStyle}>
                 <Range
-                    step={15}
+                    marks={marks}
+                    step={30}
                     min={480}
                     max={1560}
-                    defaultValue={[unavailStart, unavailEnd]}
+                    defaultValue={[availStart, availEnd]}
                     tipFormatter={value => (value ? timeCov(value) : "Error")}
                     onAfterChange={onSliderChange}
                 />

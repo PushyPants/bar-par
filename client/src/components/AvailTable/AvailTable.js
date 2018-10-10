@@ -57,10 +57,10 @@ const time_convert = num => {
         minutes += "0";
     }
 
-    if (hours > 24) {
+    if (hours >= 24) {
         hours -= 24;
         return hours + ":" + minutes + "A";
-    } else if (hours > 12) {
+    } else if (hours >= 12) {
         hours -= 12;
         return hours + ":" + minutes + "P";
     }
