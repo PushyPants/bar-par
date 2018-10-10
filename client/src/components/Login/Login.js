@@ -19,7 +19,7 @@ const styles = theme => ({
     display: "block"
   },
   dense: {
-    marginTop: 19,
+    marginTop: 5,
   },
   menu: {
     width: 200,

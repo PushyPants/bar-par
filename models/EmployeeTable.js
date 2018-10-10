@@ -26,7 +26,7 @@ var EmployeeSchema = new Schema({
         type: String,
         // required: true,
     },
-    unavail: [{
+    avail: [{
         type: Schema.Types.ObjectId,
         ref: "Availability"
     }],
