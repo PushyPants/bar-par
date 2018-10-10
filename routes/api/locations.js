@@ -3,7 +3,7 @@ const locationsController = require("../../controllers/locationsController");
 
 // Matches with "/api/locations"
 router.route("/")
-  .get(locationsController.find)
+  .get(locationsController.findAll)
   //.post(locationsController.insert);
 
 // Matches with "/api/locations/:id"
