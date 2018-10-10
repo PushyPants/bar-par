@@ -1,37 +1,37 @@
 .container {
-    height: 100vh;
-    width: 100vw;
-    text-align: center;
-    background: #EDEDED url("/assets/imgs/alcoholic-background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: 90%;
-    background-attachment: fixed;
-    position: absolute;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  background: #ededed url("/assets/imgs/alcoholic-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 90%;
+  background-attachment: fixed;
+  position: absolute;
 }
 
 .login-form {
-    background-color: rgba(255, 255, 255, 0.9);
-    width: 368px;
-    height: 666px;
-    margin: 20px auto !important;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 368px;
+  height: 666px;
+  margin: 20px auto !important;
 }
 
 form {
-    width: 60%;
-    margin: auto !important;
-    position: absolute;
-    left: 20%;
+  width: 60%;
+  margin: auto !important;
+  position: absolute;
+  left: 20%;
 }
 
 ul {
-    margin: auto !important;
+  margin: auto !important;
 }
 
 ul li {
-    margin: auto !important;
+  margin: auto !important;
 }
 
-ul li>button {
-    margin: auto !important;
+ul li > button {
+  margin: auto !important;
 }

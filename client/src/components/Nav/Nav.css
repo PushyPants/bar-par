@@ -1,11 +1,11 @@
 nav {
-    position: absolute !important;
-    z-index: 1000 !important;
+  position: absolute !important;
+  z-index: 1000 !important;
 }
 
 .nav-bar {
-    background: #223D4B !important;
+  background: #223d4b !important;
 }
 .nav-tabs {
-    margin: 10px 0;
+  margin: 10px 0;
 }

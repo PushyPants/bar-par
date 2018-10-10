@@ -22,12 +22,12 @@ const App = () => (
         <Route exact path="/addemp" component={Employee} />
         <Route exact path="/addavail" component={Availability} />
         <Route exact path="/locations" component={Locations} />
+        <Route exact path="/shifts" component={Shifts} />
+        <Route exact path="/inventory" component={Inventory} />
         <Route component={NoMatch} />
-            <Route exact path="/shifts" component={Shifts} />
-            <Route exact path="/inventory" component={Inventory} />
-          </Switch>
-      </div>
-    </Router>
+      </Switch>
+    </div>
+  </Router>
 );
 
 export default App;
