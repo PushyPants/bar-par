@@ -6,7 +6,7 @@ module.exports = {
     find: function (req, res) {
         db.EmployeeTable
             .find()
-            .populate('unavail', null, null, { sort: { dayOfWeek: 1 } })
+            .populate('avail', null, null, { sort: { dayOfWeek: 1 } })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.json(err));
     },
@@ -15,7 +15,7 @@ module.exports = {
             .find({
                 _id: req.params.id
             })
-            .populate('unavail', null, null, { sort: { dayOfWeek: 1 } })
+            .populate('avail', null, null, { sort: { dayOfWeek: 1 } })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.json(err));
     },
@@ -34,7 +34,7 @@ module.exports = {
     update: function (req, res) {
         db.EmployeeTable.findOneAndUpdate(
             {_id: req.params.id},
-            { $push: { unavail: req.body.avail } },
+            { $push: { avail: req.body.avail } },
             { new: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.json(err))
@@ -42,7 +42,7 @@ module.exports = {
     updateAvail: function (req, res) {
         db.EmployeeTable.findOneAndUpdate(
             { _id: req.params.id },
-            { $pull: { unavail: req.body.avail } },
+            { $pull: { avail: req.body.avail } },
             { new: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.json(err))

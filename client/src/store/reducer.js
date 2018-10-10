@@ -1,16 +1,22 @@
-// Import any actions
 import * as actions from './actions';
 
-// Establish an initial state object
 const initialState = {
     employeeList: [],
-    Employee: {firstName:"Admin"}
+    Employee: {
+        firstName:"Admin",
+        isAdmin: 3,
+        _id:"Admin"
+    },
+    LoggedInAs: {
+        firstName: "Admin",
+        _id: "Admin"
+    },
+    todaysDate: '',
+    workingDate: '',
+    shiftList: []
 }
 
-// Create a reducer function which will accept state and action as arguments.
-// Remember you may initialize a default value within your arguments field
 const reducer = (state = initialState, action) => {
-    // Within your reducer method, write a switch case depending on which action is invoked. Return an updated state value.
     switch (action.type) {
         case actions.ALL_EMPLOYEES:
             return {
@@ -20,12 +26,38 @@ const reducer = (state = initialState, action) => {
         case actions.LOGIN_EMPLOYEE:
             return {
                 ...state,
-                Employee: action.payload
+                Employee: action.payload,
+                LoggedInAs: action.payload
+            }
+        case actions.CHANGE_EMPLOYEE:
+            return {
+                ...state,
+                LoggedInAs: action.payload
+            }
+        case actions.SET_TODAY_DATE:
+            return {
+                ...state,
+                todaysDate: action.payload,
+                workingDate: action.payload
+            }
+        case actions.CHANGE_WORKING_DAY:
+            return {
+                ...state,
+                workingDate: action.payload
+            }
+        case actions.SHIFT_LIST:
+            return {
+                ...state,
+                shiftList: action.payload
+            }
+        case actions.REMOVE_SHIFT:
+            return {
+                ...state,
+                shiftList: state.shiftList.filter(shift => shift._id !== action.payload)
             }
         default:
     }
     return state
 }
 
-// Export this reducer
 export default reducer;

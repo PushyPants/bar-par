@@ -2,22 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import moment from "moment";
 
 const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    marginTop: theme.spacing.unit * 10,
+    width: "80%"
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
+    marginLeft: theme.spacing.unit * 1,
+    marginRight: theme.spacing.unit * 1,
+    width: 400,
   },
 });
-
-let currentDate = moment().format('YYYY-MM-DD')
-console.log(currentDate)
 
 function DatePickers(props) {
   const { classes } = props;
@@ -28,11 +26,12 @@ function DatePickers(props) {
         id="date"
         label=""
         type="date"
-        defaultValue={currentDate}
+        value={props.workingDate}
         className={classes.textField}
         InputLabelProps={{
           shrink: true,
         }}
+        onChange={props.changeWorkingDate}
       />
     </form>
   );
