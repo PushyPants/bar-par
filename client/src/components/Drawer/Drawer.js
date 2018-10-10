@@ -62,7 +62,7 @@ class SwipeableTemporaryDrawer extends React.Component {
         </List>
 
         <List>
-          <Link to="/profile">Profile</Link>
+          <Link to="/dashboard">Profile</Link>
         </List>
         <List>
           <Link to="/shifts">Shifts</Link>

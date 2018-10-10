@@ -16,9 +16,9 @@ const App = () => (
     <div>
       <CssBaseline />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={SignIn} />
         <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/login" component={SignIn} />
+        <Route exact path="/home" component={Home} />
         <Route exact path="/addemp" component={Employee} />
         <Route exact path="/addavail" component={Availability} />
         <Route exact path="/locations" component={Locations} />
