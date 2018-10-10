@@ -8,20 +8,24 @@ var ShiftsSchema = new Schema({
         default: null
     },
     dayOfWeek: {
-        type: String,
+        type: Number,
         default: null
     },
     shiftStart: {
-        type: String,
-        default: null
+        type: Number,
+        default: 0
     },
     shiftEnd: {
-        type: String,
-        default: null
+        type: Number,
+        default: 0
     },
     isAvail: {
         type: Boolean,
         default: true
+    },
+    Employee: {
+        type: Schema.Types.ObjectId,
+        ref: "EmployeeTable"
     }
 });
 

@@ -1,55 +1,58 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
-import API from "../../utils/API"
-import {FormBtn, Input, } from "../../components/Form"
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
+import API from "../../utils/API";
 
 class Locations extends Component {
-    state = {
-        Locations: []
-    };
+  state = {
+    Locations: []
+  };
 
-    componentDidMount = () => {
-        this.getLocations()
-    };
+  componentDidMount = () => {
+    this.getLocations();
+  };
 
-    getLocations = () => {
-        API.getLocations().then(res => {
-            console.log(res.data);
-            this.setState({ Locations: res.data });
-        });
-        // console.log("[getLocations] results after await: ",results);
+  getLocations = () => {
+    API.getLocations().then(res => {
+      console.log(res.data);
+      this.setState({ Locations: res.data });
+    });
+    // console.log("[getLocations] results after await: ",results);
+  };
 
-    }
-    handleSubmit = () =>{
-        console.log("I'm clicked")
-    }
+  render() {
+    return (
+      <React.Fragment>
+        <Nav>Locations</Nav>
 
-    render() {
-        return (
-        <React.Fragment>
-            <Nav>Locations</Nav>
-
-                {this.state.Locations.length > 0 ? this.state.Locations[0].positions.map((location, i) =>
-                <div id = {location.product_id}>{location.product_id}  <FormBtn onClick ={this.handleSubmit}/> </div>  ) : null}
-        </React.Fragment>
-        );
-    }
+        <List>
+          {this.state.Locations.length > 0
+            ? this.state.Locations[0].locations.map((location, i) => (
+                <ListItem>{location.name}</ListItem>
+              ))
+            : null}
+        </List>
+      </React.Fragment>
+    );
+  }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     employeeList: state.reducer.employeeList
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    getEmployeeList: () => dispatch(actions.getEmployeeList()),
-  }
-}
+    getEmployeeList: () => dispatch(actions.getEmployeeList())
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Locations);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Locations);

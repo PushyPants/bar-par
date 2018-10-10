@@ -1,0 +1,29 @@
+.noMatch {
+  height: 100vh;
+  width: 100vw;
+  background: url("/assets/imgs/pinkpanther.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 63%;
+  background-attachment: fixed;
+  position: absolute;
+}
+
+#page-not-found {
+  height: 100vh;
+  width: 100vw;
+  margin: auto !important;
+  background-color: #ffffffd0;
+  text-align: center;
+  padding-top: 40%;
+  color: #404040;
+}
+
+h1 {
+  line-height: 18px;
+}
+
+p {
+  padding-top: 40%;
+  font-weight: 500;
+}
