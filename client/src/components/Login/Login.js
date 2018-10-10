@@ -1,17 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Input from "@material-ui/core/Input";
+import ListItem from "@material-ui/core/ListItem";
+import List from "@material-ui/core/List";
+import Button from "@material-ui/core/Button";
 import "./Login.css";
 import axios from 'axios';
 
 const styles = theme => ({
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap"
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -20,11 +21,11 @@ const styles = theme => ({
     display: "block"
   },
   dense: {
-    marginTop: 5,
+    marginTop: 5
   },
   menu: {
-    width: 200,
-  },
+    width: 400
+  }
 });
 
 class Login extends React.Component {
@@ -36,7 +37,7 @@ class Login extends React.Component {
 
   handleChange = name => event => {
     this.setState({
-      [name]: event.target.value,
+      [name]: event.target.value
     });
   };
 
@@ -90,7 +91,7 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Login);
