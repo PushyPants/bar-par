@@ -2,12 +2,7 @@ const db = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
-<<<<<<< HEAD
-  //finds everything location in bar with respective products and quanitities
-  find: function(req, res) {
-=======
   findAll: function(req, res) {
->>>>>>> 63fcba8e0e43320fafcf35e8778b03eb23ddfc42
     db.Locations
       .find()
       .then(dbModel => res.json(dbModel))

@@ -47,6 +47,12 @@ export default {
     return axios.delete(`/api/shift/${id}`)
   },
   getLocations: function(){
-    return axios.get('api/locations')
+    return axios.get('/api/locations')
+  },
+  updateLocation: function(){
+    return axios.put('/api/updatelocation')
+  },
+  itemLookup: function(id){
+    return axios.put(`/api/itemlookup/${id}`)
   }
 };

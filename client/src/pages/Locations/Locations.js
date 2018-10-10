@@ -5,6 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import API from "../../utils/API"
+import {FormBtn, Input, } from "../../components/Form"
 
 class Locations extends Component {
     state = {
@@ -23,16 +24,17 @@ class Locations extends Component {
         // console.log("[getLocations] results after await: ",results);
 
     }
+    handleSubmit = () =>{
+        console.log("I'm clicked")
+    }
 
     render() {
         return (
         <React.Fragment>
             <Nav>Locations</Nav>
 
-            <List>
-                {this.state.Locations.length > 0 ? this.state.Locations[0].locations.map((location, i) =>
-                    <ListItem>{location.name}</ListItem> ) : null}
-            </List>
+                {this.state.Locations.length > 0 ? this.state.Locations[0].positions.map((location, i) =>
+                <div id = {location.product_id}>{location.product_id}  <FormBtn onClick ={this.handleSubmit}/> </div>  ) : null}
         </React.Fragment>
         );
     }
