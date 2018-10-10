@@ -5,6 +5,10 @@ import ListItem from '@material-ui/core/ListItem';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import API from "../../utils/API"
+import Button from '@material-ui/core/Button';
+import Footer from "../../components/Footer";
+import { Link } from 'react-router-dom';
+import "./Locations.css";
 
 class Locations extends Component {
     state = {
@@ -28,11 +32,20 @@ class Locations extends Component {
         return (
         <React.Fragment>
             <Nav>Locations</Nav>
-
-            <List>
-                {this.state.Locations.length > 0 ? this.state.Locations[0].locations.map((location, i) =>
-                    <ListItem>{location.name}</ListItem> ) : null}
-            </List>
+            
+            <div className="locations-list">
+                <List>
+                    <ListItem><Button><Link to="/inventory">Location 1</Link></Button></ListItem>
+                    <ListItem><Button><Link to="/inventory">Location 2</Link></Button></ListItem>
+                    <ListItem><Button><Link to="/inventory">Location 3</Link></Button></ListItem>
+                    <ListItem><Button><Link to="/inventory">Location 4</Link></Button></ListItem>
+                    <ListItem><Button><Link to="/inventory">Location 5</Link></Button></ListItem>
+                    <ListItem><Button><Link to="/inventory">Location 6</Link></Button></ListItem>
+                    {/* {this.state.Locations.length > 0 ? this.state.Locations[0].locations.map((location, i) =>
+                        <ListItem>{location.name}</ListItem> )} */}
+                </List>
+            </div>
+            <Footer />
         </React.Fragment>
         );
     }

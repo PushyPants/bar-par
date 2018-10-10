@@ -78,6 +78,9 @@ class SwipeableTemporaryDrawer extends React.Component {
         <List>
           <Link to="/addavail">Add Availability</Link>
         </List>
+        <List>
+          <Link to="/locations">Inventory</Link>
+        </List>
 
         <Divider />
       </div>

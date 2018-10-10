@@ -1,9 +1,15 @@
 .footer {
-    padding-left: 30px;
-    padding-right: 30px;
-    height: 300px;
-    background: grey;
-    margin-bottom: 0px;
+    padding-left: 3em;
+    padding-right: 3em;
+    height: 230px;
+    background: rgb(204, 207, 218);
+    margin-bottom: 0px; 
+    line-height: .5px;
+    font-size: 12px;
+}
+
+.footer hr {
+    margin-top: 30px; 
 }
 
 .information {
@@ -12,6 +18,10 @@
 
 .customer-service {
     float: right;
+}
+
+.customer-service li {
+    text-align: right;
 }
 
 .copyright {

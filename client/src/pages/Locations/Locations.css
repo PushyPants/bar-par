@@ -1,0 +1,23 @@
+.locations-list {
+    margin-top: 100px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+.locations-list Button {
+    text-align: center !important;
+    background: cadetblue !important;
+    margin: auto;
+    width: 60%;
+}
+
+.locations-list Button:hover {
+    background: rgb(45, 117, 119) !important;
+}
+
+.locations-list a {
+    text-decoration: none;
+    color: aliceblue;
+}
