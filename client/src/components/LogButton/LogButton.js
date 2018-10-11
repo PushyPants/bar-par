@@ -2,6 +2,7 @@ import React from "react";
 import IconButton from "@material-ui/core/Icon";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import "./LogButton.css";
 
 class LogButton extends React.Component {
   state = {
@@ -20,7 +21,7 @@ class LogButton extends React.Component {
     const { anchorEl } = this.state;
 
     return (
-      <div>
+      <div className="float-right">
         <IconButton
           aria-owns={anchorEl ? "simple-menu" : null}
           aria-haspopup="true"

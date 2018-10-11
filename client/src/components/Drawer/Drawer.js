@@ -1,11 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import IconButton from "@material-ui/core/IconButton";
+import {SwipeableDrawer, IconButton, List, Divider} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 import { Link } from "react-router-dom";
 // import * as actions from '../../store/actions';
 // import { Redirect } from 'react-router';
@@ -58,7 +55,7 @@ class SwipeableTemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          <Link to="/">Home</Link>
+          <Link to="/home">Home</Link>
         </List>
 
         <List>

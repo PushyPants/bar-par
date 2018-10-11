@@ -9,3 +9,17 @@ nav {
 .nav-tabs {
   margin: 10px 0;
 }
+
+.nav-bar img {
+  margin-right: 12px !important;
+}
+
+.title-bar {
+  height: 92px;
+  color: #fff;
+  background-color: #888888 !important;
+}
+
+.title-bar h2 {
+  padding: 60px 24px;
+}
