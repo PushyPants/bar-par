@@ -7,7 +7,8 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import Button from "@material-ui/core/Button";
 import "./Login.css";
-import axios from 'axios';
+import {Redirect} from 'react-router-dom';
+import axios from "axios";
 
 const styles = theme => ({
   container: {
@@ -29,64 +30,106 @@ const styles = theme => ({
 });
 
 class Login extends React.Component {
-  state = {
-    email: '',
-    password: ''
-  };
+  constructor() {
+    super()
+    this.state = {
+        username: '',
+        password: '',
+        redirectTo: null
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
 
+}
 
-  handleChange = name => event => {
+  handleChange = event => {
     this.setState({
-      [name]: event.target.value
+      [event.target.name]: event.target.value
     });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
-    console.log('submitted creditials');
+    console.log("signin");
+    console.log(this.state.username);
 
     axios
-    .post('/api/login', {
-      username: this.state.email,
-      passowrd: this.state.password
-    })
-    .then(res => {
-      console.log("login:")
-      console.log(res)
-      if (res.status === 200){
-        this.props.update
-      }
-    })
-  }
+      .post("/api/employee/login", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(response => {
+        console.log("login response: ");
+        console.log(response);
+        if (response.status === 200) {
+          // update App.js state
+          this.props.updateUser({
+            loggedIn: true,
+            email: response.data.email
+          });
+          // update the state to redirect to home
+          this.setState({
+            redirectTo: "/dashboard"
+          });
+        }
+      })
+      .catch(error => {
+        console.log("login error: ");
+        console.log(error);
+      });
+  };
 
   render() {
-    const { classes } = this.props;
+    if (this.state.redirectTo) {
+      return <Redirect to={{ pathname: this.state.redirectTo }} />;
+    } else {
+      const { classes } = this.props;
 
-    return (
-      <form className={classes.container} noValidate autoComplete="off">
-      <List>
-        <ListItem className="input-field"><TextField
-          id="standard-name"
-          label="email"
-          className={classes.textField}
-          value={this.state.name}
-          onChange={this.handleChange('email')}
-          margin="normal"
-        /></ListItem>
-        <ListItem className="input-field"><TextField
-          id="standard-password-input"
-          label="password"
-          className={classes.textField}
-          value={this.state.name}
-          onChange={this.handleChange('password')}
-          margin="normal"
-        /></ListItem>
-        <ListItem>
-          <Button variant="contained" color="primary">Login</Button>
-        </ListItem>
-        </List>
-      </form>
-    );
+      return (
+        <div className="login-form">
+          <Paper className={classes.paper}>
+            <form className={classes.container} noValidate autoComplete="off">
+              <img src="assets/imgs/logo2.png" alt="logo" height="304px" />
+              <List>
+                <ListItem className="input-field">
+                  <Input
+                    id="standard-name"
+                    label="Email"
+                    name="email"
+                    className={classes.textField}
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    margin="normal"
+                    placeholder="Email"
+                  />
+                </ListItem>
+                <ListItem className="input-field">
+                  <Input
+                    id="standard-name"
+                    label="Password"
+                    name="password"
+                    className={classes.textField}
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                    margin="normal"
+                    placeholder="Email"
+                  />
+                </ListItem>
+                <ListItem>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleSubmit}
+                  >
+                    Sign In
+                  </Button>
+                </ListItem>
+              </List>
+            </form>
+          </Paper>
+        </div>
+      );
+    }
   }
 }
 

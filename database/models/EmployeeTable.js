@@ -2,7 +2,9 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-const bcrypt = require("bcrypt-nodejs");
+const bcrypt = require("bcryptjs");
+
+mongoose.promise = Promise;
 
 var EmployeeSchema = new Schema({
   firstName: {
@@ -44,33 +46,28 @@ var EmployeeSchema = new Schema({
   ]
 });
 
+EmployeeSchema.methods = {
+  comparePassword: function (inputPassword) {
+    return bcrypt.compareSync(inputPassword, this.password)
+  },
+  hashPassword: plainTextPassword => {
+    return bcrypt.hashSync(plainTextPassword, 10)
+  }
+}
+
 //password encryption for user storage
-EmployeeSchema.pre("save", function(next) {
-  const user = this;
+EmployeeSchema.pre('save', function (next) {
+	if (!this.password) {
+		console.log('models/user.js =======NO PASSWORD PROVIDED=======')
+		next()
+	} else {
+		console.log('models/user.js hashPassword in pre save');
+		
+		this.password = this.hashPassword(this.password)
+		next()
+	}
+})
 
-  bcrypt.genSalt(10, function(err, salt) {
-    if (err) {
-      return next(err);
-    }
-
-    bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) {
-        return next(err);
-      }
-
-      user.password = hash;
-
-      next();
-    });
-  });
-});
-
-EmployeeSchema.methods.comparePassword = function(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) return cb(err);
-    cb(null, isMatch);
-  });
-};
 
 var EmployeeTable = mongoose.model("EmployeeTable", EmployeeSchema);
 

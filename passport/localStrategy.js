@@ -1,12 +1,15 @@
-const User = require('../models/EmployeeTable')
+const EmployeeTable = require('../database/models/EmployeeTable')
 const LocalStrategy = require('passport-local').Strategy
 
 const strategy = new LocalStrategy(
 	{
-		usernameField: 'username' // not necessary, DEFAULT
+		usernameField: 'email' // not necessary, DEFAULT
 	},
-	function(username, password, done) {
-		User.findOne({ username: username }, (err, user) => {
+	function(email, password, done) {
+	
+		console.log("Reached the strat")
+		EmployeeTable.findOne({ email: email }, (err, user) => {
+			console.log(user);
 			if (err) {
 				return done(err)
 			}
@@ -17,6 +20,7 @@ const strategy = new LocalStrategy(
 				return done(null, false, { message: 'Incorrect password' })
 			}
 			return done(null, user)
+			
 		})
 	}
 )

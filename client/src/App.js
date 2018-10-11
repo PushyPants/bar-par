@@ -31,10 +31,11 @@ class App extends Component {
 
   updateUser(userObject) {
     this.setState(userObject);
+    console.log(this.state)
   }
 
   getUser() {
-    axios.get("/user/").then(response => {
+    axios.get("/api/employee/login").then(response => {
       console.log("Get user response: ");
       console.log(response.data);
       if (response.data.user) {
@@ -42,7 +43,7 @@ class App extends Component {
 
         this.setState({
           loggedIn: true,
-          username: response.data.user.username
+          email: response.data.user.email
         });
       } else {
         console.log("Get user: no user");
@@ -60,7 +61,8 @@ class App extends Component {
     <div>
       <CssBaseline />
       <Switch>
-        <Route exact path="/" component={SignIn} />
+        <Route exact path="/" render={()=> 
+        <SignIn updateUser={this.updateUser}/>} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/addemp" component={Employee} />
