@@ -14,7 +14,7 @@ import Grid from "@material-ui/core/Grid";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
 import DeleteBtn from "../DeleteBtn";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 const styles = theme => ({
   root: {
@@ -38,16 +38,14 @@ function createData(name, phone, email, empId) {
   return { id, name, phone, email, empId };
 }
 
-const delEmp = (empId) => {
-  console.log(empId)
-  API.deleteEmployee(empId)
-    .then(res => res.json(res.data))
-    .catch(err => console.log(err.response))
-}
 
 function EmpTable(props) {
   const { classes } = props;
   const rows = [];
+  
+  const delEmp = (empId) => {
+    props.deleteEmployee(empId)
+  }
 
   props.empArr.map(emp =>
     rows.push(
@@ -79,7 +77,7 @@ function EmpTable(props) {
           //   <TableCell className={classes.root} numeric>
           //     {row.email}
           //   </TableCell>
-          <ExpansionPanel style={{ width: "100%" }}>
+          <ExpansionPanel style={{ width: "100%" }} key={row.id}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               {row.name}
             </ExpansionPanelSummary>

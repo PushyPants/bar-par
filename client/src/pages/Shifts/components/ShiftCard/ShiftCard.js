@@ -6,7 +6,6 @@ import * as actions from '../../../../store/actions';
 import { Redirect } from 'react-router';
 import AddAvailSlider from "../../../Availability/components/AddAvailSilder";
 import DeleteBtn from "../../../../components/DeleteBtn";
-// import API from "../../utils/API";
 
 class ShiftCard extends Component {
 
@@ -112,7 +111,7 @@ class ShiftCard extends Component {
     editShift = (shiftId, date, dayOfWeek, shiftStart, shiftEnd, Employee)=>{
 
         const result = this.props.employeeList.find(emp => emp._id === Employee);
-        
+
         this.props.editShift({
             shiftId,
             date,
@@ -152,7 +151,6 @@ class ShiftCard extends Component {
                 }
             }
         }
-
     }
 
     compareShift = () => {
