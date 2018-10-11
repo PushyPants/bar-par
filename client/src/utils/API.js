@@ -54,5 +54,8 @@ export default {
   },
   itemLookup: function(id){
     return axios.put(`/api/itemlookup/${id}`)
-  }
+  },
+  getProducts: function(){
+    return axios.get(`/api/products`);
+  } 
 };

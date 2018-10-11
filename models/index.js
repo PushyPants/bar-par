@@ -2,5 +2,6 @@ module.exports = {
     Availability: require("./Availability"),
     EmployeeTable: require("./EmployeeTable"),
     Shifts: require("./Shifts"),
-    Locations: require('./Locations')
+    Locations: require('./Locations'),
+    Products: require('./Products')
 };
