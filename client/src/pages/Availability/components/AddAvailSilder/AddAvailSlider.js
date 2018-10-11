@@ -53,7 +53,7 @@ function AddAvailSlider(props) {
           min={480}
           max={1560}
           disabled={props.isDisabled}
-          defaultValue={[props.start, props.end]}
+          defaultValue={typeCheck(props.start, props.end)}
           tipFormatter={value => (value ? time_convert(value) : "Error")}
           onAfterChange={props.update}
         />
