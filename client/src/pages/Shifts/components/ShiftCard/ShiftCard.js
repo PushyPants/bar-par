@@ -43,13 +43,21 @@ class ShiftCard extends Component {
             minutes += "0";
         }
 
-        if (hours > 24) {
+        if (hours >= 24) {
             hours -= 24;
-            return hours + ":" + minutes + " AM";
-        } else if (hours > 12) {
+            if (hours === 0) {
+              return hours + 12 + ":" + minutes + " AM";
+            } else {
+              return hours + ":" + minutes + " AM";
+            }
+          } else if (hours >= 12) {
             hours -= 12;
-            return hours + ":" + minutes + " PM";
-        }
+            if (hours === 0) {
+              return hours + 12 + ":" + minutes + " PM";
+            } else {
+              return hours + ":" + minutes + " PM";
+            }
+          }
 
         return hours + ":" + minutes + " AM";
     };
@@ -124,19 +132,22 @@ class ShiftCard extends Component {
     }
 
     checkValidShift = (Employee) => {
-        for (let i = 0; i < Employee.avail.length; i++) {
+        // console.log(Employee)
+        if (Employee) {
 
-            if (this.props.dayOfWeek === Employee.avail[i].dayOfWeek) {
-
-                if ((this.state.shiftStart > Employee.avail[i].availEnd) ||
+            for (let i = 0; i < Employee.avail.length; i++) {
+                if (this.props.dayOfWeek === Employee.avail[i].dayOfWeek) {
+                    
+                    if ((this.state.shiftStart > Employee.avail[i].availEnd) ||
                     (this.state.shiftStart < Employee.avail[i].availStart) ||
                     (this.state.shiftEnd > Employee.avail[i].availEnd)
-                ){
-                    return null
-                }
-
-                else {
-                    return Employee._id
+                    ){
+                        return null
+                    }
+                    
+                    else {
+                        return Employee._id
+                    }
                 }
             }
         }

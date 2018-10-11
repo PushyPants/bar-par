@@ -1,25 +1,37 @@
 .footer {
-    padding-left: 30px;
-    padding-right: 30px;
-    height: 300px;
-    background: grey;
-    margin-bottom: 0px;
+    padding-left: 3em;
+    padding-right: 3em;
+    height: 250px;
+    background: rgb(204, 207, 218);
+    margin-bottom: 0px; 
+    line-height: .5px;
+    font-size: 12px;
+}
+
+.footer hr {
+    margin-top: 30px; 
 }
 
 .information {
-    float: left;
+  float: left;
 }
 
 .customer-service {
-    float: right;
+  float: right;
 }
 
-.copyright {
-    width: 100%;
+.customer-service li {
+    text-align: right;
+}
+
+.copy-right {
+  width: 100%;
+  padding-top: 30px;
+  text-align: center;
 }
 
 .clearfix {
-    content: "";
-    clear: both;
-    display: table;
+  content: "";
+  clear: both;
+  display: table;
 }

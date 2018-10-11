@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import API from "../../utils/API"
+import Footer from "../../components/Footer";
+import LocationItem from "../../components/LocationItem";
+import "./Locations.css";
 
 class Locations extends Component {
     state = {
-        Locations: []
+        Locations: [],
+        name: "test"
     };
 
     componentDidMount = () => {
@@ -28,11 +30,18 @@ class Locations extends Component {
         return (
         <React.Fragment>
             <Nav>Locations</Nav>
+            
+            <div className="locations-list">
+                <LocationItem name={"Location passed name"}>This is the children</LocationItem>
+                <LocationItem />
+                <LocationItem />
+                <LocationItem />
+                <LocationItem />
+                <LocationItem />
+                <LocationItem />
+            </div>
 
-            <List>
-                {this.state.Locations.length > 0 ? this.state.Locations[0].locations.map((location, i) =>
-                    <ListItem>{location.name}</ListItem> ) : null}
-            </List>
+            <Footer />
         </React.Fragment>
         );
     }

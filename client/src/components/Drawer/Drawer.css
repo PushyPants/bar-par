@@ -1,3 +1,7 @@
 SwipabaleDrawer {
-    z-index: -1 !important;
+  z-index: -1 !important;
+}
+
+.list ul {
+  margin-right: 10px !important;
 }
