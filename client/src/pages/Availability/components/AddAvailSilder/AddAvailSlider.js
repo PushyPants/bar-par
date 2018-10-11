@@ -11,6 +11,14 @@ const wrapperStyle = {
   marginTop: 15
 };
 
+const typeCheck = (start, end) => {
+  if (typeof start === "string") {
+    return [480, 1560]
+  } else {
+    return [start, end]
+  }
+}
+
 function AddAvailSlider(props) {
   const marks = {
     480: "8:00A",
