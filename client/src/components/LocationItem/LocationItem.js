@@ -10,6 +10,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const styles = theme => ({
   root: {
     width: '100%',
+    flex: 1,
+    paddingBottom: 3
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -20,6 +22,9 @@ const styles = theme => ({
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+  colored: {
+    background: "aliceblue"
+  }
 });
 
 class ControlledExpansionPanels extends React.Component {
@@ -39,14 +44,13 @@ class ControlledExpansionPanels extends React.Component {
 
     return (
       <div className={classes.root}>
-        <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
+        <ExpansionPanel className={classes.colored} expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>Location 1</Typography>
+            <Typography className={classes.heading}>{this.props.name}</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography>
-              Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget
-              maximus est, id dignissim quam.
+              {this.props.children}
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>

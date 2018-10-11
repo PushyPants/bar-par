@@ -1,8 +1,7 @@
 .footer {
-<<<<<<< HEAD
     padding-left: 3em;
     padding-right: 3em;
-    height: 230px;
+    height: 250px;
     background: rgb(204, 207, 218);
     margin-bottom: 0px; 
     line-height: .5px;
@@ -11,13 +10,6 @@
 
 .footer hr {
     margin-top: 30px; 
-=======
-  padding-left: 30px;
-  padding-right: 30px;
-  height: 300px;
-  background: grey;
-  margin-bottom: 0px;
->>>>>>> dd9efa5195b617e95df7613b55f04a506ede2f16
 }
 
 .information {
@@ -32,8 +24,10 @@
     text-align: right;
 }
 
-.copyright {
+.copy-right {
   width: 100%;
+  padding-top: 30px;
+  text-align: center;
 }
 
 .clearfix {
