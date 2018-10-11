@@ -7,6 +7,8 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import Button from "@material-ui/core/Button";
 import "./Login.css";
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 
 const styles = theme => ({
   container: {
@@ -40,6 +42,10 @@ class Login extends React.Component {
     });
   };
 
+  LogInEmployee = event => {
+    this.props.LogInEmployee(event.target.value);
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -56,7 +62,7 @@ class Login extends React.Component {
                   className={classes.textField}
                   value={this.state.name}
                   onChange={this.handleChange("username")}
-                  margin="normal"
+                  // margin="normal"
                   placeholder="User Name"
                 />
               </ListItem>
@@ -67,7 +73,7 @@ class Login extends React.Component {
                   className={classes.textField}
                   type="password"
                   autoComplete="current-password"
-                  margin="normal"
+                  // margin="normal"
                   placeholder="Password"
                 />
               </ListItem>
@@ -88,4 +94,23 @@ Login.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Login);
+const mapStateToProps = state => {
+  return {
+    employeeList: state.reducer.employeeList,
+    Employee: state.reducer.Employee,
+    todaysDate: state.reducer.todaysDate,
+    workingDate: state.reducer.workingDate,
+
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    LogInEmployee: id => dispatch(actions.LogInEmployee(id)),
+    getEmployeeList: () => dispatch(actions.getEmployeeList()),
+    setTodaysDate: (data) => dispatch(actions.setTodaysDate(data)),
+    changeWorkingDate: (data) => dispatch(actions.changeWorkingDate(data)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

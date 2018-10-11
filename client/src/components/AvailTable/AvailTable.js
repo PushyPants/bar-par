@@ -53,19 +53,23 @@ const time_convert = num => {
   let hours = Math.floor(num / 60);
   let minutes = num % 60;
 
-  if (minutes === 0) {
-    minutes += "0";
-  }
+    if (hours >= 24) {
+        hours -= 24;
+        if (hours === 0) {
+          return (`${hours + 12}:${minutes} AM`)
+        } else {
+          return (`${hours}:${minutes} AM`)
+        }
+      } else if (hours >= 12) {
+        hours -= 12;
+        if (hours === 0) {
+          return (`${hours + 12}:${minutes} PM`)
+        } else {
+          return (`${hours}:${minutes} PM`)
+        }
+      }
 
-  if (hours >= 24) {
-    hours -= 24;
-    return hours + ":" + minutes + "A";
-  } else if (hours >= 12) {
-    hours -= 12;
-    return hours + ":" + minutes + "P";
-  }
-
-  return hours + ":" + minutes + "A";
+    return (`${hours}:${minutes} AM`)
 };
 
 function AvailTable(props) {

@@ -46,6 +46,14 @@ export const deleteShift = (id) => {
     }
 }
 
+export const deleteEmployee = (id) => {
+    return (dispatch) => {
+        API.deleteEmployee(id).then(res => {
+            dispatch(getEmployeeList())
+        }).catch(err => console.log(err))
+    }
+}
+
 export const LogInEmployee = (id) => {
     return (dispatch) => {
         API.getOneEmployee(id).then(res =>{
