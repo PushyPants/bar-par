@@ -6,6 +6,7 @@ nav {
 .nav-bar {
   background: #223d4b !important;
 }
+
 .nav-tabs {
   margin: 10px 0;
 }
@@ -15,11 +16,11 @@ nav {
 }
 
 .title-bar {
-  height: 92px;
+  height: 98px;
   color: #fff;
   background-color: #888888 !important;
 }
 
 .title-bar h2 {
-  padding: 60px 24px;
+  padding: 68px 24px;
 }
