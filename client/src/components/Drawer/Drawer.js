@@ -22,7 +22,7 @@ const styles = theme => ({
 		alignitem: "center",
 		justify: "center",
 		fontSize: 14,
-		fontWeight: 500
+		fontWeight: 500,
 	},
 	list: {
 		width: 250,
@@ -37,6 +37,7 @@ const styles = theme => ({
 		overflow: "hidden",
 		position: "relative",
 		display: "flex",
+		backgroundColor: "#888888"
 	},
 	drawerPaper: {
 		position: "relative",
@@ -103,43 +104,43 @@ class SwipeableTemporaryDrawer extends React.Component {
 						</Typography>
 					</List>
 					<Divider />
+					<List>
+						<Typography component={"h3"} className={classes.text}>
+							<Link to="/locations">Inventory</Link>
+						</Typography>
+					</List>
+					<Divider />
 				</div>
 			</React.Fragment>
 		);
 
-        <List>
-          <Link to="/locations">Inventory</Link>
-        </List>
-
-        <Divider />
-
-    return (
-      <div>
-        <IconButton
-          className={classes.menuButton}
-          onClick={this.toggleDrawer("left", true)}
-          color="inherit"
-          aria-label="Menu"
-        >
-          <MenuIcon />
-        </IconButton>
-        <SwipeableDrawer
-          open={this.state.left}
-          onClose={this.toggleDrawer("left", false)}
-          onOpen={this.toggleDrawer("left", true)}
-        >
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer("left", false)}
-            onKeyDown={this.toggleDrawer("left", false)}
-          >
-            {sideList}
-          </div>
-        </SwipeableDrawer>
-      </div>
-    );
-  }
+		return (
+			<div>
+				<IconButton
+					className={classes.menuButton}
+					onClick={this.toggleDrawer("left", true)}
+					color="inherit"
+					aria-label="Menu"
+				>
+					<MenuIcon />
+				</IconButton>
+				<SwipeableDrawer
+					open={this.state.left}
+					onClose={this.toggleDrawer("left", false)}
+					onOpen={this.toggleDrawer("left", true)}
+				>
+					<div
+						tabIndex={0}
+						role="button"
+						onClick={this.toggleDrawer("left", false)}
+						onKeyDown={this.toggleDrawer("left", false)}
+					>
+						{sideList}
+					</div>
+				</SwipeableDrawer>
+			</div>
+		);
+	}
 }
 
 SwipeableTemporaryDrawer.propTypes = {

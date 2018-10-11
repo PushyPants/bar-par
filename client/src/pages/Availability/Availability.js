@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-
+import Footer from "../../components/Footer";
 import AddAvail from "./components/AddAvail";
 import AvailTableExp from "./components/AvailTableExp";
 import { connect } from "react-redux";
@@ -100,10 +100,8 @@ class Availability extends Component {
 			<React.Fragment>
 				<CssBaseline />
 				{this.props.Employee.isAdmin < 1 ? <Redirect to="/" /> : null}
-
 				<Nav>Availability</Nav>
-
-				<Grid container spacing={8} justify="center">
+				<Grid container alignItem="center" justify="center">
 					<Grid item xs={12} md={8}>
 						<AvailTableExp
 							emp={this.props.LoggedInAs._id}
@@ -113,7 +111,6 @@ class Availability extends Component {
 							updateTime={this.updateTime}
 						/>
 					</Grid>
-
 					<Grid item xs={12} md={4}>
 						<AddAvail
 							handleInputChange={this.handleInputChange}
@@ -132,6 +129,7 @@ class Availability extends Component {
 						/>
 					</Grid>
 				</Grid>
+				<Footer />
 			</React.Fragment>
 		);
 	}

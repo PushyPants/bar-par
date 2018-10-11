@@ -31,7 +31,7 @@ const Nav = props => {
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
-			<AppBar className="nav-bar" position="absolute" style={{ position: 'fixed', top: 0 , left : 0,  margin: 0}}>
+			<AppBar className="nav-bar" position="fixed">
 				<Toolbar>
 					<Typography variant="title" color="inherit">
 						<img

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import Grid from "@material-ui/core/Grid";
 import EmpTable from "../../components/EmpTable";
 import AddEmp from "../../components/AddEmp";
+import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import { Redirect } from "react-router";
@@ -35,7 +35,7 @@ class Employee extends Component {
         {this.props.Employee.isAdmin < 2 ? <Redirect to="/" /> : null}
         <Nav> Add Employee </Nav>
 
-        <Grid container spacing={8}>
+        <Grid container>
           <Grid item xs={12} sm={4}>
             <AddEmp />
           </Grid>
