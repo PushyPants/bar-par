@@ -2,6 +2,6 @@ SwipabaleDrawer {
   z-index: -1 !important;
 }
 
-#drawer ul {
-  padding: 10px !important;
+.list ul {
+  margin-right: 10px !important;
 }

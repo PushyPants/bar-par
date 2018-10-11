@@ -107,33 +107,39 @@ class SwipeableTemporaryDrawer extends React.Component {
 			</React.Fragment>
 		);
 
-		return (
-			<div>
-				<IconButton
-					className={classes.menuButton}
-					onClick={this.toggleDrawer("left", true)}
-					color="inherit"
-					aria-label="Menu"
-				>
-					<MenuIcon />
-				</IconButton>
-				<SwipeableDrawer
-					open={this.state.left}
-					onClose={this.toggleDrawer("left", false)}
-					onOpen={this.toggleDrawer("left", true)}
-				>
-					<div
-						tabIndex={0}
-						role="button"
-						onClick={this.toggleDrawer("left", false)}
-						onKeyDown={this.toggleDrawer("left", false)}
-					>
-						{sideList}
-					</div>
-				</SwipeableDrawer>
-			</div>
-		);
-	}
+        <List>
+          <Link to="/locations">Inventory</Link>
+        </List>
+
+        <Divider />
+
+    return (
+      <div>
+        <IconButton
+          className={classes.menuButton}
+          onClick={this.toggleDrawer("left", true)}
+          color="inherit"
+          aria-label="Menu"
+        >
+          <MenuIcon />
+        </IconButton>
+        <SwipeableDrawer
+          open={this.state.left}
+          onClose={this.toggleDrawer("left", false)}
+          onOpen={this.toggleDrawer("left", true)}
+        >
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer("left", false)}
+            onKeyDown={this.toggleDrawer("left", false)}
+          >
+            {sideList}
+          </div>
+        </SwipeableDrawer>
+      </div>
+    );
+  }
 }
 
 SwipeableTemporaryDrawer.propTypes = {
