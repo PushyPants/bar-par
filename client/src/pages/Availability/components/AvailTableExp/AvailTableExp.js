@@ -145,8 +145,9 @@ function SimpleExpansionPanel(props) {
                             valOne={row.empID}
                             valTwo={row.postID}
                             func={props.delAvail}
-                            color={"primary"}>
-                            Delete
+                            color={"secondary"}>
+                            <i className="material-icons">
+                                    delete_outline</i>
                             </DeleteBtn>
                         </Typography>
                     </Grid>
