@@ -46,20 +46,20 @@ class ShiftCard extends Component {
         if (hours >= 24) {
             hours -= 24;
             if (hours === 0) {
-              return hours + 12 + ":" + minutes + " AM";
+              return (`${hours + 12}:${minutes} AM`)
             } else {
-              return hours + ":" + minutes + " AM";
+              return (`${hours}:${minutes} AM`)
             }
           } else if (hours >= 12) {
             hours -= 12;
             if (hours === 0) {
-              return hours + 12 + ":" + minutes + " PM";
+              return (`${hours + 12}:${minutes} PM`)
             } else {
-              return hours + ":" + minutes + " PM";
+              return (`${hours}:${minutes} PM`)
             }
           }
-
-        return hours + ":" + minutes + " AM";
+    
+        return (`${hours}:${minutes} AM`)
     };
 
     remove = (array, element) => {
