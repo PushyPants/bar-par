@@ -2,45 +2,59 @@ import React from "react";
 // import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import {
+	AppBar,
+	Toolbar,
+	Typography,
+	Paper,
+	CssBaseline,
+} from "@material-ui/core";
 import LogButton from "../../components/LogButton";
 import SwipeableTemporaryDrawer from "../Drawer";
 import "./Nav.css";
 
 const styles = {
-  root: {
-    flexGrow: 1
-  },
-  grow: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
-  }
+	root: {
+		flexGrow: 1,
+	},
+	grow: {
+		flexGrow: 1,
+	},
+	menuButton: {
+		marginLeft: -12,
+		marginRight: 20,
+	},
 };
 
 const Nav = props => {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar className="nav-bar" position="absolute">
-        <Toolbar>
-          <Typography variant="title" color="inherit" className={classes.grow}>
-            {props.children}
-          </Typography>
-          <LogButton />
-          <SwipeableTemporaryDrawer />
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+	const { classes } = props;
+	return (
+		<div className={classes.root}>
+			<CssBaseline />
+			<AppBar className="nav-bar" position="fixed">
+				<Toolbar>
+					<SwipeableTemporaryDrawer />
+					<LogButton />
+					<Typography variant="title" color="inherit">
+						<img
+							src="/assets/imgs/logo1compressed.png"
+							height="42px"
+							alt={classes.alt}
+						/>
+					</Typography>
+				</Toolbar>
+			</AppBar>
+			<Paper className="title-bar" position="absolute">
+				<Typography variant="title" color="inherit" className={classes.grow}>
+					{props.children}
+				</Typography>
+			</Paper>
+		</div>
+	);
 };
 
 Nav.propTypes = {
-  classes: PropTypes.object.isRequired
+	classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Nav);

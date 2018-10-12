@@ -19,6 +19,10 @@ const styles = theme => ({
     flexBasis: "33.33%",
     flexShrink: 0
   },
+  barStation: {
+    width: '100%',
+    margin: 'auto'
+  },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary
