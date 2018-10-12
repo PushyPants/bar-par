@@ -47,7 +47,7 @@ class ControlledExpansionPanels extends React.Component {
       <div className={classes.root}>
         <ExpansionPanel  expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
           <ExpansionPanelSummary className={classes.colored} expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}><strong>{this.props.name}</strong></Typography>
+            <Typography className={classes.heading}><strong>Patio Bar</strong></Typography>
           </ExpansionPanelSummary>
             <Divider/>
           <ExpansionPanelDetails>

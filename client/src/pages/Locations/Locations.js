@@ -6,8 +6,9 @@ import API from "../../utils/API"
 import Footer from "../../components/Footer";
 import LocationItem from "../../components/LocationItem";
 import "./Locations.css";
-import { ListItem } from "@material-ui/core";
+import { ListItem, Divider } from "@material-ui/core";
 import { List } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 class Locations extends Component {
     state = {
@@ -28,40 +29,27 @@ class Locations extends Component {
     }
 
     render() {
-        let list = this.state.Locations.map((location) => <LocationItem key={location.location_id} name={location.name}>
-                    <div className="location-preview">
-                        <div className="product-name">
-                            <List>
-                                <ListItem><strong>Product Name</strong></ListItem>
-                                <ListItem>Deep Eddy</ListItem> {/*need map for each product name*/}
-                            </List>
-                        </div>
-                        <div className="inv-date">
-                            <List>
-                                <ListItem><strong>Last Updated</strong></ListItem>
-                                <ListItem>Oct. 5, 2018</ListItem> {/*need map for each date*/}
-                            </List>
-                        </div>
-                        <div className="updated-by">
-                            <List>
-                                <ListItem><strong>Updated By</strong></ListItem>
-                                <ListItem>PushyPants</ListItem> {/*need map for each username name*/}
-                            </List>
-                        </div>
-                        <div className="quanty">
-                            <List>
-                                <ListItem><strong>Qty.</strong></ListItem>
-                                <ListItem>1345</ListItem> {/*need map for each qty*/}
-                            </List>
-                        </div>
-                    </div>
-        </LocationItem>)
 
         return (
         <React.Fragment>
             <Nav>Locations</Nav>
             <div className="locations-list">
-                {this.state.Locations.length > 0 ? list : null}
+                <LocationItem>
+                            <List>
+                                <ListItem><Button className="station-link"><strong>Speed Rail 01</strong></Button></ListItem>
+                                <Divider/>
+                                <ListItem className="station-link"><Button ><strong>Speed Rail 02</strong></Button></ListItem>
+                                <Divider/>
+                                <ListItem><Button className="station-link"><strong>Speed Rail 03</strong></Button></ListItem>
+                                <Divider/>
+                                <ListItem><Button className="station-link"><strong>Speed Rail 04</strong></Button></ListItem>
+                                <Divider/>
+                                <ListItem><Button className="station-link"><strong>Speed Rail 05</strong></Button></ListItem>
+                                <Divider/>
+                                <ListItem><Button className="station-link"><strong>Speed Rail 06</strong></Button></ListItem>
+                                <Divider/>
+                            </List>
+                </LocationItem>
             </div>
             <Footer />
         </React.Fragment>

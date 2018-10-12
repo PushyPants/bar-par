@@ -6,25 +6,15 @@
     margin-bottom: 175px;
 }
 
-.locations-list Button {
-    text-align: center !important;
-    background: cadetblue !important;
-    margin: auto;
-    width: 60%;
-}
-
 .locations-list Button:hover {
     background: rgb(45, 117, 119) !important;
 }
 
-.locations-list a {
-    text-decoration: none;
-    color: aliceblue;
+.location-preview ul {
+    width: 100% !important;
 }
 
-.location-preview {
-    width: 100%;
-    display: grid !important;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-
+.station-link {
+    width: 80% !important;
+    margin: auto;
 }
