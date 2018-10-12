@@ -82,7 +82,7 @@ locationsArr.map(vals => {
             </ExpansionPanelSummary>
               {parent.sub_locations.map(location => {
                 return (
-                  <ExpansionPanelDetails>
+                  <ExpansionPanelDetails key={location.location_id} data-id={location.location_id}>
                     {location.location_name}
                   </ExpansionPanelDetails>
                 );
