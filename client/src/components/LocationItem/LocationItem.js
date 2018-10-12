@@ -7,6 +7,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 // import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import { Divider } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -82,9 +83,11 @@ locationsArr.map(vals => {
             </ExpansionPanelSummary>
               {parent.sub_locations.map(location => {
                 return (
-                  <ExpansionPanelDetails key={location.location_id} data-id={location.location_id}>
-                    {location.location_name}
-                  </ExpansionPanelDetails>
+                  <Link to='/inventory'>
+                    <ExpansionPanelDetails key={location.location_id} >
+                      {location.location_name}
+                    </ExpansionPanelDetails>
+                  </Link>
                 );
               })}
           </ExpansionPanel>
