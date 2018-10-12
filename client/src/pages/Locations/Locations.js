@@ -38,8 +38,6 @@ class Locations extends Component {
   };
 
   render() {
-    // const { classes } = this.props;
-
     return (
       <React.Fragment>
         <Nav> Locations </Nav>
