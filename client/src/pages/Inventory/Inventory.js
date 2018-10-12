@@ -46,6 +46,10 @@ class Inventory extends Component {
     });
   };
 
+  handleProductValue = e => {
+    console.log(e)
+  }
+
   render() {
     const classes = this.props;
     return (
@@ -61,6 +65,7 @@ class Inventory extends Component {
               step={1}
               defaultValue={50}
               handle={handle}
+              onAfterChange = {this.handleProductValue}
             />
           </div>
         </div>

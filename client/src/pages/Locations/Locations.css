@@ -10,21 +10,10 @@
     background: rgb(45, 117, 119) !important;
 }
 
-<<<<<<< HEAD
-.locations-list a {
-    text-decoration: none;
-    color: aliceblue;
-}
-
-.location-preview ul {
-    width: 100% !important;
-}
-=======
 .location-preview ul {
     width: 100% !important;
 }
 
->>>>>>> 693b38977f15ed67babfa0722c691421f87f07e0
 .station-link {
     width: 80% !important;
     margin: auto;
