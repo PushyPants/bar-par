@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 
 const style = {
   stationLink: {
-    width: "80%",
+    width: "100%",
     margin: "auto"
   }
 };
