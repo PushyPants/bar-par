@@ -58,6 +58,7 @@ module.exports = {
         res.json(itemTotal)
       })
       .catch(err => res.json(err));
-    }
-};
+    },
+  
+  };
  

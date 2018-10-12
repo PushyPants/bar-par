@@ -6,6 +6,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Divider } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -44,10 +45,11 @@ class ControlledExpansionPanels extends React.Component {
 
     return (
       <div className={classes.root}>
-        <ExpansionPanel className={classes.colored} expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>{this.props.name}</Typography>
+        <ExpansionPanel  expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
+          <ExpansionPanelSummary className={classes.colored} expandIcon={<ExpandMoreIcon />}>
+            <Typography className={classes.heading}><strong>Patio Bar</strong></Typography>
           </ExpansionPanelSummary>
+            <Divider/>
           <ExpansionPanelDetails>
             <Typography>
               {this.props.children}
