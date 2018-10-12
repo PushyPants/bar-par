@@ -21,3 +21,11 @@
     text-decoration: none;
     color: aliceblue;
 }
+
+.location-preview ul {
+    width: 100% !important;
+}
+.station-link {
+    width: 80% !important;
+    margin: auto;
+}
