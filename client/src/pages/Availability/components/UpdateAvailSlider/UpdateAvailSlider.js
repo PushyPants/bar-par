@@ -6,7 +6,7 @@ import "rc-tooltip/assets/bootstrap.css";
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
-const wrapperStyle = { width: 400, margin: 5 };
+const wrapperStyle = { width: "100%", margin: 5 };
 
 function UpdateAvailSlider({
 	availId,
