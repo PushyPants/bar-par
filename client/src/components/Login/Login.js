@@ -10,6 +10,8 @@ import {
   CssBaseline
 } from "@material-ui/core";
 import "./Login.css";
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 
 const styles = theme => ({
   container: {
@@ -41,6 +43,10 @@ class Login extends React.Component {
     this.setState({
       [name]: event.target.value
     });
+  };
+
+  LogInEmployee = event => {
+    this.props.LogInEmployee(event.target.value);
   };
 
   render() {
@@ -110,4 +116,23 @@ Login.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Login);
+const mapStateToProps = state => {
+  return {
+    employeeList: state.reducer.employeeList,
+    Employee: state.reducer.Employee,
+    todaysDate: state.reducer.todaysDate,
+    workingDate: state.reducer.workingDate,
+
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    LogInEmployee: id => dispatch(actions.LogInEmployee(id)),
+    getEmployeeList: () => dispatch(actions.getEmployeeList()),
+    setTodaysDate: (data) => dispatch(actions.setTodaysDate(data)),
+    changeWorkingDate: (data) => dispatch(actions.changeWorkingDate(data)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

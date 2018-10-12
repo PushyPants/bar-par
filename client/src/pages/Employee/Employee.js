@@ -42,7 +42,9 @@ class Employee extends Component {
           </Grid>
 
           <Grid item xs={12} sm={8}>
-            <EmpTable empArr={this.props.employeeList} />
+            <EmpTable
+              empArr={this.props.employeeList} 
+              deleteEmployee={this.props.deleteEmployee}/>
           </Grid>
         </Grid>
         <Footer />
@@ -61,11 +63,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getEmployeeList: () => dispatch(actions.getEmployeeList())
+    getEmployeeList: () => dispatch(actions.getEmployeeList()),
+    deleteEmployee: (id) => dispatch(actions.deleteEmployee(id))
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Employee);
+export default connect(mapStateToProps,mapDispatchToProps)(Employee);

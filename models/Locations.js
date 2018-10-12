@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var Locationschema = new Schema({
-   type: {
+   location_id: {
        type: String,
        default: null
    },
@@ -11,7 +11,11 @@ var Locationschema = new Schema({
        type: String,
        default: null
    },
-   locations: {
+   parent_location: {
+       type: String,
+       default: null
+   },
+   positions: {
        type: Array,
        default: []
    }

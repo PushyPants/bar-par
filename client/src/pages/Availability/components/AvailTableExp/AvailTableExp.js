@@ -60,20 +60,20 @@ const time_convert = num => {
     if (hours >= 24) {
         hours -= 24;
         if (hours === 0) {
-          return hours + 12 + ":" + minutes + " AM";
+          return (`${hours + 12}:${minutes} AM`)
         } else {
-          return hours + ":" + minutes + " AM";
+          return (`${hours}:${minutes} AM`)
         }
       } else if (hours >= 12) {
         hours -= 12;
         if (hours === 0) {
-          return hours + 12 + ":" + minutes + " PM";
+          return (`${hours + 12}:${minutes} PM`)
         } else {
-          return hours + ":" + minutes + " PM";
+          return (`${hours}:${minutes} PM`)
         }
       }
 
-    return hours + ":" + minutes + " AM";
+    return (`${hours}:${minutes} AM`)
 };
 
 let key = 0;
@@ -145,8 +145,9 @@ function SimpleExpansionPanel(props) {
                             valOne={row.empID}
                             valTwo={row.postID}
                             func={props.delAvail}
-                            color={"primary"}>
-                            Delete
+                            color={"secondary"}>
+                            <i className="material-icons">
+                                    delete_outline</i>
                             </DeleteBtn>
                         </Typography>
                     </Grid>
