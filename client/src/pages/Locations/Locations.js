@@ -4,17 +4,9 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import API from "../../utils/API";
 import LocationItem from "../../components/LocationItem";
-import "./Locations.css";
-import { ListItem, Divider } from "@material-ui/core";
-import { List } from "@material-ui/core";
+import { List, ListItem, Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-
-const style = {
-  stationLink: {
-    width: "80%",
-    margin: "auto"
-  }
-};
+import "./Locations.css";
 
 class Locations extends Component {
   state = {
@@ -44,15 +36,15 @@ class Locations extends Component {
           <LocationItem>
             <List>
               <ListItem>
-                <Button className={classes.stationLink}> Speed Rail 01 </Button>
-              </ListItem>
-              <Divider />
-              <ListItem className="station-link">
-                <Button> Speed Rail 02 </Button>
+                <Button className="station-link"> Speed Rail 01 </Button>
               </ListItem>
               <Divider />
               <ListItem>
-                <Button className="station-link"> Speed Rail 03 </Button>
+                <Button className="station-link"> Speed Rail 02 </Button>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <Button className={"station-link"}> Speed Rail 03 </Button>
               </ListItem>
               <Divider />
               <ListItem>

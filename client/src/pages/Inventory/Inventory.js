@@ -1,15 +1,22 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
 import Slider from "rc-slider";
+import { withStyles } from "@material-ui/core/styles";
 import "rc-slider/assets/index.css";
 import "./Inventory.css";
-import TextField from '@material-ui/core/TextField';
-import Tooltip from 'rc-tooltip';
+import TextField from "@material-ui/core/TextField";
+import Tooltip from "rc-tooltip";
 
 const Handle = Slider.Handle;
 
-const handle = (props) => {
+const styles = {
+  bottleContainer: {
+    width: "100%",
+    margin: "auto"
+  }
+};
+
+const handle = props => {
   const { value, dragging, index, ...restProps } = props;
   return (
     <Tooltip
@@ -29,39 +36,33 @@ class Inventory extends Component {
     quantity: ""
   };
 
-    state = {
-        quantity: ""
-    }
-    
-    handleChange = name => event => {
-        this.setState({
-          [name]: event.target.value,
-        });
-    };
+  state = {
+    quantity: ""
+  };
 
-    render() {
-        return (
-        <div>
-            <Nav>
-                Inventory
-            </Nav>
-            <div id="bottle-slide">
-                <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle"/>
-                <div id="slider-div">
-                    <Slider vertical min={0} max={100} step={1} defaultValue={50} handle={handle} />
-                </div>
-            </div>
-            <TextField
-                id="standard-number"
-                label="Number"
-                value={this.state.quantity}
-                onChange={this.handleChange('quantity')}
-                type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                margin="normal"
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value
+    });
+  };
+
+  render() {
+    const classes = this.props;
+    return (
+      <div>
+        <Nav>Inventory</Nav>
+        <div className={classes.bottleContainer}>
+          <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
+          <div id="slider-div">
+            <Slider
+              vertical
+              min={0}
+              max={100}
+              step={1}
+              defaultValue={50}
+              handle={handle}
             />
+          </div>
         </div>
         <TextField
           id="standard-number"
@@ -74,10 +75,20 @@ class Inventory extends Component {
           }}
           margin="normal"
         />
-        <Footer />
+        <TextField
+          id="standard-number"
+          label="Number"
+          value={this.state.quantity}
+          onChange={this.handleChange("quantity")}
+          type="number"
+          InputLabelProps={{
+            shrink: true
+          }}
+          margin="normal"
+        />
       </div>
     );
   }
 }
 
-export default Inventory;
+export default withStyles(styles)(Inventory);
