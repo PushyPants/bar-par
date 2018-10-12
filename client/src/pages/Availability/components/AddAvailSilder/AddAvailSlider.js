@@ -11,6 +11,14 @@ const wrapperStyle = {
   marginTop: 15
 };
 
+const typeCheck = (start, end) => {
+  if (typeof start === "string") {
+    return [480, 1560]
+  } else {
+    return [start, end]
+  }
+}
+
 function AddAvailSlider(props) {
   const marks = {
     480: "8:00A",
@@ -53,7 +61,7 @@ function AddAvailSlider(props) {
           min={480}
           max={1560}
           disabled={props.isDisabled}
-          defaultValue={[props.start, props.end]}
+          defaultValue={typeCheck(props.start, props.end)}
           tipFormatter={value => (value ? time_convert(value) : "Error")}
           onAfterChange={props.update}
         />
