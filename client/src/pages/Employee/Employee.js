@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
 import EmpTable from "../../components/EmpTable";
 import AddEmp from "../../components/AddEmp";
 import Grid from "@material-ui/core/Grid";
@@ -44,6 +45,7 @@ class Employee extends Component {
             <EmpTable empArr={this.props.employeeList} />
           </Grid>
         </Grid>
+        <Footer />
       </React.Fragment>
     );
   }

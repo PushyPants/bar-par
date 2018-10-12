@@ -80,7 +80,13 @@ class SwipeableTemporaryDrawer extends React.Component {
 					<Divider />
 					<List>
 						<Typography component={"h3"} className={classes.text}>
-							<Link to="/dashboard">Profile</Link>
+							<Link to="/locations">Location</Link>
+						</Typography>
+					</List>
+					<Divider />
+					<List>
+						<Typography component={"h3"} className={classes.text}>
+							<Link to="/inventory">Inventory</Link>
 						</Typography>
 					</List>
 					<Divider />
@@ -101,12 +107,6 @@ class SwipeableTemporaryDrawer extends React.Component {
 					<List>
 						<Typography component={"h3"} className={classes.text}>
 							<Link to="/addavail">Add Availability</Link>
-						</Typography>
-					</List>
-					<Divider />
-					<List>
-						<Typography component={"h3"} className={classes.text}>
-							<Link to="/locations">Inventory</Link>
 						</Typography>
 					</List>
 					<Divider />

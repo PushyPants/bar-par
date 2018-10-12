@@ -3,7 +3,6 @@ import Nav from "../../components/Nav";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import API from "../../utils/API"
-import Footer from "../../components/Footer";
 import LocationItem from "../../components/LocationItem";
 import "./Locations.css";
 
@@ -40,8 +39,6 @@ class Locations extends Component {
                 <LocationItem />
                 <LocationItem />
             </div>
-
-            <Footer />
         </React.Fragment>
         );
     }
