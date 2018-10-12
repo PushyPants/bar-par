@@ -41,41 +41,36 @@ function ControlledExpansionPanels(props) {
   const { classes } = props;
   // const rows = [];
   let parentsArr = [];
+  let locationsArr = []
 
-  props.locArr.map(location => {
-    if (parentsArr.length < 1) {
-      parentsArr.push({
-        parent_location: location.parent_location,
-        sub_locations: [
-          { location_name: location.name, location_id: location._id }
-        ]
-      });
-    } else {
-      parentsArr.filter((parent, i) => {
-        if (parent.parent_location === location.parent_location) {
-          parentsArr[i].sub_locations.push({
-            location_name: location.name,
-            location_id: location._id
-          });
-        } 
-        else {
-          parentsArr.push({
-            parent_location: location.parent_location,
-            sub_locations: [
-              {
-                location_name: location.name,
-                location_id: location._id
-              }
-            ]
-          });
-        }
-      });
+props.locArr.map(location => {
+  if (!parentsArr.includes(location.parent_location)) {
+    parentsArr.push(location.parent_location);
+    locationsArr.push({
+      parent_location: location.parent_location,
+      sub_locations: []
+    })
+  }
+})
+
+props.locArr.map(location => {
+  locationsArr.map(parent => {
+    if (location.parent_location === parent.parent_location) {
+      parent.sub_locations.push({
+        location_name: location.name,
+        location_id: location._id
+      })
     }
-  });
+  })
+})
+
+locationsArr.map(vals => {
+  vals.sub_locations.sort((a,b) => (a.location_name > b.location_name) ? 1 : ((b.location_name > a.location_name) ? -1 : 0)); 
+})
 
   return (
     <div className={classes.root}>
-      {parentsArr.map(parent => {
+      {locationsArr.map(parent => {
         return (
           <ExpansionPanel
             style={{ width: "100%" }}
