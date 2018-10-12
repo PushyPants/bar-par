@@ -8,7 +8,15 @@ const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 const wrapperStyle = {
   width: "100%",
-  marginTop: 15
+  margin: 5
+};
+
+const typeCheck = (start, end) => {
+  if (typeof start === "string") {
+    return [480, 1560];
+  } else {
+    return [start, end];
+  }
 };
 
 function AddAvailSlider(props) {
@@ -18,6 +26,7 @@ function AddAvailSlider(props) {
     1200: "8:00P",
     1560: "2:00A"
   };
+
   const time_convert = num => {
     let hours = Math.floor(num / 60);
     let minutes = num % 60;
@@ -44,8 +53,9 @@ function AddAvailSlider(props) {
 
     return hours + ":" + minutes + " AM";
   };
+
   return (
-    <div>
+    <React.Fragment>
       <div style={wrapperStyle}>
         <Range
           marks={marks}
@@ -53,12 +63,12 @@ function AddAvailSlider(props) {
           min={480}
           max={1560}
           disabled={props.isDisabled}
-          defaultValue={[props.start, props.end]}
+          defaultValue={typeCheck(props.start, props.end)}
           tipFormatter={value => (value ? time_convert(value) : "Error")}
           onAfterChange={props.update}
         />
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 
