@@ -3,7 +3,7 @@ const locationsController = require("../../controllers/locationsController");
 
 // Matches with "/api/locations"
 router.route("/")
-  .get(locationsController.find)
+  .get(locationsController.findAll)
   //.post(locationsController.insert);
 
 // Matches with "/api/locations/:id"
@@ -11,7 +11,12 @@ router.route("/")
 //   .get(locationsController.findById)
 //   .put(locationsController.update)
 //   .delete(locationsController.delete);
+router.route('/updatelocation')
+  .put(locationsController.updateItemAtLocation)
 
 
+  //matches with api/itemlookup/<product_id>
+router.route('/itemlookup/:id')
+  .put(locationsController.lookupSingleItem)
 
 module.exports = router;
