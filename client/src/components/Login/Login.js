@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Input from "@material-ui/core/Input";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
-import Button from "@material-ui/core/Button";
+import {
+  Input,
+  FormControl,
+  List,
+  ListItem,
+  Button,
+  CssBaseline
+} from "@material-ui/core";
 import "./Login.css";
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
@@ -50,32 +53,51 @@ class Login extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div className="login-form">
-        <Paper className={classes.paper}>
+      <React.Fragment>
+        <CssBaseline />
+        <main className="login-form">
           <form className={classes.container} noValidate autoComplete="off">
-            <img src="assets/imgs/logo2.png" alt="logo" height="304px" />
             <List>
-              <ListItem className="input-field">
-                <Input
-                  id="standard-name"
-                  label="Username"
-                  className={classes.textField}
-                  value={this.state.name}
-                  onChange={this.handleChange("username")}
-                  // margin="normal"
-                  placeholder="User Name"
-                />
+              <ListItem>
+                <img src="assets/imgs/logo2.png" alt="logo" height="304px" />
               </ListItem>
-              <ListItem className="input-field">
-                <Input
-                  id="standard-password-input"
-                  label="Password"
-                  className={classes.textField}
-                  type="password"
-                  autoComplete="current-password"
-                  // margin="normal"
-                  placeholder="Password"
-                />
+              <ListItem>
+                <FormControl
+                  className="input-field"
+                  margin="normal"
+                  required
+                  fullWidth
+                >
+                  <Input
+                    id="username"
+                    label="username"
+                    className={classes.textField}
+                    value={this.state.name}
+                    onChange={this.handleChange("username")}
+                    placeholder="User Name"
+                    autoFocus
+                    fullWidth
+                  />
+                </FormControl>
+              </ListItem>
+              <ListItem>
+                <FormControl
+                  className="input-field"
+                  margin="normal"
+                  required
+                  fullWidth
+                >
+                  <Input
+                    id="password"
+                    label="password"
+                    className={classes.textField}
+                    type="password"
+                    autoComplete="current-password"
+                    placeholder="Password"
+                    fullWidth
+                    autoFocus
+                  />
+                </FormControl>
               </ListItem>
               <ListItem>
                 <Button variant="contained" color="primary">
@@ -84,8 +106,8 @@ class Login extends React.Component {
               </ListItem>
             </List>
           </form>
-        </Paper>
-      </div>
+        </main>
+      </React.Fragment>
     );
   }
 }

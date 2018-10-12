@@ -3,12 +3,10 @@ import Nav from "../../components/Nav";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import API from "../../utils/API";
-import Footer from "../../components/Footer";
 import LocationItem from "../../components/LocationItem";
-import "./Locations.css";
-import { ListItem, Divider } from "@material-ui/core";
-import { List } from "@material-ui/core";
+import { List, ListItem, Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+<<<<<<< HEAD
 
 const style = {
   stationLink: {
@@ -16,6 +14,9 @@ const style = {
     margin: "auto"
   }
 };
+=======
+import "./Locations.css";
+>>>>>>> 36bc9deae207ee63ae6dc8efc761dd8b159a40fa
 
 class Locations extends Component {
   state = {
@@ -45,15 +46,15 @@ class Locations extends Component {
           <LocationItem>
             <List>
               <ListItem>
-                <Button className={classes.stationLink}> Speed Rail 01 </Button>
-              </ListItem>
-              <Divider />
-              <ListItem className="station-link">
-                <Button> Speed Rail 02 </Button>
+                <Button className="station-link"> Speed Rail 01 </Button>
               </ListItem>
               <Divider />
               <ListItem>
-                <Button className="station-link"> Speed Rail 03 </Button>
+                <Button className="station-link"> Speed Rail 02 </Button>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <Button className={"station-link"}> Speed Rail 03 </Button>
               </ListItem>
               <Divider />
               <ListItem>

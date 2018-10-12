@@ -1,8 +1,7 @@
 import React from "react";
 import IconButton from "@material-ui/core/Icon";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-
+import { Grid, Menu, MenuItem } from "@material-ui/core";
+import { Link } from "react-router-dom";
 class LogButton extends React.Component {
   state = {
     anchorEl: null
@@ -20,25 +19,42 @@ class LogButton extends React.Component {
     const { anchorEl } = this.state;
 
     return (
-      <div>
-        <IconButton
-          aria-owns={anchorEl ? "simple-menu" : null}
-          aria-haspopup="true"
-          onClick={this.handleClick}
+      <React.Fragment>
+        <Grid
+          container
+          xs={"4"}
+          direction={"row"}
+          alignItems={"center"}
+          justify={"flex-start"}
+          style={{ padding: "0px" }}
         >
-          person_outlined
-        </IconButton>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          <MenuItem onClick={this.handleClose}>Logout</MenuItem>
-        </Menu>
-      </div>
+          <Grid item>
+            <IconButton
+              aria-owns={anchorEl ? "simple-menu" : null}
+              aria-haspopup="true"
+              onClick={this.handleClick}
+            >
+              person_outlined
+            </IconButton>
+            <IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={this.handleClose}
+              >
+                <MenuItem onClick={this.handleClose}>
+                  <Link to="/dashboard">Profile</Link>
+                </MenuItem>
+                <MenuItem onClick={this.handleClose}>
+                  <Link to="/account">My account</Link>
+                </MenuItem>
+                <MenuItem onClick={this.handleClose}><Link to="/">Log out</Link></MenuItem>
+              </Menu>
+            </IconButton>
+          </Grid>
+        </Grid>
+      </React.Fragment>
     );
   }
 }
