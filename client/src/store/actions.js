@@ -8,6 +8,7 @@ export const SHIFT_LIST = "SHIFT_LIST";
 export const REMOVE_SHIFT = "REMOVE_SHIFT";
 export const ALL_LOCATIONS = "ALL_LOCATIONS";
 export const ALL_PRODUCTS = "ALL_PRODUCTS"
+export const SINGLE_STATION = "SINGLE_STATION";
 
 export const setTodaysDate = date => {
   return dispatch => {
@@ -236,6 +237,21 @@ export const getLocation = () => {
       .catch(err => console.log(err.response));
   };
 };
+
+export const getSingleStation = id => {
+  return dispatch => {
+    API.getSingleStation(id)
+    .then(res => dispatch(singleStationToStore(res.data)))
+    .catch(err => console.log(err.response));
+  }
+}
+
+const singleStationToStore = Stations => {
+    return {
+        type: SINGLE_STATION,
+        payload: Stations
+      };
+}
 
 const sendAllLocationsToStore = Locations => {
     return {

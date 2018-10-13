@@ -40,13 +40,12 @@ class Inventory extends Component {
   state = {
     quantity: ""
   };
-  // componentWillMount() {
-  //   this.getAllProducts();
-  // }
-  
-  // getAllProducts = () => {
-  //   this.props.getProducts();
-  // }
+
+  componentDidMount() {
+    // API.getSingleStation(this.props.match.params.id).then((res) => this.setState({stationInfo: res.data}))
+    this.props.getSingleStation(this.props.match.params.id);
+    
+  }
 
   handleChange = name => event => {
     this.setState({
@@ -55,6 +54,7 @@ class Inventory extends Component {
   };
 
   render() {
+    console.log(this.props.stationInfo)
     const classes = this.props;
     return (
       <div>
@@ -106,13 +106,15 @@ class Inventory extends Component {
 
 const mapStateToProps = state => {
   return {
-    Products: state.reducer.Products
+    Products: state.reducer.Products,
+    stationInfo: state.reducer.stationInfo
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProducts: () => dispatch(actions.getProducts())
+    getProducts: () => dispatch(actions.getProducts()),
+    getSingleStation: id => dispatch(actions.getSingleStation(id))
   };
 };
 

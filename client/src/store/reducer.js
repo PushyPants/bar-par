@@ -15,7 +15,8 @@ const initialState = {
     workingDate: '',
     shiftList: [],
     Locations: [],
-    Products: []
+    Products: [],
+    stationInfo: {},
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +25,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 Products: [...action.payload]
+            }
+        case actions.SINGLE_STATION:
+            return {
+                ...state,
+                stationInfo: action.payload
             }
         case actions.ALL_LOCATIONS:
             return {

@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../database/models");
 
 // Defining methods for the booksController
 module.exports = {
@@ -59,6 +59,16 @@ module.exports = {
       })
       .catch(err => res.json(err));
     },
+
+    getSingleStation: function (req, res) {
+      console.log('controller fired')
+      db.Locations.findOne({location_id: req.params.id})
+      .then( data => {
+        console.log(data)
+        res.json(data)
+        
+      }).catch(err => res.json(err))
+    }
   
   };
  

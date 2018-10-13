@@ -8,6 +8,8 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { ListItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+// import { Divider } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -92,14 +94,13 @@ function ControlledExpansionPanels(props) {
             </ExpansionPanelSummary>
             {parent.sub_locations.map(location => {
               return (
-                <ExpansionPanelDetails
-                  key={location.location_id}
-                  data-id={location.location_id}
-                >
-                  <Button className="station-link">
-                    {location.location_name}
-                  </Button>
-                </ExpansionPanelDetails>
+                <Link to={`/locations/test/${location.location_id}`}>
+                  <ExpansionPanelDetails key={location.location_id}>
+                    <Button className="station-link">
+                      {location.location_name}
+                    </Button>
+                  </ExpansionPanelDetails>
+                </Link>
               );
             })}
           </ExpansionPanel>
