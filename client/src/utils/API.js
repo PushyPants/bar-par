@@ -49,8 +49,8 @@ export default {
   getLocations: function(){
     return axios.get('/api/locations')
   },
-  updateLocation: function(){
-    return axios.put('/api/updatelocation')
+  updateLocation: function(id){
+    return axios.put(`/api/updatelocation/${id}`)
   },
   itemLookup: function(id){
     return axios.put(`/api/itemlookup/${id}`)

@@ -6,6 +6,8 @@ import "rc-slider/assets/index.css";
 import "./Inventory.css";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "rc-tooltip";
+import Paper from '@material-ui/core/Paper';
+import { Grid } from "@material-ui/core";
 
 const Handle = Slider.Handle;
 
@@ -51,6 +53,9 @@ class Inventory extends Component {
     return (
       <div>
         <Nav>Inventory</Nav>
+        <Grid container justify-xs-center grid-xs-12>
+
+        <Paper square elevation2>
         <div className={classes.bottleContainer}>
           <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
           <div id="slider-div">
@@ -61,9 +66,11 @@ class Inventory extends Component {
               step={1}
               defaultValue={50}
               handle={handle}
-            />
+              />
           </div>
         </div>
+        </Paper>
+        </Grid>
         <TextField
           id="standard-number"
           label="Number"

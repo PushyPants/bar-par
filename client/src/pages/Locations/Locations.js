@@ -34,7 +34,7 @@ class Locations extends Component {
   }
 
   getLocations = () => {
-     this.props.getLocation();
+    this.props.getLocation();
   };
 
   render() {
@@ -42,7 +42,7 @@ class Locations extends Component {
       <React.Fragment>
         <Nav> Locations </Nav>
         <div className="locations-list">
-          <LocationItem locArr={this.props.Locations} />
+              <LocationItem locArr={this.props.Locations} />
         </div>
       </React.Fragment>
     );
