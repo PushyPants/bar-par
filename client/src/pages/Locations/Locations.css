@@ -6,6 +6,11 @@
     margin-bottom: 50px;
 }
 
+.locations-list Button {
+    background: rgb(137, 220, 223) !important;
+    margin: auto !important;
+}
+
 .locations-list Button:hover {
     background: rgb(45, 117, 119) !important;
 }

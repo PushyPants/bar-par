@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import {
-	SwipeableDrawer,
+	Drawer,
 	IconButton,
 	List,
 	Divider,
@@ -80,7 +80,7 @@ class SwipeableTemporaryDrawer extends React.Component {
 					<Divider />
 					<List>
 						<Typography component={"h3"} className={classes.text}>
-							<Link to="/locations">Location</Link>
+							<Link to="/locations">Locations</Link>
 						</Typography>
 					</List>
 					<Divider />
@@ -109,7 +109,6 @@ class SwipeableTemporaryDrawer extends React.Component {
 							<Link to="/addavail">Add Availability</Link>
 						</Typography>
 					</List>
-					<Divider />
 				</div>
 			</React.Fragment>
 		);
@@ -124,7 +123,7 @@ class SwipeableTemporaryDrawer extends React.Component {
 				>
 					<MenuIcon />
 				</IconButton>
-				<SwipeableDrawer
+				<Drawer
 					open={this.state.left}
 					onClose={this.toggleDrawer("left", false)}
 					onOpen={this.toggleDrawer("left", true)}
@@ -137,7 +136,7 @@ class SwipeableTemporaryDrawer extends React.Component {
 					>
 						{sideList}
 					</div>
-				</SwipeableDrawer>
+				</Drawer>
 			</div>
 		);
 	}

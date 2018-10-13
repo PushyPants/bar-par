@@ -1,14 +1,22 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import { CssBaseline } from "@material-ui/core";
+import {
+   CssBaseline,
+   Paper
+} from "@material-ui/core";
+import './Dashboard.css';
+
 
 class Dashboard extends Component {
   render() {
     return (
       <div>
         <CssBaseline />
-        <Nav>Dashboard</Nav>
+        <Nav>
+        </Nav>
+        <Paper className="dashboard-paper"/>
+
         <Footer />
       </div>
     );

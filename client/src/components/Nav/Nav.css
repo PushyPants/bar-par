@@ -1,6 +1,7 @@
 nav {
   position: absolute !important;
   z-index: 1000 !important;
+  text-align: center !important;
 }
 
 .nav-bar {
@@ -11,8 +12,9 @@ nav {
   margin: 10px 0;
 }
 
-.nav-bar img {
+.logo {
   margin: auto !important;
+  display: inline-block
 }
 
 .title-bar {
@@ -23,4 +25,11 @@ nav {
 
 .title-bar h2 {
   padding: 68px 24px;
+}
+
+.logo-container {
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  margin-left: -40px;
 }

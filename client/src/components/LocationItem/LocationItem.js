@@ -16,8 +16,8 @@ const styles = theme => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    flexBasis: '33.33%',
     flexShrink: 0,
+    width: '100%'
   },
   barStation: {
     width: '100%',
@@ -28,7 +28,8 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
   },
   colored: {
-    background: "aliceblue"
+    background: "aliceblue",
+    textAlign: "center"
   }
 });
 
@@ -51,7 +52,7 @@ class ControlledExpansionPanels extends React.Component {
       <div className={classes.root}>
         <ExpansionPanel  expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
           <ExpansionPanelSummary className={classes.colored} expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}><strong>Patio Bar</strong></Typography>
+            <Typography className={classes.heading}><strong >Main Bar</strong></Typography>
           </ExpansionPanelSummary>
             <Divider/>
           <ExpansionPanelDetails>

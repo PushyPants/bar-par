@@ -6,17 +6,7 @@ import API from "../../utils/API";
 import LocationItem from "../../components/LocationItem";
 import { List, ListItem, Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-<<<<<<< HEAD
-
-const style = {
-  stationLink: {
-    width: "100%",
-    margin: "auto"
-  }
-};
-=======
 import "./Locations.css";
->>>>>>> 36bc9deae207ee63ae6dc8efc761dd8b159a40fa
 
 class Locations extends Component {
   state = {
@@ -54,7 +44,7 @@ class Locations extends Component {
               </ListItem>
               <Divider />
               <ListItem>
-                <Button className={"station-link"}> Speed Rail 03 </Button>
+                <Button className="station-link"> Speed Rail 03 </Button>
               </ListItem>
               <Divider />
               <ListItem>
@@ -68,7 +58,6 @@ class Locations extends Component {
               <ListItem>
                 <Button className="station-link"> Speed Rail 06 </Button>
               </ListItem>
-              <Divider />
             </List>
           </LocationItem>
         </div>
