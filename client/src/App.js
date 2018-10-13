@@ -17,7 +17,14 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      email: null
+      firstName: '',
+      lastName:'',
+      isAdmin: '',
+      email: '',
+      phone: '',
+      password: '',
+      unavail: [],
+      shifts: []
     };
 
     this.getUser = this.getUser.bind(this);
@@ -31,7 +38,7 @@ class App extends Component {
 
   updateUser(userObject) {
     this.setState(userObject);
-    console.log(this.state)
+    console.log("VBORRROOO",this.state)
   }
 
   getUser() {

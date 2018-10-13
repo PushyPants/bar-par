@@ -2,7 +2,7 @@
   height: 100vh;
   width: 100vw;
   text-align: center;
-  background: #ededed url("/assets/imgs/alcoholic-background.jpg");
+  background: url("/assets/imgs/alcoholic-background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: 90%;
