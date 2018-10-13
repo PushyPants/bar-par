@@ -14,12 +14,12 @@ import "./Locations.css";
 // import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 // import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-const style = {
-  stationLink: {
-    width: "80%",
-    margin: "auto"
-  }
-};
+// const style = {
+//   stationLink: {
+//     width: "80%",
+//     margin: "auto"
+//   }
+// };
 
 class Locations extends Component {
   state = {

@@ -6,8 +6,11 @@ import "rc-slider/assets/index.css";
 import "./Inventory.css";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "rc-tooltip";
-import Paper from '@material-ui/core/Paper';
+import Paper from "@material-ui/core/Paper";
 import { Grid } from "@material-ui/core";
+import Products from "../../components/Products/products"
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
 
 const Handle = Slider.Handle;
 
@@ -37,10 +40,13 @@ class Inventory extends Component {
   state = {
     quantity: ""
   };
-
-  state = {
-    quantity: ""
-  };
+  // componentWillMount() {
+  //   this.getAllProducts();
+  // }
+  
+  // getAllProducts = () => {
+  //   this.props.getProducts();
+  // }
 
   handleChange = name => event => {
     this.setState({
@@ -53,23 +59,22 @@ class Inventory extends Component {
     return (
       <div>
         <Nav>Inventory</Nav>
-        <Grid container justify-xs-center grid-xs-12>
-
-        <Paper square elevation2>
-        <div className={classes.bottleContainer}>
-          <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
-          <div id="slider-div">
-            <Slider
-              vertical
-              min={0}
-              max={100}
-              step={1}
-              defaultValue={50}
-              handle={handle}
-              />
-          </div>
-        </div>
-        </Paper>
+        <Grid container justify="center">
+          <Paper square elevation2>
+            <div className={classes.bottleContainer}>
+              <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
+              <div id="slider-div">
+                <Slider
+                  vertical
+                  min={0}
+                  max={100}
+                  step={1}
+                  defaultValue={50}
+                  handle={handle}
+                />
+              </div>
+            </div>
+          </Paper>
         </Grid>
         <TextField
           id="standard-number"
@@ -93,9 +98,25 @@ class Inventory extends Component {
           }}
           margin="normal"
         />
+        <Products />
       </div>
     );
   }
 }
 
-export default withStyles(styles)(Inventory);
+const mapStateToProps = state => {
+  return {
+    Products: state.reducer.Products
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getProducts: () => dispatch(actions.getProducts())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(Inventory));
