@@ -24,6 +24,7 @@ const App = () => (
         <Route exact path="/shifts" component={Shifts} />
         <Route exact path="/locations" component={Locations} />
         <Route exact path="/inventory" component={Inventory} />
+        <Route exact path="/locations/test/:id" component={Inventory} />
         <Route component={NoMatch} />
       </Switch>
     </div>

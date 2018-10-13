@@ -61,12 +61,13 @@ module.exports = {
     },
 
     getSingleStation: function (req, res) {
-      db.Locations.find({location_id: req.params.id})
+      console.log('controller fired')
+      db.Locations.findOne({location_id: req.params.id})
       .then( data => {
         console.log(data)
         res.json(data)
-        .catch(err => res.json(err))
-      })
+        
+      }).catch(err => res.json(err))
     }
   
   };

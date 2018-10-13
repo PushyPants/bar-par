@@ -19,7 +19,7 @@ router.route('/updatelocation')
 router.route('/itemlookup/:id')
   .put(locationsController.lookupSingleItem)
 
-router.route('/getsinglestation/:id')
+router.route('/getSingleStation/:id')
   .get(locationsController.getSingleStation)
 
 module.exports = router;

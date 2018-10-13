@@ -83,7 +83,7 @@ locationsArr.map(vals => {
             </ExpansionPanelSummary>
               {parent.sub_locations.map(location => {
                 return (
-                  <Link to={`/api/locations/getSingleStation/${location.location_id}`}>
+                  <Link to={`/locations/test/${location.location_id}`}>
                     <ExpansionPanelDetails key={location.location_id} >
                       {location.location_name}
                     </ExpansionPanelDetails>
