@@ -18,7 +18,8 @@ const styles = {
     flexGrow: 1
   },
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
+    padding: "68px 24px",
   },
   menuButton: {
     marginLeft: -12,
@@ -32,17 +33,16 @@ const Nav = props => {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar className="nav-bar" position="fixed">
-        <Toolbar className="tools">
+        <Toolbar>
           <SwipeableTemporaryDrawer />
           <LogButton />
-          <div className="logo-container">
+          <Typography variant="title" color="inherit">
             <img
-              className="logo"
               src="/assets/imgs/logo1compressed.png"
               height="42px"
               alt={classes.alt}
             />
-          </div>
+          </Typography>
         </Toolbar>
       </AppBar>
       <Paper className="title-bar" position="absolute">

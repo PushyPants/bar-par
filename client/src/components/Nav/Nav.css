@@ -18,18 +18,8 @@ nav {
 }
 
 .title-bar {
+  width: 100% !important;
   height: 98px;
   color: #fff;
   background-color: #888888 !important;
-}
-
-.title-bar h2 {
-  padding: 68px 24px;
-}
-
-.logo-container {
-  width: 100%;
-  position: fixed;
-  text-align: center;
-  margin-left: -40px;
 }

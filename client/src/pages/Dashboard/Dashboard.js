@@ -10,6 +10,7 @@ import './Dashboard.css';
 
 class Dashboard extends Component {
   render() {
+    const classes = this.props;
     return (
       <div>
         <CssBaseline />
@@ -23,4 +24,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withStyles(styles)(Dashboard);
