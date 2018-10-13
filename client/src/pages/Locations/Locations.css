@@ -1,20 +1,20 @@
 .locations-list {
-    margin-top: 50px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
-.locations-list Button:hover {
-    background: rgb(45, 117, 119) !important;
+.locations-list button:hover {
+  background: rgb(45, 117, 119) !important;
 }
 
 .location-preview ul {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 .station-link {
-    width: 80% !important;
-    margin: auto;
+  width: 80% !important;
+  margin: auto;
 }

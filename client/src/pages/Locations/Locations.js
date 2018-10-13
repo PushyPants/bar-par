@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
+import LocationItem from "../../components/LocationItem";
+import API from "../../utils/API";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-import API from "../../utils/API";
-import LocationItem from "../../components/LocationItem";
-import { List, ListItem, Divider } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import { Button, List, ListItem, Divider } from "@material-ui/core";
 import "./Locations.css";
 
 class Locations extends Component {

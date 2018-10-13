@@ -2,7 +2,6 @@
     padding: 0;
     width: 130px;
     margin: auto !important;
-    margin-top: 100px !important;
     float: left;
     display: block;
 }
@@ -11,7 +10,6 @@
     float: left;
     display: block;
     height: 450px;
-    margin-top: 140px;
     margin-left: 80px;
 }
 
