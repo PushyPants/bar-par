@@ -30,7 +30,7 @@ const styles = {
 const Nav = props => {
   const { classes } = props;
   return (
-    <div className={classes.root}>
+    <header className={classes.root}>
       <CssBaseline />
       <AppBar className="nav-bar" position="fixed">
         <Toolbar>
@@ -50,7 +50,7 @@ const Nav = props => {
           {props.children}
         </Typography>
       </Paper>
-    </div>
+    </header>
   );
 };
 

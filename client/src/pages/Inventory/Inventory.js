@@ -9,12 +9,13 @@ import "./Inventory.css";
 
 const Handle = Slider.Handle;
 
-const styles = {
+const styles = theme => ({
   bottleContainer: {
     width: "100%",
-    margin: "auto"
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
   }
-};
+});
 
 const handle = props => {
   const { value, dragging, index, ...restProps } = props;
@@ -53,8 +54,7 @@ class Inventory extends Component {
         <CssBaseline />
         <Nav>Inventory</Nav>
         <Grid container justify="center" alignItems="center">
-          <Grid item xs={11}>
-            <Paper square>
+            <Paper square className={classes.bottleContainer}>
               <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
               <div id="slider-div">
                 <Slider
@@ -67,7 +67,6 @@ class Inventory extends Component {
                 />
               </div>
             </Paper>
-          </Grid>
           <Grid item xs={11}>
             <Paper square>
               <TextField

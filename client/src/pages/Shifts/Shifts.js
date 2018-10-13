@@ -57,7 +57,7 @@ class Availability extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        {/* {this.props.Employee.firstName === "Admin" ? <Redirect to="/" /> : null} */}
+        {this.props.Employee.firstName === "Admin" ? <Redirect to="/" /> : null}
         <Nav>
           {this.props.LoggedInAs.firstName} {this.props.LoggedInAs.lastName}
         </Nav>

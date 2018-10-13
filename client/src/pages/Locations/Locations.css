@@ -1,4 +1,5 @@
 .locations-list {
+  z-index: 1 !important;
   width: 90%;
   margin-left: auto;
   margin-right: auto;

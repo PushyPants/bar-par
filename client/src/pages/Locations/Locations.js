@@ -4,11 +4,14 @@ import LocationItem from "../../components/LocationItem";
 import API from "../../utils/API";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-import { Button, List, ListItem, Divider } from "@material-ui/core";
+import {
+  Button,
+  List,
+  ListItem,
+  Divider,
+  CssBaseline
+} from "@material-ui/core";
 import "./Locations.css";
-// import { ListItem, Divider } from "@material-ui/core";
-// import { List } from "@material-ui/core";
-// import Button from "@material-ui/core/Button";
 // import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 // import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 // import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -34,16 +37,17 @@ class Locations extends Component {
   }
 
   getLocations = () => {
-     this.props.getLocation();
+    this.props.getLocation();
   };
 
   render() {
     return (
       <React.Fragment>
+        <CssBaseline />
         <Nav> Locations </Nav>
-        <div className="locations-list">
+        <main className="locations-list">
           <LocationItem locArr={this.props.Locations} />
-        </div>
+        </main>
       </React.Fragment>
     );
   }
