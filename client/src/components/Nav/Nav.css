@@ -13,8 +13,8 @@ nav {
 }
 
 .logo {
-  margin: auto !important;
-  display: inline-block
+  margin: auto;
+  display: inline-block;
 }
 
 .title-bar {
@@ -22,4 +22,12 @@ nav {
   height: 98px;
   color: #fff;
   background-color: #888888 !important;
+}
+
+.logo-container {
+  width: 100%;
+  position: absolute;
+  margin-left: -10px;
+  margin-right: auto;
+  text-align: center;
 }

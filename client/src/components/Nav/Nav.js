@@ -36,13 +36,13 @@ const Nav = props => {
         <Toolbar>
           <SwipeableTemporaryDrawer />
           <LogButton />
-          <Typography variant="title" color="inherit">
+          <div className="logo-container">
             <img
               src="/assets/imgs/logo1compressed.png"
               height="42px"
               alt={classes.alt}
             />
-          </Typography>
+          </div>
         </Toolbar>
       </AppBar>
       <Paper className="title-bar" position="absolute">

@@ -1,20 +1,12 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Slider from "rc-slider";
-import { withStyles } from "@material-ui/core/styles";
 import "rc-slider/assets/index.css";
 import "./Inventory.css";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "rc-tooltip";
 
 const Handle = Slider.Handle;
-
-const styles = {
-  bottleContainer: {
-    width: "100%",
-    margin: "auto"
-  }
-};
 
 const handle = props => {
   const { value, dragging, index, ...restProps } = props;
@@ -47,12 +39,10 @@ class Inventory extends Component {
   };
 
   render() {
-    const classes = this.props;
     return (
       <div>
         <Nav>Inventory</Nav>
-        <div className={classes.bottleContainer}>
-          <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
+        <div>
           <div id="slider-div">
             <Slider
               vertical
@@ -65,30 +55,19 @@ class Inventory extends Component {
           </div>
         </div>
         <TextField
+          className="qty-input"
           id="standard-number"
-          label="Number"
+          label="Quantity"
           value={this.state.quantity}
           onChange={this.handleChange("quantity")}
           type="number"
           InputLabelProps={{
             shrink: true
           }}
-          margin="normal"
-        />
-        <TextField
-          id="standard-number"
-          label="Number"
-          value={this.state.quantity}
-          onChange={this.handleChange("quantity")}
-          type="number"
-          InputLabelProps={{
-            shrink: true
-          }}
-          margin="normal"
         />
       </div>
     );
   }
 }
 
-export default withStyles(styles)(Inventory);
+export default Inventory;
