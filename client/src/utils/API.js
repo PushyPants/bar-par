@@ -49,13 +49,16 @@ export default {
   getLocations: function(){
     return axios.get('/api/locations')
   },
-  updateLocation: function(){
-    return axios.put('/api/updatelocation')
+  updateLocation: function(id){
+    return axios.put(`${id}`)
   },
   itemLookup: function(id){
     return axios.put(`/api/itemlookup/${id}`)
   },
   getProducts: function(){
     return axios.get(`/api/products`);
-  } 
+  },
+  getSingleStation: function(id) {
+    return axios.get(`/api/locations/getSingleStation/${id}`)
+  }
 };

@@ -1,6 +1,7 @@
 import * as actions from "./actions";
 
 const initialState = {
+<<<<<<< HEAD
   employeeList: [],
   Employee: {
     firstName: "Admin",
@@ -65,5 +66,77 @@ const reducer = (state = initialState, action) => {
   }
   return state;
 };
+=======
+    employeeList: [],
+    Employee: {
+        firstName:"Admin",
+        isAdmin: 3,
+        _id:"Admin"
+    },
+    LoggedInAs: {
+        firstName: "Admin",
+        _id: "Admin"
+    },
+    todaysDate: '',
+    workingDate: '',
+    shiftList: [],
+    Locations: [],
+    stationInfo: {},
+}
+
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case actions.SINGLE_STATION:
+            return {
+                ...state,
+                stationInfo: action.payload
+            }
+        case actions.ALL_LOCATIONS:
+            return {
+                ...state,
+                Locations: [...action.payload]
+            }
+        case actions.ALL_EMPLOYEES:
+            return {
+                ...state,
+                employeeList: [...action.payload]
+            }
+        case actions.LOGIN_EMPLOYEE:
+            return {
+                ...state,
+                Employee: action.payload,
+                LoggedInAs: action.payload
+            }
+        case actions.CHANGE_EMPLOYEE:
+            return {
+                ...state,
+                LoggedInAs: action.payload
+            }
+        case actions.SET_TODAY_DATE:
+            return {
+                ...state,
+                todaysDate: action.payload,
+                workingDate: action.payload
+            }
+        case actions.CHANGE_WORKING_DAY:
+            return {
+                ...state,
+                workingDate: action.payload
+            }
+        case actions.SHIFT_LIST:
+            return {
+                ...state,
+                shiftList: action.payload
+            }
+        case actions.REMOVE_SHIFT:
+            return {
+                ...state,
+                shiftList: state.shiftList.filter(shift => shift._id !== action.payload)
+            }
+        default:
+    }
+    return state
+}
+>>>>>>> a5fe89e62603d13e93adc830dff0db87f8d430c1
 
 export default reducer;

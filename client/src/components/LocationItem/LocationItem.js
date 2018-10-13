@@ -6,8 +6,13 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 // import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+<<<<<<< HEAD
 import { ListItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+=======
+// import { Divider } from "@material-ui/core";
+import { Link } from 'react-router-dom';
+>>>>>>> a5fe89e62603d13e93adc830dff0db87f8d430c1
 
 const styles = theme => ({
   root: {
@@ -44,6 +49,7 @@ function ControlledExpansionPanels(props) {
   let parentsArr = [];
   let locationsArr = [];
 
+<<<<<<< HEAD
   props.locArr.map(location => {
     if (!parentsArr.includes(location.parent_location)) {
       parentsArr.push(location.parent_location);
@@ -51,6 +57,15 @@ function ControlledExpansionPanels(props) {
         parent_location: location.parent_location,
         sub_locations: []
       });
+=======
+props.locArr.map(location => {
+  locationsArr.map(parent => {
+    if (location.parent_location === parent.parent_location) {
+      parent.sub_locations.push({
+        location_name: location.name,
+        location_id: location.location_id
+      })
+>>>>>>> a5fe89e62603d13e93adc830dff0db87f8d430c1
     }
   });
 
@@ -90,6 +105,7 @@ function ControlledExpansionPanels(props) {
                 {console.log(parent.sub_locations)}
               </ListItem>
             </ExpansionPanelSummary>
+<<<<<<< HEAD
             {parent.sub_locations.map(location => {
               return (
                 <ExpansionPanelDetails
@@ -102,6 +118,17 @@ function ControlledExpansionPanels(props) {
                 </ExpansionPanelDetails>
               );
             })}
+=======
+              {parent.sub_locations.map(location => {
+                return (
+                  <Link to={`/locations/test/${location.location_id}`}>
+                    <ExpansionPanelDetails key={location.location_id} >
+                      {location.location_name}
+                    </ExpansionPanelDetails>
+                  </Link>
+                );
+              })}
+>>>>>>> a5fe89e62603d13e93adc830dff0db87f8d430c1
           </ExpansionPanel>
         );
       })}
