@@ -10,6 +10,7 @@ import NoMatch from "./pages/NoMatch";
 import Shifts from "./pages/Shifts";
 import Inventory from "./pages/Inventory";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Summary from "./pages/Summary/Summary";
 
 const App = () => (
   <Router>
@@ -24,6 +25,7 @@ const App = () => (
         <Route exact path="/shifts" component={Shifts} />
         <Route exact path="/locations" component={Locations} />
         <Route exact path="/inventory" component={Inventory} />
+        <Route exact path="/summary" component={Summary} />
         <Route component={NoMatch} />
       </Switch>
     </div>

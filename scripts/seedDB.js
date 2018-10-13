@@ -5,7 +5,7 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/MySchedUL"
+  "mongodb://localhost/barpar"
 );
 
 const employeeSeed = [
@@ -22,6 +22,574 @@ db.EmployeeTable.create(employeeSeed)
     process.exit(1);
   });
 
+
+
+
+  const barparSeed = [
+    /* 1 */
+{
+  "_id" : ObjectId("5bbbe73288be0c7a53c6064c"),
+  "location_id" : "MB_SR_01",
+  "name" : "Speed Rail 1",
+  "parent_location" : "Main Bar",
+  "positions" : [ 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0d",
+          "inventories" : [ 
+              {
+                  "inv_date" : "10/08/2018",
+                  "updated_by" : "PushyPants",
+                  "quant" : "700"
+              }
+          ]
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0e",
+          "inventories" : [ 
+              {
+                  "inv_date" : "10/08/2018",
+                  "updated_by" : "PushyPants",
+                  "quant" : "500"
+              }, 
+              {
+                  "inv_date" : "10/08/2018",
+                  "updated_by" : "PushyPants",
+                  "quant" : "300"
+              }
+          ]
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0f",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f10",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f11",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f12",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f13",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f14",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f15",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f16",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f17",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f18",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f19",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1a",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1b",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1c",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1d",
+          "inventories" : []
+      }
+  ]
+},
+/* 2 */
+{
+  "_id" : ObjectId("5bbbe73288be0c7a53c6064e"),
+  "location_id" : "MB_SR_02",
+  "name" : "Speed Rail 2",
+  "parent_location" : "Main Bar",
+  "positions" : [ 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0d",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0e",
+          "inventories" : [ 
+              {
+                  "inv_date" : "10/08/2018",
+                  "updated_by" : "PushyPants",
+                  "quant" : "600"
+              }
+          ]
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0f",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f10",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f11",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f12",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f13",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f14",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f15",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f16",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f17",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f18",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f19",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1a",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1b",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1c",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1d",
+          "inventories" : []
+      }
+  ]
+},
+/* 3 */
+{
+  "_id" : ObjectId("5bbbe73288be0c7a53c60652"),
+  "location_id" : "MB_SR_04",
+  "name" : "Speed Rail 4",
+  "parent_location" : "Main Bar",
+  "positions" : [ 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0d",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0e",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0f",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f10",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f11",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f12",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f13",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f14",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f15",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f16",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f17",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f18",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f19",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1a",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1b",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1c",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1d",
+          "inventories" : []
+      }
+  ]
+},
+/* 4 */
+{
+  "_id" : ObjectId("5bbbe73288be0c7a53c60654"),
+  "location_id" : "MB_SR_05",
+  "name" : "Speed Rail 5",
+  "parent_location" : "Main Bar",
+  "positions" : [ 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0d",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0e",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0f",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f10",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f11",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f12",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f13",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f14",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f15",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f16",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f17",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f18",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f19",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1a",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1b",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1c",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1d",
+          "inventories" : []
+      }
+  ]
+},
+/* 5 */
+{
+  "_id" : ObjectId("5bbbe73288be0c7a53c60656"),
+  "location_id" : "MB_SR_06",
+  "name" : "Speed Rail 6",
+  "parent_location" : "Main Bar",
+  "positions" : [ 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0d",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0e",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0f",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f10",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f11",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f12",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f13",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f14",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f15",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f16",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f17",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f18",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f19",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1a",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1b",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1c",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1d",
+          "inventories" : []
+      }
+  ]
+},
+/* 6 */
+{
+  "_id" : ObjectId("5bbbe73288be0c7a53c60658"),
+  "location_id" : "MB_SR_07",
+  "name" : "Speed Rail 7",
+  "parent_location" : "Main Bar",
+  "positions" : [ 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0d",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0e",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0f",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f10",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f11",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f12",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f13",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f14",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f15",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f16",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f17",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f18",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f19",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1a",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1b",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1c",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1d",
+          "inventories" : []
+      }
+  ]
+},
+/* 7 */
+{
+  "_id" : ObjectId("5bbd221e88be0c7a53c629d0"),
+  "location_id" : "MB_SR_03",
+  "name" : "Speed Rail 3",
+  "parent_location" : "Main Bar",
+  "positions" : [ 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0d",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0e",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f0f",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f10",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f11",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f12",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f13",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f14",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f15",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f16",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f17",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f18",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f19",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1a",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1b",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1c",
+          "inventories" : []
+      }, 
+      {
+          "product_id" : "5bb6b9533df12a13d0b17f1d",
+          "inventories" : []
+      }
+  ]
+}
+
+  ]
 // const bookSeed = [
 //   {
 //     title: "The Dead Zone",
@@ -137,14 +705,14 @@ db.EmployeeTable.create(employeeSeed)
 //   }
 // ];
 
-// db.Book
-//   .remove({})
-//   .then(() => db.Book.collection.insertMany(bookSeed))
-//   .then(data => {
-//     console.log(data.result.n + " records inserted!");
-//     process.exit(0);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     process.exit(1);
-//   });
+db.Locations
+  .remove({})
+  .then(() => db.Locations.collection.insertMany(barparSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
