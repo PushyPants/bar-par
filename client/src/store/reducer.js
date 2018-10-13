@@ -13,11 +13,17 @@ const initialState = {
     },
     todaysDate: '',
     workingDate: '',
-    shiftList: []
+    shiftList: [],
+    Locations: []
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actions.ALL_LOCATIONS:
+            return {
+                ...state,
+                Locations: [...action.payload]
+            }
         case actions.ALL_EMPLOYEES:
             return {
                 ...state,

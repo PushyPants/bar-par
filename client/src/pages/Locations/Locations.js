@@ -6,24 +6,35 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import { Button, List, ListItem, Divider } from "@material-ui/core";
 import "./Locations.css";
+// import { ListItem, Divider } from "@material-ui/core";
+// import { List } from "@material-ui/core";
+// import Button from "@material-ui/core/Button";
+// import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+// import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+// import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+const style = {
+  stationLink: {
+    width: "80%",
+    margin: "auto"
+  }
+};
 
 class Locations extends Component {
   state = {
-    Locations: []
+    location_id: "",
+    name: "",
+    parent_location: "",
+    positions: []
   };
 
-  componentDidMount = () => {
+  componentWillMount() {
     this.getLocations();
-  };
+  }
 
   getLocations = () => {
-    API.getLocations().then(res => {
-      console.log(res.data);
-      this.setState({
-        Locations: res.data
-      });
-    });
-    // console.log("[getLocations] results after await: ",results);
+     this.props.getLocation();
   };
 
   render() {
@@ -31,34 +42,7 @@ class Locations extends Component {
       <React.Fragment>
         <Nav> Locations </Nav>
         <div className="locations-list">
-          <LocationItem>
-            <List>
-              <ListItem>
-                <Button className="station-link"> Speed Rail 01 </Button>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <Button className="station-link"> Speed Rail 02 </Button>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <Button className={"station-link"}> Speed Rail 03 </Button>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <Button className="station-link"> Speed Rail 04 </Button>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <Button className="station-link"> Speed Rail 05 </Button>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <Button className="station-link"> Speed Rail 06 </Button>
-              </ListItem>
-              <Divider />
-            </List>
-          </LocationItem>
+          <LocationItem locArr={this.props.Locations} />
         </div>
       </React.Fragment>
     );
@@ -67,13 +51,13 @@ class Locations extends Component {
 
 const mapStateToProps = state => {
   return {
-    employeeList: state.reducer.employeeList
+    Locations: state.reducer.Locations
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getEmployeeList: () => dispatch(actions.getEmployeeList())
+    getLocation: () => dispatch(actions.getLocation())
   };
 };
 
