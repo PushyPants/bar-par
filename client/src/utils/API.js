@@ -57,5 +57,8 @@ export default {
   },
   getProducts: function(){
     return axios.get(`/api/products`);
-  } 
+  },
+  getSingleStation: function(id) {
+    return axios.get(`/api/getsinglestation/${id}`)
+  }
 };

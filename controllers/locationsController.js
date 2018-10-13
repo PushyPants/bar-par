@@ -59,6 +59,15 @@ module.exports = {
       })
       .catch(err => res.json(err));
     },
+
+    getSingleStation: function (req, res) {
+      db.Locations.find({location_id: req.params.id})
+      .then( data => {
+        console.log(data)
+        res.json(data)
+        .catch(err => res.json(err))
+      })
+    }
   
   };
  
