@@ -7,13 +7,16 @@
     display: block;
 }
 
-#slider-div {
-    float: left;
+.slider-container {
+    padding: auto;
     display: block;
     height: 450px;
-    margin-top: 140px;
-    margin-left: 80px;
+    margin: auto;
+    width: 80%;
 }
 
-/* #standard-number {
-} */
+.qty-container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}

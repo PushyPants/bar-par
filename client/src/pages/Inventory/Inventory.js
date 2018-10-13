@@ -42,29 +42,29 @@ class Inventory extends Component {
     return (
       <div>
         <Nav>Inventory</Nav>
-        <div>
-          <div id="slider-div">
-            <Slider
-              vertical
-              min={0}
-              max={100}
-              step={1}
-              defaultValue={50}
-              handle={handle}
-            />
-          </div>
+        <div className="slider-container">
+          <Slider
+            vertical
+            min={0}
+            max={100}
+            step={1}
+            defaultValue={50}
+            handle={handle}
+          />
         </div>
-        <TextField
-          className="qty-input"
-          id="standard-number"
-          label="Quantity"
-          value={this.state.quantity}
-          onChange={this.handleChange("quantity")}
-          type="number"
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
+        <div className="qty-container">
+          <TextField
+            className="qty-input"
+            id="standard-number"
+            label="Quantity"
+            value={this.state.quantity}
+            onChange={this.handleChange("quantity")}
+            type="number"
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+        </div>
       </div>
     );
   }
