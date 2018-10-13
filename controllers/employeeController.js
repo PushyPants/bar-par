@@ -20,7 +20,7 @@ module.exports = {
             .catch(err => res.json(err));
     },
     delete: function (req, res) {
-        db.EmployeeTable.remove({
+        db.EmployeeTable.findByIdAndDelete({
             _id: req.params.id
         }).then(dbModel => res.json(dbModel))
             .catch(err => res.json(err))

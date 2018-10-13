@@ -7,10 +7,10 @@ import Availability from "./pages/Availability";
 import Dashboard from "./pages/Dashboard";
 import Locations from "./pages/Locations";
 import NoMatch from "./pages/NoMatch";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Shifts from "./pages/Shifts";
 import Inventory from "./pages/Inventory";
 import axios from 'axios';
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 class App extends Component {
   constructor() {
@@ -65,10 +65,11 @@ class App extends Component {
         <SignIn updateUser={this.updateUser}/>} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/addemp" component={Employee} />
         <Route exact path="/addavail" component={Availability} />
-        <Route exact path="/locations" component={Locations} />
         <Route exact path="/shifts" component={Shifts} />
+        <Route exact path="/locations" component={Locations} />
         <Route exact path="/inventory" component={Inventory} />
         <Route component={NoMatch} />
       </Switch>

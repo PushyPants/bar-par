@@ -1,14 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Input from "@material-ui/core/Input";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
-import Button from "@material-ui/core/Button";
+import {
+  Input,
+  FormControl,
+  List,
+  ListItem,
+  Button,
+  CssBaseline
+} from "@material-ui/core";
 import "./Login.css";
 import {Redirect} from 'react-router-dom';
 import axios from "axios";
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 
 const styles = theme => ({
   container: {
@@ -137,4 +142,23 @@ Login.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Login);
+const mapStateToProps = state => {
+  return {
+    employeeList: state.reducer.employeeList,
+    Employee: state.reducer.Employee,
+    todaysDate: state.reducer.todaysDate,
+    workingDate: state.reducer.workingDate,
+
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    LogInEmployee: id => dispatch(actions.LogInEmployee(id)),
+    getEmployeeList: () => dispatch(actions.getEmployeeList()),
+    setTodaysDate: (data) => dispatch(actions.setTodaysDate(data)),
+    changeWorkingDate: (data) => dispatch(actions.changeWorkingDate(data)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

@@ -1,62 +1,67 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
-import API from "../../utils/API"
-import Footer from "../../components/Footer";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
+// import API from "../../utils/API";
+// import Footer from "../../components/Footer";
 import LocationItem from "../../components/LocationItem";
 import "./Locations.css";
+// import { ListItem, Divider } from "@material-ui/core";
+// import { List } from "@material-ui/core";
+// import Button from "@material-ui/core/Button";
+// import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+// import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+// import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+const style = {
+  stationLink: {
+    width: "80%",
+    margin: "auto"
+  }
+};
 
 class Locations extends Component {
-    state = {
-        Locations: [],
-        name: "test"
-    };
+  state = {
+    location_id: "",
+    name: "",
+    parent_location: "",
+    positions: []
+  };
 
-    componentDidMount = () => {
-        this.getLocations()
-    };
+  componentWillMount() {
+    this.getLocations();
+  }
 
-    getLocations = () => {
-        API.getLocations().then(res => {
-            console.log(res.data);
-            this.setState({ Locations: res.data });
-        });
-        // console.log("[getLocations] results after await: ",results);
+  getLocations = () => {
+     this.props.getLocation();
+  };
 
-    }
-
-    render() {
-        return (
-        <React.Fragment>
-            <Nav>Locations</Nav>
-            
-            <div className="locations-list">
-                <LocationItem name={"Location passed name"}>This is the children</LocationItem>
-                <LocationItem />
-                <LocationItem />
-                <LocationItem />
-                <LocationItem />
-                <LocationItem />
-                <LocationItem />
-            </div>
-
-            <Footer />
-        </React.Fragment>
-        );
-    }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    employeeList: state.reducer.employeeList
+  render() {
+    return (
+      <React.Fragment>
+        <Nav> Locations </Nav>
+        <div className="locations-list">
+          <LocationItem locArr={this.props.Locations} />
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = state => {
   return {
-    getEmployeeList: () => dispatch(actions.getEmployeeList()),
-  }
-}
+    Locations: state.reducer.Locations
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Locations);
+const mapDispatchToProps = dispatch => {
+  return {
+    getLocation: () => dispatch(actions.getLocation())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Locations);
