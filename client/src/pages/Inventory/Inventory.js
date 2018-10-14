@@ -51,6 +51,10 @@ class Inventory extends Component {
     });
   };
 
+  handleProductValue = e => {
+    console.log(e)
+  }
+
   render() {
     console.log(this.props.stationInfo);
     const classes = this.props;

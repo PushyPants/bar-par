@@ -11,6 +11,7 @@ import Shifts from "./pages/Shifts";
 import Inventory from "./pages/Inventory";
 import axios from 'axios';
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Summary from "./pages/Summary/Summary";
 
 class App extends Component {
   constructor() {
@@ -78,6 +79,7 @@ class App extends Component {
         <Route exact path="/shifts" component={Shifts} />
         <Route exact path="/locations" component={Locations} />
         <Route exact path="/inventory" component={Inventory} />
+        <Route exact path="/summary" component={Summary} />
         <Route exact path="/locations/test/:id" component={Inventory} />
         <Route component={NoMatch} />
       </Switch>
