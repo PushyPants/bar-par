@@ -102,7 +102,6 @@ class Availability extends Component {
 
                 <Grid container spacing={8} justify="center">
 
-
                     <Grid item xs={12} sm={8}>
                         <AvailTableExp emp={this.props.LoggedInAs._id}
                             empArr={this.props.employeeList}

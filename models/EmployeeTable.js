@@ -30,10 +30,10 @@ var EmployeeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Availability"
     }],
-    shifts: [{
-        type: Schema.Types.ObjectId,
-        ref: "Shifts"
-    }]
+    // shifts: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Shifts"
+    // }]
 });
 
 var EmployeeTable = mongoose.model("EmployeeTable", EmployeeSchema);
