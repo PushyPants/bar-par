@@ -44,15 +44,8 @@ const employeeSeed = [
 }
 ];
 
-db.EmployeeTable.create(employeeSeed)
-  .then(data => {
-    console.log(data.result + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+
+
 
   const barparSeed = [
     /* 1 */
