@@ -40,7 +40,7 @@ const employeeSeed = [
               {
                   "inv_date" : "10/08/2018",
                   "updated_by" : "PushyPants",
-                  "quant" : "700"
+                  "quant" : 700
               }
           ]
       }, 
@@ -50,12 +50,12 @@ const employeeSeed = [
               {
                   "inv_date" : "10/08/2018",
                   "updated_by" : "PushyPants",
-                  "quant" : "500"
+                  "quant" : 500
               }, 
               {
                   "inv_date" : "10/08/2018",
                   "updated_by" : "PushyPants",
-                  "quant" : "300"
+                  "quant" : 300
               }
           ]
       }, 
@@ -137,7 +137,7 @@ const employeeSeed = [
               {
                   "inv_date" : "10/08/2018",
                   "updated_by" : "PushyPants",
-                  "quant" : "600"
+                  "quant" : 600
               }
           ]
       }, 
