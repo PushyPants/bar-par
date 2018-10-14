@@ -41,6 +41,7 @@ class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
+      email: "",
       redirectTo: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
