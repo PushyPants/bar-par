@@ -32,18 +32,18 @@ var EmployeeSchema = new Schema({
     type: String
     // required: true,
   },
-  unavail: [
+  avail: [
     {
       type: Schema.Types.ObjectId,
       ref: "Availability"
     }
   ],
-  shifts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Shifts"
-    }
-  ]
+  // shifts: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Shifts"
+  //   }
+  // ]
 });
 
 EmployeeSchema.methods = {
