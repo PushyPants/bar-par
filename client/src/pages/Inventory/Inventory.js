@@ -62,51 +62,44 @@ class Inventory extends Component {
       <React.Fragment>
         <CssBaseline />
         <Nav>Inventory</Nav>
-        <Grid container justify="center">
-          <Grid item spacing={8} xs={11} md={5}>
-            <Paper square className={classes.bottleContainer}>
-              {/* <h1>{classes.stationInfo.name}</h1> */}
-              <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
-              <div id="slider-div">
-                <Slider
-                  vertical
-                  min={0}
-                  max={100}
-                  step={1}
-                  defaultValue={50}
-                  handle={handle}
-                />
-              </div>
-            </Paper>
-          </Grid>
-          <Grid item spacing={8} xs={11} md={5}>
-            <Paper square>
-              <TextField
-                id="standard-number"
-                label="Number"
-                value={this.state.quantity}
-                onChange={this.handleChange("quantity")}
-                type="number"
-                InputLabelProps={{
-                  shrink: true
-                }}
-                margin="normal"
-              />
-              <TextField
-                id="standard-number"
-                label="Number"
-                value={this.state.quantity}
-                onChange={this.handleChange("quantity")}
-                type="number"
-                InputLabelProps={{
-                  shrink: true
-                }}
-                margin="normal"
-              />
-            </Paper>
-          </Grid>
-        </Grid>
-      </React.Fragment>
+        <div className={classes.bottleContainer}>
+        <h1>{this.props.stationInfo.name}</h1>
+          <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
+          <div id="slider-div">
+            <Slider
+              vertical
+              min={0}
+              max={100}
+              step={1}
+              defaultValue={50}
+              handle={handle}
+              onAfterChange = {this.handleProductValue}
+            />
+          </div>
+        </div>
+        <TextField
+          id="standard-number"
+          label="Number"
+          value={this.state.quantity}
+          onChange={this.handleChange("quantity")}
+          type="number"
+          InputLabelProps={{
+            shrink: true
+          }}
+          margin="normal"
+        />
+        <TextField
+          id="standard-quantity"
+          label="Number"
+          value={this.state.quantity}
+          onChange={this.handleChange("quantity")}
+          type="number"
+          InputLabelProps={{
+            shrink: true
+          }}
+          margin="normal"
+        />
+      </div>
     );
   }
 }

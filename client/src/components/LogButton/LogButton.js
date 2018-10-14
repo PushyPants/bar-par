@@ -28,7 +28,7 @@ class LogButton extends React.Component {
           justify={"flex-start"}
           style={{ padding: "0px" }}
         >
-          <Grid item>
+          <Grid item xs={4}>
             <IconButton
               aria-owns={anchorEl ? "simple-menu" : null}
               aria-haspopup="true"
