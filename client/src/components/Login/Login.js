@@ -70,6 +70,7 @@ class Login extends React.Component {
         if (response.status === 200) {
           // update App.js state
           this.props.updateUser(response.data);
+          this.props.LogInEmployee(response.data._id)
           // update the state to redirect to home
           this.setState({
             redirectTo: "/dashboard"
