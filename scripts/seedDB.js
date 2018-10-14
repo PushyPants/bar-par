@@ -9,20 +9,57 @@ mongoose.connect(
 );
 
 const employeeSeed = [
-  {firstName: "dog"}
-]
-
-  db.EmployeeTable
-  .remove({})
-  .then(() => db.EmployeeTable.insertMany(employeeSeed))
-  .then(data => {
-    console.log(data.result + " employee inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+  /* 1 */
+ {
+   "unavail" : [],
+   "shifts" : [],
+   "firstName" : "Daniel",
+   "lastName" : "Randazzo",
+   "email" : "dprandazzo@gmail.com",
+   "phone" : "8327174272",
+   "password" : "$2a$10$u0QyQ.HhouiB5FyhyRGEO.G2PjCsKq2l9WORlo3JmGZQqhkG9cQea",
+   "isAdmin" : "3",
+   "__v" : 0
+ },
+ 
+ /* 2 */
+ {
+   "unavail" : [],
+   "shifts" : [],
+   "firstName" : "Raul",
+   "lastName" : "Sanchez",
+   "email" : "raulsg93@gmail.com",
+   "phone" : "8326439708",
+   "password" : "$2a$10$W.Kga5FZpps4jRBr41Mxv.TAigfmGdsb0CHqCcMWSTSHhbae.hmeC",
+   "isAdmin" : "2",
+   "__v" : 0
+ },
+ 
+ /* 3 */
+ {
+   "unavail" : [],
+   "shifts" : [],
+   "firstName" : "David",
+   "lastName" : "Luu",
+   "email" : "david.n.luu@gmail.com",
+   "phone" : "7135040060",
+   "password" : "$2a$10$zedTq6e.k2.WDQLpsjqnBuUCqj2nSQA5IDPs1Wecmp/qSSltxMHLm",
+   "isAdmin" : "1",
+   "__v" : 0
+ }
+ ];
+ 
+ db.EmployeeTable
+ .remove({})
+ .then(() => db.EmployeeTable.insertMany(employeeSeed))
+   .then(data => {
+     console.log(data.result + " records inserted!");
+     process.exit(0);
+   })
+   .catch(err => {
+     console.error(err);
+     process.exit(1);
+   });
 
 
 
