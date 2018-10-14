@@ -61,11 +61,19 @@ module.exports = {
     },
 
     getSingleStation: function (req, res) {
-      console.log('controller fired')
+      let combinedData = {};
       db.Locations.findOne({location_id: req.params.id})
-      .then( data => {
-        console.log(data)
-        res.json(data)
+      .then( sData => {
+        combinedData = sData;
+        combinedData.positions.map((position, idx) => {
+          db.Products.find({_id : position.product_id})
+          .then((pData) => {
+           combinedData.positions[idx].product_info = pData;
+          })
+          .catch(err=> res.json(err))
+        })
+        //we know this isn't the right way to do this but its working for now. 
+        setTimeout(() => {res.json(combinedData)},1000)
         
       }).catch(err => res.json(err))
     }
