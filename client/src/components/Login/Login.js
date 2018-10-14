@@ -130,11 +130,12 @@ class Login extends React.Component {
                         id="standard-name"
                         label="Password"
                         name="password"
+                        type="password"
                         className={classes.textField}
                         value={this.state.password}
                         onChange={this.handleChange}
                         margin="normal"
-                        placeholder="Email"
+                        placeholder="Password"
                       />
                     </FormControl>
                   </ListItem>
