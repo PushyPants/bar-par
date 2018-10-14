@@ -8,6 +8,5 @@ module.exports = {
       .find()
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(err));
-    
     }
   };

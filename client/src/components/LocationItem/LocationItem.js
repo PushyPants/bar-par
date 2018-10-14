@@ -7,6 +7,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 // import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import { Divider } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -58,7 +59,7 @@ props.locArr.map(location => {
     if (location.parent_location === parent.parent_location) {
       parent.sub_locations.push({
         location_name: location.name,
-        location_id: location._id
+        location_id: location.location_id
       })
     }
   })
@@ -82,9 +83,11 @@ locationsArr.map(vals => {
             </ExpansionPanelSummary>
               {parent.sub_locations.map(location => {
                 return (
-                  <ExpansionPanelDetails key={location.location_id} data-id={location.location_id}>
-                    {location.location_name}
-                  </ExpansionPanelDetails>
+                  <Link to={`/locations/test/${location.location_id}`}>
+                    <ExpansionPanelDetails key={location.location_id} >
+                      {location.location_name}
+                    </ExpansionPanelDetails>
+                  </Link>
                 );
               })}
           </ExpansionPanel>

@@ -6,6 +6,10 @@ import "rc-slider/assets/index.css";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, Paper, TextField, CssBaseline } from "@material-ui/core";
 import "./Inventory.css";
+import Tooltip from "rc-tooltip";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
+import API from '../../utils/API';
 
 const Handle = Slider.Handle;
 
@@ -37,9 +41,11 @@ class Inventory extends Component {
     quantity: ""
   };
 
-  state = {
-    quantity: ""
-  };
+  componentDidMount() {
+    // API.getSingleStation(this.props.match.params.id).then((res) => this.setState({stationInfo: res.data}))
+    this.props.getSingleStation(this.props.match.params.id);
+    
+  }
 
   handleChange = name => event => {
     this.setState({
@@ -48,55 +54,66 @@ class Inventory extends Component {
   };
 
   render() {
+    console.log(this.props.stationInfo)
     const classes = this.props;
     return (
       <React.Fragment>
         <CssBaseline />
         <Nav>Inventory</Nav>
-        <Grid container justify="center" alignItems="center">
-            <Paper square className={classes.bottleContainer}>
-              <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
-              <div id="slider-div">
-                <Slider
-                  vertical
-                  min={0}
-                  max={100}
-                  step={1}
-                  defaultValue={50}
-                  handle={handle}
-                />
-              </div>
-            </Paper>
-          <Grid item xs={11}>
-            <Paper square>
-              <TextField
-                id="standard-number"
-                label="Number"
-                value={this.state.quantity}
-                onChange={this.handleChange("quantity")}
-                type="number"
-                InputLabelProps={{
-                  shrink: true
-                }}
-                margin="normal"
-              />
-              <TextField
-                id="standard-number"
-                label="Number"
-                value={this.state.quantity}
-                onChange={this.handleChange("quantity")}
-                type="number"
-                InputLabelProps={{
-                  shrink: true
-                }}
-                margin="normal"
-              />
-            </Paper>
-          </Grid>
-        </Grid>
-      </React.Fragment>
+        <div className={classes.bottleContainer}>
+        <h1>{this.props.stationInfo.name}</h1>
+          <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
+          <div id="slider-div">
+            <Slider
+              vertical
+              min={0}
+              max={100}
+              step={1}
+              defaultValue={50}
+              handle={handle}
+            />
+          </div>
+        </div>
+        <TextField
+          id="standard-number"
+          label="Number"
+          value={this.state.quantity}
+          onChange={this.handleChange("quantity")}
+          type="number"
+          InputLabelProps={{
+            shrink: true
+          }}
+          margin="normal"
+        />
+        <TextField
+          id="standard-number"
+          label="Number"
+          value={this.state.quantity}
+          onChange={this.handleChange("quantity")}
+          type="number"
+          InputLabelProps={{
+            shrink: true
+          }}
+          margin="normal"
+        />
+      </div>
     );
   }
 }
 
-export default withStyles(styles)(Inventory);
+const mapStateToProps = state => {
+  return {
+    stationInfo: state.reducer.stationInfo
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getSingleStation: id => dispatch(actions.getSingleStation(id))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Inventory);
