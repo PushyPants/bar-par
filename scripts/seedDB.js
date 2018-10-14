@@ -6,7 +6,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/barpar");
 const employeeSeed = [
  /* 1 */
 {
-  "unavail" : [],
+  "avail" : [],
   "shifts" : [],
   "firstName" : "Daniel",
   "lastName" : "Randazzo",
@@ -19,7 +19,7 @@ const employeeSeed = [
 
 /* 2 */
 {
-  "unavail" : [],
+  "avail" : [],
   "shifts" : [],
   "firstName" : "Raul",
   "lastName" : "Sanchez",
@@ -32,7 +32,7 @@ const employeeSeed = [
 
 /* 3 */
 {
-  "unavail" : [],
+  "avail" : [],
   "shifts" : [],
   "firstName" : "David",
   "lastName" : "Luu",
