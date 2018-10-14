@@ -82,17 +82,6 @@ class Inventory extends Component {
           }}
           margin="normal"
         />
-        <TextField
-          id="standard-number"
-          label="Number"
-          value={this.state.quantity}
-          onChange={this.handleChange("quantity")}
-          type="number"
-          InputLabelProps={{
-            shrink: true
-          }}
-          margin="normal"
-        />
       </div>
     );
   }
