@@ -91,7 +91,7 @@ function SimpleExpansionPanel(props) {
                         return (
                             <ExpansionPanel key={row.key}>
                                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography className={classes.heading}>
+                                    <Typography variant="h1"  className={classes.heading}>
                                         {row.day}
                                     </Typography>
 

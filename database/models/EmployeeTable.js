@@ -38,12 +38,12 @@ var EmployeeSchema = new Schema({
       ref: "Availability"
     }
   ],
-  shifts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Shifts"
-    }
-  ]
+  // shifts: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Shifts"
+  //   }
+  // ]
 });
 
 EmployeeSchema.methods = {
