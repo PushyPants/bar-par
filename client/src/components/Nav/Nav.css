@@ -6,6 +6,18 @@ nav {
 .nav-bar {
   background: #223d4b !important;
 }
+
 .nav-tabs {
   margin: 10px 0;
+}
+
+.nav-bar img {
+  margin: auto !important;
+}
+
+.title-bar {
+  width: 100% !important;
+  height: 98px;
+  color: #fff;
+  background-color: #888888 !important;
 }

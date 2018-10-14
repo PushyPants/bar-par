@@ -7,6 +7,11 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 
 class SignIn extends Component {
+  constructor(props) {
+    super(props)
+  {this.updateUser = this.props.updateUser}
+  }
+  
   handleChange(event) {
     console.log(event.target.value);
   }
@@ -31,8 +36,8 @@ class SignIn extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container">
-          <Login />
+        <div id="signIn">
+          <Login updateUser={this.updateUser}/>
         </div>
       </React.Fragment>
     );

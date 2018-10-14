@@ -2,27 +2,23 @@ import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import Button from "@material-ui/core/Button";
+import {Input, InputAdornment, FormControl, TextField, MenuItem, Button, CssBaseline} from "@material-ui/core";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
+import "./AddEmp.css";
 
 const styles = theme => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
-    marginTop: theme.spacing.unit * 8
+    marginTop: theme.spacing.unit * 3
   },
   margin: {
     marginLeft: theme.spacing.unit * 5,
     marginRight: theme.spacing.unit * 5
   },
   withoutLabel: {
-    marginTop: theme.spacing.unit
+    marginTop: theme.spacing.unit,
   },
   textField: {
     flexBasis: "100%"
@@ -96,6 +92,7 @@ class AddEmp extends React.Component {
 
     return (
       <div className={classes.root}>
+        <CssBaseline />
         <FormControl
           className={classNames(
             classes.margin,
@@ -199,6 +196,7 @@ class AddEmp extends React.Component {
           variant="contained"
           color="secondary"
           className={classNames(classes.margin, classes.withoutLabel)}
+          id="addMargin"
           disabled={
             !(
               this.state.firstName &&

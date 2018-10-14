@@ -1,14 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Input from "@material-ui/core/Input";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
-import Button from "@material-ui/core/Button";
+import {
+  Input,
+  FormControl,
+  List,
+  ListItem,
+  Button,
+  CssBaseline
+} from "@material-ui/core";
 import "./Login.css";
-import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
+import { Redirect } from "react-router-dom";
+import axios from "axios";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
+import { Paper } from "@material-ui/core";
 
 const styles = theme => ({
   container: {
@@ -30,63 +36,123 @@ const styles = theme => ({
 });
 
 class Login extends React.Component {
-  state = {
-    username: "",
-    age: "",
-    multiline: "Controlled"
-  };
+  constructor() {
+    super();
+    this.state = {
+      username: "",
+      password: "",
+      redirectTo: null
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  handleChange = name => event => {
+  handleChange = event => {
     this.setState({
-      [name]: event.target.value
+      [event.target.name]: event.target.value
     });
   };
 
-  LogInEmployee = event => {
-    this.props.LogInEmployee(event.target.value);
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log("signin");
+    console.log(this.state.username);
+
+    axios
+      .post("/api/employee/login", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(response => {
+        console.log("login response: ");
+        console.log(response);
+        if (response.status === 200) {
+          // update App.js state
+          this.props.updateUser(response.data);
+          // update the state to redirect to home
+          this.setState({
+            redirectTo: "/dashboard"
+          });
+        }
+      })
+      .catch(error => {
+        console.log("login error: ");
+        console.log(error);
+      });
   };
 
   render() {
-    const { classes } = this.props;
+    if (this.state.redirectTo) {
+      return <Redirect to={{ pathname: this.state.redirectTo }} />;
+    } else {
+      const { classes } = this.props;
 
-    return (
-      <div className="login-form">
-        <Paper className={classes.paper}>
-          <form className={classes.container} noValidate autoComplete="off">
-            <img src="assets/imgs/logo2.png" alt="logo" height="304px" />
-            <List>
-              <ListItem className="input-field">
-                <Input
-                  id="standard-name"
-                  label="Username"
-                  className={classes.textField}
-                  value={this.state.name}
-                  onChange={this.handleChange("username")}
-                  // margin="normal"
-                  placeholder="User Name"
-                />
-              </ListItem>
-              <ListItem className="input-field">
-                <Input
-                  id="standard-password-input"
-                  label="Password"
-                  className={classes.textField}
-                  type="password"
-                  autoComplete="current-password"
-                  // margin="normal"
-                  placeholder="Password"
-                />
-              </ListItem>
-              <ListItem>
-                <Button variant="contained" color="primary">
-                  Sign In
-                </Button>
-              </ListItem>
-            </List>
-          </form>
-        </Paper>
-      </div>
-    );
+      return (
+        <React.Fragment>
+          <CssBaseline />
+          <main className="login-form">
+              <form className={classes.container} noValidate autoComplete="off">
+                <List>
+                  <ListItem>
+                    <img
+                      src="assets/imgs/logo2.png"
+                      alt="logo"
+                      height="304px"
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <FormControl
+                      className="input-field"
+                      margin="normal"
+                      required
+                      fullWidth
+                    >
+                      <Input
+                        id="standard-name"
+                        label="Email"
+                        name="email"
+                        className={classes.textField}
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                        margin="normal"
+                        placeholder="Email"
+                      />
+                    </FormControl>
+                  </ListItem>
+                  <ListItem>
+                    <FormControl
+                      className="input-field"
+                      margin="normal"
+                      required
+                      fullWidth
+                    >
+                      <Input
+                        id="standard-name"
+                        label="Password"
+                        name="password"
+                        className={classes.textField}
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                        margin="normal"
+                        placeholder="Email"
+                      />
+                    </FormControl>
+                  </ListItem>
+                  <ListItem>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={this.handleSubmit}
+                    >
+                      Sign In
+                    </Button>
+                  </ListItem>
+                </List>
+              </form>
+          </main>
+        </React.Fragment>
+      );
+    }
   }
 }
 
@@ -99,18 +165,20 @@ const mapStateToProps = state => {
     employeeList: state.reducer.employeeList,
     Employee: state.reducer.Employee,
     todaysDate: state.reducer.todaysDate,
-    workingDate: state.reducer.workingDate,
-
-  }
-}
+    workingDate: state.reducer.workingDate
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     LogInEmployee: id => dispatch(actions.LogInEmployee(id)),
     getEmployeeList: () => dispatch(actions.getEmployeeList()),
-    setTodaysDate: (data) => dispatch(actions.setTodaysDate(data)),
-    changeWorkingDate: (data) => dispatch(actions.changeWorkingDate(data)),
-  }
-}
+    setTodaysDate: data => dispatch(actions.setTodaysDate(data)),
+    changeWorkingDate: data => dispatch(actions.changeWorkingDate(data))
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(Login));
