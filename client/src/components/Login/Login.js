@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import {
   Input,
+  InputLabel,
   FormControl,
   List,
   ListItem,
@@ -22,9 +23,8 @@ const styles = theme => ({
     flexWrap: "wrap"
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
+    margin: "auto",
+    width: "100%",
     display: "block"
   },
   dense: {
@@ -91,64 +91,65 @@ class Login extends React.Component {
         <React.Fragment>
           <CssBaseline />
           <main className="login-form">
-              <form className={classes.container} noValidate autoComplete="off">
-                <List>
-                  <ListItem>
-                    <img
-                      src="assets/imgs/logo2.png"
-                      alt="logo"
-                      height="304px"
+            <form className={classes.container} noValidate autoComplete="off">
+              <List>
+                <ListItem>
+                  <img src="assets/imgs/logo2.png" alt="logo" height="304px" />
+                </ListItem>
+                <ListItem>
+                  <FormControl
+                    className="input-field"
+                    margin="normal"
+                    required
+                    fullWidth
+                  >
+                    <InputLabel htmlFor="Email">Email</InputLabel>
+                    <Input
+                      autoFocus
+                      id="standard-name"
+                      label="Email"
+                      name="email"
+                      className={classes.textField}
+                      value={this.state.email}
+                      onChange={this.handleChange}
+                      margin="normal"
+                      autoComplete="email"
                     />
-                  </ListItem>
-                  <ListItem>
-                    <FormControl
-                      className="input-field"
+                  </FormControl>
+                </ListItem>
+                <ListItem>
+                  <FormControl
+                    className="input-field"
+                    margin="normal"
+                    required
+                    fullWidth
+                  >
+                    <InputLabel htmlFor="Password">Password</InputLabel>
+                    <Input
+                      autoFocus
+                      name="password"
+                      id="standard-name"
+                      type="password"
+                      label="Password"
+                      className={classes.textField}
+                      value={this.state.password}
+                      onChange={this.handleChange}
                       margin="normal"
-                      required
-                      fullWidth
-                    >
-                      <Input
-                        id="standard-name"
-                        label="Email"
-                        name="email"
-                        className={classes.textField}
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                        margin="normal"
-                        placeholder="Email"
-                      />
-                    </FormControl>
-                  </ListItem>
-                  <ListItem>
-                    <FormControl
-                      className="input-field"
-                      margin="normal"
-                      required
-                      fullWidth
-                    >
-                      <Input
-                        id="standard-name"
-                        label="Password"
-                        name="password"
-                        className={classes.textField}
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                        margin="normal"
-                        placeholder="Email"
-                      />
-                    </FormControl>
-                  </ListItem>
-                  <ListItem>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={this.handleSubmit}
-                    >
-                      Sign In
-                    </Button>
-                  </ListItem>
-                </List>
-              </form>
+                      autoComplete="current-password"
+                    />
+                  </FormControl>
+                </ListItem>
+                <ListItem>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleSubmit}
+                  >
+                    Sign In
+                  </Button>
+                </ListItem>
+              </List>
+            </form>
           </main>
         </React.Fragment>
       );

@@ -23,7 +23,6 @@ class LogButton extends React.Component {
       <React.Fragment>
         <Grid
           container
-          xs={"4"}
           direction={"row"}
           alignItems={"center"}
           justify={"flex-start"}
