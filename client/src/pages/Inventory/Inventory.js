@@ -88,7 +88,7 @@ class Inventory extends Component {
           margin="normal"
         />
         <TextField
-          id="standard-number"
+          id="standard-quantity"
           label="Number"
           value={this.state.quantity}
           onChange={this.handleChange("quantity")}
