@@ -79,7 +79,11 @@ class App extends Component {
         <Route exact path="/shifts" component={Shifts} />
         <Route exact path="/locations" component={Locations} />
         <Route exact path="/inventory" component={Inventory} />
+<<<<<<< HEAD
         <Route exact path="/summary" component={Summary} />
+=======
+        <Route exact path="/locations/test/:id" component={Inventory} />
+>>>>>>> a5fe89e62603d13e93adc830dff0db87f8d430c1
         <Route component={NoMatch} />
       </Switch>
     </div>
