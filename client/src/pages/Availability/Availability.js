@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
 import AddAvail from "./components/AddAvail";
 import AvailTableExp from "./components/AvailTableExp";
 import { connect } from "react-redux";
@@ -133,7 +132,6 @@ class Availability extends Component {
             </Paper>
           </Grid>
         </Grid>
-        <Footer />
       </React.Fragment>
     );
   }

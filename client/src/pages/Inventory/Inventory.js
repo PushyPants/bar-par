@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Slider from "rc-slider";
-import { withStyles } from "@material-ui/core/styles";
 import "rc-slider/assets/index.css";
 import "./Inventory.css";
 import Tooltip from "rc-tooltip";
@@ -230,12 +229,13 @@ class Inventory extends Component {
                           }}
                         >
                           <img
-                            src="/assets/imgs/bottle.png"
+                            src="/assets/imgs/empty-bottle.png"
                             id="bottle"
                             alt="Bottle"
                           />
                           <div id="slider-div">
                             <Slider
+                              className="bottle-slide"
                               vertical
                               min={0}
                               max={100}
@@ -267,17 +267,7 @@ class Inventory extends Component {
                     }}
                     margin="normal"
                   />
-                  <TextField
-                    id="standard-quantity"
-                    label="Number"
-                    value={this.state.quantity}
-                    onChange={this.handleChange("quantity")}
-                    type="number"
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                    margin="normal"
-                  />
+
                 </Paper>
               </Grid>
             </Grid>
@@ -305,4 +295,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(Inventory));
+)(Inventory);
