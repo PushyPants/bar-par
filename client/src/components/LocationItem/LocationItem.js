@@ -61,7 +61,7 @@ function ControlledExpansionPanels(props) {
       if (location.parent_location === parent.parent_location) {
         parent.sub_locations.push({
           location_name: location.name,
-          location_id: location._id
+          location_id: location.location_id
         });
       }
     });
@@ -89,14 +89,14 @@ function ControlledExpansionPanels(props) {
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <ListItem>
                 {parent.parent_location}
-                {console.log(parent.sub_locations)}
+                {/* {console.log(parent.sub_locations)} */}
               </ListItem>
             </ExpansionPanelSummary>
             {parent.sub_locations.map(location => {
               return (
                 <ExpansionPanelDetails key={location.location_id}>
                   <Link to={`/locations/station/${location.location_id}`}>
-                    {location.location_name}
+                    <Button>{location.location_name}</Button>
                   </Link>
                 </ExpansionPanelDetails>
               );

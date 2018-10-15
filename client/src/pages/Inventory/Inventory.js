@@ -38,13 +38,31 @@ const handle = props => {
 
 class Inventory extends Component {
   state = {
-    quantity: ""
+    quantity: "",
+    stationInfo: [],
+    positionCounter: 0,
   };
 
-  componentDidMount() {
+  componentWillMount() {
     // API.getSingleStation(this.props.match.params.id).then((res) => this.setState({stationInfo: res.data}))
-    this.props.getSingleStation(this.props.match.params.id);
+    this.SingleStation(this.AnotherFunction);
+    console.log(this.props.stationInfo);
+  }
+  
+  SingleStation() {
     
+    this.props.getSingleStation(this.props.match.params.id);
+    console.log(this.props.stationInfo);
+    this.AnotherFunction();
+    
+  }
+  
+  AnotherFunction() {
+    
+    this.setState({
+      stationInfo: this.props.stationInfo
+    })
+    // console.log(this.state.stationInfo);
   }
 
   handleChange = name => event => {
@@ -64,7 +82,7 @@ class Inventory extends Component {
       <div>
         <Nav>Inventory</Nav>
         <Grid container justify="center">
-          <Paper square elevation2>
+          <Paper square>
             <div className={classes.bottleContainer}>
               <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
               <div id="slider-div">
