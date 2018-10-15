@@ -7,6 +7,7 @@ export const CHANGE_WORKING_DAY = "CHANGE_WORKING_DAY";
 export const SHIFT_LIST = "SHIFT_LIST";
 export const REMOVE_SHIFT = "REMOVE_SHIFT";
 export const ALL_LOCATIONS = "ALL_LOCATIONS";
+export const ALL_PRODUCTS = "ALL_PRODUCTS"
 export const SINGLE_STATION = "SINGLE_STATION";
 
 export const setTodaysDate = date => {
@@ -257,4 +258,19 @@ const sendAllLocationsToStore = Locations => {
         type: ALL_LOCATIONS,
         payload: Locations
       };
+}
+
+export const getProducts = () => {
+    return dispatch => {
+        API.getProducts()
+        .then(res => dispatch(sendAllProductsToStore(res.data)))
+        .catch(err => console.log(err.response))
+    }
+};
+
+const sendAllProductsToStore = Products => {
+    return {
+        type: ALL_PRODUCTS,
+        payload: Products
+    }
 }
