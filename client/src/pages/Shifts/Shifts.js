@@ -61,17 +61,22 @@ class Availability extends Component {
         <Nav>
           {this.props.LoggedInAs.firstName} {this.props.LoggedInAs.lastName}
         </Nav>
-        <Grid container justify="space-around" alignItems="baseline">
-          <Grid item xs={11} md={4}>
-            <Paper square>
-              <DatePickers
-                changeWorkingDate={this.changeWorkingDate}
-                workingDate={this.props.workingDate}
-              />
-            </Paper>
-          </Grid>
-          <Grid item spacing={8} xs={11} md={7}>
-            <Paper square>
+        <main>
+          <Grid
+            container
+            justify="space-evenly"
+            alignItems="flex-start"
+            style={{ paddingTop: 24 }}
+          >
+            <Grid item xs={11} md={4}>
+              <Paper square>
+                <DatePickers
+                  changeWorkingDate={this.changeWorkingDate}
+                  workingDate={this.props.workingDate}
+                />
+              </Paper>
+            </Grid>
+            <Grid item xs={11} md={7}>
               <ShiftTableExp
                 AdminLevel={this.props.Employee.isAdmin}
                 Employee={this.props.LoggedInAs._id}
@@ -80,9 +85,9 @@ class Availability extends Component {
                 addShift={this.addShift}
                 shiftList={this.props.shiftList}
               />
-            </Paper>
+            </Grid>
           </Grid>
-        </Grid>
+        </main>
       </React.Fragment>
     );
   }
