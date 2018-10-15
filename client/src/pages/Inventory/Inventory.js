@@ -235,6 +235,7 @@ class Inventory extends Component {
                           />
                           <div id="slider-div">
                             <Slider
+                              className="bottle-slide"
                               vertical
                               min={0}
                               max={100}
@@ -266,17 +267,7 @@ class Inventory extends Component {
                     }}
                     margin="normal"
                   />
-                  <TextField
-                    id="standard-quantity"
-                    label="Number"
-                    value={this.state.quantity}
-                    onChange={this.handleChange("quantity")}
-                    type="number"
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                    margin="normal"
-                  />
+
                 </Paper>
               </Grid>
             </Grid>

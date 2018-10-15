@@ -29,3 +29,12 @@
 #slider-div {
     height: 500px;
 }
+
+.rc-slider-track {
+    position: absolute;
+    left: -450px !important;
+    height: 4px;
+    width: 300px !important;
+    background-color: #f2fbab;
+    /* z-index: -1; */
+}
