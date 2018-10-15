@@ -1,9 +1,8 @@
 import React, { Component } from "react";
+import Grid from "@material-ui/core/Grid";
 import EmployeeDrop from "../../../../components/EmployeeDrop";
 import DeleteBtn from "../../../../components/DeleteBtn";
 import AddAvailSlider from "../../../Availability/components/AddAvailSilder";
-import Grid from "@material-ui/core/Grid";
-import { DeleteOutline } from "@material-ui/icons";
 import { Redirect } from "react-router";
 import { connect } from "react-redux";
 import * as actions from "../../../../store/actions";
@@ -77,10 +76,10 @@ class ShiftCard extends Component {
     this.props.ChangeEmployee(event.target.value);
   };
 
-  deleteShift = id => {
-    this.props.deleteShift(id);
-    this.props.getShiftList();
-  };
+    deleteShift = (id) => {
+        this.props.deleteShift(id)
+        this.props.getShiftList()
+    }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -197,18 +196,18 @@ class ShiftCard extends Component {
       <React.Fragment>
         {this.props.Employee.isAdmin < 1 ? <Redirect to="/" /> : null}
 
-        <Grid container spacing={8} justify="space-evenly" alignItems="center">
-          <Grid item xs={3}>
+        <Grid container spacing={8} justify="center">
+          <Grid item xs={2} sm={4}>
             <span>{this.time_convert(this.state.shiftStart)}</span>
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={2} sm={4}>
             <span>{this.time_convert(this.state.shiftEnd)}</span>
           </Grid>
 
           {this.props.Employee.isAdmin > 2 ? (
             <React.Fragment>
-              <Grid item xs={6}>
+              <Grid item xs={8} sm={4}>
                 <EmployeeDrop
                   changeEmp={this.handleInputChange}
                   employeeList={this.state.worksToday}
@@ -219,7 +218,7 @@ class ShiftCard extends Component {
                 />
               </Grid>
 
-              <Grid item xs={12} md={8}>
+              <Grid item xs={9} sm={8}>
                 <AddAvailSlider
                   start={this.state.shiftStart}
                   end={this.state.shiftEnd}
@@ -228,20 +227,20 @@ class ShiftCard extends Component {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={3} style={{ direction: "rtl", marginTop: 12 }}>
+              <Grid item xs={3} sm={4}>
                 <DeleteBtn
                   valOne={this.props.shiftId}
                   valTwo={null}
                   func={this.deleteShift}
                   color={"secondary"}
                 >
-                  <DeleteOutline />
+                  <i className="material-icons">delete_outline</i>
                 </DeleteBtn>
               </Grid>
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <Grid item xs={12} md={12}>
+              <Grid item xs={12} sm={8}>
                 <AddAvailSlider
                   start={this.state.shiftStart}
                   end={this.state.shiftEnd}
