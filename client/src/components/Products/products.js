@@ -9,7 +9,6 @@ const getAllProducts = () => {
 
 function getProducts(props) {
 
-
   return (
     <React.Fragment>{getAllProducts()}</React.Fragment>
   );
