@@ -8,7 +8,8 @@ import {
   ListItem,
   ListItemText,
   Divider,
-  CssBaseline
+  CssBaseline,
+  Grid
 } from "@material-ui/core";
 import {
   Menu,
@@ -85,46 +86,58 @@ class SwipeableTemporaryDrawer extends React.Component {
           <List component="drawer">
             <ListItem button>
               <Link to="/home" className={classes.text}>
+                <Grid container>
                 <HomeOutlined />
                 <ListItemText primary="Home" />
+                </Grid>
               </Link>
             </ListItem>
             <Divider />
             <ListItem button>
               <Link to="/locations" className={classes.text}>
+              <Grid container>
                 <PlaceOutlined />
                 <ListItemText primary="Location" />
+              </Grid>
               </Link>
             </ListItem>
             <Divider />
             <ListItem button>
               <Link to="/inventory" className={classes.text}>
+              <Grid container>
                 <LocalBarOutlined />
 
                 <ListItemText primary="Inventory" />
+              </Grid>
               </Link>
             </ListItem>
             <Divider />
             <ListItem button>
               <Link to="/shifts" className={classes.text}>
+              <Grid container>
                 <CalendarTodayOutlined />
                 <ListItemText primary="Shifts" />
+              </Grid>
               </Link>
             </ListItem>
             <Divider />
             {this.props.Employee.isAdmin < 2 ? null : (
               <ListItem button>
                 <Link to="/addemp" className={classes.text}>
+                <Grid container>
                   <PersonAddOutlined />
                   <ListItemText primary="Add Employee" />
+                </Grid>
                 </Link>
               </ListItem>
             )}
             <Divider />
             <ListItem button>
               <Link to="/addavail" className={classes.text}>
+              <Grid container>
                 <Tune />
                 <ListItemText primary="Add Availability" />
+              </Grid>
               </Link>
             </ListItem>
           </List>
