@@ -90,6 +90,7 @@ function ControlledExpansionPanels(props) {
                 {console.log(parent.sub_locations)}
               </ListItem>
             </ExpansionPanelSummary>
+<<<<<<< HEAD
             {parent.sub_locations.map(location => {
               return (
                 <ExpansionPanelDetails
@@ -102,6 +103,17 @@ function ControlledExpansionPanels(props) {
                 </ExpansionPanelDetails>
               );
             })}
+=======
+              {parent.sub_locations.map(location => {
+                return (
+                  <Link to={`/locations/station/${location.location_id}`}>
+                    <ExpansionPanelDetails key={location.location_id} >
+                      {location.location_name}
+                    </ExpansionPanelDetails>
+                  </Link>
+                );
+              })}
+>>>>>>> 9b829846931b38def5623e74e909da1f203921fb
           </ExpansionPanel>
         );
       })}

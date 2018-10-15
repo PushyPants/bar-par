@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/bar-par");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/barpar", { useNewUrlParser: true });
 //session
 app.use(
   session({

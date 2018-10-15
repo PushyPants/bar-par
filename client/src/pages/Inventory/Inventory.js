@@ -43,33 +43,40 @@ class Inventory extends Component {
     });
   };
 
+  handleProductValue = e => {
+    console.log(e)
+  }
+
   render() {
     return (
       <div>
         <Nav>Inventory</Nav>
-        <div className="slider-container">
-          <Slider
-            vertical
-            min={0}
-            max={100}
-            step={1}
-            defaultValue={50}
-            handle={handle}
-          />
+        <div className={classes.bottleContainer}>
+        <h1>{this.props.stationInfo.name}</h1>
+          <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
+          <div id="slider-div">
+            <Slider
+              vertical
+              min={0}
+              max={100}
+              step={1}
+              defaultValue={50}
+              handle={handle}
+              onAfterChange = {this.handleProductValue}
+            />
+          </div>
         </div>
-        <div className="qty-container">
-          <TextField
-            className="qty-input"
-            id="standard-number"
-            label="Quantity"
-            value={this.state.quantity}
-            onChange={this.handleChange("quantity")}
-            type="number"
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
-        </div>
+        <TextField
+          id="standard-number"
+          label="Number"
+          value={this.state.quantity}
+          onChange={this.handleChange("quantity")}
+          type="number"
+          InputLabelProps={{
+            shrink: true
+          }}
+          margin="normal"
+        />
       </div>
     );
   }
