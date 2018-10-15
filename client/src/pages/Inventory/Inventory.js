@@ -36,7 +36,9 @@ const handle = props => {
 
 class Inventory extends Component {
   state = {
-    quantity: ""
+    quantity: "",
+    positionCounter: 1
+
   };
 
   componentDidMount() {
@@ -54,6 +56,7 @@ class Inventory extends Component {
   handleProductValue = e => {
     console.log(e)
   }
+  
 
   render() {
     const classes = this.props;
