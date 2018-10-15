@@ -86,7 +86,6 @@ class Inventory extends Component {
     // API.getSingleStation(this.props.match.params.id).then((res) => this.setState({stationInfo: res.data}))
     // this.SingleStation(this.AnotherFunction);
     this.props.getSingleStation(this.props.match.params.id);
-
     console.log(this.state.positionCounter)
     setTimeout(() => {
       this.setState({
@@ -104,6 +103,14 @@ class Inventory extends Component {
     console.log(this.props.stationInfo);
     this.AnotherFunction();
     
+  }
+  
+  AnotherFunction() {
+    
+    this.setState({
+      stationInfo: this.props.stationInfo
+    })
+    // console.log(this.state.stationInfo);
   }
   
   AnotherFunction() {
@@ -146,19 +153,35 @@ class Inventory extends Component {
   }
   
 
+  handleInc =() =>{
+    console.log('increse')
+    let newCounter = this.state.positionCounter += 1;
+    this.setState({
+      positionCounter : this.state.positionCounter >= this.state.stationInfo.positions.length ? (this.state.stationInfo.positions.length - 1) : newCounter
+    })
+    console.log('cout is : '+this.state.positionCounter)
+    console.log(this.state.stationInfo.positions.length)
+
+  }
+  
+  handleDec=()=> {
+    console.log('decres')
+    let newCounter = this.state.positionCounter -= 1;
+    this.setState({
+      positionCounter : this.state.positionCounter < 0 ? 0 : newCounter
+    })
+    console.log('cout is : '+this.state.positionCounter)
+    
+  }
+
   render() {
-
     // console.log(this.state.stationInfo.positions[0].product_info[0].brand)
-
-    console.log(this.props.stationInfo);
-
     const classes = this.props;
     console.log(this.props.stationInfo)
     return (
       <React.Fragment>
         <CssBaseline />
         <Nav>Inventory</Nav>
-
         <h1>{this.props.stationInfo.name}</h1>
         <h2>{this.state.stationInfo.positions[this.state.positionCounter].product_info[0].brand}</h2>
         <h2>{this.state.stationInfo.positions[this.state.positionCounter].product_info[0].product}</h2>
