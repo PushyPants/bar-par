@@ -89,7 +89,7 @@ export const getShiftList = () => {
   return dispatch => {
     API.getShift()
       .then(res => dispatch(sendShiftsToStore(res.data)))
-      .then(res => dispatch(getShiftList()))
+      // .then(res => dispatch(getShiftList()))
       .catch(err => console.log(err.response));
   };
 };

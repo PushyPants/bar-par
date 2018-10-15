@@ -24,7 +24,7 @@ class App extends Component {
       email: '',
       phone: '',
       password: '',
-      unavail: [],
+      avail: [],
       shifts: []
     };
 
@@ -38,6 +38,7 @@ class App extends Component {
   }
 
   updateUser(userObject) {
+    console.log("WackySmacky", userObject._id)
     this.setState(userObject);
     this.setState({
       loggedIn: true
