@@ -7,6 +7,8 @@ import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import { Redirect } from "react-router";
+import Products from '../../components/Products/products'
+import API from '../../utils/API'
 
 const styles = {
   root: {
@@ -19,18 +21,24 @@ const styles = {
 
 class Summary extends Component {
   state = {
+    Products: []
   };
 
   componentWillMount() {
-    this.loadProducts();
+    this.getAllProducts();
     this.setState({
       isAdmin: "Employee"
     });
   }
 
-  loadProducts = () => {
-    this.props.getAllProducts();
-  };
+  getAllProducts = () => {
+    API.getProducts().then(res =>{
+      console.log(res.data);
+      this.setState({
+        Products: res.data
+      })
+    })
+  }
 
   render() {
     const classes = this.props;
@@ -38,7 +46,8 @@ class Summary extends Component {
       <React.Fragment>
         <CssBaseline />
         {/* {this.props.Employee.isAdmin < 2 ? <Redirect to="/" /> : null} */}
-        <Nav> Add Employee </Nav>
+        <Products />
+        <Nav> Summary </Nav>
         <Grid
           container
           justify="space-around"
@@ -47,14 +56,14 @@ class Summary extends Component {
         >
           <Grid item xs={11} md={4}>
             <Paper square className={classes.shadows}>
-              <AddEmp />
             </Paper>
           </Grid>
           <Grid item xs={11} md={7}>
             <Paper square className={classes.shadows}>
-              <SumTable
-                sumArr={this.props.Products}
-              />
+            <SumTable
+            sumArr = {this.state.Products}
+            />
+
             </Paper>
           </Grid>
         </Grid>
@@ -63,20 +72,5 @@ class Summary extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-   
-    LoggedInAs: state.reducer.LoggedInAs
-  };
-};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllProducts: () => dispatch(actions.getProducts())
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withStyles(styles)(Summary));
+export default (withStyles(styles)(Summary));

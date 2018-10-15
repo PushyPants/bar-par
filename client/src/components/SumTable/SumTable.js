@@ -27,9 +27,9 @@ const divStyle = {
 };
 
 let id = 0;
-function createData(brand, product, total, order ) {
+function createData(brand, product, par, total, order ) {
   id += 1;
-  return { id, brand, product, total, order };
+  return { brand, product, total, par, order };
 }
 
 function SumTable(props) {
@@ -40,9 +40,9 @@ function SumTable(props) {
   props.sumArr.map(sum =>
     rows.push(
       createData(
-        sum.id,
         sum.brand,
         sum.product,
+        sum.par,
         sum.total,
       )
     )
@@ -55,6 +55,7 @@ function SumTable(props) {
           <TableRow>
             <TableCell>Brand</TableCell>
             <TableCell>Product</TableCell>
+            <TableCell>Par</TableCell>
             <TableCell>Total</TableCell>
             <TableCell>Order</TableCell>
           </TableRow>
@@ -67,6 +68,7 @@ function SumTable(props) {
                   {row.brand}
                 </TableCell>
                 <TableCell >{row.product}</TableCell>
+                <TableCell >{row.par}</TableCell>
                 <TableCell >{row.total}</TableCell>
                 <TableCell >probably order?</TableCell>
               </TableRow>
