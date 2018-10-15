@@ -31,9 +31,12 @@ const styles = theme => ({
     color: theme.palette.text.secondary
   },
   colored: {
-    background: "aliceblue",
+    background: "#888888",
     padding: 12,
     justifyContent: "center"
+  },
+  button: {
+    width: "80%"
   }
 });
 // let id = 0;
@@ -105,9 +108,9 @@ function ControlledExpansionPanels(props) {
                     key={location.location_id}
                     className={classes.colored}
                   >
-                    <Button>{location.location_name}</Button>
+                    <Button className={classes.button}>{location.location_name}</Button>
                   </ExpansionPanelDetails>
-                  <Divider style={{ width: "70%", margin: "auto" }} />
+                  <Divider style={{ width: "80%", margin: "auto" }} />
                 </Link>
               );
             })}
