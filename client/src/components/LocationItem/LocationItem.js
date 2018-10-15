@@ -94,13 +94,11 @@ function ControlledExpansionPanels(props) {
             </ExpansionPanelSummary>
             {parent.sub_locations.map(location => {
               return (
-                <Link to={`/locations/test/${location.location_id}`}>
-                  <ExpansionPanelDetails key={location.location_id}>
-                    <Button className="station-link">
-                      {location.location_name}
-                    </Button>
-                  </ExpansionPanelDetails>
-                </Link>
+                <ExpansionPanelDetails key={location.location_id}>
+                  <Link to={`/locations/station/${location.location_id}`}>
+                    {location.location_name}
+                  </Link>
+                </ExpansionPanelDetails>
               );
             })}
           </ExpansionPanel>

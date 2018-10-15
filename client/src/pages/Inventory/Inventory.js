@@ -53,6 +53,10 @@ class Inventory extends Component {
     });
   };
 
+  handleProductValue = e => {
+    console.log(e)
+  }
+
   render() {
     console.log(this.props.stationInfo)
     const classes = this.props;
@@ -87,18 +91,6 @@ class Inventory extends Component {
           }}
           margin="normal"
         />
-        <TextField
-          id="standard-number"
-          label="Number"
-          value={this.state.quantity}
-          onChange={this.handleChange("quantity")}
-          type="number"
-          InputLabelProps={{
-            shrink: true
-          }}
-          margin="normal"
-        />
-        <Products />
       </div>
     );
   }

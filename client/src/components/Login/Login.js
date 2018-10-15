@@ -14,7 +14,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-import { Paper } from "@material-ui/core";
+// import { Paper } from "@material-ui/core";
 
 const styles = theme => ({
   container: {
@@ -41,6 +41,7 @@ class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
+      email: "",
       redirectTo: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -69,6 +70,7 @@ class Login extends React.Component {
         if (response.status === 200) {
           // update App.js state
           this.props.updateUser(response.data);
+          this.props.LogInEmployee(response.data._id)
           // update the state to redirect to home
           this.setState({
             redirectTo: "/dashboard"
@@ -114,7 +116,7 @@ class Login extends React.Component {
                         className={classes.textField}
                         value={this.state.email}
                         onChange={this.handleChange}
-                        margin="normal"
+                        // margin="normal"
                         placeholder="Email"
                       />
                     </FormControl>
@@ -127,14 +129,15 @@ class Login extends React.Component {
                       fullWidth
                     >
                       <Input
-                        id="standard-name"
+                        id="standard-password"
                         label="Password"
                         name="password"
+                        type="password"
                         className={classes.textField}
                         value={this.state.password}
                         onChange={this.handleChange}
-                        margin="normal"
-                        placeholder="Email"
+                        // margin="normal"
+                        placeholder="Password"
                       />
                     </FormControl>
                   </ListItem>

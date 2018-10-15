@@ -23,9 +23,9 @@ const styles = theme => ({
 
 let key = 0;
 
-let createData = (name, dayOfWeek, unavailStart, unavailEnd, postID, empID) => {
+let createData = (name, dayOfWeek, availStart, availEnd, postID, empID) => {
   key += 1;
-  return { key, name, dayOfWeek, unavailStart, unavailEnd, postID, empID };
+  return { key, name, dayOfWeek, availStart, availEnd, postID, empID };
 };
 
 let convertDay = val => {
@@ -78,26 +78,26 @@ function AvailTable(props) {
 
   props.empArr.forEach(e => {
     if (props.emp === "Admin") {
-      e.unavail.map(emp =>
+      e.avail.map(emp =>
         rows.push(
           createData(
             `${e.firstName} ${e.lastName}`,
             emp.dayOfWeek,
-            emp.unavailStart,
-            emp.unavailEnd,
+            emp.availStart,
+            emp.availEnd,
             emp._id,
             e._id
           )
         )
       );
     } else if (props.emp === e._id) {
-      e.unavail.map(emp =>
+      e.avail.map(emp =>
         rows.push(
           createData(
             `${e.firstName} ${e.lastName}`,
             emp.dayOfWeek,
-            emp.unavailStart,
-            emp.unavailEnd,
+            emp.availStart,
+            emp.availEnd,
             emp._id,
             e._id
           )
@@ -131,11 +131,11 @@ function AvailTable(props) {
                       {convertDay(row.dayOfWeek)}
                     </TableCell>
                     <TableCell className={classes.root} numeric>
-                      {time_convert(row.unavailStart)}
+                      {time_convert(row.availStart)}
                     </TableCell>
 
                     <TableCell className={classes.root} numeric>
-                      {time_convert(row.unavailEnd)}
+                      {time_convert(row.availEnd)}
                     </TableCell>
                     <TableCell className={classes.root} numeric>
                       <DeleteBtn
