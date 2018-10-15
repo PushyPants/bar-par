@@ -24,7 +24,7 @@ class App extends Component {
       email: '',
       phone: '',
       password: '',
-      unavail: [],
+      avail: [],
       shifts: []
     };
 
@@ -38,6 +38,7 @@ class App extends Component {
   }
 
   updateUser(userObject) {
+    console.log("WackySmacky", userObject._id)
     this.setState(userObject);
     console.log("VBORRROOO",this.state)
   }
@@ -79,8 +80,8 @@ class App extends Component {
         <Route exact path="/shifts" component={Shifts} />
         <Route exact path="/locations" component={Locations} />
         <Route exact path="/inventory" component={Inventory} />
+        <Route exact path="/locations/station/:id" component={Inventory} />
         <Route exact path="/summary" component={Summary} />
-        <Route exact path="/locations/test/:id" component={Inventory} />
         <Route component={NoMatch} />
       </Switch>
     </div>

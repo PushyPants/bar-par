@@ -76,9 +76,10 @@ class ShiftCard extends Component {
     this.props.ChangeEmployee(event.target.value);
   };
 
-  deleteShift = id => {
-    this.props.deleteShift(id);
-  };
+    deleteShift = (id) => {
+        this.props.deleteShift(id)
+        this.props.getShiftList()
+    }
 
   handleInputChange = event => {
     const { name, value } = event.target;
