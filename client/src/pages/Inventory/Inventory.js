@@ -33,12 +33,13 @@ const styles = {
 const handle = props => {
   const { value, dragging, index, ...restProps } = props;
   return (
-    <Tooltip
+    <Tooltip 
       prefixCls="rc-slider-tooltip"
-      overlay={`${value} %`}
+      overlay={`${value}%`}
       visible={dragging}
       placement="right"
       key={index}
+      style={{zIndex: 100}}
     >
       <Handle value={value} {...restProps} />
     </Tooltip>

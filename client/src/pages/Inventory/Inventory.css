@@ -69,3 +69,10 @@
 .rc-slider-rail {
   background: rgba(255, 255, 255, 0);
 }
+
+.rc-slider-tooltip-inner {
+    z-index: 1;
+    position: absolute;
+    margin-top: -13px;
+    min-width: 32px;
+}
