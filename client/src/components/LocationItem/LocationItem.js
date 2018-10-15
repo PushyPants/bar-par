@@ -31,7 +31,12 @@ const styles = theme => ({
     color: theme.palette.text.secondary
   },
   colored: {
-    background: "aliceblue"
+    background: "#888888",
+    padding: 12,
+    justifyContent: "center"
+  },
+  button: {
+    width: "80%"
   }
 });
 // let id = 0;
@@ -99,9 +104,13 @@ function ControlledExpansionPanels(props) {
                   to={`/locations/station/${location.location_id}`}
                   style={{ textDecoration: "none" }}
                 >
-                  <ExpansionPanelDetails key={location.location_id}>
-                    <Button>{location.location_name}</Button>
+                  <ExpansionPanelDetails
+                    key={location.location_id}
+                    className={classes.colored}
+                  >
+                    <Button className={classes.button}>{location.location_name}</Button>
                   </ExpansionPanelDetails>
+                  <Divider style={{ width: "80%", margin: "auto" }} />
                 </Link>
               );
             })}

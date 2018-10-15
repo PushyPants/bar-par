@@ -1,33 +1,38 @@
+.align {
+  display: flex;
+  justify-content: center;
+}
+
 .bottleContainer {
-    width: 90%;
-    margin: 24px auto;
-    padding: auto
+  width: 90%;
+  margin: 24px auto;
+  padding: auto;
 }
 #bottle {
-    padding: 0;
-    width: 130px;
-    margin: auto !important;
-    float: left;
-    display: block;
+  padding: 0;
+  width: 130px;
+  margin: auto !important;
+  float: left;
+  display: block;
 }
 #slider-div {
-    float: left;
-    display: block;
-    height: 450px;
-    margin-left: 80px;
+  float: left;
+  display: block;
+  height: 450px;
+  margin-left: 80px;
 }
 #bottle-slide {
-    width: 90vw;
-    height: 750px;
-    margin: auto !important;
-    clear: both;
+  width: 90vw;
+  height: 750px;
+  margin: auto !important;
+  clear: both;
 }
 #bottle {
-    height: 500px;
+  height: 500px;
 }
 
 #slider-div {
-    height: 500px;
+  height: 500px;
 }
 
 .rc-slider-track {

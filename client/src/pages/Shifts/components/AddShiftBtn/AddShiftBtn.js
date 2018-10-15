@@ -18,7 +18,7 @@ function AddShiftBtn(props) {
 
 
     return (
-        <Button variant="fab" mini color="primary"
+        <Button variant="contained" color="primary"
             className={classes.button}
             onClick={() => props.addShift(props.thisDay, props.dayOfWeek, props.Employee)}>
             {props.children}
