@@ -71,9 +71,6 @@
   background: rgba(255, 255, 255, 0);
 }
 
-#slider-div .rc-slider-tooltip-inner {
+.rc-slider-tooltip {
     z-index: 1;
-    position: absolute;
-    margin-top: -13px;
-    min-width: 32px;
 }
