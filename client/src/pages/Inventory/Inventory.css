@@ -1,24 +1,13 @@
+.bottleContainer {
+    width: 90%;
+    margin: 24px auto;
+    padding: auto
+}
+
 #bottle {
-    padding: 0;
-    width: 130px;
-    margin: auto !important;
-    float: left;
-    display: block;
+    height: 500px;
 }
 
 #slider-div {
-    float: left;
-    display: block;
-    height: 450px;
-    margin-left: 80px;
+    height: 500px;
 }
-
-#bottle-slide {
-    width: 90vw;
-    height: 750px;
-    margin: auto !important;
-    clear: both;
-}
-
-/* #standard-number {
-} */

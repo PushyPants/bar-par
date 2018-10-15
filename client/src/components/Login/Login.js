@@ -15,7 +15,6 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-// import { Paper } from "@material-ui/core";
 
 const styles = theme => ({
   container: {

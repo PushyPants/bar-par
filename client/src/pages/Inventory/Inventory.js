@@ -1,24 +1,38 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import Slider from "rc-slider";
-import Tooltip from "rc-tooltip";
 import "rc-slider/assets/index.css";
 import { withStyles } from "@material-ui/core/styles";
-import { Grid, Paper, TextField, CssBaseline } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  Grid,
+  Paper,
+  IconButton,
+  TextField,
+  CssBaseline
+} from "@material-ui/core";
+import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 import "./Inventory.css";
+import Slider from "rc-slider";
+import Tooltip from "rc-tooltip";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 const Handle = Slider.Handle;
 
-const styles = theme => ({
-  bottleContainer: {
-    width: "100%",
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
+const styles = {
+  paper: {
+    width: "90%",
+    margin: "24px auto",
+    border: "none"
+  },
+  card: {
+    width: "90%",
+    marginTop: "24px auto",
+    border: "none"
   }
-});
+};
 
 const handle = props => {
   const { value, dragging, index, ...restProps } = props;
@@ -52,8 +66,8 @@ class Inventory extends Component {
   };
 
   handleProductValue = e => {
-    console.log(e)
-  }
+    console.log(e);
+  };
 
   render() {
     console.log(this.props.stationInfo);
@@ -62,44 +76,90 @@ class Inventory extends Component {
       <React.Fragment>
         <CssBaseline />
         <Nav>Inventory</Nav>
-        <div className={classes.bottleContainer}>
-        <h1>{this.props.stationInfo.name}</h1>
-          <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
-          <div id="slider-div">
-            <Slider
-              vertical
-              min={0}
-              max={100}
-              step={1}
-              defaultValue={50}
-              handle={handle}
-              onAfterChange = {this.handleProductValue}
-            />
-          </div>
-        </div>
-        <TextField
-          id="standard-number"
-          label="Number"
-          value={this.state.quantity}
-          onChange={this.handleChange("quantity")}
-          type="number"
-          InputLabelProps={{
-            shrink: true
-          }}
-          margin="normal"
-        />
-        <TextField
-          id="standard-quantity"
-          label="Number"
-          value={this.state.quantity}
-          onChange={this.handleChange("quantity")}
-          type="number"
-          InputLabelProps={{
-            shrink: true
-          }}
-          margin="normal"
-        />
-      </div>
+        <main>
+          <Grid container justify="center" alignItems="center">
+            <Grid item xs={11} md={6}>
+              <Paper square className="bottleContainer">
+                {/* <h1>{this.props.stationInfo.name}</h1> */}
+                <Grid container justify="center">
+                  <Grid item xs={12}>
+                    <IconButton
+                      className={classes.button}
+                      aria-label="Previous"
+                      style={{ float: "left" }}
+                    >
+                      <ArrowLeft />
+                    </IconButton>
+                    <IconButton
+                      className={classes.button}
+                      aria-label="Next"
+                      style={{ float: "right" }}
+                    >
+                      <ArrowRight />
+                    </IconButton>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Card className={classes.card}>
+                      <CardContent
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-evenly"
+                        }}
+                      >
+                        <img
+                          src="/assets/imgs/bottle.png"
+                          id="bottle"
+                          alt="Bottle"
+                        />
+                        <div id="slider-div">
+                          <Slider
+                            vertical
+                            min={0}
+                            max={100}
+                            step={1}
+                            defaultValue={50}
+                            handle={handle}
+                            onAfterChange={this.handleProductValue}
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grid>
+            <Grid item xs={11} md={6}>
+              <Paper
+                square
+                style={{ width: "90%", margin: "auto", padding: 12 }}
+              >
+                <TextField
+                  id="standard-number"
+                  label="Number"
+                  value={this.state.quantity}
+                  onChange={this.handleChange("quantity")}
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  margin="normal"
+                />
+                <TextField
+                  id="standard-quantity"
+                  label="Number"
+                  value={this.state.quantity}
+                  onChange={this.handleChange("quantity")}
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  margin="normal"
+                />
+              </Paper>
+            </Grid>
+          </Grid>
+        </main>
+      </React.Fragment>
     );
   }
 }
@@ -119,4 +179,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Inventory);
+)(withStyles(styles)(Inventory));

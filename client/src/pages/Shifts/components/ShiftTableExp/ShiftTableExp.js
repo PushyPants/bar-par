@@ -81,17 +81,17 @@ function SimpleExpansionPanel(props) {
     });
   }
 
-    return (
-        <React.Fragment>
-            {(props.Employee !== "Admin") && (rows[0].day !== "Invalid date") ?
-                <div className={classes.root}>
-                    {rows.map(row => {
-                        return (
-                            <ExpansionPanel key={row.key}>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography variant="h1"  className={classes.heading}>
-                                        {row.day}
-                                    </Typography>
+  return (
+    <React.Fragment>
+      {props.Employee !== "Admin" && rows[0].day !== "Invalid date" ? (
+        <div className={classes.root}>
+          {rows.map(row => {
+            return (
+              <ExpansionPanel key={row.key}>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h1" className={classes.heading}>
+                    {row.day}
+                  </Typography>
 
                   {props.AdminLevel > 2 ? (
                     <div className={classes.column}>

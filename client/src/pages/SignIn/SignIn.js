@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Login from "../../components/Login";
-import "./SignIn.css";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
 import { connect } from "react-redux";
