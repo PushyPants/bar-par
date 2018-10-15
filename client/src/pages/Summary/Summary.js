@@ -19,7 +19,6 @@ const styles = {
 
 class Summary extends Component {
   state = {
-    products : []
   };
 
   componentWillMount() {
@@ -29,8 +28,8 @@ class Summary extends Component {
     });
   }
 
-  load = () => {
-    this.props.getEmployeeList();
+  loadProducts = () => {
+    this.props.getAllProducts();
   };
 
   render() {
@@ -38,7 +37,7 @@ class Summary extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        {this.props.Employee.isAdmin < 2 ? <Redirect to="/" /> : null}
+        {/* {this.props.Employee.isAdmin < 2 ? <Redirect to="/" /> : null} */}
         <Nav> Add Employee </Nav>
         <Grid
           container
@@ -54,7 +53,7 @@ class Summary extends Component {
           <Grid item xs={11} md={7}>
             <Paper square className={classes.shadows}>
               <SumTable
-                sumArr={this.props.products}
+                sumArr={this.props.Products}
               />
             </Paper>
           </Grid>
@@ -73,7 +72,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllProducts: () => dispatch(actions.getEmployeeList())
+    getAllProducts: () => dispatch(actions.getProducts())
   };
 };
 
