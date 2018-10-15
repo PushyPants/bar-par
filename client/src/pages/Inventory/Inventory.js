@@ -33,12 +33,13 @@ const styles = {
 const handle = props => {
   const { value, dragging, index, ...restProps } = props;
   return (
-    <Tooltip
+    <Tooltip 
       prefixCls="rc-slider-tooltip"
-      overlay={`${value} %`}
+      overlay={`${value}%`}
       visible={dragging}
       placement="right"
       key={index}
+      style={{zIndex: 100}}
     >
       <Handle value={value} {...restProps} />
     </Tooltip>
@@ -139,13 +140,22 @@ class Inventory extends Component {
   };
 
   render() {
-    // console.log(this.state.stationInfo.positions[0].product_info[0].brand)
+    // console.log(this.state.stationInfo);
     const classes = this.props;
     return (
       <div>
         <React.Fragment>
           <CssBaseline />
-          <Nav>Inventory</Nav>
+          <Nav>
+            <Grid container justify="left">
+              <Grid item xs={9} md={9}>
+                Inventory
+              </Grid>
+              <Grid item xs={3} md={3} style={{textAlign: "center"}}>
+                {this.props.stationInfo.parent_location}
+              </Grid>
+            </Grid>
+          </Nav>
           <main>
             <Grid container justify="center" alignItems="center">
               <Grid item xs={11} md={6}>
@@ -153,16 +163,18 @@ class Inventory extends Component {
                   <Grid container justify="center">
                     <Grid item xs={12} className={classes.align}>
                       {this.props.stationInfo.name ? (
-                        <h1
+                        <h2
                           style={{
                             marginTop: 4,
                             marginBottom: 0,
                             marginLeft: 16,
-                            fontWeight: 500
+                            fontWeight: 500,
+                            justifyContent: "center",
+                            display: "flex"
                           }}
                         >
                           {this.props.stationInfo.name}
-                        </h1>
+                        </h2>
                       ) : null}
                       <Grid container justify="center" alignItems="center">
                         <Grid item xs={2} className="align">
