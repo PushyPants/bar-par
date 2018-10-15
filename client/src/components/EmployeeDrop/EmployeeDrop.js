@@ -13,8 +13,8 @@ const styles = theme => ({
     flexWrap: "wrap"
   },
   margin: {
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   },
   textField: {
     flexBasis: "100%"

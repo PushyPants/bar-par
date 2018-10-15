@@ -24,7 +24,7 @@ class App extends Component {
       email: '',
       phone: '',
       password: '',
-      unavail: [],
+      avail: [],
       shifts: []
     };
 
@@ -38,16 +38,18 @@ class App extends Component {
   }
 
   updateUser(userObject) {
+    console.log("WackySmacky", userObject._id)
     this.setState(userObject);
+    this.setState({
+      loggedIn: true
+    })
     console.log("VBORRROOO",this.state)
   }
 
   getUser() {
     axios.get("/api/employee/login").then(response => {
-      console.log("Get user response: ");
-      console.log(response.data);
+
       if (response.data.user) {
-        console.log("Get User: There is a user saved in the server session: ");
 
         this.setState({
           loggedIn: true,

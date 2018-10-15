@@ -7,6 +7,7 @@ export const CHANGE_WORKING_DAY = "CHANGE_WORKING_DAY";
 export const SHIFT_LIST = "SHIFT_LIST";
 export const REMOVE_SHIFT = "REMOVE_SHIFT";
 export const ALL_LOCATIONS = "ALL_LOCATIONS";
+export const ALL_PRODUCTS = "ALL_PRODUCTS"
 export const SINGLE_STATION = "SINGLE_STATION";
 
 export const setTodaysDate = date => {
@@ -89,7 +90,7 @@ export const getShiftList = () => {
   return dispatch => {
     API.getShift()
       .then(res => dispatch(sendShiftsToStore(res.data)))
-      .then(res => dispatch(getShiftList()))
+      // .then(res => dispatch(getShiftList()))
       .catch(err => console.log(err.response));
   };
 };
@@ -253,8 +254,23 @@ const singleStationToStore = Stations => {
 }
 
 const sendAllLocationsToStore = Locations => {
-  return {
-    type: ALL_LOCATIONS,
-    payload: Locations
-  };
+    return {
+        type: ALL_LOCATIONS,
+        payload: Locations
+      };
+}
+
+export const getProducts = () => {
+    return dispatch => {
+        API.getProducts()
+        .then(res => dispatch(sendAllProductsToStore(res.data)))
+        .catch(err => console.log(err.response))
+    }
 };
+
+const sendAllProductsToStore = Products => {
+    return {
+        type: ALL_PRODUCTS,
+        payload: Products
+    }
+}

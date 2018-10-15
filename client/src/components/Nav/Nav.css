@@ -18,6 +18,7 @@ nav {
 }
 
 .title-bar {
+  z-index: 900 !important;
   width: 100% !important;
   height: 98px;
   color: #fff;

@@ -126,13 +126,13 @@ function SimpleExpansionPanel(props) {
             return (
               <ExpansionPanel key={row.key}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography variant="h1" className={classes.heading}>
+                  <Typography className={classes.heading}>
                     {convertDay(row.dayOfWeek)}
                   </Typography>
-                  <Typography variant="h1" className={classes.secondaryHeading}>
+                  <Typography className={classes.secondaryHeading}>
                     From: {time_convert(row.availStart)}
                   </Typography>
-                  <Typography variant="h1" className={classes.secondaryHeading}>
+                  <Typography className={classes.secondaryHeading}>
                     To: {time_convert(row.availEnd)}
                   </Typography>
                 </ExpansionPanelSummary>

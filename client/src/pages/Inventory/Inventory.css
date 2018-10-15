@@ -1,22 +1,31 @@
+.bottleContainer {
+    width: 90%;
+    margin: 24px auto;
+    padding: auto
+}
 #bottle {
     padding: 0;
     width: 130px;
     margin: auto !important;
-    margin-top: 100px !important;
     float: left;
     display: block;
 }
-
-.slider-container {
-    padding: auto;
+#slider-div {
+    float: left;
     display: block;
     height: 450px;
-    margin: auto;
-    width: 80%;
+    margin-left: 80px;
+}
+#bottle-slide {
+    width: 90vw;
+    height: 750px;
+    margin: auto !important;
+    clear: both;
+}
+#bottle {
+    height: 500px;
 }
 
-.qty-container {
-    width: 80%;
-    margin: auto;
-    text-align: center;
+#slider-div {
+    height: 500px;
 }

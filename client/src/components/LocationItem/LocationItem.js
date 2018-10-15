@@ -8,6 +8,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { ListItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import { Divider } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 const styles = theme => ({
@@ -60,7 +61,7 @@ function ControlledExpansionPanels(props) {
       if (location.parent_location === parent.parent_location) {
         parent.sub_locations.push({
           location_name: location.name,
-          location_id: location._id
+          location_id: location.location_id
         });
       }
     });
@@ -88,18 +89,22 @@ function ControlledExpansionPanels(props) {
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <ListItem>
                 {parent.parent_location}
-                {console.log(parent.sub_locations)}
+                {/* {console.log(parent.sub_locations)} */}
               </ListItem>
             </ExpansionPanelSummary>
-              {parent.sub_locations.map(location => {
-                return (
-                  <Link to={`/locations/station/${location.location_id}`}>
-                    <ExpansionPanelDetails key={location.location_id} >
-                      {location.location_name}
-                    </ExpansionPanelDetails>
-                  </Link>
-                );
-              })}
+            <Divider />
+            {parent.sub_locations.map(location => {
+              return (
+                <Link
+                  to={`/locations/station/${location.location_id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <ExpansionPanelDetails key={location.location_id}>
+                    <Button>{location.location_name}</Button>
+                  </ExpansionPanelDetails>
+                </Link>
+              );
+            })}
           </ExpansionPanel>
         );
       })}

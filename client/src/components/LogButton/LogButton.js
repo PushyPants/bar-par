@@ -2,6 +2,7 @@ import React from "react";
 import IconButton from "@material-ui/core/Icon";
 import { Grid, Menu, MenuItem } from "@material-ui/core";
 import { Link } from "react-router-dom";
+
 class LogButton extends React.Component {
   state = {
     anchorEl: null
@@ -43,12 +44,16 @@ class LogButton extends React.Component {
                 onClose={this.handleClose}
               >
                 <MenuItem onClick={this.handleClose}>
-                  <Link to="/dashboard">Profile</Link>
+                  <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                    Profile
+                  </Link>
                 </MenuItem>
                 <MenuItem onClick={this.handleClose}>
-                  <Link to="/account">My account</Link>
+                  <Link to="/account" style={{ textDecoration: "none" }}>My account</Link>
                 </MenuItem>
-                <MenuItem onClick={this.handleClose}><Link to="/">Log out</Link></MenuItem>
+                <MenuItem onClick={this.handleClose}>
+                  <Link to="/" style={{ textDecoration: "none" }}>Log out</Link>
+                </MenuItem>
               </Menu>
             </IconButton>
           </Grid>

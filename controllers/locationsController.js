@@ -73,8 +73,14 @@ module.exports = {
           .catch(err=> res.json(err))
         })
         //we know this isn't the right way to do this but its working for now. 
-        setTimeout(() => {res.json(combinedData)},1000)
-        
+        setTimeout(()=> {res.json(combinedData)},1000)
+
+        // do {
+        //  res.json(combinedData)
+        // } while (
+        //   combinedData.positions[0].product_info.product === undefined
+        // )
+        // res.json(combinedData)
       }).catch(err => res.json(err))
     }
   
