@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { Paper, Grid, Typography } from "@material-ui/core";
+import { Paper, Grid, Typography, Button } from "@material-ui/core";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DeleteBtn from "../DeleteBtn";
+
 import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
@@ -76,15 +77,14 @@ function EmpTable(props) {
                 >
                   <i className="material-icons">delete_outline</i>
                 </DeleteBtn>
-                <DeleteBtn
-                  valOne={row.empId}
-                  valTwo={null}
-                  // func={}
-                  color="primary"
+                <Button 
+                  disabled
+                  color="disabled"
                   aria-label="Edit"
+
                 >
                   <Icon>edit_icon</Icon>
-                </DeleteBtn>
+                </Button>
               </Grid>
             </ExpansionPanelDetails>
           </ExpansionPanel>
