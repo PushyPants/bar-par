@@ -20,7 +20,7 @@ app.use("/public", express.static(__dirname + "/public"));
 
 // Add routes, both API and view
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/bar-par", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/barpar", { useNewUrlParser: true });
 //session
 app.use(
   session({
