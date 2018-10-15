@@ -296,8 +296,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-<<<<<<< HEAD
-)(withStyles(styles)(Inventory));
-=======
 )(Inventory);
->>>>>>> 80886110b9789affbefdb32257aa856be2e9a55b
