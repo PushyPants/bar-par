@@ -7,7 +7,7 @@ import "rc-tooltip/assets/bootstrap.css";
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 const wrapperStyle = {
-  width: "100%",
+  width: "90%",
   margin: 5
 };
 
