@@ -100,6 +100,7 @@ class SwipeableTemporaryDrawer extends React.Component {
             <ListItem button>
               <Link to="/inventory" className={classes.text}>
                 <LocalBarOutlined />
+
                 <ListItemText primary="Inventory" />
               </Link>
             </ListItem>
