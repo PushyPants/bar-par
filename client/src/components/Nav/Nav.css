@@ -1,6 +1,7 @@
 nav {
   position: absolute !important;
   z-index: 1000 !important;
+  text-align: center !important;
 }
 
 .nav-bar {
@@ -11,8 +12,9 @@ nav {
   margin: 10px 0;
 }
 
-.nav-bar img {
-  margin: auto !important;
+.logo {
+  margin: auto;
+  display: inline-block;
 }
 
 .title-bar {
@@ -21,4 +23,12 @@ nav {
   height: 98px;
   color: #fff;
   background-color: #888888 !important;
+}
+
+.logo-container {
+  width: 100%;
+  position: absolute;
+  margin-left: -10px;
+  margin-right: auto;
+  text-align: center;
 }
