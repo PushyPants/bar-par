@@ -6,14 +6,6 @@
   margin-top: 24px;
   margin-bottom: 24px;
 }
-<<<<<<< HEAD
-.locations-list Button {
-    background: rgb(137, 220, 223) !important;
-}
-.locations-list Button:hover {
-    background: rgb(45, 117, 119) !important;
-}
-=======
 
 .locations-list Button {
     background: rgb(137, 220, 223) !important;
@@ -23,7 +15,7 @@
   background: rgb(45, 117, 119) !important;
 
 }
->>>>>>> 80efc74c1425c2373625421115ff79b543804194
+
 .location-preview ul {
   width: 100% !important;
 }

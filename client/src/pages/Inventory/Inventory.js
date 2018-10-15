@@ -19,8 +19,6 @@ import * as actions from "../../store/actions";
 
 const Handle = Slider.Handle;
 
-<<<<<<< HEAD
-=======
 const styles = {
   bottleContainer: {
     width: "100%",
@@ -32,7 +30,6 @@ const styles = {
   }
 };
 
->>>>>>> 934b19652b89021caafe79a95199253e1e746d85
 const handle = props => {
   const { value, dragging, index, ...restProps } = props;
   return (
@@ -221,7 +218,7 @@ class Inventory extends Component {
                           }}
                         >
                           <img
-                            src="/assets/imgs/bottle.png"
+                            src="/assets/imgs/empty-bottle.png"
                             id="bottle"
                             alt="Bottle"
                           />
