@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Slider from "rc-slider";
-import { withStyles } from "@material-ui/core/styles";
+// import { withStyles } from "@material-ui/core/styles";
 import "rc-slider/assets/index.css";
 import "./Inventory.css";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "rc-tooltip";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-import API from '../../utils/API';
+// import API from '../../utils/API';
 
 const Handle = Slider.Handle;
 
-const styles = {
-  bottleContainer: {
-    width: "100%",
-    margin: "auto"
-  }
-};
+// const styles = {
+//   bottleContainer: {
+//     width: "100%",
+//     margin: "auto"
+//   }
+// };
 
 const handle = props => {
   const { value, dragging, index, ...restProps } = props;

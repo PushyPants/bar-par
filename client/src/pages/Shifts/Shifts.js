@@ -76,7 +76,8 @@ class Availability extends Component {
                             employeeList={this.props.employeeList}
                             workingDate={this.props.workingDate}
                             addShift={this.addShift}
-                            shiftList={this.props.shiftList}/>
+                            shiftList={this.props.shiftList}
+                            getShiftList={this.props.getShiftList}/>
                     </Grid>
                 </Grid>
             </React.Fragment>

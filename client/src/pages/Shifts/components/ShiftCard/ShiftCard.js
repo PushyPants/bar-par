@@ -76,6 +76,7 @@ class ShiftCard extends Component {
 
     deleteShift = (id) => {
         this.props.deleteShift(id)
+        this.props.getShiftList()
     }
 
     handleInputChange = event => {

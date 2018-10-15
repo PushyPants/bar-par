@@ -63,7 +63,8 @@ function EmpTable(props) {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Grid item xs={9} sm={8}>
-                <Typography style={divStyle} align={"left"}>
+                <Typography 
+                  style={divStyle} align={"left"}>
                   Phone: {row.phone} <br />
                   Email: {row.email}
                 </Typography>

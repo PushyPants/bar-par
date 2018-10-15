@@ -36,7 +36,7 @@ const Nav = props => {
         <Toolbar>
           <SwipeableTemporaryDrawer />
           <LogButton />
-          <Typography variant="h1" color="inherit">
+          <Typography color="inherit">
             <img
               src="/assets/imgs/logo1compressed.png"
               height="42px"
@@ -46,7 +46,7 @@ const Nav = props => {
         </Toolbar>
       </AppBar>
       <Paper className="title-bar" position="absolute">
-        <Typography variant="h1" color="inherit" className={classes.grow}>
+        <Typography color="inherit" className={classes.grow}>
           {props.children}
         </Typography>
       </Paper>
