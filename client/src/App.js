@@ -73,14 +73,14 @@ class App extends Component {
       <Switch>
         <Route exact path="/" render={()=> 
         <SignIn updateUser={this.updateUser}/>} />
-        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/dashboard" component={Summary} />
         <Route exact path="/home" component={Summary} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/addemp" component={Employee} />
         <Route exact path="/addavail" component={Availability} />
         <Route exact path="/shifts" component={Shifts} />
         <Route exact path="/locations" component={Locations} />
-        <Route exact path="/inventory" component={Inventory} />
+        <Route exact path="/inventory" component={Summary} />
         <Route exact path="/locations/station/:id" component={Inventory} />
         <Route exact path="/summary" component={Summary} />
         <Route component={NoMatch} />
