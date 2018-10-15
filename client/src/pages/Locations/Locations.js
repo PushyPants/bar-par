@@ -7,7 +7,7 @@ import * as actions from "../../store/actions";
 import LocationItem from "../../components/LocationItem";
 import "./Locations.css";
 // import { ListItem, Divider } from "@material-ui/core";
-// import { List } from "@material-ui/core";
+import { List } from "@material-ui/core";
 // import Button from "@material-ui/core/Button";
 // import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 // import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";

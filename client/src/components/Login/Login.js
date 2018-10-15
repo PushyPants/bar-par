@@ -136,11 +136,7 @@ class Login extends React.Component {
                         className={classes.textField}
                         value={this.state.password}
                         onChange={this.handleChange}
-<<<<<<< HEAD
-                        margin="normal"
-=======
                         // margin="normal"
->>>>>>> 9b829846931b38def5623e74e909da1f203921fb
                         placeholder="Password"
                       />
                     </FormControl>

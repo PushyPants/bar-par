@@ -51,8 +51,8 @@ class Inventory extends Component {
     return (
       <div>
         <Nav>Inventory</Nav>
-        <div className={classes.bottleContainer}>
-        <h1>{this.props.stationInfo.name}</h1>
+        <div>
+        <h1>What</h1>
           <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
           <div id="slider-div">
             <Slider
