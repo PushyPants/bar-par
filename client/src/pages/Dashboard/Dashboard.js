@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import { CssBaseline, Paper, Grid } from "@material-ui/core";
+import { CssBaseline, Paper } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import "./Dashboard.css";
 
