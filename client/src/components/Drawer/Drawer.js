@@ -10,15 +10,7 @@ import {
   Divider,
   CssBaseline
 } from "@material-ui/core";
-import {
-  Menu,
-  HomeOutlined,
-  PlaceOutlined,
-  LocalBarOutlined,
-  PersonAddOutlined,
-  CalendarTodayOutlined,
-  Tune
-} from "@material-ui/icons";
+import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 // import * as actions from '../../store/actions';
 // import { Redirect } from 'react-router';
@@ -85,28 +77,24 @@ class SwipeableTemporaryDrawer extends React.Component {
           <List component="drawer">
             <ListItem button>
               <Link to="/home" className={classes.text}>
-                <HomeOutlined />
                 <ListItemText primary="Home" />
               </Link>
             </ListItem>
             <Divider />
             <ListItem button>
               <Link to="/locations" className={classes.text}>
-                <PlaceOutlined />
                 <ListItemText primary="Location" />
               </Link>
             </ListItem>
             <Divider />
             <ListItem button>
               <Link to="/inventory" className={classes.text}>
-                <LocalBarOutlined />
                 <ListItemText primary="Inventory" />
               </Link>
             </ListItem>
             <Divider />
             <ListItem button>
               <Link to="/shifts" className={classes.text}>
-                <CalendarTodayOutlined />
                 <ListItemText primary="Shifts" />
               </Link>
             </ListItem>
@@ -114,7 +102,6 @@ class SwipeableTemporaryDrawer extends React.Component {
             {this.props.Employee.isAdmin < 2 ? null : (
               <ListItem button>
                 <Link to="/addemp" className={classes.text}>
-                  <PersonAddOutlined />
                   <ListItemText primary="Add Employee" />
                 </Link>
               </ListItem>
@@ -122,7 +109,6 @@ class SwipeableTemporaryDrawer extends React.Component {
             <Divider />
             <ListItem button>
               <Link to="/addavail" className={classes.text}>
-                <Tune />
                 <ListItemText primary="Add Availability" />
               </Link>
             </ListItem>
@@ -140,7 +126,7 @@ class SwipeableTemporaryDrawer extends React.Component {
           color="inherit"
           aria-label="Menu"
         >
-          <Menu />
+          <MenuIcon />
         </IconButton>
         <SwipeableDrawer
           open={this.state.left}

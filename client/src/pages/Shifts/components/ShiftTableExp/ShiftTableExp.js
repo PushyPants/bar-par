@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import { Typography, Paper } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddShiftBtn from "../AddShiftBtn";
 import ShiftCard from "../ShiftCard";
@@ -13,19 +13,17 @@ import moment from "moment";
 const styles = theme => ({
   root: {
     width: "100%",
+    margin: theme.spacing.unit * 2
   },
   column: {
     alignItems: "Right",
     flexBasis: "70%"
   },
   heading: {
-    fontSize: theme.typography.pxToRem(18),
+    fontSize: theme.typography.pxToRem(20),
     flexBasis: "5%",
     minWidth: "70%",
     flexShrink: 0
-  },
-  expand: {
-    padding: "8px 24px 12px"
   }
 });
 
@@ -86,7 +84,7 @@ function SimpleExpansionPanel(props) {
   return (
     <React.Fragment>
       {props.Employee !== "Admin" && rows[0].day !== "Invalid date" ? (
-        <Paper className={classes.root}>
+        <div className={classes.root}>
           {rows.map(row => {
             return (
               <ExpansionPanel key={row.key}>
@@ -108,7 +106,7 @@ function SimpleExpansionPanel(props) {
                 </ExpansionPanelSummary>
 
                 {row.shift.map(e => (
-                  <ExpansionPanelDetails key={e._id} className={classes.expand}>
+                  <ExpansionPanelDetails key={e._id}>
                     <ShiftCard
                       shiftId={e._id}
                       empId={e.Employee}
@@ -124,7 +122,7 @@ function SimpleExpansionPanel(props) {
               </ExpansionPanel>
             );
           })}
-        </Paper>
+        </div>
       ) : (
         <span className={classes.root}>{props.workingDate}</span>
       )}
