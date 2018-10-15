@@ -32,6 +32,7 @@ const styles = theme => ({
   },
   colored: {
     background: "aliceblue",
+    padding: 12,
     justifyContent: "center"
   }
 });
@@ -100,9 +101,13 @@ function ControlledExpansionPanels(props) {
                   to={`/locations/station/${location.location_id}`}
                   style={{ textDecoration: "none" }}
                 >
-                  <ExpansionPanelDetails key={location.location_id} className={classes.colored}>
+                  <ExpansionPanelDetails
+                    key={location.location_id}
+                    className={classes.colored}
+                  >
                     <Button>{location.location_name}</Button>
                   </ExpansionPanelDetails>
+                  <Divider style={{ width: "70%", margin: "auto" }} />
                 </Link>
               );
             })}
