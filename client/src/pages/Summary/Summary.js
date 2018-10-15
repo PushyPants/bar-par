@@ -1,77 +1,83 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import API from '../../utils/API';
+import React, { Component } from "react";
+import Nav from "../../components/Nav";
+import SumTable from "../../components/SumTable";
+import AddEmp from "../../components/AddEmp";
+import { Grid, Paper, CssBaseline } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
+import { Redirect } from "react-router";
 
-
-
-
-const styles = theme => ({
+const styles = {
   root: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
+    width: "auto"
   },
-  table: {
-    minWidth: 700,
-  },
-});
-
-
-
-let id = 0;
-function createData(brand, product, total, order ) {
-  id += 1;
-  return { id, brand, product, total, order };
-}
-
-const rows = [
-  createData('Deep Eddy', 'GrapeFruit', 6.0, 'yas' ),
- 
-];
-
-function SimpleTable(props) {
-  const { classes } = props;
-//make emp Arr 
-//then createData is gonna take in callbacks
-  return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Brand</TableCell>
-            <TableCell>Product</TableCell>
-            <TableCell>Total</TableCell>
-            <TableCell>Order</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => {
-            return (
-              <TableRow key={row.id}>
-                <TableCell component="th" scope="row">
-                  {row.brand}
-                </TableCell>
-                <TableCell >{row.product}</TableCell>
-                <TableCell >{row.total}</TableCell>
-                <TableCell >{row.order}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </Paper>
-  );
-}
-
-SimpleTable.propTypes = {
-  classes: PropTypes.object.isRequired,
+  shadows: {
+    boxShadow: "0 3px 6px #00000025"
+  }
 };
 
-export default withStyles(styles)(SimpleTable);
+class Summary extends Component {
+  state = {
+    products : []
+  };
+
+  componentWillMount() {
+    this.loadProducts();
+    this.setState({
+      isAdmin: "Employee"
+    });
+  }
+
+  load = () => {
+    this.props.getEmployeeList();
+  };
+
+  render() {
+    const classes = this.props;
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        {this.props.Employee.isAdmin < 2 ? <Redirect to="/" /> : null}
+        <Nav> Add Employee </Nav>
+        <Grid
+          container
+          justify="space-around"
+          alignItems="baseline"
+          className={classes.root}
+        >
+          <Grid item xs={11} md={4}>
+            <Paper square className={classes.shadows}>
+              <AddEmp />
+            </Paper>
+          </Grid>
+          <Grid item xs={11} md={7}>
+            <Paper square className={classes.shadows}>
+              <SumTable
+                sumArr={this.props.products}
+              />
+            </Paper>
+          </Grid>
+        </Grid>
+      </React.Fragment>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+   
+    LoggedInAs: state.reducer.LoggedInAs
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllProducts: () => dispatch(actions.getEmployeeList())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(Summary));

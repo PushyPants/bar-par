@@ -17,20 +17,12 @@ import "./Inventory.css";
 import Tooltip from "rc-tooltip";
 // import Paper from "@material-ui/core/Paper";
 // import { Grid } from "@material-ui/core";
-import {
-  Card,
-  CardContent,
-  Grid,
-  Paper,
-  IconButton,
-  TextField,
-  CssBaseline
-} from "@material-ui/core";
-import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 // import Products from "../../components/Products/products";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 // import { DecBtn, IncBtn } from "../../components/InventoryForm";
+import Slider from 'rc-slider';
+
 
 const Handle = Slider.Handle;
 
