@@ -5,9 +5,9 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 // import Typography from "@material-ui/core/Typography";
+import { Divider, Button } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import { Divider } from "@material-ui/core";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -21,8 +21,8 @@ const styles = theme => ({
     flexShrink: 0
   },
   barStation: {
-    width: '100%',
-    margin: 'auto'
+    width: "100%",
+    margin: "auto"
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
@@ -42,32 +42,39 @@ function ControlledExpansionPanels(props) {
   const { classes } = props;
   // const rows = [];
   let parentsArr = [];
-  let locationsArr = []
+  let locationsArr = [];
 
-props.locArr.map(location => {
-  if (!parentsArr.includes(location.parent_location)) {
-    parentsArr.push(location.parent_location);
-    locationsArr.push({
-      parent_location: location.parent_location,
-      sub_locations: []
-    })
-  }
-})
-
-props.locArr.map(location => {
-  locationsArr.map(parent => {
-    if (location.parent_location === parent.parent_location) {
-      parent.sub_locations.push({
-        location_name: location.name,
-        location_id: location.location_id
-      })
+  props.locArr.map(location => {
+    if (!parentsArr.includes(location.parent_location)) {
+      parentsArr.push(location.parent_location);
+      locationsArr.push({
+        parent_location: location.parent_location,
+        sub_locations: []
+      });
     }
-  })
-})
+  });
 
-locationsArr.map(vals => {
-  vals.sub_locations.sort((a,b) => (a.location_name > b.location_name) ? 1 : ((b.location_name > a.location_name) ? -1 : 0)); 
-})
+  props.locArr.map(location => {
+    locationsArr.map(parent => {
+      if (location.parent_location === parent.parent_location) {
+        parent.sub_locations.push({
+          location_name: location.name,
+          location_id: location.location_id
+        });
+      }
+    });
+  });
+
+  locationsArr.map(vals => {
+    vals.sub_locations.sort(
+      (a, b) =>
+        a.location_name > b.location_name
+          ? 1
+          : b.location_name > a.location_name
+            ? -1
+            : 0
+    );
+  });
 
   return (
     <div className={classes.root}>
@@ -81,15 +88,19 @@ locationsArr.map(vals => {
               {parent.parent_location}
               {console.log(parent.sub_locations)}
             </ExpansionPanelSummary>
-              {parent.sub_locations.map(location => {
-                return (
-                  <Link to={`/locations/station/${location.location_id}`}>
-                    <ExpansionPanelDetails key={location.location_id} >
-                      {location.location_name}
-                    </ExpansionPanelDetails>
-                  </Link>
-                );
-              })}
+            <Divider />
+            {parent.sub_locations.map(location => {
+              return (
+                <Link
+                  to={`/locations/test/${location.location_id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <ExpansionPanelDetails key={location.location_id}>
+                    <Button>{location.location_name}</Button>
+                  </ExpansionPanelDetails>
+                </Link>
+              );
+            })}
           </ExpansionPanel>
         );
       })}
