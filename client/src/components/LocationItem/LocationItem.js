@@ -31,7 +31,8 @@ const styles = theme => ({
     color: theme.palette.text.secondary
   },
   colored: {
-    background: "aliceblue"
+    background: "aliceblue",
+    justifyContent: "center"
   }
 });
 // let id = 0;
@@ -99,7 +100,7 @@ function ControlledExpansionPanels(props) {
                   to={`/locations/station/${location.location_id}`}
                   style={{ textDecoration: "none" }}
                 >
-                  <ExpansionPanelDetails key={location.location_id}>
+                  <ExpansionPanelDetails key={location.location_id} className={classes.colored}>
                     <Button>{location.location_name}</Button>
                   </ExpansionPanelDetails>
                 </Link>
