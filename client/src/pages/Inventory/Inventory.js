@@ -13,11 +13,6 @@ import {
 } from "@material-ui/core";
 import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 import "./Inventory.css";
-<<<<<<< HEAD
-import Slider from "rc-slider";
-import Tooltip from "rc-tooltip";
-import Products from "../../components/Products/products"
-=======
 // import TextField from "@material-ui/core/TextField";
 import Tooltip from "rc-tooltip";
 // import Paper from "@material-ui/core/Paper";
@@ -33,7 +28,6 @@ import {
 } from "@material-ui/core";
 import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 // import Products from "../../components/Products/products";
->>>>>>> 80efc74c1425c2373625421115ff79b543804194
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 // import { DecBtn, IncBtn } from "../../components/InventoryForm";
@@ -146,31 +140,9 @@ class Inventory extends Component {
   handleProductValue = e => {
     console.log(e);
   };
-<<<<<<< HEAD
 
-  handleInc =() =>{
-    console.log('increse')
-    let newCounter = this.state.positionCounter += 1;
-    this.setState({
-      positionCounter : this.state.positionCounter >= this.state.stationInfo.positions.length ? (this.state.stationInfo.positions.length - 1) : newCounter
-    })
-    console.log('cout is : '+this.state.positionCounter)
-    console.log(this.state.stationInfo.positions.length)
-
-  }
+ 
   
-  handleDec=()=> {
-    console.log('decres')
-    let newCounter = this.state.positionCounter -= 1;
-    this.setState({
-      positionCounter : this.state.positionCounter < 0 ? 0 : newCounter
-    })
-    console.log('cout is : '+this.state.positionCounter)
-    
-  }
-  
-=======
->>>>>>> 80efc74c1425c2373625421115ff79b543804194
 
   handleInc = () => {
     console.log("increse");
@@ -199,14 +171,6 @@ class Inventory extends Component {
     const classes = this.props;
     console.log(this.props.stationInfo)
     return (
-<<<<<<< HEAD
-      <React.Fragment>
-        <CssBaseline />
-        <Nav>Inventory</Nav>
-        <h1>{this.props.stationInfo.name}</h1>
-        <h2>{this.state.stationInfo.positions[this.state.positionCounter].product_info[0].brand}</h2>
-        <h2>{this.state.stationInfo.positions[this.state.positionCounter].product_info[0].product}</h2>
-=======
       <div>
         <React.Fragment>
           <CssBaseline />
@@ -214,7 +178,6 @@ class Inventory extends Component {
           {/* {this.props.stationInfo.name ? <h1>{this.props.stationInfo.name}</h1> : null}
         {this.state.stationInfo.positions[this.state.positionCounter].product_info[0].brand === undefined ? null : <h2>{this.state.stationInfo.positions[this.state.positionCounter].product_info[0].brand}</h2>}
         {this.state.stationInfo.positions[this.state.positionCounter].product_info[0].product === undefined ? null : <h2>{this.state.stationInfo.positions[this.state.positionCounter].product_info[0].product}</h2>}
->>>>>>> 80efc74c1425c2373625421115ff79b543804194
         <IncBtn onClick={this.handleInc}>next</IncBtn>
         <DecBtn onClick={this.handleDec}>prev</DecBtn>
         <Grid container justify="center">
@@ -244,94 +207,6 @@ class Inventory extends Component {
             shrink: true
           }}
           margin="normal"
-<<<<<<< HEAD
-        />
-        <main>
-          <Grid container justify="center" alignItems="center">
-            <Grid item xs={11} md={6}>
-              <Paper square className="bottleContainer">
-                {/* <h1>{this.props.stationInfo.name}</h1> */}
-                <Grid container justify="center">
-                  <Grid item xs={12}>
-                    <IconButton
-                      className={classes.button}
-                      aria-label="Previous"
-                      style={{ float: "left" }}
-                    >
-                      <ArrowLeft />
-                    </IconButton>
-                    <IconButton
-                      className={classes.button}
-                      aria-label="Next"
-                      style={{ float: "right" }}
-                    >
-                      <ArrowRight />
-                    </IconButton>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Card className={classes.card}>
-                      <CardContent
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-evenly"
-                        }}
-                      >
-                        <img
-                          src="/assets/imgs/bottle.png"
-                          id="bottle"
-                          alt="Bottle"
-                        />
-                        <div id="slider-div">
-                          <Slider
-                            vertical
-                            min={0}
-                            max={100}
-                            step={1}
-                            defaultValue={50}
-                            handle={handle}
-                            onAfterChange={this.handleProductValue}
-                          />
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                </Grid>
-              </Paper>
-            </Grid>
-            <Grid item xs={11} md={6}>
-              <Paper
-                square
-                style={{ width: "90%", margin: "auto", padding: 12 }}
-              >
-                <TextField
-                  id="standard-number"
-                  label="Number"
-                  value={this.state.quantity}
-                  onChange={this.handleChange("quantity")}
-                  type="number"
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  margin="normal"
-                />
-                <TextField
-                  id="standard-quantity"
-                  label="Number"
-                  value={this.state.quantity}
-                  onChange={this.handleChange("quantity")}
-                  type="number"
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  margin="normal"
-                />
-              </Paper>
-            </Grid>
-          </Grid>
-        </main>
-      </React.Fragment>
-
-=======
         /> */}
           <main>
             <Grid container justify="center" alignItems="center">
@@ -443,7 +318,6 @@ class Inventory extends Component {
           </main>
         </React.Fragment>
       </div>
->>>>>>> 80efc74c1425c2373625421115ff79b543804194
     );
   }
 }
