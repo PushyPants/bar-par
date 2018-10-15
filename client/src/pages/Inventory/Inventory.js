@@ -56,13 +56,13 @@ class Inventory extends Component {
   }
 
   render() {
-    console.log(this.props.stationInfo)
     const classes = this.props;
+    console.log(this.props.stationInfo)
     return (
       <div>
         <Nav>Inventory</Nav>
         <div className={classes.bottleContainer}>
-        <h1>{this.props.stationInfo.name}</h1>
+        <h1>Station Name: {this.props.stationInfo.name}</h1>
           <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
           <div id="slider-div">
             <Slider
