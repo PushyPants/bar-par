@@ -7,14 +7,17 @@
   margin-bottom: 24px;
 }
 
-.locations-list button:hover {
-  background: rgb(45, 117, 119) !important;
+.locations-list Button {
+    background: rgb(137, 220, 223) !important;
 }
 
+.locations-list button:hover {
+  background: rgb(45, 117, 119) !important;
+
+}
 .location-preview ul {
   width: 100% !important;
 }
-
 .station-link {
   width: 80% !important;
   margin: auto;

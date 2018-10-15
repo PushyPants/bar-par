@@ -45,9 +45,12 @@ class Locations extends Component {
       <React.Fragment>
         <CssBaseline />
         <Nav> Locations </Nav>
+
+
         <main className="locations-list">
           <LocationItem locArr={this.props.Locations} />
         </main>
+
       </React.Fragment>
     );
   }
