@@ -15,8 +15,6 @@ import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 import "./Inventory.css";
 import Slider from "rc-slider";
 import Tooltip from "rc-tooltip";
-import Paper from "@material-ui/core/Paper";
-import { Grid } from "@material-ui/core";
 import Products from "../../components/Products/products"
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
@@ -55,10 +53,6 @@ const handle = props => {
 class Inventory extends Component {
   state = {
     quantity: "",
-<<<<<<< HEAD
-    positionCounter: 1
-
-=======
     positionCounter: 0,
     stationInfo: {
       location_id: '',
@@ -86,7 +80,6 @@ class Inventory extends Component {
         }
       ]
     }
->>>>>>> fd20df481a95e69e654275f3745449f0a55b1012
   };
 
   componentDidMount() {
@@ -154,37 +147,17 @@ class Inventory extends Component {
   
 
   render() {
-<<<<<<< HEAD
-=======
 
     // console.log(this.state.stationInfo.positions[0].product_info[0].brand)
 
     console.log(this.props.stationInfo);
 
->>>>>>> fd20df481a95e69e654275f3745449f0a55b1012
     const classes = this.props;
     console.log(this.props.stationInfo)
     return (
       <React.Fragment>
         <CssBaseline />
         <Nav>Inventory</Nav>
-<<<<<<< HEAD
-        <div className={classes.bottleContainer}>
-        <h1>Station Name: {this.props.stationInfo.name}</h1>
-          <img src="/assets/imgs/bottle.png" id="bottle" alt="Bottle" />
-          <div id="slider-div">
-            <Slider
-              vertical
-              min={0}
-              max={100}
-              step={1}
-              defaultValue={50}
-              handle={handle}
-              onAfterChange = {this.handleProductValue}
-            />
-          </div>
-        </div>
-=======
 
         <h1>{this.props.stationInfo.name}</h1>
         <h2>{this.state.stationInfo.positions[this.state.positionCounter].product_info[0].brand}</h2>
@@ -208,7 +181,6 @@ class Inventory extends Component {
             </div>
           </Paper>
         </Grid>
->>>>>>> fd20df481a95e69e654275f3745449f0a55b1012
         <TextField
           id="standard-number"
           label="Number"
@@ -220,7 +192,6 @@ class Inventory extends Component {
           }}
           margin="normal"
         />
-      </div>
         <main>
           <Grid container justify="center" alignItems="center">
             <Grid item xs={11} md={6}>

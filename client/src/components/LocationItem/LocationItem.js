@@ -5,7 +5,6 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 // import Typography from "@material-ui/core/Typography";
-import { Divider, Button } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { ListItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -93,7 +92,6 @@ function ControlledExpansionPanels(props) {
                 {/* {console.log(parent.sub_locations)} */}
               </ListItem>
             </ExpansionPanelSummary>
-
             {parent.sub_locations.map(location => {
               return (
                 <ExpansionPanelDetails key={location.location_id}>
@@ -101,19 +99,6 @@ function ControlledExpansionPanels(props) {
                     <Button>{location.location_name}</Button>
                   </Link>
                 </ExpansionPanelDetails>
-
-            <Divider />
-            {parent.sub_locations.map(location => {
-              return (
-                <Link
-                  to={`/locations/test/${location.location_id}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <ExpansionPanelDetails key={location.location_id}>
-                    <Button>{location.location_name}</Button>
-                  </ExpansionPanelDetails>
-                </Link>
-
               );
             })}
           </ExpansionPanel>
