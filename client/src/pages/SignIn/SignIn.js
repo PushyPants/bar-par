@@ -1,27 +1,18 @@
 import React, { Component } from "react";
 import Login from "../../components/Login";
-import "./SignIn.css";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 
 class SignIn extends Component {
-  constructor(props) {
-    super(props)
-  {this.updateUser = this.props.updateUser}
-  }
-  
-  handleChange(event) {
-    console.log(event.target.value);
-  }
 
   componentWillMount() {
     this.loadEmployees();
     this.setState({
       Employee: "Admin",
-      unavailStart: 480,
-      unavailEnd: 1560
+      availStart: 480,
+      availEnd: 1560
     });
   }
 
@@ -37,7 +28,7 @@ class SignIn extends Component {
     return (
       <React.Fragment>
         <div id="signIn">
-          <Login updateUser={this.updateUser}/>
+          <Login updateUser={this.props.updateUser}/>
         </div>
       </React.Fragment>
     );

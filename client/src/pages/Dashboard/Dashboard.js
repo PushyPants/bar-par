@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import { CssBaseline, Paper, Grid } from "@material-ui/core";
+import { CssBaseline, Paper, Icon } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+import { AccountCircle } from "@material-ui/icons";
 import "./Dashboard.css";
 
 const styles = {
@@ -10,16 +11,16 @@ const styles = {
     width: "100%",
     height: 160,
     backgroundColor: "#223D4B",
-    padding: 0,
+    padding: 0
   },
   greySquare: {
     width: "100%",
     height: 312,
     margin: "auto",
-    backgroundColor: "#888888",
+    backgroundColor: "#888888"
   },
   noPadding: {
-    height: 160,
+    height: 160
   }
 };
 
@@ -33,8 +34,11 @@ class Dashboard extends Component {
           <Paper square className="topBar" />
         </Nav>
         <Paper square className={classes.greySquare}>
-          <img src="" alt={classes.alt} />
+          <Icon>
+            <AccountCircle />
+          </Icon>
         </Paper>
+        <main />
         <Footer />
       </div>
     );

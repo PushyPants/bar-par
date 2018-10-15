@@ -1,20 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+import { Paper, Grid, Typography } from "@material-ui/core";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import Grid from "@material-ui/core/Grid";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Typography from "@material-ui/core/Typography";
 import DeleteBtn from "../DeleteBtn";
-import Icon from '@material-ui/core/Icon';
+import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
   root: {
     width: "auto",
-    marginTop: theme.spacing.unit * 5,
+    marginTop: theme.spacing.unit * 3,
     marginBottom: theme.spacing.unit * 3,
     overflowX: "auto",
     textAlign: "center"
@@ -63,13 +61,13 @@ function EmpTable(props) {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Grid item xs={9} sm={8}>
-                <Typography style={divStyle} align={"left"}>
+                <Typography 
+                  style={divStyle} align={"left"}>
                   Phone: {row.phone} <br />
                   Email: {row.email}
                 </Typography>
               </Grid>
               <Grid item xs={3} sm={4}>
-
                 <DeleteBtn
                   valOne={row.empId}
                   valTwo={null}

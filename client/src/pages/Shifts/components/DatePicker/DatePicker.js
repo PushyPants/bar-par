@@ -7,12 +7,12 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    marginTop: theme.spacing.unit * 10,
-    width: "80%"
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 3,
+    width: "100%"
   },
   textField: {
-    marginLeft: theme.spacing.unit * 1,
-    marginRight: theme.spacing.unit * 1,
+    margin: theme.spacing.unit * 2,
     width: 400,
   },
 });
