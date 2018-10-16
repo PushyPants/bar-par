@@ -39,9 +39,8 @@ const handle = props => {
       visible={dragging}
       placement="right"
       key={index}
-      style={{zIndex: 100}}
     >
-      <Handle value={value} {...restProps} />
+      <Handle value={value} className={"invSli"} {...restProps} />
     </Tooltip>
   );
 };

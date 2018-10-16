@@ -61,7 +61,7 @@ class Availability extends Component {
         <Nav>
           {this.props.LoggedInAs.firstName} {this.props.LoggedInAs.lastName}
         </Nav>
-        <Grid container justify="space-around" alignItems="baseline">
+        <Grid container spacing={8} justify="center" alignItems="baseline">
           <Grid item xs={11} md={4}>
             <Paper square>
               <DatePickers
@@ -70,7 +70,7 @@ class Availability extends Component {
               />
             </Paper>
           </Grid>
-          <Grid item spacing={8} xs={11} md={7}>
+          <Grid item xs={11} md={7}>
             <Paper square>
               <ShiftTableExp
                 AdminLevel={this.props.Employee.isAdmin}
