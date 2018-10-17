@@ -40,7 +40,7 @@ const handle = props => {
       placement="right"
       key={index}
     >
-      <Handle value={value} className={"invSli"} {...restProps} />
+      <Handle value={value} {...restProps} />
     </Tooltip>
   );
 };
