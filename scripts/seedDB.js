@@ -1056,7 +1056,7 @@ db.Locations
 
   db.EmployeeTable
   .remove({})
-  .then(() => db.EmployeeTable.insertMany(employeeSeed))
+  .then(() => db.EmployeeTable.create(employeeSeed))
   .then(data => {
     console.log(data + " employees inserted!");
     process.exit(0);
