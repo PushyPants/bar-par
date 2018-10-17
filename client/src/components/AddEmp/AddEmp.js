@@ -166,6 +166,8 @@ class AddEmp extends React.Component {
             onChange={this.handleInputChange}
             name="password"
             placeholder="Password"
+            autocomplete="false"
+            type="password"
           />
         </FormControl>
 
