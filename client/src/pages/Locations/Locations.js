@@ -34,9 +34,9 @@ class Locations extends Component {
     return (
       <React.Fragment>
         <Nav> Locations </Nav>
-        <div className="locations-list">
+        <main className="locations-list">
               <LocationItem locArr={this.props.Locations} />
-        </div>
+        </main>
       </React.Fragment>
     );
   }

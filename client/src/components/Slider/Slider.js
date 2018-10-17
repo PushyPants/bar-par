@@ -28,14 +28,14 @@ const Range = createSliderWithTooltip(Slider.Range);
 // };
 const wrapperStyle = { width: 400, margin: 50 };
 const marks = {
-  480: '8:00 AM',
-  660: '11:00 AM',
-  840: '2:00 PM',
-  1020: '5:00 PM',
-  1200: '8:00 PM',
-  1380: '11:00 PM',
-  1560: '2:00 AM',
-}
+  480: "8:00 AM",
+  660: "11:00 AM",
+  840: "2:00 PM",
+  1020: "5:00 PM",
+  1200: "8:00 PM",
+  1380: "11:00 PM",
+  1560: "2:00 AM"
+};
 class MySlider extends Component {
   // onSliderChange = max => {
   //   console.log(max);
@@ -52,28 +52,26 @@ class MySlider extends Component {
     if (hours >= 24) {
       hours -= 24;
       if (hours === 0) {
-        return (`${hours + 12}:${minutes} AM`)
+        return `${hours + 12}:${minutes} AM`;
       } else {
-        return (`${hours}:${minutes} AM`)
+        return `${hours}:${minutes} AM`;
       }
     } else if (hours >= 12) {
       hours -= 12;
       if (hours === 0) {
-        return (`${hours + 12}:${minutes} PM`)
+        return `${hours + 12}:${minutes} PM`;
       } else {
-        return (`${hours}:${minutes} PM`)
+        return `${hours}:${minutes} PM`;
       }
     }
 
-  return (`${hours}:${minutes} AM`)
+    return `${hours}:${minutes} AM`;
   };
   render() {
     return (
       <div>
         <div style={wrapperStyle}>
-
           <Range
-            
             step={30}
             min={480}
             max={1560}

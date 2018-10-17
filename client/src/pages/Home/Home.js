@@ -24,12 +24,13 @@ class Home extends Component {
       <React.Fragment>
         <CssBaseline />
         <Nav>Home</Nav>
-
-        <Grid container spacing={8}>
-          <Grid item xs={12} md={12}>
-            <EmpTable empArr={this.props.employeeList} />
+        <main>
+          <Grid container spacing={8}>
+            <Grid item xs={12} md={12}>
+              <EmpTable empArr={this.props.employeeList} />
+            </Grid>
           </Grid>
-        </Grid>
+        </main>
       </React.Fragment>
     );
   }
