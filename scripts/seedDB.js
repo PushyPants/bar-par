@@ -580,6 +580,7 @@ const employeeSeed = [
       }, 
       {
           "product_id" : "5bb6b9533df12a13d0b17f18",
+          
           "inventories" : []
       }, 
       {
