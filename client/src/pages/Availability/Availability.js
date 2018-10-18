@@ -100,38 +100,40 @@ class Availability extends Component {
         <CssBaseline />
         {this.props.Employee.isAdmin < 1 ? <Redirect to="/" /> : null}
         <Nav>Availability</Nav>
-        <Grid container justify="center">
-          <Grid item xs={11} md={8}>
-            <Paper square>
-              <AvailTableExp
-                emp={this.props.LoggedInAs._id}
-                empArr={this.props.employeeList}
-                delAvail={this.deleteAvailability}
-                upAvail={this.updateAvailability}
-                updateTime={this.updateTime}
-              />
-            </Paper>
+        <main>
+          <Grid container justify="space-evenly">
+            <Grid item xs={11} md={7}>
+              <Paper square>
+                <AvailTableExp
+                  emp={this.props.LoggedInAs._id}
+                  empArr={this.props.employeeList}
+                  delAvail={this.deleteAvailability}
+                  upAvail={this.updateAvailability}
+                  updateTime={this.updateTime}
+                />
+              </Paper>
+            </Grid>
+            <Grid item xs={11} md={4}>
+              <Paper square>
+                <AddAvail
+                  handleInputChange={this.handleInputChange}
+                  handleFormSubmit={this.handleFormSubmit}
+                  ChangeEmployee={this.ChangeEmployee}
+                  employeeList={this.props.employeeList}
+                  Employee={this.props.LoggedInAs._id}
+                  EmployeeFirstName={this.props.LoggedInAs.firstName}
+                  EmployeeLastName={this.props.LoggedInAs.lastName}
+                  dayOfWeek={this.state.dayOfWeek}
+                  availStart={this.state.availStart}
+                  availEnd={this.state.availEnd}
+                  updateTime={this.updateTime}
+                  clearState={this.clearState}
+                  AdminLevel={this.props.Employee.isAdmin}
+                />
+              </Paper>
+            </Grid>
           </Grid>
-          <Grid item xs={11} md={4}>
-            <Paper square>
-              <AddAvail
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-                ChangeEmployee={this.ChangeEmployee}
-                employeeList={this.props.employeeList}
-                Employee={this.props.LoggedInAs._id}
-                EmployeeFirstName={this.props.LoggedInAs.firstName}
-                EmployeeLastName={this.props.LoggedInAs.lastName}
-                dayOfWeek={this.state.dayOfWeek}
-                availStart={this.state.availStart}
-                availEnd={this.state.availEnd}
-                updateTime={this.updateTime}
-                clearState={this.clearState}
-                AdminLevel={this.props.Employee.isAdmin}
-              />
-            </Paper>
-          </Grid>
-        </Grid>
+        </main>
       </React.Fragment>
     );
   }

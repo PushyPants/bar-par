@@ -1,12 +1,21 @@
+.root {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
 .align {
   display: flex;
   justify-content: center;
 }
 
-.bottleContainer {
+/* .bottleContainer {
   width: 90%;
   margin: 24px auto;
   padding: auto;
+} */
+
+.button {
+  font-size: 32px
 }
 
 #bottle {
@@ -30,7 +39,6 @@
   margin: auto !important;
   clear: both;
 }
-
 
 #slider-div .rc-slider-track {
   position: absolute;
@@ -71,6 +79,9 @@
   background: rgba(255, 255, 255, 0);
 }
 
-.rc-slider-tooltip {
-    z-index: 1;
+#slider-div .rc-slider-tooltip-inner {
+  z-index: 1;
+  position: absolute;
+  margin-top: -13px;
+  min-width: 32px;
 }
