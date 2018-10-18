@@ -37,6 +37,11 @@ const styles = theme => ({
   },
   button: {
     width: "80%"
+  },
+  title: {
+    fontSize: "1.2rem",
+    fontWeight: 500,
+    margin: 0
   }
 });
 // let id = 0;
@@ -93,7 +98,7 @@ function ControlledExpansionPanels(props) {
           >
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <ListItem>
-                {parent.parent_location}
+                <h3 className={classes.title}>{parent.parent_location}</h3>
                 {/* {console.log(parent.sub_locations)} */}
               </ListItem>
             </ExpansionPanelSummary>
@@ -108,7 +113,9 @@ function ControlledExpansionPanels(props) {
                     key={location.location_id}
                     className={classes.colored}
                   >
-                    <Button className={classes.button}>{location.location_name}</Button>
+                    <Button className={classes.button}>
+                      {location.location_name}
+                    </Button>
                   </ExpansionPanelDetails>
                   <Divider style={{ width: "80%", margin: "auto" }} />
                 </Link>

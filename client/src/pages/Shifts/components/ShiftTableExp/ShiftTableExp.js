@@ -13,14 +13,13 @@ import moment from "moment";
 const styles = theme => ({
   root: {
     width: "100%",
-    margin: theme.spacing.unit * 2
   },
   column: {
     alignItems: "Right",
     flexBasis: "70%"
   },
   heading: {
-    fontSize: theme.typography.pxToRem(20),
+    fontSize: theme.typography.pxToRem(17),
     flexBasis: "5%",
     minWidth: "70%",
     flexShrink: 0
