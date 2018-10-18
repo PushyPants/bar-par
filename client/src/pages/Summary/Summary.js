@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import SumTable from "../../components/SumTable";
-import AddEmp from "../../components/AddEmp";
+// import AddEmp from "../../components/AddEmp";
 import { Grid, Paper, CssBaseline } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
-import * as actions from "../../store/actions";
-import { Redirect } from "react-router";
+// import { connect } from "react-redux";
+// import * as actions from "../../store/actions";
+// import { Redirect } from "react-router";
 import Products from '../../components/Products/products'
 import API from '../../utils/API'
 
