@@ -18,7 +18,7 @@ function AddShiftBtn(props, event) {
 
 
     return (
-        <Button variant="contained" color="primary"
+        <Button variant="fab" mini color="primary"
             className={classes.button}
             onClick={(e) => {
                 e.stopPropagation();
