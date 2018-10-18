@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { Paper, Grid, Typography } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -22,9 +22,9 @@ const styles = theme => ({
   }
 });
 
-const divStyle = {
-  padding: "0px"
-};
+// const divStyle = {
+//   padding: "0px"
+// };
 
 let id = 0;
 function createData(brand, product, par, total, order ) {
@@ -48,6 +48,12 @@ function SumTable(props) {
     )
   );
 
+ const pluginNumbers =(x)=>{
+   console.log('runnning function~')
+  x = Math.floor(Math.random()*20);
+ return x;
+}
+
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -62,6 +68,8 @@ function SumTable(props) {
         </TableHead>
         <TableBody>
           {rows.map(row => {
+            let value = pluginNumbers(row.total);
+
             return (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
@@ -69,8 +77,8 @@ function SumTable(props) {
                 </TableCell>
                 <TableCell >{row.product}</TableCell>
                 <TableCell >{row.par}</TableCell>
-                <TableCell >{row.total}</TableCell>
-                <TableCell >probably order?</TableCell>
+                <TableCell >{value}</TableCell>
+                <TableCell >Order {row.par - value}</TableCell>
               </TableRow>
             );
           })}
