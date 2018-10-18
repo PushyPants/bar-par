@@ -218,7 +218,7 @@ class ShiftCard extends Component {
                 />
               </Grid>
 
-              <Grid item xs={12} md={9}>
+              <Grid item xs={12} md={9} style={{ marginTop: 5 }}>
                 <AddAvailSlider
                   start={this.state.shiftStart}
                   end={this.state.shiftEnd}
@@ -227,7 +227,12 @@ class ShiftCard extends Component {
                 />
               </Grid>
 
-              <Grid item xs={12} md={3} style={{ direction: "rtl", marginTop: 24 }}>
+              <Grid
+                item
+                xs={12}
+                md={3}
+                style={{ direction: "rtl", marginTop: 24 }}
+              >
                 <DeleteBtn
                   valOne={this.props.shiftId}
                   valTwo={null}

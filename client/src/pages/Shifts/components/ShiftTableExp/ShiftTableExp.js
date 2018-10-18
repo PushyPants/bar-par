@@ -16,7 +16,8 @@ const styles = theme => ({
   },
   column: {
     alignItems: "Right",
-    flexBasis: "70%"
+    flexBasis: "70%",
+    direction: "rtl"
   },
   heading: {
     fontSize: theme.typography.pxToRem(17),

@@ -61,28 +61,30 @@ class Availability extends Component {
         <Nav>
           {this.props.LoggedInAs.firstName} {this.props.LoggedInAs.lastName}
         </Nav>
-        <Grid container spacing={8} justify="center" alignItems="baseline">
-          <Grid item xs={11} md={4}>
-            <Paper square>
-              <DatePickers
-                changeWorkingDate={this.changeWorkingDate}
-                workingDate={this.props.workingDate}
-              />
-            </Paper>
+        <main style={{ marginTop: 24, marginBottom: 24 }}>
+          <Grid container spacing={8} justify="space-evenly" alignItems="flex-start">
+            <Grid item xs={11} md={5}>
+              <Paper square>
+                <DatePickers
+                  changeWorkingDate={this.changeWorkingDate}
+                  workingDate={this.props.workingDate}
+                />
+              </Paper>
+            </Grid>
+            <Grid item xs={11} md={6}>
+              <Paper square>
+                <ShiftTableExp
+                  AdminLevel={this.props.Employee.isAdmin}
+                  Employee={this.props.LoggedInAs._id}
+                  employeeList={this.props.employeeList}
+                  workingDate={this.props.workingDate}
+                  addShift={this.addShift}
+                  shiftList={this.props.shiftList}
+                />
+              </Paper>
+            </Grid>
           </Grid>
-          <Grid item xs={11} md={7}>
-            <Paper square>
-              <ShiftTableExp
-                AdminLevel={this.props.Employee.isAdmin}
-                Employee={this.props.LoggedInAs._id}
-                employeeList={this.props.employeeList}
-                workingDate={this.props.workingDate}
-                addShift={this.addShift}
-                shiftList={this.props.shiftList}
-              />
-            </Paper>
-          </Grid>
-        </Grid>
+        </main>
       </React.Fragment>
     );
   }
