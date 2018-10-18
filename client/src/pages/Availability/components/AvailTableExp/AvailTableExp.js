@@ -151,7 +151,13 @@ function SimpleExpansionPanel(props) {
                       />
                     </Grid>
 
-                    <Grid item xs={11} sm={4} className={classes.root}>
+                    <Grid
+                      item
+                      xs={11}
+                      sm={4}
+                      className={classes.root}
+                      style={{ direction: "rtl" }}
+                    >
                       <DeleteBtn
                         valOne={row.empID}
                         valTwo={row.postID}
