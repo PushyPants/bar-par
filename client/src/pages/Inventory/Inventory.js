@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import "./Inventory.css";
 import Tooltip from "rc-tooltip";
 import {
   Card,
@@ -16,24 +15,14 @@ import {
 import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
+import "./Inventory.css";
 
 const Handle = Slider.Handle;
-
-const styles = {
-  bottleContainer: {
-    width: "100%",
-    margin: "auto"
-  },
-  align: {
-    display: "flex",
-    justifyContent: "center"
-  }
-};
 
 const handle = props => {
   const { value, dragging, index, ...restProps } = props;
   return (
-    <Tooltip 
+    <Tooltip
       prefixCls="rc-slider-tooltip"
       overlay={`${value}%`}
       visible={dragging}
@@ -47,7 +36,8 @@ const handle = props => {
 
 class Inventory extends Component {
   state = {
-    quantity: "",
+    sliderQuant: 20,
+    inputQuant:0,
     positionCounter: 0,
     stationInfo: {
       location_id: "",
@@ -76,7 +66,6 @@ class Inventory extends Component {
       ]
     }
   };
-
   componentDidMount() {
     // API.getSingleStation(this.props.match.params.id).then((res) => this.setState({stationInfo: res.data}))
     // this.SingleStation(this.AnotherFunction);
@@ -113,13 +102,18 @@ class Inventory extends Component {
   };
 
   handleProductValue = e => {
-    console.log(e);
+    this.setState({
+      sliderQuant: e
+    })
+
   };
 
   handleInc = () => {
     console.log("increse");
     let newCounter = (this.state.positionCounter += 1);
     this.setState({
+      sliderQuant: 20,
+      inputQuant:0,
       positionCounter:
         this.state.positionCounter >= this.state.stationInfo.positions.length
           ? this.state.stationInfo.positions.length - 1
@@ -140,140 +134,128 @@ class Inventory extends Component {
 
   render() {
     // console.log(this.state.stationInfo);
-    const classes = this.props;
     return (
-      <div>
-        <React.Fragment>
-          <CssBaseline />
-          <Nav>
-            <Grid container justify="left">
-              <Grid item xs={9} md={9}>
-                Inventory
-              </Grid>
-              <Grid item xs={3} md={3} style={{textAlign: "center"}}>
-                {this.props.stationInfo.parent_location}
-              </Grid>
+      <React.Fragment>
+        <CssBaseline />
+        <Nav>
+          <Grid container justify="left">
+            <Grid item xs={8}>
+              Inventory
             </Grid>
-          </Nav>
-          <main>
-            <Grid container justify="center" alignItems="center">
-              <Grid item xs={11} md={6}>
-                <Paper square className="bottleContainer">
-                  <Grid container justify="center">
-                    <Grid item xs={12} className={classes.align}>
-                      {this.props.stationInfo.name ? (
-                        <h2
-                          style={{
-                            marginTop: 4,
-                            marginBottom: 0,
-                            marginLeft: 16,
-                            fontWeight: 500,
-                            justifyContent: "center",
-                            display: "flex"
-                          }}
-                        >
-                          {this.props.stationInfo.name}
-                        </h2>
-                      ) : null}
-                      <Grid container justify="center" alignItems="center">
-                        <Grid item xs={2} className="align">
-                          <IconButton
-                            className={classes.button}
-                            aria-label="Previous"
-                          >
-                            <ArrowLeft onClick={this.handleDec} />
-                          </IconButton>
-                        </Grid>
-                        <Grid item xs={4} className="align">
-                          {this.state.stationInfo.positions[
-                            this.state.positionCounter
-                          ].product_info[0].brand === undefined ? null : (
-                            <h3 style={{ fontWeight: 400 }}>
-                              {
-                                this.state.stationInfo.positions[
-                                  this.state.positionCounter
-                                ].product_info[0].brand
-                              }
-                            </h3>
-                          )}
-                        </Grid>
-                        <Grid item xs={4} className="align">
-                          {this.state.stationInfo.positions[
-                            this.state.positionCounter
-                          ].product_info[0].product === undefined ? null : (
-                            <h3 style={{ fontWeight: 300 }}>
-                              {
-                                this.state.stationInfo.positions[
-                                  this.state.positionCounter
-                                ].product_info[0].product
-                              }
-                            </h3>
-                          )}
-                        </Grid>
-                        <Grid item xs={2} className="align">
-                          <IconButton
-                            className={classes.button}
-                            aria-label="Next"
-                          >
-                            <ArrowRight onClick={this.handleInc} />
-                          </IconButton>
-                        </Grid>
+            <Grid item xs={4} style={{ textAlign: "center" }}>
+              {this.props.stationInfo.parent_location}
+            </Grid>
+          </Grid>
+        </Nav>
+        <main className="root">
+          <Grid container justify="center" alignItems="center">
+            <Grid item xs={11} md={6}>
+              <Paper square className="bottleContainer">
+                <Grid container justify="center">
+                  <Grid item xs={12}>
+                    {this.props.stationInfo.name ? (
+                      <h2
+                        style={{
+                          marginTop: 18,
+                          marginBottom: 0,
+                          fontWeight: 500,
+                          justifyContent: "center",
+                          display: "flex"
+                        }}
+                      >
+                        {this.props.stationInfo.name}
+                      </h2>
+                    ) : null}
+                    <Grid container justify="center" alignItems="center">
+                      <Grid item xs={2} className="align">
+                        <IconButton aria-label="Previous">
+                          <ArrowLeft
+                            onClick={this.handleDec}
+                            className="button"
+                          />
+                        </IconButton>
+                      </Grid>
+                      <Grid item xs={4} className="align">
+                        {this.state.stationInfo.positions[
+                          this.state.positionCounter
+                        ].product_info[0].brand === undefined ? null : (
+                          <h3 style={{ fontWeight: 400 }}>
+                            {
+                              this.state.stationInfo.positions[
+                                this.state.positionCounter
+                              ].product_info[0].brand
+                            }
+                          </h3>
+                        )}
+                      </Grid>
+                      <Grid item xs={4} className="align">
+                        {this.state.stationInfo.positions[
+                          this.state.positionCounter
+                        ].product_info[0].product === undefined ? null : (
+                          <h3 style={{ fontWeight: 300 }}>
+                            {
+                              this.state.stationInfo.positions[
+                                this.state.positionCounter
+                              ].product_info[0].product
+                            }
+                          </h3>
+                        )}
+                      </Grid>
+                      <Grid item xs={2} className="align">
+                        <IconButton aria-label="Next">
+                          <ArrowRight onClick={this.handleInc} />
+                        </IconButton>
                       </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                      <Card className={classes.card}>
-                        <CardContent
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-evenly"
-                          }}
-                        >
-                          <img
-                            src="/assets/imgs/empty-bottle.png"
-                            id="bottle"
-                            alt="Bottle"
-                          />
-                          <div id="slider-div">
-                            <Slider
-                              className="bottle-slide"
-                              vertical
-                              min={0}
-                              max={100}
-                              step={1}
-                              defaultValue={50}
-                              handle={handle}
-                              onAfterChange={this.handleProductValue}
-                            />
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Grid>
                   </Grid>
-                </Paper>
-              </Grid>
-              <Grid item xs={11} md={6}>
-                <Paper
-                  square
-                  style={{ width: "90%", margin: "auto", padding: 12 }}
-                >
-                  <TextField
-                    id="standard-number"
-                    label="Number"
-                    value={this.state.quantity}
-                    onChange={this.handleChange("quantity")}
-                    type="number"
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                    margin="normal"
-                  />
-
-                </Paper>
-              </Grid>
+                  <Grid item xs={12}>
+                    <Card>
+                      <CardContent
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-evenly"
+                        }}
+                      >
+                        <img
+                          src="/assets/imgs/empty-bottle.png"
+                          id="bottle"
+                          alt="Bottle"
+                        />
+                        <div id="slider-div">
+                          <Slider
+                            className="bottle-slide"
+                            vertical
+                            min={0}
+                            max={100}
+                            step={1}
+                            value={this.state.sliderQuant}
+                            handle={handle}
+                            onChange={this.handleProductValue}
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                </Grid>
+              </Paper>
             </Grid>
-          </main>
-        </React.Fragment>
-      </div>
+            <Grid item xs={11} md={6} style={{ marginTop: 24 }}>
+              <Paper square className="align">
+                <TextField
+                  label="Number"
+                  value={this.state.inputQuant}
+                  onChange={this.handleChange("inputQuant")}
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  margin="normal"
+                /><h3>{parseInt(this.state.inputQuant) + parseFloat(this.state.sliderQuant/100, 2)}</h3>
+              </Paper>
+            </Grid>
+          </Grid>
+        </main>
+      </React.Fragment>
     );
   }
 }

@@ -76,10 +76,10 @@ class ShiftCard extends Component {
     this.props.ChangeEmployee(event.target.value);
   };
 
-    deleteShift = (id) => {
-        this.props.deleteShift(id)
-        this.props.getShiftList()
-    }
+  deleteShift = id => {
+    this.props.deleteShift(id);
+    this.props.getShiftList();
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -196,18 +196,18 @@ class ShiftCard extends Component {
       <React.Fragment>
         {this.props.Employee.isAdmin < 1 ? <Redirect to="/" /> : null}
 
-        <Grid container spacing={8} justify="center">
-          <Grid item xs={2} sm={4}>
+        <Grid container spacing={8} justify="center" alignItems="center">
+          <Grid item xs={3} md={4}>
             <span>{this.time_convert(this.state.shiftStart)}</span>
           </Grid>
 
-          <Grid item xs={2} sm={4}>
+          <Grid item xs={3} md={4}>
             <span>{this.time_convert(this.state.shiftEnd)}</span>
           </Grid>
 
           {this.props.Employee.isAdmin > 2 ? (
             <React.Fragment>
-              <Grid item xs={8} sm={4}>
+              <Grid item xs={6} md={4}>
                 <EmployeeDrop
                   changeEmp={this.handleInputChange}
                   employeeList={this.state.worksToday}
@@ -218,7 +218,7 @@ class ShiftCard extends Component {
                 />
               </Grid>
 
-              <Grid item xs={9} sm={8}>
+              <Grid item xs={12} md={9}>
                 <AddAvailSlider
                   start={this.state.shiftStart}
                   end={this.state.shiftEnd}
@@ -227,7 +227,7 @@ class ShiftCard extends Component {
                 />
               </Grid>
 
-              <Grid item xs={3} sm={4}>
+              <Grid item xs={12} md={3} style={{ direction: "rtl", marginTop: 24 }}>
                 <DeleteBtn
                   valOne={this.props.shiftId}
                   valTwo={null}
@@ -240,7 +240,7 @@ class ShiftCard extends Component {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <Grid item xs={12} sm={8}>
+              <Grid item xs={12} md={8}>
                 <AddAvailSlider
                   start={this.state.shiftStart}
                   end={this.state.shiftEnd}
