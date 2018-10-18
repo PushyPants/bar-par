@@ -167,6 +167,7 @@ class AddEmp extends React.Component {
             name="password"
             type="password"
             placeholder="Password"
+            autocomplete="false"
           />
         </FormControl>
 

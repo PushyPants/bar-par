@@ -12,7 +12,7 @@ const styles = theme => ({
     },
 });
 
-function AddShiftBtn(props) {
+function AddShiftBtn(props, event) {
     const { classes } = props;
 
 
@@ -20,7 +20,10 @@ function AddShiftBtn(props) {
     return (
         <Button variant="fab" mini color="primary"
             className={classes.button}
-            onClick={() => props.addShift(props.thisDay, props.dayOfWeek, props.Employee)}>
+            onClick={(e) => {
+                e.stopPropagation();
+                props.addShift(props.thisDay, props.dayOfWeek, props.Employee)}
+                }>
             {props.children}
         </Button>
     )
