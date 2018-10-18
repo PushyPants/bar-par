@@ -38,12 +38,10 @@ class App extends Component {
   }
 
   updateUser(userObject) {
-    console.log("WackySmacky", userObject._id);
     this.setState(userObject);
     this.setState({
       loggedIn: true
     });
-    console.log("VBORRROOO", this.state);
   }
 
   getUser() {
