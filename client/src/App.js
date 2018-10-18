@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import Employee from "./pages/Employee";
 import Availability from "./pages/Availability";
-import Dashboard from "./pages/Dashboard";
+// import Dashboard from "./pages/Dashboard";
 import Locations from "./pages/Locations";
 import NoMatch from "./pages/NoMatch";
 import Shifts from "./pages/Shifts";

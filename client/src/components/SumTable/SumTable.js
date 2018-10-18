@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { Paper, Grid, Typography } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -22,9 +22,9 @@ const styles = theme => ({
   }
 });
 
-const divStyle = {
-  padding: "0px"
-};
+// const divStyle = {
+//   padding: "0px"
+// };
 
 let id = 0;
 function createData(brand, product, par, total, order ) {

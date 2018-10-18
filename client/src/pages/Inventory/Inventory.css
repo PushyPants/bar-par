@@ -42,7 +42,7 @@
 
 #slider-div .rc-slider-track {
   position: absolute;
-  left: -90px !important;
+  left: -110px !important;
   height: 4px;
   width: 250px !important;
   background: -webkit-gradient(
@@ -59,11 +59,11 @@
 
 #slider-div .rc-slider-handle {
   position: absolute;
-  margin-left: -95px !important;
+  margin-left: -105px !important;
   margin-top: -5px;
   /* margin-right: auto; */
-  width: 190px;
-  height: 6px;
+  width: 210px;
+  height: 7px;
   cursor: pointer;
   cursor: -webkit-grab;
   cursor: grab;
@@ -79,9 +79,6 @@
   background: rgba(255, 255, 255, 0);
 }
 
-#slider-div .rc-slider-tooltip-inner {
+.rc-slider-tooltip {
   z-index: 1;
-  position: absolute;
-  margin-top: -13px;
-  min-width: 32px;
 }
