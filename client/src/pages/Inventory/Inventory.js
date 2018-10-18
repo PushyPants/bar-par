@@ -36,7 +36,8 @@ const handle = props => {
 
 class Inventory extends Component {
   state = {
-    quantity: "",
+    sliderQuant: 20,
+    inputQuant:0,
     positionCounter: 0,
     stationInfo: {
       location_id: "",
@@ -65,7 +66,6 @@ class Inventory extends Component {
       ]
     }
   };
-
   componentDidMount() {
     // API.getSingleStation(this.props.match.params.id).then((res) => this.setState({stationInfo: res.data}))
     // this.SingleStation(this.AnotherFunction);
@@ -102,13 +102,18 @@ class Inventory extends Component {
   };
 
   handleProductValue = e => {
-    console.log(e);
+    this.setState({
+      sliderQuant: e
+    })
+
   };
 
   handleInc = () => {
     console.log("increse");
     let newCounter = (this.state.positionCounter += 1);
     this.setState({
+      sliderQuant: 20,
+      inputQuant:0,
       positionCounter:
         this.state.positionCounter >= this.state.stationInfo.positions.length
           ? this.state.stationInfo.positions.length - 1
@@ -223,9 +228,9 @@ class Inventory extends Component {
                             min={0}
                             max={100}
                             step={1}
-                            defaultValue={50}
+                            value={this.state.sliderQuant}
                             handle={handle}
-                            onAfterChange={this.handleProductValue}
+                            onChange={this.handleProductValue}
                           />
                         </div>
                       </CardContent>
@@ -238,14 +243,14 @@ class Inventory extends Component {
               <Paper square className="align">
                 <TextField
                   label="Number"
-                  value={this.state.quantity}
-                  onChange={this.handleChange("quantity")}
+                  value={this.state.inputQuant}
+                  onChange={this.handleChange("inputQuant")}
                   type="number"
                   InputLabelProps={{
                     shrink: true
                   }}
                   margin="normal"
-                />
+                /><h3>{parseInt(this.state.inputQuant) + parseFloat(this.state.sliderQuant/100, 2)}</h3>
               </Paper>
             </Grid>
           </Grid>
